@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato e Diagnóstico Gratuito | Tetrix Intralogística</title>
+  <meta name="description" content="Solicite um diagnóstico gratuito da sua operação logística. A Tetrix analisa seu galpão e apresenta um projeto de verticalização com estimativa de capacidade e custo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:     #0D1E3D;
+      --navy-mid: #162B55;
+      --navy-lt:  #1E3A6E;
+      --orange:   #FF6E1A;
+      --orange-dk:#E05000;
+      --orange-lt:#FF9A5C;
+      --white:    #FFFFFF;
+      --gray-100: #F4F6FA;
+      --gray-200: #E2E7F0;
+      --gray-500: #7A8BA8;
+      --gray-700: #3D4F6A;
+      --green:    #25D366;
+      --text:     #1A2A40;
+      --font-h:   'Barlow Condensed', sans-serif;
+      --font-b:   'DM Sans', sans-serif;
+      --radius:   10px;
+      --trans:    0.3s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--text); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-family: var(--font-h); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── NAVBAR ── */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; transition: background 0.4s, box-shadow 0.4s; }
+    #navbar.scrolled { background: rgba(13,30,61,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 24px #00000040; }
+    .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: color var(--trans), background var(--trans); }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+    .nav-links a.active { color: var(--orange-lt); }
+    .nav-cta { margin-left: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius); background: var(--orange); color: white; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: var(--trans); }
+    .nav-cta:hover { background: var(--orange-dk); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: transparent; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: var(--trans); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(13,30,61,0.98); backdrop-filter: blur(12px); padding: 20px 24px 28px; z-index: 999; flex-direction: column; gap: 4px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: 8px; }
+    .mobile-menu .btn-mobile { margin-top: 8px; background: var(--orange); color: white; text-align: center; padding: 14px; border-radius: 10px; font-weight: 600; }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+      padding: 140px 0 80px; position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px);
+    }
+    #hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: polygon(0 100%, 100% 0, 100% 100%); z-index: 2; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hero-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 20px; font-weight: 500; }
+    .hero-breadcrumb a { color: rgba(255,255,255,0.4); transition: color var(--trans); }
+    .hero-breadcrumb a:hover { color: var(--orange-lt); }
+    .hero-breadcrumb span { color: var(--orange-lt); }
+    .hero-title { font-family: var(--font-h); font-size: clamp(42px, 5.5vw, 72px); font-weight: 900; color: white; line-height: 0.97; margin-bottom: 20px; }
+    .hero-title em { font-style: normal; color: var(--orange); }
+    .hero-sub { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.65); margin-bottom: 36px; max-width: 480px; }
+    .hero-canais { display: flex; flex-direction: column; gap: 12px; }
+    .canal-item {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 14px; color: rgba(255,255,255,0.55);
+    }
+    .canal-icon { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .canal-icon svg { width: 18px; height: 18px; }
+    .canal-val { color: white; font-weight: 500; }
+
+    /* Card flutuante lado direito do hero */
+    .hero-card {
+      background: white; border-radius: 20px;
+      padding: 36px 32px; box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+      position: relative; z-index: 3;
+    }
+    .hero-card-title {
+      font-family: var(--font-h); font-size: 22px; font-weight: 800;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .hero-card-sub { font-size: 13px; color: var(--gray-500); margin-bottom: 28px; }
+
+    /* ── WHATSAPP DESTAQUE ── */
+    .wpp-block {
+      display: flex; flex-direction: column; gap: 12px;
+      padding: 20px; background: #F0FDF6;
+      border: 1.5px solid #BBF0D4; border-radius: 14px;
+      margin-bottom: 24px;
+    }
+    .wpp-block-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #1A7A45; }
+    .wpp-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 24px; border-radius: 12px;
+      background: var(--green); color: white;
+      font-family: var(--font-h); font-size: 20px; font-weight: 800;
+      letter-spacing: 0.5px; cursor: pointer; border: none;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+      transition: transform var(--trans), box-shadow var(--trans);
+      text-decoration: none;
+    }
+    .wpp-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.5); }
+    .wpp-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .wpp-note { font-size: 11.5px; color: #2A8A50; text-align: center; line-height: 1.5; }
+
+    /* Divisor "ou preencha o formulário" */
+    .divider-ou {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px;
+    }
+    .divider-ou::before, .divider-ou::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+    .divider-ou span { font-size: 12px; color: var(--gray-500); font-weight: 600; white-space: nowrap; }
+
+    /* ── FORM ── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: span 2; }
+    .form-label { font-size: 12px; font-weight: 600; color: var(--gray-700); letter-spacing: 0.3px; }
+    .form-input, .form-select, .form-textarea {
+      padding: 11px 14px; border-radius: 8px;
+      border: 1.5px solid var(--gray-200);
+      font-family: var(--font-b); font-size: 14px; color: var(--text);
+      background: var(--gray-100);
+      transition: border-color var(--trans), background var(--trans);
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none; border-color: var(--orange); background: white;
+    }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A8BA8' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .btn-submit {
+      width: 100%; padding: 16px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dk));
+      color: white; font-family: var(--font-h); font-size: 20px; font-weight: 800;
+      border: none; cursor: pointer; margin-top: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 6px 20px rgba(255,110,26,0.3);
+      transition: transform var(--trans), box-shadow var(--trans);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,110,26,0.45); }
+    .btn-submit svg { width: 18px; height: 18px; }
+    .form-privacidade { font-size: 11px; color: var(--gray-500); text-align: center; margin-top: 10px; line-height: 1.5; }
+
+    /* ── SEÇÃO INFO ── */
+    #info { padding: 96px 0; background: var(--white); }
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .info-card {
+      padding: 32px 28px; border-radius: 16px;
+      border: 1px solid var(--gray-200); background: var(--gray-100);
+      transition: all var(--trans);
+    }
+    .info-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 16px 36px #0D1E3D10; }
+    .info-step {
+      font-family: var(--font-h); font-size: 48px; font-weight: 900;
+      color: var(--orange); opacity: 0.25; line-height: 1; margin-bottom: 16px;
+    }
+    .info-title { font-family: var(--font-h); font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .info-desc { font-size: 14px; line-height: 1.7; color: var(--gray-700); }
+
+    /* ── GARANTIAS ── */
+    #garantias { padding: 60px 0; background: var(--navy); }
+    .garantias-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .garantia { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; }
+    .garantia svg { width: 20px; height: 20px; color: var(--orange); flex-shrink: 0; }
+    .garantia-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.12); }
+
+    /* ── FOOTER ── */
+    #footer { background: #080F1E; padding: 60px 0 32px; color: rgba(255,255,255,0.5); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { margin-bottom: 20px; }
+    .footer-logo svg { height: 40px; }
+    .footer-desc { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact a { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); transition: color var(--trans); }
+    .footer-contact a:hover { color: var(--orange); }
+    .footer-contact svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.6; }
+    .footer-col-title { font-family: var(--font-h); font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color var(--trans); }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; transition: background var(--trans); color: rgba(255,255,255,0.4); }
+    .footer-social a:hover { background: var(--orange); color: white; }
+    .footer-social svg { width: 16px; height: 16px; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 900; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px #25D36660; transition: transform var(--trans); }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-card { max-width: 560px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .garantias-inner { flex-direction: column; gap: 20px; }
+      .garantia-divider { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Tetrix Home">
+        <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="nl-orn" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF7A2F"/>
+              <stop offset="100%" stop-color="#E05000"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="7"  y="15" width="45" height="5" rx="1.5" fill="url(#nl-orn)"/>
+          <rect x="7"  y="28" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.7"/>
+          <rect x="7"  y="41" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.45"/>
+          <rect x="9"  y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.75"/>
+          <rect x="24" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.5"/>
+          <rect x="39" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.3"/>
+          <rect x="9"  y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.6"/>
+          <rect x="39" y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.35"/>
+          <rect x="0"  y="48" width="59" height="4" rx="1.5" fill="url(#nl-orn)" opacity="0.9"/>
+          <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="2">TETRIX</text>
+          <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#nl-orn)"/>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="venda.html">Comprar</a></li>
+        <li><a href="locacao.html">Locar</a></li>
+        <li><a href="consultoria.html">Consultoria</a></li>
+        <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+        <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+      <a href="contato.html" class="nav-cta active">Solicitar Diagnóstico</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Início</a>
+    <a href="venda.html">Comprar</a>
+    <a href="locacao.html">Locar</a>
+    <a href="consultoria.html">Consultoria</a>
+    <a href="porta-pallets.html">Porta-Pallets</a>
+    <a href="empilhadeiras.html">Empilhadeiras</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html" class="btn-mobile">Solicitar Diagnóstico</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Esquerda: texto -->
+        <div>
+          <div class="hero-breadcrumb reveal">
+            <a href="index.html">Início</a>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            <span>Contato</span>
+          </div>
+          <span class="tag reveal" style="color: var(--orange-lt);">Diagnóstico gratuito</span>
+          <h1 class="hero-title reveal reveal-delay-1">
+            Vamos analisar<br>a sua operação<br><em>sem custo.</em>
+          </h1>
+          <p class="hero-sub reveal reveal-delay-2">
+            Preencha o formulário ou fale direto pelo WhatsApp. Nossa equipe analisa o seu galpão e apresenta um projeto de verticalização com estimativa de capacidade e custo — sem compromisso.
+          </p>
+          <div class="hero-canais reveal reveal-delay-3">
+            <div class="canal-item">
+              <div class="canal-icon">
+                <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              </div>
+              <span>WhatsApp: <span class="canal-val">(11) 94366-8123</span></span>
+            </div>
+            <div class="canal-item">
+              <div class="canal-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FF9A5C" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <span>E-mail: <span class="canal-val">comercial@tetrixlog.com.br</span></span>
+            </div>
+            <div class="canal-item">
+              <div class="canal-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FF9A5C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <span>Atendemos em: <span class="canal-val">Todo o Estado de São Paulo</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direita: card com formulário -->
+        <div class="hero-card reveal reveal-delay-1">
+          <div class="hero-card-title">Solicite seu diagnóstico</div>
+          <div class="hero-card-sub">Retorno em até 1 dia útil · 100% gratuito · Sem compromisso</div>
+
+          <!-- WHATSAPP em destaque -->
+          <div class="wpp-block">
+            <div class="wpp-block-title">⚡ Resposta mais rápida via WhatsApp</div>
+            <a href="https://wa.me/5511943668123?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20gratuito%20da%20minha%20opera%C3%A7%C3%A3o%20log%C3%ADstica."
+               target="_blank" class="wpp-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+              Falar pelo WhatsApp
+            </a>
+            <div class="wpp-note">Clique para abrir conversa · (11) 94366-8123</div>
+          </div>
+
+          <!-- Divisor -->
+          <div class="divider-ou">
+            <span>ou preencha o formulário</span>
+          </div>
+
+          <!-- FORMULÁRIO -->
+          <form id="form-diagnostico" onsubmit="enviarFormulario(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Nome *</label>
+                <input type="text" class="form-input" placeholder="Seu nome" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Empresa *</label>
+                <input type="text" class="form-input" placeholder="Nome da empresa" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">WhatsApp *</label>
+                <input type="tel" class="form-input" id="campo-wpp" placeholder="Ex: (11) 94366-8123" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Cidade / Região</label>
+                <input type="text" class="form-input" placeholder="Ex: Campinas, Louveira, Vinhedo...">
+              </div>
+              <div class="form-group full">
+                <label class="form-label">Tipo de interesse *</label>
+                <select class="form-select" required>
+                  <option value="" disabled selected>Selecione uma opção</option>
+                  <option>Locação de porta-pallets + empilhadeira</option>
+                  <option>Compra de porta-pallets</option>
+                  <option>Compra de empilhadeira</option>
+                  <option>Consultoria intralogística</option>
+                  <option>Avaliar alternativa a galpão maior</option>
+                  <option>Ainda não sei — quero uma análise</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Área aproximada do galpão</label>
+                <input type="text" class="form-input" placeholder="Ex: 800 m²">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Pé-direito aproximado</label>
+                <input type="text" class="form-input" placeholder="Ex: 6 metros">
+              </div>
+              <div class="form-group full">
+                <label class="form-label">Mensagem (opcional)</label>
+                <textarea class="form-textarea" placeholder="Descreva brevemente sua operação, tipo de carga ou dúvida..."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Solicitar diagnóstico gratuito
+            </button>
+            <p class="form-privacidade">Seus dados são usados exclusivamente para retorno comercial. Não enviamos spam.</p>
+          </form>
+
+          <!-- Sucesso (oculto) -->
+          <div id="form-sucesso" style="display:none; text-align:center; padding: 32px 0;">
+            <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
+            <div style="font-family: var(--font-h); font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 10px;">Recebemos sua solicitação!</div>
+            <p style="font-size: 14px; color: var(--gray-700); line-height: 1.7; margin-bottom: 20px;">Nossa equipe entrará em contato em breve. Para uma resposta mais rápida, fale pelo WhatsApp:</p>
+            <a href="https://wa.me/5511943668123" target="_blank" class="wpp-btn" style="display:inline-flex;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+              (11) 94366-8123
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA O DIAGNÓSTICO -->
+  <section id="info">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:52px;">
+        <span class="tag reveal">Como funciona</span>
+        <h2 class="reveal" style="font-family: var(--font-h); font-size: clamp(32px, 5vw, 50px); font-weight: 800; color: var(--navy); line-height: 1.05;">O diagnóstico em 3 etapas simples</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card reveal reveal-delay-1">
+          <div class="info-step">01</div>
+          <div class="info-title">Você nos conta sobre o galpão</div>
+          <p class="info-desc">Área, pé-direito, tipo de carga, volume de pallets e equipamentos atuais. Pode ser pelo formulário, e-mail ou WhatsApp — como preferir.</p>
+        </div>
+        <div class="info-card reveal reveal-delay-2">
+          <div class="info-step">02</div>
+          <div class="info-title">Nossos engenheiros fazem a análise</div>
+          <p class="info-desc">Com base nas informações, dimensionamos a estrutura ideal — quantidade de posições-palete, altura do porta-pallet e o tipo de empilhadeira mais adequado.</p>
+        </div>
+        <div class="info-card reveal reveal-delay-3">
+          <div class="info-step">03</div>
+          <div class="info-title">Você recebe a proposta</div>
+          <p class="info-desc">Apresentamos o projeto com estimativa de capacidade, custo de locação ou compra e comparativo com o custo de alugar uma área maior equivalente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIAS -->
+  <section id="garantias">
+    <div class="container">
+      <div class="garantias-inner reveal">
+        <div class="garantia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          100% gratuito
+        </div>
+        <div class="garantia-divider"></div>
+        <div class="garantia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Sem compromisso de compra
+        </div>
+        <div class="garantia-divider"></div>
+        <div class="garantia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Retorno em até 1 dia útil
+        </div>
+        <div class="garantia-divider"></div>
+        <div class="garantia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Atendemos todo o Estado de SP
+        </div>
+        <div class="garantia-divider"></div>
+        <div class="garantia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Análise feita por engenheiros
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="fl-orn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
+              <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="7" y="15" width="45" height="5" rx="1.5" fill="url(#fl-orn)"/>
+              <rect x="7" y="28" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.7"/>
+              <rect x="7" y="41" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.45"/>
+              <rect x="9" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.5"/>
+              <rect x="24" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.35"/>
+              <rect x="39" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.2"/>
+              <rect x="9" y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.4"/>
+              <rect x="0" y="48" width="59" height="4" rx="1.5" fill="url(#fl-orn)" opacity="0.8"/>
+              <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="rgba(255,255,255,0.7)" letter-spacing="2">TETRIX</text>
+              <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#fl-orn)" opacity="0.7"/>
+            </svg>
+          </div>
+          <p class="footer-desc">Soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras em todo o estado de São Paulo.</p>
+          <div class="footer-contact">
+            <a href="https://wa.me/5511943668123" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+              (11) 94366-8123
+            </a>
+            <a href="mailto:comercial@tetrixlog.com.br">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              comercial@tetrixlog.com.br
+            </a>
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.5);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;opacity:0.6;flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Estado de São Paulo
+            </span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Soluções</div>
+          <ul class="footer-links">
+            <li><a href="consultoria.html">Consultoria</a></li>
+            <li><a href="venda.html">Venda</a></li>
+            <li><a href="locacao.html">Locação</a></li>
+            <li><a href="simulador.html">Simulador</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Produtos</div>
+          <ul class="footer-links">
+            <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+            <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="sobre.html">Sobre a Tetrix</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Tetrix Soluções Intralogísticas. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://wa.me/5511943668123" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/5511943668123" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+  </a>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setTimeout(() => document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible')), 100);
+
+    // Máscara WhatsApp
+    document.getElementById('campo-wpp').addEventListener('input', function() {
+      let v = this.value.replace(/\D/g, '').substring(0, 11);
+      if (v.length > 6) v = '(' + v.substring(0,2) + ') ' + v.substring(2,7) + '-' + v.substring(7);
+      else if (v.length > 2) v = '(' + v.substring(0,2) + ') ' + v.substring(2);
+      else if (v.length > 0) v = '(' + v;
+      this.value = v;
+    });
+
+    // Form submit — abre WhatsApp com os dados preenchidos
+    function enviarFormulario(e) {
+      e.preventDefault();
+      const form = document.getElementById('form-diagnostico');
+      const inputs = form.querySelectorAll('input, select, textarea');
+      const nome     = inputs[0].value;
+      const empresa  = inputs[1].value;
+      const wpp      = inputs[2].value;
+      const cidade   = inputs[3].value;
+      const tipo     = inputs[4].value;
+      const area     = inputs[5].value;
+      const pedireito= inputs[6].value;
+      const msg      = inputs[7].value;
+
+      const texto = encodeURIComponent(
+        `Olá! Solicito um diagnóstico gratuito.\n\n` +
+        `*Nome:* ${nome}\n` +
+        `*Empresa:* ${empresa}\n` +
+        `*WhatsApp:* ${wpp}\n` +
+        `*Cidade:* ${cidade || 'Não informado'}\n` +
+        `*Interesse:* ${tipo}\n` +
+        `*Área do galpão:* ${area || 'Não informado'}\n` +
+        `*Pé-direito:* ${pedireito || 'Não informado'}\n` +
+        `*Mensagem:* ${msg || 'Nenhuma'}`
+      );
+
+      // Abre WhatsApp com a mensagem pré-preenchida
+      window.open(`https://wa.me/5511943668123?text=${texto}`, '_blank');
+
+      // Mostra confirmação
+      form.style.display = 'none';
+      document.getElementById('form-sucesso').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

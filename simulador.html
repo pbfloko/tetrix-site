@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Economia | Tetrix Intralogística</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:      #0D1E3D;
+      --navy-mid:  #162B55;
+      --navy-lt:   #1E3A6E;
+      --orange:    #FF6E1A;
+      --orange-dk: #E05000;
+      --orange-lt: #FF9A5C;
+      --white:     #FFFFFF;
+      --gray-50:   #F7F9FC;
+      --gray-100:  #EEF1F7;
+      --gray-200:  #D8DFF0;
+      --gray-500:  #7A8BA8;
+      --gray-700:  #3D4F6A;
+      --green:     #1A9E5C;
+      --green-lt:  #E6F7EF;
+      --font-h:    'Barlow Condensed', sans-serif;
+      --font-b:    'DM Sans', sans-serif;
+      --radius:    14px;
+      --shadow:    0 20px 60px rgba(13,30,61,0.14);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-b);
+      background: var(--navy);
+      min-height: 100vh;
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent, transparent 39px,
+          rgba(255,255,255,0.025) 39px, rgba(255,255,255,0.025) 40px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent, transparent 39px,
+          rgba(255,255,255,0.025) 39px, rgba(255,255,255,0.025) 40px
+        );
+      pointer-events: none;
+    }
+
+    /* ── WRAPPER ── */
+    .page {
+      position: relative; z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .logo-wrap {
+      display: inline-flex; align-items: center;
+      gap: 12px; margin-bottom: 36px;
+    }
+    .logo-wrap svg { height: 48px; width: auto; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,110,26,0.15);
+      border: 1px solid rgba(255,110,26,0.3);
+      padding: 5px 16px; border-radius: 100px;
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--orange-lt);
+      margin-bottom: 20px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; } 50% { opacity:0.3; }
+    }
+
+    .header h1 {
+      font-family: var(--font-h);
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 900; line-height: 1.0;
+      margin-bottom: 16px;
+    }
+    .header h1 em { font-style: normal; color: var(--orange); }
+    .header p {
+      font-size: 16px; line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px; margin: 0 auto;
+    }
+
+    /* ── MAIN CARD ── */
+    .sim-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    /* ── MODO TOGGLE (topo do card) ── */
+    .modo-toggle-wrap {
+      padding: 32px 48px 0;
+    }
+    .modo-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 14px;
+    }
+    .modo-toggle {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-bottom: 32px;
+    }
+    .modo-btn {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 4px; padding: 20px 22px;
+      background: rgba(255,255,255,0.04);
+      border: 2px solid rgba(255,255,255,0.08);
+      border-radius: 14px; cursor: pointer;
+      transition: all 0.25s; text-align: left;
+    }
+    .modo-btn:hover {
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.07);
+    }
+    .modo-btn.active {
+      border-color: var(--orange);
+      background: rgba(255,110,26,0.1);
+    }
+    .modo-icon { font-size: 22px; margin-bottom: 4px; }
+    .modo-title {
+      font-family: var(--font-h); font-size: 22px; font-weight: 800;
+      color: rgba(255,255,255,0.5); line-height: 1;
+      transition: color 0.25s;
+    }
+    .modo-btn.active .modo-title { color: var(--orange-lt); }
+    .modo-desc {
+      font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.4;
+      transition: color 0.25s;
+    }
+    .modo-btn.active .modo-desc { color: rgba(255,154,92,0.65); }
+
+    /* Divisor entre modo-toggle e inputs */
+    .modo-divider {
+      height: 1px; background: rgba(255,255,255,0.07);
+      margin: 0 48px 36px;
+    }
+
+    /* ── INPUTS SECTION ── */
+    .sim-inputs {
+      padding: 44px 48px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .inputs-title {
+      font-family: var(--font-h);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange-lt);
+      margin-bottom: 28px;
+    }
+    .inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .input-group { display: flex; flex-direction: column; gap: 8px; }
+    .input-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+    }
+    .input-wrap {
+      position: relative;
+      display: flex; align-items: center;
+    }
+    .input-unit {
+      position: absolute;
+      font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      pointer-events: none;
+      user-select: none;
+    }
+    .input-unit.left  { left: 14px; }
+    .input-unit.right { right: 14px; }
+
+    input[type="number"], input[type="range"] {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: white;
+      font-family: var(--font-h);
+      font-size: 26px; font-weight: 800;
+      padding: 14px 44px 14px 16px;
+      transition: border-color 0.2s, background 0.2s;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .input-hint {
+      display: flex; align-items: flex-start; gap: 6px;
+      font-size: 11.5px; line-height: 1.5;
+      color: rgba(255,255,255,0.35);
+      margin-top: 2px;
+    }
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--orange);
+      background: rgba(255,110,26,0.08);
+    }
+    input.has-left-unit { padding-left: 36px; }
+
+    /* Slider pé-direito */
+    .slider-group { display: flex; flex-direction: column; gap: 8px; }
+    .slider-display {
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex; align-items: baseline; gap: 6px;
+    }
+    .slider-val {
+      font-family: var(--font-h); font-size: 26px; font-weight: 800;
+      color: white;
+    }
+    .slider-unit-inline {
+      font-size: 14px; color: rgba(255,255,255,0.4);
+    }
+    .slider-levels {
+      font-size: 11px; color: var(--orange-lt);
+      margin-left: auto; font-weight: 600; letter-spacing: 0.5px;
+    }
+    input[type="range"] {
+      padding: 0; border: none; border-radius: 4px;
+      background: rgba(255,255,255,0.1);
+      height: 6px; cursor: pointer;
+      accent-color: var(--orange);
+    }
+    input[type="range"]:focus { outline: none; }
+
+
+
+    /* ── CALCULAR BTN ── */
+    .btn-calcular {
+      width: 100%; padding: 18px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dk));
+      border: none; border-radius: 12px;
+      color: white; font-family: var(--font-h);
+      font-size: 22px; font-weight: 800;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(255,110,26,0.3);
+    }
+    .btn-calcular:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(255,110,26,0.45);
+    }
+    .btn-calcular:active { transform: translateY(0); }
+    .btn-calcular svg { width: 22px; height: 22px; }
+
+    /* ── RESULTS SECTION ── */
+    .sim-results {
+      padding: 44px 48px;
+      display: none;
+      animation: fadeUp 0.5s ease both;
+    }
+    .sim-results.show { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .results-title {
+      font-family: var(--font-h); font-size: 13px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange-lt); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .results-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ── SCENARIO TOGGLE ── */
+    .scenario-toggle {
+      display: flex; gap: 8px; margin-bottom: 32px;
+    }
+    .scenario-btn {
+      flex: 1; padding: 14px 20px;
+      border-radius: 10px; border: 1.5px solid rgba(255,255,255,0.12);
+      background: transparent; color: rgba(255,255,255,0.45);
+      font-family: var(--font-b); font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.25s; text-align: center;
+    }
+    .scenario-btn.active {
+      background: rgba(255,110,26,0.12);
+      border-color: var(--orange);
+      color: var(--orange-lt);
+    }
+
+    /* ── KPI GRID ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-bottom: 20px;
+    }
+    .kpi {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 24px 20px 20px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .kpi.highlight {
+      background: rgba(255,110,26,0.1);
+      border-color: rgba(255,110,26,0.35);
+    }
+    .kpi.positive {
+      background: rgba(26,158,92,0.1);
+      border-color: rgba(26,158,92,0.3);
+    }
+    .kpi-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 10px;
+    }
+    .kpi.highlight .kpi-label { color: rgba(255,154,92,0.8); }
+    .kpi.highlight .kpi-sub   { color: rgba(255,200,160,0.7); }
+    .kpi.positive  .kpi-label { color: rgba(100,210,160,0.8); }
+    .kpi-value {
+      font-family: var(--font-h); font-size: 36px; font-weight: 900;
+      line-height: 1; color: white;
+    }
+    .kpi.highlight .kpi-value { color: var(--orange-lt); }
+    .kpi.positive  .kpi-value { color: #6DD4A0; }
+    .kpi-sub {
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      margin-top: 6px; line-height: 1.4;
+    }
+
+    /* ── ECONOMIA BANNER ── */
+    .economia-banner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+      background: linear-gradient(135deg, rgba(26,158,92,0.18), rgba(26,158,92,0.08));
+      border: 1.5px solid rgba(26,158,92,0.35);
+      border-radius: 14px; padding: 22px 28px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.4s ease both;
+    }
+    .economia-left { display: flex; flex-direction: column; gap: 4px; }
+    .economia-label {
+      font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.75); letter-spacing: 0.3px;
+    }
+    .economia-sub { font-size: 12px; color: rgba(109,212,160,0.7); }
+    .economia-value {
+      font-family: var(--font-h); font-size: 48px; font-weight: 900;
+      color: #6DD4A0; line-height: 1; white-space: nowrap;
+    }
+
+    /* ── BREAKDOWN TABLE ── */
+    .breakdown {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .breakdown-row {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 14px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+    }
+    .breakdown-row:last-child { border-bottom: none; }
+    .breakdown-row.total {
+      background: rgba(255,110,26,0.08);
+      border-top: 1px solid rgba(255,110,26,0.2);
+    }
+    .breakdown-label { color: rgba(255,255,255,0.55); }
+    .breakdown-label strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .breakdown-val {
+      font-family: var(--font-h); font-size: 18px; font-weight: 700;
+      color: white;
+    }
+    .breakdown-val.orange { color: var(--orange-lt); }
+    .breakdown-val.green  { color: #6DD4A0; }
+
+    /* ── PAYBACK BAR ── */
+    .payback-wrap { margin-bottom: 20px; }
+    .payback-label {
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .payback-bar-bg {
+      height: 8px; border-radius: 4px;
+      background: rgba(255,255,255,0.08); overflow: hidden;
+    }
+    .payback-bar-fill {
+      height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-lt));
+      transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      margin-top: 32px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .disclaimer svg { flex-shrink: 0; margin-top: 2px; opacity: 0.6; }
+    .disclaimer p {
+      font-size: 12.5px; line-height: 1.65;
+      color: rgba(255,255,255,0.5);
+    }
+    .disclaimer p strong { color: rgba(255,255,255,0.75); }
+
+    /* ── CTA ── */
+    .cta-wrap {
+      margin-top: 40px;
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .btn-cta-primary {
+      flex: 1; min-width: 200px;
+      padding: 16px 24px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dk));
+      border: none; color: white;
+      font-family: var(--font-b); font-size: 15px; font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 20px rgba(255,110,26,0.3);
+    }
+    .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,110,26,0.45); }
+    .btn-cta-secondary {
+      flex: 1; min-width: 200px;
+      padding: 16px 24px; border-radius: 10px;
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-b); font-size: 15px; font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-cta-secondary:hover { border-color: white; color: white; }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      text-align: center; margin-top: 40px;
+      font-size: 12px; color: rgba(255,255,255,0.25);
+      line-height: 1.6;
+    }
+    .footer-note a { color: var(--orange-lt); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .sim-inputs, .sim-results { padding: 28px 24px; }
+      .modo-toggle-wrap { padding: 24px 24px 0; }
+      .modo-divider { margin: 0 24px 28px; }
+      .modo-toggle { grid-template-columns: 1fr; }
+      .inputs-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .cta-wrap { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .page { padding: 40px 16px 60px; }
+      .header h1 { font-size: 36px; }
+    }
+
+    /* ── COUNTER ANIMATION ── */
+    .counting { transition: all 0.1s; }
+  
+    :root {
+      --navy: #0D1E3D; --navy-mid: #162B55; --navy-lt: #1E3A6E;
+      --orange: #FF6E1A; --orange-dk: #E05000; --orange-lt: #FF9A5C;
+      --white: #FFFFFF; --gray-100: #F4F6FA; --gray-200: #E2E7F0;
+      --gray-500: #7A8BA8; --gray-700: #3D4F6A; --text: #1A2A40;
+      --font-h: 'Barlow Condensed', sans-serif; --font-b: 'DM Sans', sans-serif;
+      --radius: 10px; --trans: 0.3s ease;
+    }
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; transition: background 0.4s, box-shadow 0.4s; }
+    #navbar.scrolled { background: rgba(13,30,61,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 24px #00000040; }
+    .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: color var(--trans), background var(--trans); text-decoration: none; }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+    .nav-cta { margin-left: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius); background: var(--orange); color: white !important; font-size: 14px; font-weight: 600; transition: var(--trans); text-decoration: none; }
+    .nav-cta:hover { background: var(--orange-dk); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: transparent; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: var(--trans); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(13,30,61,0.98); backdrop-filter: blur(12px); padding: 20px 24px 28px; z-index: 999; flex-direction: column; gap: 4px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: 8px; text-decoration: none; }
+    .mobile-menu .btn-mobile { margin-top: 8px; background: var(--orange); color: white !important; text-align: center; padding: 14px; border-radius: 10px; font-weight: 600; }
+    #sim-footer { background: #080F1E; padding: 32px 0; color: rgba(255,255,255,0.5); font-family: var(--font-b); }
+    .sim-footer-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px; }
+    .sim-footer-copy { font-size: 12px; }
+    .sim-footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .sim-footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+    .sim-footer-links a:hover { color: var(--orange); }
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 900; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px #25D36660; transition: transform 0.3s; text-decoration: none; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+    @media (max-width: 768px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+
+  </style>
+</head>
+<body style="padding-top:76px">
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="nl-orn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
+          <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="7" y="15" width="45" height="5" rx="1.5" fill="url(#nl-orn)"/>
+          <rect x="7" y="28" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.7"/>
+          <rect x="7" y="41" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.45"/>
+          <rect x="9" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.75"/>
+          <rect x="0" y="48" width="59" height="4" rx="1.5" fill="url(#nl-orn)" opacity="0.9"/>
+          <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="2">TETRIX</text>
+          <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#nl-orn)"/>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="venda.html">Comprar</a></li>
+        <li><a href="locacao.html">Locar</a></li>
+        <li><a href="consultoria.html">Consultoria</a></li>
+        <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+        <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+      <a href="contato.html" class="nav-cta">Solicitar Diagnóstico</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Início</a>
+    <a href="venda.html">Comprar</a>
+    <a href="locacao.html">Locar</a>
+    <a href="consultoria.html">Consultoria</a>
+    <a href="porta-pallets.html">Porta-Pallets</a>
+    <a href="empilhadeiras.html">Empilhadeiras</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html" class="btn-mobile">Solicitar Diagnóstico</a>
+  </div>
+
+<div class="page">
+
+  <!-- Navegação topo -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; flex-wrap:wrap; gap:12px;">
+    <a href="locacao.html" style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:rgba(255,255,255,0.5); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#FF9A5C'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Voltar para Locação
+    </a>
+    <a href="index.html" style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">
+      Tetrix Intralogística
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    </a>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrap">
+      <svg viewBox="0 0 240 58" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="og" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FF7A2F"/>
+            <stop offset="100%" stop-color="#E05000"/>
+          </linearGradient>
+        </defs>
+        <rect x="2"  y="6"  width="6" height="44" rx="2" fill="white" opacity="0.9"/>
+        <rect x="56" y="6"  width="6" height="44" rx="2" fill="white" opacity="0.9"/>
+        <rect x="8"  y="16" width="48" height="6" rx="2" fill="url(#og)"/>
+        <rect x="8"  y="30" width="48" height="6" rx="2" fill="url(#og)" opacity="0.7"/>
+        <rect x="8"  y="44" width="48" height="6" rx="2" fill="url(#og)" opacity="0.45"/>
+        <rect x="10" y="10" width="13" height="6" rx="1.5" fill="#5B9BD5" opacity="0.75"/>
+        <rect x="28" y="10" width="13" height="6" rx="1.5" fill="#5B9BD5" opacity="0.5"/>
+        <rect x="46" y="10" width="13" height="6" rx="1.5" fill="#5B9BD5" opacity="0.3"/>
+        <rect x="10" y="24" width="13" height="6" rx="1.5" fill="#5B9BD5" opacity="0.6"/>
+        <rect x="46" y="24" width="13" height="6" rx="1.5" fill="#5B9BD5" opacity="0.35"/>
+        <rect x="0"  y="50" width="64" height="5" rx="2" fill="url(#og)" opacity="0.9"/>
+        <text x="76" y="42" font-family="'Barlow Condensed',Arial Black,sans-serif" font-size="36" font-weight="900" fill="white" letter-spacing="3">TETRIX</text>
+        <rect x="76" y="49" width="148" height="3" rx="1.5" fill="url(#og)"/>
+      </svg>
+    </div>
+
+    <div class="eyebrow">
+      <div class="eyebrow-dot"></div>
+      Simulador de Economia
+    </div>
+    <h1 id="header-title">Quanto você pode <em>economizar</em><br>sem mudar de galpão?</h1>
+    <p id="header-sub">Informe os dados do seu galpão e descubra a estimativa de posições-palete com verticalização — e quanto você economiza locando a solução Tetrix em vez de alugar mais área.</p>
+  </div>
+
+  <!-- CARD PRINCIPAL -->
+  <div class="sim-card">
+
+    <!-- MODO TOGGLE -->
+    <div class="modo-toggle-wrap">
+      <div class="modo-label">O que você quer simular?</div>
+      <div class="modo-toggle">
+        <button class="modo-btn active" id="modo-locacao" onclick="setModo('locacao')">
+          <span class="modo-icon">🔄</span>
+          <span class="modo-title">Locação</span>
+          <span class="modo-desc">Economia mensal vs. alugar galpão maior</span>
+        </button>
+        <button class="modo-btn" id="modo-compra" onclick="setModo('compra')">
+          <span class="modo-icon">🏗️</span>
+          <span class="modo-title">Compra</span>
+          <span class="modo-desc">Payback do investimento em porta-pallets</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="modo-divider"></div>
+    <div class="sim-inputs">
+      <div class="inputs-title">📦 Dados do seu galpão</div>
+
+      <div class="inputs-grid">
+
+        <!-- Área -->
+        <div class="input-group">
+          <label class="input-label">Área total do galpão</label>
+          <div class="input-wrap">
+            <input type="number" id="inp-area" value="1000" min="100" max="50000" placeholder="1000">
+            <span class="input-unit right">m²</span>
+          </div>
+        </div>
+
+        <!-- Pé-direito slider -->
+        <div class="input-group slider-group">
+          <label class="input-label">Pé-direito disponível</label>
+          <div class="slider-display">
+            <span class="slider-val" id="pd-val">5,0</span>
+            <span class="slider-unit-inline">m</span>
+            <span class="slider-levels" id="pd-levels">→ 3 níveis</span>
+          </div>
+          <input type="range" id="inp-pd" min="3.0" max="12.0" step="0.5" value="5.0">
+        </div>
+
+        <!-- Custo m² -->
+        <div class="input-group">
+          <label class="input-label">Custo do aluguel por m²</label>
+          <div class="input-wrap">
+            <span class="input-unit left">R$</span>
+            <input type="number" id="inp-custo" class="has-left-unit" value="25" min="5" max="200" placeholder="25">
+          </div>
+          <div class="input-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Não sabe o valor? Divida o aluguel mensal que você paga pela área construída do galpão.
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <button class="btn-calcular" onclick="calcular()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        Calcular minha economia
+      </button>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="sim-results" id="results">
+      <div class="results-title">📊 Resultado da simulação</div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid" id="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">Posições-palete estimadas</div>
+          <div class="kpi-value" id="r-posicoes">—</div>
+          <div class="kpi-sub" id="r-niveis-sub">—</div>
+        </div>
+        <div class="kpi highlight">
+          <div class="kpi-label" id="kpi2-label">Custo mensal evitado</div>
+          <div class="kpi-value" id="r-economia">—</div>
+          <div class="kpi-sub" id="r-economia-sub">—</div>
+        </div>
+        <div class="kpi positive">
+          <div class="kpi-label" id="kpi3-label">Locação total/mês</div>
+          <div class="kpi-value" id="r-payback">—</div>
+          <div class="kpi-sub" id="r-payback-sub">—</div>
+        </div>
+      </div>
+
+      <!-- Bloco economia mensal — só locação -->
+      <div class="economia-banner" id="economia-banner" style="display:none;">
+        <div class="economia-left">
+          <div class="economia-label">💰 Economia mensal com a locação Tetrix</div>
+          <div class="economia-sub" id="r-economia-pct-banner">—</div>
+        </div>
+        <div class="economia-value" id="r-economia-banner">—</div>
+      </div>
+
+      <!-- Breakdown -->
+      <div class="breakdown" id="breakdown-locacao">
+        <div class="breakdown-row">
+          <span class="breakdown-label">Área equivalente evitada</span>
+          <span class="breakdown-val" id="r-area-equiv">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Custo mensal evitado <strong>(aluguel de área maior)</strong></span>
+          <span class="breakdown-val orange" id="r-custo-evitado">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Locação porta-pallets <strong>(5% do investimento/mês)</strong></span>
+          <span class="breakdown-val" id="r-loc-pp">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Locação empilhadeira <strong>(a partir de)</strong></span>
+          <span class="breakdown-val" id="r-loc-emp">R$ 4.500/mês</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="breakdown-label"><strong>Economia mensal com locação Tetrix</strong></span>
+          <span class="breakdown-val green" id="r-economia-total">—</span>
+        </div>
+      </div>
+
+      <div class="breakdown" id="breakdown-compra" style="display:none;">
+        <div class="breakdown-row">
+          <span class="breakdown-label">Área equivalente evitada</span>
+          <span class="breakdown-val" id="r-area-equiv-c">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Custo mensal evitado <strong>(aluguel de área maior)</strong></span>
+          <span class="breakdown-val orange" id="r-custo-evitado-c">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">Investimento total estimado <strong>(R$ 250/posição)</strong></span>
+          <span class="breakdown-val" id="r-investimento">—</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="breakdown-label"><strong>Payback estimado do investimento</strong></span>
+          <span class="breakdown-val green" id="r-payback-total">—</span>
+        </div>
+      </div>
+
+      <!-- Payback bar (compra) -->
+      <div class="payback-wrap" id="payback-bar-wrap" style="display:none;">
+        <div class="payback-label">
+          <span>Investimento recuperado em</span>
+          <span id="r-payback-bar-label">—</span>
+        </div>
+        <div class="payback-bar-bg">
+          <div class="payback-bar-fill" id="payback-bar" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF9A5C" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <p>
+          <strong>Esta é uma estimativa simplificada.</strong> O número real de posições-palete depende do layout específico do seu galpão, tipo de carga, obstruções e — principalmente — do tipo de empilhadeira utilizada. Equipamentos como <em>patoladas</em> e trilaterais permitem corredores mais estreitos, aumentando significativamente a capacidade de armazenagem. <strong>Nossos engenheiros realizam a simulação real e precisa sem custo.</strong>
+        </p>
+      </div>
+
+      <!-- CTAs -->
+      <div class="cta-wrap">
+        <a href="https://wa.me/5511943668123?text=Ol%C3%A1!%20Fiz%20a%20simula%C3%A7%C3%A3o%20no%20site%20da%20Tetrix%20e%20gostaria%20de%20receber%20um%20estudo%20real%20da%20minha%20opera%C3%A7%C3%A3o."
+           target="_blank" class="btn-cta-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+          Solicitar estudo gratuito via WhatsApp
+        </a>
+        <a href="mailto:comercial@tetrixlog.com.br?subject=Solicito%20estudo%20de%20capacidade%20do%20meu%20galp%C3%A3o"
+           class="btn-cta-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Enviar por e-mail
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /sim-card -->
+
+  <p class="footer-note">
+    <a href="index.html">Tetrix Soluções Intralogísticas</a> · Estado de São Paulo<br>
+    <a href="https://wa.me/5511943668123">(11) 94366-8123</a> · <a href="mailto:comercial@tetrixlog.com.br">comercial@tetrixlog.com.br</a><br>
+    <a href="locacao.html">← Voltar para a página de Locação</a>
+  </p>
+
+</div><!-- /page -->
+
+<script>
+  // ── ESTADO
+  let fileira = 'dupla';
+  let scenario = 'locacao';
+  let lastResult = null;
+
+  // ── SLIDER PÉ-DIREITO
+  const sliderPD  = document.getElementById('inp-pd');
+  const pdVal     = document.getElementById('pd-val');
+  const pdLevels  = document.getElementById('pd-levels');
+
+  function calcNiveis(pd) {
+    return Math.floor((pd - 0.5) / 1.35);
+  }
+
+  sliderPD.addEventListener('input', () => {
+    const pd = parseFloat(sliderPD.value);
+    pdVal.textContent = pd.toFixed(1).replace('.', ',');
+    const n = calcNiveis(pd);
+    pdLevels.textContent = n === 1 ? '→ 1 nível' : `→ ${n} níveis`;
+  });
+
+
+
+  // ── MODO (topo do card)
+  function setModo(val) {
+    scenario = val;
+    document.getElementById('modo-locacao').classList.toggle('active', val === 'locacao');
+    document.getElementById('modo-compra').classList.toggle('active', val === 'compra');
+
+    // Atualiza header
+    const titulo  = document.getElementById('header-title');
+    const sub     = document.getElementById('header-sub');
+    if (val === 'locacao') {
+      titulo.innerHTML = 'Quanto você pode <em>economizar</em><br>sem mudar de galpão?';
+      sub.textContent  = 'Informe os dados do seu galpão e descubra a estimativa de posições-palete com verticalização — e quanto você economiza locando a solução Tetrix em vez de alugar mais área.';
+    } else {
+      titulo.innerHTML = 'Em quanto tempo o <em>investimento</em><br>se paga?';
+      sub.textContent  = 'Informe os dados do seu galpão e descubra o payback estimado da compra de porta-pallets — comparando com o custo de alugar uma área equivalente no piso.';
+    }
+
+    // Se já calculou, atualiza os resultados na hora
+    if (lastResult) renderResults(lastResult);
+  }
+
+  // ── FORMATAÇÃO
+  function fmtBRL(v) {
+    return 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+  }
+  function fmtNum(v) {
+    return Math.round(v).toLocaleString('pt-BR');
+  }
+
+  // ── ANIMAÇÃO DE CONTADOR
+  function animateCount(el, target, prefix, suffix, isCurrency) {
+    const duration = 700;
+    const start = performance.now();
+    const from = 0;
+    function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const val = from + (target - from) * ease;
+      if (isCurrency) {
+        el.textContent = prefix + Math.round(val).toLocaleString('pt-BR') + suffix;
+      } else {
+        el.textContent = prefix + Math.round(val).toLocaleString('pt-BR') + suffix;
+      }
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ── CALCULAR
+  function calcular() {
+    const area  = parseFloat(document.getElementById('inp-area').value)  || 1000;
+    const pd    = parseFloat(sliderPD.value) || 5;
+    const custo = parseFloat(document.getElementById('inp-custo').value) || 30;
+
+    // Níveis
+    const niveis = Math.max(1, calcNiveis(pd));
+
+    // Densidade base (âncora: 1000m², 3 níveis = 576 posições)
+    const densBase = 0.576;
+    const posicoes = Math.round(area * densBase * (niveis / 3));
+
+    // Área equivalente extra no piso (sem verticalização)
+    // Extra = área × (niveis - 1) — derivado da simulação âncora
+    const areaExtra = Math.round(area * (niveis - 1));
+
+    // Financeiro
+    const custoEvitado   = areaExtra * custo;
+    const investimento   = posicoes * 250;
+    const locacaoPP      = investimento * 0.05;
+    const locacaoEmp     = 4500;
+    const locacaoTotal   = locacaoPP + locacaoEmp;
+    const economiaMensal = custoEvitado - locacaoTotal;
+    const economiaPct    = custoEvitado > 0 ? (economiaMensal / custoEvitado * 100) : 0;
+    const paybackMeses   = custoEvitado > 0 ? (investimento / custoEvitado) : 0;
+
+    lastResult = { area, pd, custo, niveis, posicoes, areaExtra,
+                   custoEvitado, investimento, locacaoPP, locacaoEmp,
+                   locacaoTotal, economiaMensal, economiaPct, paybackMeses };
+
+    // Mostra resultados
+    const resultsEl = document.getElementById('results');
+    resultsEl.classList.add('show');
+    setTimeout(() => resultsEl.scrollIntoView({ behavior:'smooth', block:'start' }), 100);
+
+    renderResults(lastResult);
+  }
+
+  function renderResults(r) {
+    const isLocacao = scenario === 'locacao';
+
+    // KPI 1 — posições (igual nos dois cenários)
+    animateCount(document.getElementById('r-posicoes'), r.posicoes, '', '', false);
+    document.getElementById('r-niveis-sub').textContent =
+      `${r.niveis} ${r.niveis !== 1 ? 'níveis' : 'nível'} de altura · área ${fmtNum(r.area)} m²`;
+
+    if (isLocacao) {
+      // KPI 2 — custo evitado
+      document.getElementById('kpi2-label').textContent = 'Custo mensal evitado';
+      animateCount(document.getElementById('r-economia'), r.custoEvitado, 'R$ ', '/mês', true);
+      document.getElementById('r-economia-sub').textContent =
+        `Com ${r.niveis} níveis, ${r.niveis}x mais capacidade no mesmo galpão — equivale a alugar +${fmtNum(r.areaExtra)} m²`;
+
+      // KPI 3 — locação total
+      document.getElementById('kpi3-label').textContent = 'Locação total/mês';
+      animateCount(document.getElementById('r-payback'), r.locacaoTotal, 'R$ ', '', true);
+      document.getElementById('r-payback-sub').textContent =
+        `porta-pallets + empilhadeira (estimativa)`;
+
+      // Banner economia
+      const banner = document.getElementById('economia-banner');
+      banner.style.display = 'flex';
+      animateCount(document.getElementById('r-economia-banner'), r.economiaMensal, 'R$ ', '/mês', true);
+      document.getElementById('r-economia-pct-banner').textContent =
+        `${Math.round(r.economiaPct)}% de economia vs. alugar área maior`;
+
+      // Breakdown locação
+      document.getElementById('breakdown-locacao').style.display = 'block';
+      document.getElementById('breakdown-compra').style.display  = 'none';
+      document.getElementById('payback-bar-wrap').style.display  = 'none';
+
+      document.getElementById('r-area-equiv').textContent   = fmtNum(r.areaExtra) + ' m²';
+      document.getElementById('r-custo-evitado').textContent = fmtBRL(r.custoEvitado) + '/mês';
+      document.getElementById('r-loc-pp').textContent       = fmtBRL(r.locacaoPP) + '/mês';
+      document.getElementById('r-loc-emp').textContent      = 'R$ 4.500/mês';
+      document.getElementById('r-economia-total').textContent = fmtBRL(r.economiaMensal) + '/mês';
+
+    } else {
+      // Esconde banner economia
+      document.getElementById('economia-banner').style.display = 'none';
+
+      // KPI 2 — investimento
+      document.getElementById('kpi2-label').textContent = 'Investimento estimado';
+      animateCount(document.getElementById('r-economia'), r.investimento, 'R$ ', '', true);
+      document.getElementById('r-economia-sub').textContent =
+        `R$ 250 por posição-palete`;
+
+      // KPI 3 — payback
+      document.getElementById('kpi3-label').textContent = 'Payback estimado';
+      const pb = r.paybackMeses;
+      const pbText = pb < 1
+        ? '< 1 mês'
+        : pb <= 12
+          ? pb.toFixed(1).replace('.',',') + ' meses'
+          : (pb/12).toFixed(1).replace('.',',') + ' anos';
+      document.getElementById('r-payback').textContent = pbText;
+      document.getElementById('r-payback-sub').textContent =
+        `com economia de ${fmtBRL(r.custoEvitado)}/mês`;
+
+      // Breakdown compra
+      document.getElementById('breakdown-locacao').style.display = 'none';
+      document.getElementById('breakdown-compra').style.display  = 'block';
+
+      document.getElementById('r-area-equiv-c').textContent    = fmtNum(r.areaExtra) + ' m²';
+      document.getElementById('r-custo-evitado-c').textContent = fmtBRL(r.custoEvitado) + '/mês';
+      document.getElementById('r-investimento').textContent    = fmtBRL(r.investimento);
+      document.getElementById('r-payback-total').textContent   = pbText;
+
+      // Barra de payback (máx 24 meses para 100%)
+      document.getElementById('payback-bar-wrap').style.display = 'block';
+      const pct = Math.min(r.paybackMeses / 24 * 100, 100);
+      document.getElementById('r-payback-bar-label').textContent = pbText;
+      setTimeout(() => {
+        document.getElementById('payback-bar').style.width = pct + '%';
+      }, 100);
+    }
+  }
+
+  // ── INIT slider label
+  sliderPD.dispatchEvent(new Event('input'));
+</script>
+
+  <!-- FOOTER -->
+  <footer id="sim-footer">
+    <div class="sim-footer-inner">
+      <span class="sim-footer-copy">© 2025 Tetrix Soluções Intralogísticas. Todos os direitos reservados.</span>
+      <div class="sim-footer-links">
+        <a href="index.html">Início</a>
+        <a href="locacao.html">Locação</a>
+        <a href="venda.html">Venda</a>
+        <a href="porta-pallets.html">Porta-Pallets</a>
+        <a href="empilhadeiras.html">Empilhadeiras</a>
+        <a href="consultoria.html">Consultoria</a>
+        <a href="contato.html">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5511943668123" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+  </a>
+
+
+  <script>
+    // Navbar scroll
+    const _navbar = document.getElementById('navbar');
+    if (_navbar) {
+      window.addEventListener('scroll', () => _navbar.classList.toggle('scrolled', window.scrollY > 40));
+      _navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    // Hamburger
+    const _hamburger = document.getElementById('hamburger');
+    const _mobileMenu = document.getElementById('mobile-menu');
+    if (_hamburger && _mobileMenu) {
+      _hamburger.addEventListener('click', () => { _hamburger.classList.toggle('open'); _mobileMenu.classList.toggle('open'); });
+      _mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { _hamburger.classList.remove('open'); _mobileMenu.classList.remove('open'); }));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetrix | Soluções Intralogísticas</title>
+  <meta name="description" content="A Tetrix desenvolve soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras para transportadoras, indústrias e distribuidoras em São Paulo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --navy:     #0D1E3D;
+      --navy-mid: #162B55;
+      --navy-lt:  #1E3A6E;
+      --orange:   #FF6E1A;
+      --orange-dk:#E05000;
+      --white:    #FFFFFF;
+      --gray-100: #F4F6FA;
+      --gray-200: #E2E7F0;
+      --gray-500: #7A8BA8;
+      --gray-700: #3D4F6A;
+      --text:     #1A2A40;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius:   10px;
+      --trans:    0.3s ease;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius);
+      font-family: var(--font-body); font-size: 15px; font-weight: 600;
+      cursor: pointer; border: none; transition: var(--trans); white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--orange); color: var(--white);
+    }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #FF6E1A44; }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .btn-outline-dark {
+      background: transparent; color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-outline-dark:hover { background: var(--navy); color: white; transform: translateY(-2px); }
+
+    .tag {
+      display: inline-block; font-family: var(--font-head);
+      font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-head); font-size: clamp(36px, 5vw, 54px);
+      font-weight: 800; line-height: 1.05; color: var(--navy);
+    }
+    .section-title.light { color: var(--white); }
+    .section-sub {
+      font-size: 17px; line-height: 1.7; color: var(--gray-700);
+      max-width: 600px; margin-top: 16px;
+    }
+    .section-sub.light { color: rgba(255,255,255,0.75); }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===========================
+       NAVBAR
+    =========================== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 24px;
+      transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(13,30,61,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 24px #00000040;
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0;
+      flex-shrink: 0;
+    }
+    .nav-logo svg { height: 44px; width: auto; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500;
+      padding: 8px 14px; border-radius: 6px;
+      transition: color var(--trans), background var(--trans);
+    }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+    .nav-cta { margin-left: 12px; padding: 10px 22px !important; font-size: 14px !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 8px; border: none;
+      background: transparent;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: white;
+      border-radius: 2px; transition: var(--trans);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 76px; left: 0; right: 0;
+      background: rgba(13,30,61,0.98); backdrop-filter: blur(12px);
+      padding: 20px 24px 28px; z-index: 999;
+      flex-direction: column; gap: 4px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500;
+      padding: 12px 16px; border-radius: 8px;
+      transition: background var(--trans);
+    }
+    .mobile-menu a:hover { background: rgba(255,255,255,0.08); color: white; }
+    .mobile-menu .btn { margin-top: 8px; width: 100%; justify-content: center; }
+
+    /* ===========================
+       HERO
+    =========================== */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url('https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(105deg, rgba(13,30,61,0.94) 50%, rgba(13,30,61,0.65) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 140px 0 100px;
+    }
+    .hero-content .container { max-width: 1160px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,110,26,0.15); border: 1px solid rgba(255,110,26,0.35);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .hero-eyebrow span {
+      font-size: 12px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: #FF9A5C;
+    }
+    .hero-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-family: var(--font-head); font-weight: 900;
+      font-size: clamp(48px, 7vw, 88px); line-height: 0.95;
+      color: var(--white); max-width: 760px; margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: normal; color: var(--orange);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px); line-height: 1.7;
+      color: rgba(255,255,255,0.78); max-width: 580px; margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 60px; }
+    .hero-stats {
+      display: flex; gap: 40px; flex-wrap: wrap;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-stat-num {
+      font-family: var(--font-head); font-size: 40px; font-weight: 900;
+      color: var(--orange); line-height: 1;
+    }
+    .hero-stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; max-width: 120px; line-height: 1.4; }
+
+    /* Diagonal bottom cut */
+    #hero::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0; z-index: 3;
+      height: 80px;
+      background: var(--white);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+
+    /* ===========================
+       FRASE IMPACTO
+    =========================== */
+    #impacto {
+      background: var(--navy);
+      padding: 80px 0;
+      position: relative;
+    }
+    #impacto::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+    }
+    .impacto-inner {
+      display: flex; align-items: center; gap: 32px;
+    }
+    .impacto-bar {
+      width: 5px; height: 80px; background: var(--orange);
+      border-radius: 3px; flex-shrink: 0;
+    }
+    .impacto-text {
+      font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 700; color: white; line-height: 1.2; font-style: italic;
+    }
+    .impacto-text strong { color: var(--orange); font-style: normal; }
+
+    /* ===========================
+       SOLUÇÕES CARDS
+    =========================== */
+    #solucoes { padding: 100px 0; background: var(--gray-100); }
+    .solucoes-header { text-align: center; margin-bottom: 56px; }
+    .solucoes-header .section-sub { margin: 16px auto 0; }
+
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .card {
+      background: white; border-radius: 14px;
+      padding: 36px 28px 32px;
+      border: 1px solid var(--gray-200);
+      position: relative; overflow: hidden;
+      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans);
+      display: flex; flex-direction: column;
+    }
+    .card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--orange);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px #0D1E3D18; border-color: transparent; }
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px; flex-shrink: 0;
+    }
+    .card-icon svg { width: 26px; height: 26px; }
+    .card-title {
+      font-family: var(--font-head); font-size: 22px; font-weight: 800;
+      color: var(--navy); margin-bottom: 12px; line-height: 1.15;
+    }
+    .card-desc {
+      font-size: 14px; line-height: 1.7; color: var(--gray-700); flex: 1;
+    }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--orange);
+      margin-top: 24px; transition: gap var(--trans);
+    }
+    .card-link:hover { gap: 10px; }
+    .card-link svg { width: 14px; height: 14px; }
+
+    /* ===========================
+       SEÇÃO LOCAÇÃO — 60%
+    =========================== */
+    #locacao {
+      background: var(--navy);
+      padding: 100px 0;
+      position: relative; overflow: hidden;
+    }
+    #locacao::before {
+      content: '60%';
+      position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-head); font-size: 320px; font-weight: 900;
+      color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none;
+      user-select: none;
+    }
+    .locacao-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .locacao-numero {
+      font-family: var(--font-head); font-size: clamp(80px, 12vw, 140px);
+      font-weight: 900; color: var(--orange); line-height: 1;
+    }
+    .locacao-numero span { font-size: clamp(40px, 6vw, 72px); }
+    .locacao-stat-desc {
+      font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-top: 16px; max-width: 380px;
+    }
+    .locacao-stat-desc strong { color: white; }
+    .pilares { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
+    .pilar {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 20px 24px; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
+      transition: background var(--trans);
+    }
+    .pilar:hover { background: rgba(255,255,255,0.08); }
+    .pilar-num {
+      font-family: var(--font-head); font-size: 28px; font-weight: 900;
+      color: var(--orange); line-height: 1; flex-shrink: 0; width: 32px;
+    }
+    .pilar-title { font-weight: 600; color: white; font-size: 15px; margin-bottom: 4px; }
+    .pilar-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* ===========================
+       COMO FUNCIONA
+    =========================== */
+    #como-funciona { padding: 100px 0; background: white; }
+    .como-header { text-align: center; margin-bottom: 64px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+    .steps::before {
+      content: ''; position: absolute; top: 40px; left: calc(16.67% + 20px); right: calc(16.67% + 20px);
+      height: 2px; background: var(--gray-200); z-index: 0;
+    }
+    .step { text-align: center; padding: 0 24px; position: relative; z-index: 1; }
+    .step-num {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--navy); color: white;
+      font-family: var(--font-head); font-size: 32px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px; position: relative;
+      border: 4px solid white; box-shadow: 0 0 0 2px var(--gray-200);
+    }
+    .step-num::after {
+      content: ''; position: absolute; inset: -6px; border-radius: 50%;
+      border: 2px solid transparent;
+      transition: border-color 0.4s ease;
+    }
+    .step:hover .step-num::after { border-color: var(--orange); }
+    .step-title {
+      font-family: var(--font-head); font-size: 22px; font-weight: 800;
+      color: var(--navy); margin-bottom: 12px;
+    }
+    .step-desc { font-size: 14px; line-height: 1.7; color: var(--gray-700); }
+    .step-icon { margin-bottom: 12px; }
+
+    /* ===========================
+       PARA QUEM É
+    =========================== */
+    #para-quem {
+      padding: 100px 0;
+      background: var(--gray-100);
+    }
+    .para-quem-header { text-align: center; margin-bottom: 56px; }
+    .segmentos {
+      display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+    }
+    .segmento {
+      background: white; border: 1px solid var(--gray-200);
+      border-radius: 12px; padding: 28px 32px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      min-width: 180px; transition: all var(--trans); cursor: default;
+    }
+    .segmento:hover {
+      border-color: var(--orange); transform: translateY(-4px);
+      box-shadow: 0 12px 32px #FF6E1A18;
+    }
+    .segmento-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+    }
+    .segmento-icon svg { width: 28px; height: 28px; }
+    .segmento-label {
+      font-family: var(--font-head); font-size: 17px; font-weight: 800;
+      color: var(--navy); text-align: center; line-height: 1.2;
+    }
+
+    /* ===========================
+       CTA BANNER FINAL
+    =========================== */
+    #cta-final {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+      position: relative; overflow: hidden;
+    }
+    #cta-final::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,110,26,0.04) 0px, rgba(255,110,26,0.04) 1px,
+        transparent 1px, transparent 40px
+      );
+    }
+    .cta-inner {
+      position: relative; z-index: 1;
+      text-align: center; max-width: 680px; margin: 0 auto;
+    }
+    .cta-title {
+      font-family: var(--font-head); font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900; color: white; line-height: 1.05; margin-bottom: 20px;
+    }
+    .cta-title em { color: var(--orange); font-style: normal; }
+    .cta-sub { font-size: 17px; color: rgba(255,255,255,0.7); margin-bottom: 40px; line-height: 1.6; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    #footer {
+      background: #080F1E;
+      padding: 60px 0 32px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-logo { margin-bottom: 20px; }
+    .footer-logo svg { height: 40px; }
+    .footer-desc { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact a {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      transition: color var(--trans);
+    }
+    .footer-contact a:hover { color: var(--orange); }
+    .footer-contact svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.6; }
+    .footer-col-title {
+      font-family: var(--font-head); font-size: 14px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color var(--trans); }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 28px; display: flex;
+      justify-content: space-between; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 12px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--trans), color var(--trans);
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-social a:hover { background: var(--orange); color: white; }
+    .footer-social svg { width: 16px; height: 16px; }
+
+    /* ===========================
+       WHATSAPP FLOAT
+    =========================== */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px #25D36660;
+      transition: transform var(--trans), box-shadow var(--trans);
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 32px #25D36680; }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1024px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .locacao-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: fit-content; }
+      .hero-stats { gap: 24px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+      .steps::before { display: none; }
+      .impacto-inner { flex-direction: column; gap: 20px; }
+      .impacto-bar { width: 60px; height: 4px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 480px) {
+      .segmentos { gap: 12px; }
+      .segmento { min-width: 140px; padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       NAVBAR
+  =========================== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <!-- Logo SVG inline -->
+      <a href="index.html" class="nav-logo" aria-label="Tetrix Home">
+        <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="nl-orn" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF7A2F"/>
+              <stop offset="100%" stop-color="#E05000"/>
+            </linearGradient>
+          </defs>
+          <!-- Rack mark -->
+          <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="7"  y="15" width="45" height="5" rx="1.5" fill="url(#nl-orn)"/>
+          <rect x="7"  y="28" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.7"/>
+          <rect x="7"  y="41" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.45"/>
+          <rect x="9"  y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.75"/>
+          <rect x="24" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.5"/>
+          <rect x="39" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.3"/>
+          <rect x="9"  y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.6"/>
+          <rect x="39" y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.35"/>
+          <rect x="0"  y="48" width="59" height="4" rx="1.5" fill="url(#nl-orn)" opacity="0.9"/>
+          <!-- Wordmark -->
+          <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="2">TETRIX</text>
+          <!-- Accent line -->
+          <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#nl-orn)"/>
+        </svg>
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="venda.html">Comprar</a></li>
+        <li><a href="locacao.html">Locar</a></li>
+        <li><a href="consultoria.html">Consultoria</a></li>
+        <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+        <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+      <a href="contato.html" class="nav-cta">Solicitar Diagnóstico</a>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Início</a>
+    <a href="venda.html">Comprar</a>
+    <a href="locacao.html">Locar</a>
+    <a href="consultoria.html">Consultoria</a>
+    <a href="porta-pallets.html">Porta-Pallets</a>
+    <a href="empilhadeiras.html">Empilhadeiras</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="#contato" class="btn btn-primary">Solicitar Diagnóstico</a>
+  </div>
+
+  <!-- ===========================
+       HERO
+  =========================== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" style="width:100%">
+      <div class="container">
+        <div class="hero-eyebrow reveal">
+          <div class="hero-eyebrow-dot"></div>
+          <span>Soluções Intralogísticas · São Paulo</span>
+        </div>
+        <h1 class="hero-title reveal reveal-delay-1">
+          Transforme o espaço<br>do seu galpão em<br><em>capacidade produtiva.</em>
+        </h1>
+        <p class="hero-sub reveal reveal-delay-2">
+          Consultoria, venda e locação de porta-pallets e empilhadeiras para transportadoras, indústrias, distribuidoras e centros de distribuição em todo o estado de São Paulo.
+        </p>
+        <div class="hero-ctas reveal reveal-delay-3">
+          <a href="#contato" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.42 2 2 0 0 1 3.62 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Solicitar Diagnóstico Gratuito
+          </a>
+          <a href="#solucoes" class="btn btn-outline">
+            Conheça as Soluções
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats reveal reveal-delay-4">
+          <div>
+            <div class="hero-stat-num">60%</div>
+            <div class="hero-stat-label">menos que alugar um galpão maior</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">3x</div>
+            <div class="hero-stat-label">mais capacidade com verticalização</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">SP</div>
+            <div class="hero-stat-label">atendimento em todo o estado de São Paulo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FRASE DE IMPACTO
+  =========================== -->
+  <section id="impacto">
+    <div class="container">
+      <div class="impacto-inner reveal">
+        <div class="impacto-bar"></div>
+        <p class="impacto-text">
+          Antes de procurar um galpão maior, descubra<br>
+          <strong>quanto espaço você pode ganhar dentro do que já tem.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       SOLUÇÕES CARDS
+  =========================== -->
+  <section id="solucoes">
+    <div class="container">
+      <div class="solucoes-header">
+        <span class="tag">O que fazemos</span>
+        <h2 class="section-title reveal">Soluções completas<br>para a sua operação</h2>
+        <p class="section-sub reveal">Da consultoria à implantação, a Tetrix entrega a solução certa para cada operação — seja para comprar, locar ou otimizar.</p>
+      </div>
+      <div class="cards-grid">
+
+        <div class="card reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+            </svg>
+          </div>
+          <div class="card-title">Consultoria e Projeto</div>
+          <p class="card-desc">Diagnóstico da operação, estudo de layout, dimensionamento de porta-pallets e indicação da empilhadeira ideal para maximizar sua produtividade.</p>
+          <a href="consultoria.html" class="card-link">
+            Saiba mais
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="card reveal reveal-delay-2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              <line x1="12" y1="12" x2="12" y2="16"/>
+              <line x1="10" y1="14" x2="14" y2="14"/>
+            </svg>
+          </div>
+          <div class="card-title">Venda de Soluções</div>
+          <p class="card-desc">Porta-pallets, empilhadeiras, acessórios e projetos completos de armazenagem para empresas que querem investir em estrutura própria e permanente.</p>
+          <a href="venda.html" class="card-link">
+            Saiba mais
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="card reveal reveal-delay-3">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="card-title">Locação de Soluções</div>
+          <p class="card-desc">Porta-pallet e empilhadeira em uma solução única de locação. Aumente sua capacidade de armazenagem sem imobilizar capital e sem mudar de galpão.</p>
+          <a href="locacao.html" class="card-link">
+            Saiba mais
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="card reveal reveal-delay-4">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="card-title">Projetos de Verticalização</div>
+          <p class="card-desc">Aproveitamento total do pé-direito do galpão com estruturas dimensionadas sob medida — mais capacidade no mesmo metro quadrado.</p>
+          <a href="consultoria.html" class="card-link">
+            Saiba mais
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       POR QUE LOCAR — 60%
+  =========================== -->
+  <section id="locacao">
+    <div class="container">
+      <div class="locacao-grid">
+        <!-- Esquerda: número impacto -->
+        <div>
+          <span class="tag reveal" style="opacity:1;">Por que locar com a Tetrix</span>
+          <div class="locacao-numero reveal">60<span>%</span></div>
+          <p class="locacao-stat-desc reveal">
+            A locação de porta-pallets e empilhadeiras pode custar até <strong>60% menos</strong> do que alugar uma área maior equivalente — porque você aproveita o espaço vertical que já tem.
+          </p>
+          <div style="margin-top:36px;" class="reveal">
+            <a href="simulador.html" class="btn btn-primary">Simular minha economia</a>
+          </div>
+        </div>
+
+        <!-- Direita: pilares -->
+        <div class="pilares reveal">
+          <div class="pilar">
+            <div class="pilar-num">01</div>
+            <div>
+              <div class="pilar-title">Menor investimento inicial</div>
+              <div class="pilar-desc">Sem imobilização de capital. Você paga mensalmente e preserva caixa para o negócio crescer.</div>
+            </div>
+          </div>
+          <div class="pilar">
+            <div class="pilar-num">02</div>
+            <div>
+              <div class="pilar-title">Capacidade imediata</div>
+              <div class="pilar-desc">Estrutura instalada rapidamente, com empilhadeira compatível inclusa na solução.</div>
+            </div>
+          </div>
+          <div class="pilar">
+            <div class="pilar-num">03</div>
+            <div>
+              <div class="pilar-title">Flexibilidade operacional</div>
+              <div class="pilar-desc">Escale a estrutura conforme a demanda. Ideal para operações em crescimento ou com sazonalidade.</div>
+            </div>
+          </div>
+          <div class="pilar">
+            <div class="pilar-num">04</div>
+            <div>
+              <div class="pilar-title">Solução completa em um contrato</div>
+              <div class="pilar-desc">Porta-pallet dimensionado + empilhadeira adequada. Nenhum fornecedor avulso para gerenciar.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       COMO FUNCIONA
+  =========================== -->
+  <section id="como-funciona">
+    <div class="container">
+      <div class="como-header">
+        <span class="tag">Processo</span>
+        <h2 class="section-title reveal">Como funciona</h2>
+        <p class="section-sub reveal" style="margin:16px auto 0;">Do primeiro contato à implantação, em 3 etapas simples e sem burocracia.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <div class="step-title">Diagnóstico da Operação</div>
+          <p class="step-desc">Entendemos sua operação: metragem do galpão, pé-direito disponível, tipo de carga, volume de pallets e equipamentos utilizados.</p>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <div class="step-title">Projeto de Verticalização</div>
+          <p class="step-desc">Desenvolvemos o layout ideal com dimensionamento preciso do porta-pallet e indicação da empilhadeira compatível com sua operação.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <div class="step-title">Entrega e Implantação</div>
+          <p class="step-desc">Fornecemos a estrutura e o equipamento com suporte técnico. Você começa a operar com mais capacidade no menor tempo possível.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PARA QUEM É
+  =========================== -->
+  <section id="para-quem">
+    <div class="container">
+      <div class="para-quem-header">
+        <span class="tag">Quem atendemos</span>
+        <h2 class="section-title reveal">Para quem são<br>nossas soluções</h2>
+      </div>
+      <div class="segmentos">
+        <div class="segmento reveal reveal-delay-1">
+          <div class="segmento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div class="segmento-label">Transportadoras</div>
+        </div>
+        <div class="segmento reveal reveal-delay-2">
+          <div class="segmento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/>
+            </svg>
+          </div>
+          <div class="segmento-label">Indústrias</div>
+        </div>
+        <div class="segmento reveal reveal-delay-3">
+          <div class="segmento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </div>
+          <div class="segmento-label">Distribuidoras</div>
+        </div>
+        <div class="segmento reveal reveal-delay-4">
+          <div class="segmento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="segmento-label">Centros de<br>Distribuição</div>
+        </div>
+        <div class="segmento reveal reveal-delay-1">
+          <div class="segmento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+            </svg>
+          </div>
+          <div class="segmento-label">Operações em<br>Crescimento</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       CTA FINAL
+  =========================== -->
+  <section id="cta-final">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="tag reveal" style="color:#FF9A5C;">Diagnóstico gratuito</span>
+        <h2 class="cta-title reveal">
+          Solicite um diagnóstico<br><em>gratuito</em> da sua operação.
+        </h2>
+        <p class="cta-sub reveal">
+          Nossa equipe analisa o seu galpão e apresenta um projeto de verticalização com estimativa de capacidade e custo. Sem compromisso.
+        </p>
+        <div class="cta-buttons reveal">
+          <a href="https://wa.me/5511943668123" target="_blank" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+            Falar pelo WhatsApp
+          </a>
+          <a href="mailto:comercial@tetrixlog.com.br" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            comercial@tetrixlog.com.br
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+  =========================== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: marca -->
+        <div>
+          <div class="footer-logo">
+            <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="fl-orn" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FF7A2F"/>
+                  <stop offset="100%" stop-color="#E05000"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="7" y="15" width="45" height="5" rx="1.5" fill="url(#fl-orn)"/>
+              <rect x="7" y="28" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.7"/>
+              <rect x="7" y="41" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.45"/>
+              <rect x="9" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.5"/>
+              <rect x="24" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.35"/>
+              <rect x="39" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.2"/>
+              <rect x="9" y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.4"/>
+              <rect x="0" y="48" width="59" height="4" rx="1.5" fill="url(#fl-orn)" opacity="0.8"/>
+              <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="rgba(255,255,255,0.7)" letter-spacing="2">TETRIX</text>
+              <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#fl-orn)" opacity="0.7"/>
+            </svg>
+          </div>
+          <p class="footer-desc">Soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras para operações em todo o estado de São Paulo.</p>
+          <div class="footer-contact">
+            <a href="https://wa.me/5511943668123" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+              (11) 94366-8123
+            </a>
+            <a href="mailto:comercial@tetrixlog.com.br">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              comercial@tetrixlog.com.br
+            </a>
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.5);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;opacity:0.6;flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Estado de São Paulo
+            </span>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <div class="footer-col-title">Soluções</div>
+          <ul class="footer-links">
+            <li><a href="consultoria.html">Consultoria</a></li>
+            <li><a href="venda.html">Venda</a></li>
+            <li><a href="locacao.html">Locação</a></li>
+            <li><a href="simulador.html">Simulador</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <div class="footer-col-title">Produtos</div>
+          <ul class="footer-links">
+            <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+            <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+            
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <div class="footer-col-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="sobre.html">Sobre a Tetrix</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Tetrix Soluções Intralogísticas. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://wa.me/5511943668123" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flutuante -->
+  <a href="https://wa.me/5511943668123" target="_blank" class="whatsapp-float" aria-label="Fale pelo WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+  </a>
+
+  <!-- ===========================
+       SCRIPTS
+  =========================== -->
+  <script>
+    // --- Navbar scroll ---
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+
+    // --- Mobile menu ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Hero reveals on load
+    setTimeout(() => {
+      document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+    }, 100);
+  </script>
+</body>
+</html>

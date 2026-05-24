@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porta-Pallets | Tetrix Intralogística</title>
+  <meta name="description" content="Porta-pallets dimensionados sob medida para sua operação. Montantes, longarinas e acessórios em conformidade com a ABNT NBR 17150:2024. Atendemos todo o Estado de São Paulo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:     #0D1E3D;
+      --navy-mid: #162B55;
+      --navy-lt:  #1E3A6E;
+      --orange:   #FF6E1A;
+      --orange-dk:#E05000;
+      --orange-lt:#FF9A5C;
+      --white:    #FFFFFF;
+      --gray-100: #F4F6FA;
+      --gray-200: #E2E7F0;
+      --gray-500: #7A8BA8;
+      --gray-700: #3D4F6A;
+      --text:     #1A2A40;
+      --font-h:   'Barlow Condensed', sans-serif;
+      --font-b:   'DM Sans', sans-serif;
+      --radius:   10px;
+      --trans:    0.3s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--text); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius);
+      font-family: var(--font-b); font-size: 15px; font-weight: 600;
+      cursor: pointer; border: none; transition: var(--trans); white-space: nowrap;
+    }
+    .btn-primary { background: var(--orange); color: white; }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #FF6E1A44; }
+    .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .btn-outline-dark { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-outline-dark:hover { background: var(--navy); color: white; transform: translateY(-2px); }
+    .tag { display: inline-block; font-family: var(--font-h); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .section-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 50px); font-weight: 800; line-height: 1.05; color: var(--navy); }
+    .section-title.light { color: white; }
+    .section-sub { font-size: 17px; line-height: 1.7; color: var(--gray-700); max-width: 600px; margin-top: 16px; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAVBAR ── */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; transition: background 0.4s, box-shadow 0.4s; }
+    #navbar.scrolled { background: rgba(13,30,61,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 24px #00000040; }
+    .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: color var(--trans), background var(--trans); }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+    .nav-links a.active { color: var(--orange-lt); }
+    .nav-cta { margin-left: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius); background: var(--orange); color: white; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: var(--trans); }
+    .nav-cta:hover { background: var(--orange-dk); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: transparent; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: var(--trans); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(13,30,61,0.98); backdrop-filter: blur(12px); padding: 20px 24px 28px; z-index: 999; flex-direction: column; gap: 4px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: 8px; }
+    .mobile-menu .btn-mobile { margin-top: 8px; background: var(--orange); color: white; text-align: center; padding: 14px; border-radius: 10px; font-weight: 600; }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+      padding: 140px 0 90px; position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px);
+    }
+    #hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: white; clip-path: polygon(0 100%, 100% 0, 100% 100%); z-index: 2; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+    .hero-breadcrumb a { color: rgba(255,255,255,0.45); transition: color var(--trans); }
+    .hero-breadcrumb a:hover { color: var(--orange-lt); }
+    .hero-breadcrumb span { color: var(--orange-lt); }
+    .hero-title { font-family: var(--font-h); font-size: clamp(44px, 6vw, 76px); font-weight: 900; color: white; line-height: 0.97; margin-bottom: 20px; }
+    .hero-title em { font-style: normal; color: var(--orange); }
+    .hero-sub { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.68); margin-bottom: 36px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,110,26,0.12); border: 1px solid rgba(255,110,26,0.25);
+      padding: 8px 16px; border-radius: 8px; margin-bottom: 24px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--orange-lt);
+    }
+
+    /* ── DIAGRAMA SVG ── */
+    #diagrama { padding: 96px 0; background: var(--white); }
+    .diagrama-header { text-align: center; margin-bottom: 60px; }
+    .diagrama-header .section-sub { margin: 16px auto 0; }
+
+    .diagrama-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .svg-container {
+      background: var(--gray-100); border-radius: 20px;
+      padding: 32px; border: 1px solid var(--gray-200);
+      position: sticky; top: 100px;
+    }
+    .svg-container svg { width: 100%; height: auto; max-height: 560px; }
+
+    /* Lista de componentes */
+    .componentes-list { display: flex; flex-direction: column; gap: 16px; }
+    .componente-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px 22px; border-radius: 14px;
+      border: 1.5px solid var(--gray-200); background: white;
+      transition: all var(--trans); cursor: default;
+    }
+    .componente-item:hover { border-color: var(--orange); box-shadow: 0 8px 24px #FF6E1A14; transform: translateX(4px); }
+    .componente-item.destaque { border-color: rgba(255,110,26,0.35); background: rgba(255,110,26,0.04); }
+    .comp-num {
+      width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-h); font-size: 16px; font-weight: 900;
+      background: var(--navy); color: white;
+    }
+    .componente-item.destaque .comp-num { background: var(--orange); }
+    .comp-info {}
+    .comp-nome { font-family: var(--font-h); font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+    .comp-desc { font-size: 13px; color: var(--gray-700); line-height: 1.6; }
+    .comp-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-top: 6px; }
+    .comp-badge.foco { background: rgba(255,110,26,0.12); color: var(--orange-dk); }
+    .comp-badge.acess { background: var(--gray-100); color: var(--gray-500); }
+
+    /* ── CUSTOMIZAÇÃO ── */
+    #customizacao { padding: 96px 0; background: var(--gray-100); }
+    .custom-header { text-align: center; margin-bottom: 56px; }
+    .custom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .custom-card {
+      background: white; border-radius: 18px;
+      border: 1px solid var(--gray-200); padding: 36px 32px;
+      transition: all var(--trans);
+    }
+    .custom-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 16px 40px #FF6E1A10; }
+    .custom-icon { width: 52px; height: 52px; border-radius: 13px; background: var(--navy); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .custom-icon svg { width: 26px; height: 26px; }
+    .custom-title { font-family: var(--font-h); font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
+    .custom-desc { font-size: 14px; color: var(--gray-700); line-height: 1.7; margin-bottom: 16px; }
+    .custom-examples { display: flex; flex-wrap: wrap; gap: 8px; }
+    .custom-tag { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+
+    /* ── NORMA ── */
+    #norma { padding: 80px 0; background: var(--navy); position: relative; overflow: hidden; }
+    #norma::before { content: 'ABNT'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); font-family: var(--font-h); font-size: 200px; font-weight: 900; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
+    .norma-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 56px; flex-wrap: wrap; }
+    .norma-badge {
+      flex-shrink: 0; width: 140px; height: 140px; border-radius: 20px;
+      background: rgba(255,110,26,0.12); border: 2px solid rgba(255,110,26,0.3);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    .norma-badge-title { font-family: var(--font-h); font-size: 13px; font-weight: 700; color: var(--orange-lt); letter-spacing: 1px; }
+    .norma-badge-num { font-family: var(--font-h); font-size: 24px; font-weight: 900; color: white; line-height: 1; }
+    .norma-badge-year { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .norma-text { flex: 1; }
+    .norma-title { font-family: var(--font-h); font-size: clamp(24px, 3.5vw, 38px); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 16px; }
+    .norma-title em { color: var(--orange); font-style: normal; }
+    .norma-desc { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 20px; }
+    .norma-items { display: flex; flex-direction: column; gap: 10px; }
+    .norma-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .norma-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; margin-top: 5px; }
+
+    /* ── QUANDO COMPRAR / LOCAR ── */
+    #quando { padding: 96px 0; background: white; }
+    .quando-header { text-align: center; margin-bottom: 52px; }
+    .quando-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .quando-card { border-radius: 18px; padding: 36px 32px; }
+    .quando-card.compra { background: var(--navy); }
+    .quando-card.locacao { background: var(--gray-100); border: 1px solid var(--gray-200); }
+    .quando-card-title { font-family: var(--font-h); font-size: 26px; font-weight: 900; margin-bottom: 20px; }
+    .quando-card.compra .quando-card-title { color: white; }
+    .quando-card.locacao .quando-card-title { color: var(--navy); }
+    .quando-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .quando-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.5; }
+    .quando-card.compra .quando-item { color: rgba(255,255,255,0.75); }
+    .quando-card.locacao .quando-item { color: var(--gray-700); }
+    .quando-check { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .quando-card.compra .quando-check { background: rgba(255,110,26,0.2); }
+    .quando-card.locacao .quando-check { background: rgba(13,30,61,0.08); }
+    .quando-check svg { width: 10px; height: 10px; }
+
+    /* ── CTA FINAL ── */
+    #cta-final { padding: 96px 0; background: linear-gradient(135deg, var(--navy), var(--navy-lt)); position: relative; overflow: hidden; }
+    #cta-final::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, rgba(255,110,26,0.04) 0px, rgba(255,110,26,0.04) 1px, transparent 1px, transparent 40px); }
+    .cta-inner { position: relative; z-index: 1; text-align: center; max-width: 680px; margin: 0 auto; }
+    .cta-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 56px); font-weight: 900; color: white; line-height: 1.05; margin-bottom: 20px; }
+    .cta-title em { color: var(--orange); font-style: normal; }
+    .cta-sub { font-size: 17px; color: rgba(255,255,255,0.7); margin-bottom: 40px; line-height: 1.6; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    #footer { background: #080F1E; padding: 60px 0 32px; color: rgba(255,255,255,0.5); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { margin-bottom: 20px; }
+    .footer-logo svg { height: 40px; }
+    .footer-desc { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact a { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); transition: color var(--trans); }
+    .footer-contact a:hover { color: var(--orange); }
+    .footer-contact svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.6; }
+    .footer-col-title { font-family: var(--font-h); font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color var(--trans); }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; transition: background var(--trans); color: rgba(255,255,255,0.4); }
+    .footer-social a:hover { background: var(--orange); color: white; }
+    .footer-social svg { width: 16px; height: 16px; }
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 900; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px #25D36660; transition: transform var(--trans); }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .diagrama-wrap { grid-template-columns: 1fr; }
+      .svg-container { position: static; }
+      .custom-grid { grid-template-columns: 1fr; }
+      .quando-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-ctas { flex-direction: column; }
+      .norma-inner { flex-direction: column; gap: 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="nl-orn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
+          <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="7"  y="15" width="45" height="5" rx="1.5" fill="url(#nl-orn)"/>
+          <rect x="7"  y="28" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.7"/>
+          <rect x="7"  y="41" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.45"/>
+          <rect x="9"  y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.75"/>
+          <rect x="24" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.5"/>
+          <rect x="39" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.3"/>
+          <rect x="9"  y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.6"/>
+          <rect x="39" y="23" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.35"/>
+          <rect x="0"  y="48" width="59" height="4" rx="1.5" fill="url(#nl-orn)" opacity="0.9"/>
+          <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="2">TETRIX</text>
+          <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#nl-orn)"/>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="venda.html">Comprar</a></li>
+        <li><a href="locacao.html">Locar</a></li>
+        <li><a href="consultoria.html">Consultoria</a></li>
+        <li><a href="porta-pallets.html" class="active">Porta-Pallets</a></li>
+        <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+      </ul>
+      <a href="contato.html" class="nav-cta">Solicitar Diagnóstico</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Início</a>
+    <a href="venda.html">Comprar</a>
+    <a href="locacao.html">Locar</a>
+    <a href="consultoria.html">Consultoria</a>
+    <a href="porta-pallets.html">Porta-Pallets</a>
+    <a href="empilhadeiras.html">Empilhadeiras</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html" class="btn-mobile">Solicitar Diagnóstico</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-breadcrumb reveal">
+            <a href="index.html">Início</a>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            <span>Porta-Pallets</span>
+          </div>
+          <div class="hero-badge reveal">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#FF9A5C"><circle cx="12" cy="12" r="12"/></svg>
+            Em conformidade com a ABNT NBR 17150:2024
+          </div>
+          <h1 class="hero-title reveal reveal-delay-1">
+            Estrutura de<br>armazenagem<br><em>sob medida.</em>
+          </h1>
+          <p class="hero-sub reveal reveal-delay-2">
+            O porta-pallet é a base de qualquer operação logística vertical eficiente. A Tetrix dimensiona montantes, longarinas e acessórios conforme a sua carga, seu galpão e sua operação — com emissão de ART e conformidade com a norma brasileira vigente.
+          </p>
+          <div class="hero-ctas reveal reveal-delay-3">
+            <a href="contato.html" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12"/><path d="M1.64 3.42A2 2 0 0 1 3.62 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6"/></svg>
+              Solicitar cotação
+            </a>
+            <a href="#diagrama" class="btn btn-outline">
+              Ver componentes
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mini-diagrama decorativo no hero -->
+        <div class="reveal reveal-delay-2" style="display: flex; justify-content: center;">
+          <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" style="max-width: 280px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));">
+            <defs>
+              <linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FF7A2F"/>
+                <stop offset="100%" stop-color="#E05000"/>
+              </linearGradient>
+            </defs>
+            <!-- Fundo do card -->
+            <rect width="300" height="380" rx="16" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+            <!-- === Porta-pallet esquemático === -->
+            <!-- Coluna esquerda -->
+            <rect x="36" y="40" width="10" height="280" rx="2" fill="white" opacity="0.9"/>
+            <!-- Diagonais esquerda (contraventamento) -->
+            <line x1="36" y1="80" x2="46" y2="110" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="36" y1="110" x2="46" y2="80" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="36" y1="160" x2="46" y2="190" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="36" y1="190" x2="46" y2="160" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="36" y1="240" x2="46" y2="270" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="36" y1="270" x2="46" y2="240" stroke="white" stroke-width="2" opacity="0.4"/>
+
+            <!-- Coluna direita -->
+            <rect x="254" y="40" width="10" height="280" rx="2" fill="white" opacity="0.9"/>
+            <!-- Diagonais direita -->
+            <line x1="254" y1="80" x2="264" y2="110" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="254" y1="110" x2="264" y2="80" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="254" y1="160" x2="264" y2="190" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="254" y1="190" x2="264" y2="160" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="254" y1="240" x2="264" y2="270" stroke="white" stroke-width="2" opacity="0.4"/>
+            <line x1="254" y1="270" x2="264" y2="240" stroke="white" stroke-width="2" opacity="0.4"/>
+
+            <!-- Longarina 1 (topo) -->
+            <rect x="46" y="55" width="208" height="10" rx="2" fill="url(#hg1)"/>
+            <!-- Longarina 2 -->
+            <rect x="46" y="135" width="208" height="10" rx="2" fill="url(#hg1)" opacity="0.85"/>
+            <!-- Longarina 3 -->
+            <rect x="46" y="215" width="208" height="10" rx="2" fill="url(#hg1)" opacity="0.65"/>
+            <!-- Longarina base -->
+            <rect x="46" y="295" width="208" height="10" rx="2" fill="url(#hg1)" opacity="0.45"/>
+
+            <!-- Pallet 1 (nível 1) -->
+            <rect x="60" y="43" width="72" height="12" rx="2" fill="#5B9BD5" opacity="0.75"/>
+            <rect x="60" y="46" width="72" height="3" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="148" y="43" width="72" height="12" rx="2" fill="#5B9BD5" opacity="0.5"/>
+
+            <!-- Pallet 2 (nível 2) -->
+            <rect x="60" y="123" width="72" height="12" rx="2" fill="#5B9BD5" opacity="0.65"/>
+            <rect x="148" y="123" width="72" height="12" rx="2" fill="#5B9BD5" opacity="0.4"/>
+
+            <!-- Pallet 3 (nível 3) -->
+            <rect x="60" y="203" width="72" height="12" rx="2" fill="#5B9BD5" opacity="0.55"/>
+
+            <!-- Sapatas -->
+            <rect x="24" y="320" width="34" height="8" rx="2" fill="white" opacity="0.6"/>
+            <rect x="242" y="320" width="34" height="8" rx="2" fill="white" opacity="0.6"/>
+
+            <!-- Protetor de coluna (destaque laranja na base) -->
+            <rect x="32" y="305" width="18" height="16" rx="3" fill="url(#hg1)" opacity="0.9"/>
+            <rect x="250" y="305" width="18" height="16" rx="3" fill="url(#hg1)" opacity="0.9"/>
+
+            <!-- Distanciador central -->
+            <rect x="144" y="155" width="12" height="60" rx="2" fill="white" opacity="0.3"/>
+
+            <!-- Label MONTANTE -->
+            <text x="14" y="186" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle" writing-mode="vertical-lr" transform="rotate(180, 14, 186)">MONTANTE</text>
+            <!-- Label LONGARINA -->
+            <text x="150" y="52" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle">LONGARINA</text>
+            <!-- Label PROTETOR -->
+            <text x="41" y="352" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="rgba(255,110,26,0.7)" text-anchor="middle">PROTETOR</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGRAMA DETALHADO + COMPONENTES -->
+  <section id="diagrama">
+    <div class="container">
+      <div class="diagrama-header">
+        <span class="tag reveal">Componentes</span>
+        <h2 class="section-title reveal">Conheça cada parte<br>da estrutura</h2>
+        <p class="section-sub reveal" style="margin: 16px auto 0;">O porta-pallet é um sistema modular. Cada componente tem função estrutural definida — e todos são dimensionados conforme a carga e o projeto da sua operação.</p>
+      </div>
+
+      <div class="diagrama-wrap">
+        <!-- Diagrama — imagem com callouts já embutidos -->
+        <div class="svg-container reveal" style="padding: 20px;">
+          <img
+            src="porta-pallet-render.png"
+            alt="Porta-pallet seletivo — componentes identificados: Montante, Longarina, Protetor de Coluna, Sapata e Chumbador"
+            style="width:100%; height:auto; display:block; border-radius:8px;"
+          />
+        </div>
+
+        <!-- Lista de componentes -->
+
+        <!-- Lista de componentes -->
+        <div class="componentes-list">
+
+          <div class="componente-item destaque reveal reveal-delay-1">
+            <div class="comp-num">①</div>
+            <div class="comp-info">
+              <div class="comp-nome">Montante</div>
+              <div class="comp-desc">Estrutura vertical formada por um par de colunas perfuradas unidas por membros de contraventamento em X. Sustenta toda a carga e a transfere ao piso. Disponível em diversas alturas conforme o pé-direito do galpão.</div>
+              <span class="comp-badge foco">Produto Tetrix</span>
+            </div>
+          </div>
+
+          <div class="componente-item destaque reveal reveal-delay-2">
+            <div class="comp-num">②</div>
+            <div class="comp-info">
+              <div class="comp-nome">Longarina</div>
+              <div class="comp-desc">Vigas horizontais que formam os níveis de armazenagem e suportam os pallets. Dimensionadas por cálculo estrutural conforme a capacidade de carga exigida — altura do perfil e espessura do aço variam por projeto.</div>
+              <span class="comp-badge foco">Produto Tetrix</span>
+            </div>
+          </div>
+
+          <div class="componente-item reveal reveal-delay-3">
+            <div class="comp-num">③</div>
+            <div class="comp-info">
+              <div class="comp-nome">Garra (Conector)</div>
+              <div class="comp-desc">Conector metálico nas extremidades das longarinas que encaixa nas perfurações da coluna. Permite ajuste vertical da altura entre os níveis sem ferramentas, acomodando diferentes alturas de carga.</div>
+              <span class="comp-badge acess">Componente estrutural</span>
+            </div>
+          </div>
+
+          <div class="componente-item destaque reveal reveal-delay-4">
+            <div class="comp-num">④</div>
+            <div class="comp-info">
+              <div class="comp-nome">Distanciador (Row Connector)</div>
+              <div class="comp-desc">Une dois montantes posicionados costas a costas (back-to-back), garantindo o espaçamento correto entre fileiras e aumentando a rigidez lateral do conjunto. Indispensável em instalações de dupla entrada.</div>
+              <span class="comp-badge foco">Produto Tetrix</span>
+            </div>
+          </div>
+
+          <div class="componente-item reveal">
+            <div class="comp-num" style="font-size:13px;">⑤</div>
+            <div class="comp-info">
+              <div class="comp-nome">Pino de Segurança</div>
+              <div class="comp-desc">Trava metálica (também chamada de clipe ou pino anti-desencaixe) inserida na garra após o encaixe da longarina na coluna. Impede que a longarina se solte acidentalmente por impacto de empilhadeira ou vibração. Item de segurança obrigatório — exigido pela ABNT NBR 17150.</div>
+              <span class="comp-badge acess">Segurança estrutural</span>
+            </div>
+          </div>
+
+          <div class="componente-item destaque reveal">
+            <div class="comp-num">⑥</div>
+            <div class="comp-info">
+              <div class="comp-nome">Protetor de Coluna</div>
+              <div class="comp-desc">Acessório instalado na base das colunas para absorver impactos causados por empilhadeiras. Protege a estrutura e evita danos que comprometam a integridade do montante. Recomendado em todas as operações com EMM (equipamento de manuseio mecânico).</div>
+              <span class="comp-badge foco">Produto Tetrix</span>
+            </div>
+          </div>
+
+          <div class="componente-item reveal">
+            <div class="comp-num">⑦</div>
+            <div class="comp-info">
+              <div class="comp-nome">Sapata (Placa de Base)</div>
+              <div class="comp-desc">Fixada na base de cada coluna, distribui as cargas verticais ao piso de concreto. Fabricada em chapa de aço com furos para passagem dos chumbadores. O dimensionamento considera a carga total da estrutura e a resistência do piso.</div>
+              <span class="comp-badge acess">Componente estrutural</span>
+            </div>
+          </div>
+
+          <div class="componente-item reveal">
+            <div class="comp-num" style="font-size:13px;">⑧</div>
+            <div class="comp-info">
+              <div class="comp-nome">Chumbador de Fixação</div>
+              <div class="comp-desc">Parafuso de ancoragem que fixa a sapata ao piso de concreto, impedindo o tombamento lateral da estrutura. O tipo (químico ou expansível), diâmetro e profundidade de fixação são definidos no projeto estrutural e constam na ART emitida pelo engenheiro responsável.</div>
+              <span class="comp-badge acess">Fixação ao piso</span>
+            </div>
+          </div>
+
+          <div class="componente-item reveal">
+            <div class="comp-num" style="font-size:18px; background: var(--gray-500);">+</div>
+            <div class="comp-info">
+              <div class="comp-nome">Outros acessórios</div>
+              <div class="comp-desc">Guard Rail, anteparo traseiro (stop), fechamento lateral em tela, calços de nivelamento e trilho-guia para empilhadeiras VNA. Fornecidos conforme necessidade do projeto.</div>
+              <span class="comp-badge acess">Sob consulta</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMIZAÇÃO -->
+  <section id="customizacao">
+    <div class="container">
+      <div class="custom-header">
+        <span class="tag reveal">Personalização</span>
+        <h2 class="section-title reveal">Cada projeto é único.<br>Nenhuma solução genérica.</h2>
+        <p class="section-sub reveal" style="margin: 16px auto 0;">A Tetrix dimensiona montantes e longarinas conforme dois eixos principais de customização: a altura da estrutura e a capacidade de carga por nível.</p>
+      </div>
+      <div class="custom-grid">
+
+        <div class="custom-card reveal reveal-delay-1">
+          <div class="custom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="custom-title">Altura dos Montantes</div>
+          <p class="custom-desc">Os montantes são fornecidos nas alturas adequadas para aproveitar ao máximo o pé-direito disponível no galpão. A altura define o número de níveis possíveis e, consequentemente, a capacidade total de armazenagem.</p>
+          <div class="custom-examples">
+            <span class="custom-tag">3,0 m</span>
+            <span class="custom-tag">4,0 m</span>
+            <span class="custom-tag">5,0 m</span>
+            <span class="custom-tag">6,0 m</span>
+            <span class="custom-tag">7,0 m</span>
+            <span class="custom-tag">+ alturas sob consulta</span>
+          </div>
+        </div>
+
+        <div class="custom-card reveal reveal-delay-2">
+          <div class="custom-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            </svg>
+          </div>
+          <div class="custom-title">Capacidade por Longarina</div>
+          <p class="custom-desc">A resistência das longarinas é calculada conforme o peso e o tipo de carga a ser armazenada. Diferentes alturas de perfil e espessuras de aço garantem segurança estrutural dentro das tolerâncias da ABNT NBR 17150.</p>
+          <div class="custom-examples">
+            <span class="custom-tag">500 kg/nível</span>
+            <span class="custom-tag">1.000 kg/nível</span>
+            <span class="custom-tag">1.500 kg/nível</span>
+            <span class="custom-tag">2.000 kg/nível</span>
+            <span class="custom-tag">+ capacidades sob projeto</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NORMA ABNT -->
+  <section id="norma">
+    <div class="container">
+      <div class="norma-inner reveal">
+        <div class="norma-badge">
+          <div class="norma-badge-title">ABNT NBR</div>
+          <div class="norma-badge-num">17150</div>
+          <div class="norma-badge-year">Edição 2024</div>
+        </div>
+        <div class="norma-text">
+          <div class="norma-title">Estruturas em conformidade com a <em>norma brasileira vigente.</em></div>
+          <p class="norma-desc">A ABNT NBR 17150:2024 é a norma brasileira que regulamenta os sistemas de armazenagem estática tipo porta-paletes. A Tetrix projeta e fornece estruturas em conformidade com seus requisitos, incluindo tolerâncias de montagem, folgas operacionais e limites de deformação.</p>
+          <div class="norma-items">
+            <div class="norma-item"><div class="norma-dot"></div>Parte 1: Requisitos para projeto estrutural</div>
+            <div class="norma-item"><div class="norma-dot"></div>Parte 2: Tolerâncias, deformações e folgas para projetos</div>
+            <div class="norma-item"><div class="norma-dot"></div>Emissão de ART (Anotação de Responsabilidade Técnica) pelos engenheiros responsáveis</div>
+            <div class="norma-item"><div class="norma-dot"></div>Classificação Classe 400 — corredor largo para empilhadeira contrabalançada (padrão) e corredor estreito para empilhadeiras retráteis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUANDO COMPRAR / LOCAR -->
+  <section id="quando">
+    <div class="container">
+      <div class="quando-header">
+        <span class="tag reveal">Como adquirir</span>
+        <h2 class="section-title reveal">Compra ou locação?<br>Escolha o melhor modelo.</h2>
+      </div>
+      <div class="quando-grid">
+
+        <div class="quando-card compra reveal reveal-delay-1">
+          <div class="quando-card-title">🏗️ Comprar porta-pallets</div>
+          <div class="quando-items">
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#FF6E1A" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Operação estável com demanda previsível
+            </div>
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#FF6E1A" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Galpão próprio ou contrato de longo prazo
+            </div>
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#FF6E1A" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Prefere investir a pagar mensalmente
+            </div>
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#FF6E1A" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Payback estimado em 2 a 5 meses vs. aluguel de área equivalente
+            </div>
+          </div>
+          <a href="venda.html" class="btn btn-primary" style="width:100%; justify-content:center;">
+            Ver condições de compra
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="quando-card locacao reveal reveal-delay-2">
+          <div class="quando-card-title">🔄 Locar porta-pallets</div>
+          <div class="quando-items">
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#0D1E3D" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Operação em crescimento ou com sazonalidade
+            </div>
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#0D1E3D" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Quer preservar capital sem imobilizar investimento
+            </div>
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#0D1E3D" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Precisa de empilhadeira inclusa na solução
+            </div>
+            <div class="quando-item">
+              <div class="quando-check"><svg viewBox="0 0 12 12" fill="none" stroke="#0D1E3D" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              Quer testar a verticalização antes de investir em estrutura própria
+            </div>
+          </div>
+          <a href="locacao.html" class="btn btn-outline-dark" style="width:100%; justify-content:center;">
+            Ver condições de locação
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta-final">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="tag reveal" style="color: var(--orange-lt);">Projeto gratuito</span>
+        <h2 class="cta-title reveal">
+          Nossos engenheiros<br>dimensionam a solução<br><em>ideal para você.</em>
+        </h2>
+        <p class="cta-sub reveal">
+          Compartilhe os dados do seu galpão — área, pé-direito e tipo de carga. Desenvolvemos o projeto técnico com especificações de montantes, longarinas e acessórios sem custo e sem compromisso.
+        </p>
+        <div class="cta-buttons reveal">
+          <a href="https://wa.me/5511943668123?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20projeto%20de%20porta-pallets%20para%20minha%20opera%C3%A7%C3%A3o." target="_blank" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Falar pelo WhatsApp
+          </a>
+          <a href="contato.html" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Preencher formulário
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="fl-orn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
+              <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="7" y="15" width="45" height="5" rx="1.5" fill="url(#fl-orn)"/>
+              <rect x="7" y="28" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.7"/>
+              <rect x="7" y="41" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.45"/>
+              <rect x="9" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.5"/>
+              <rect x="0" y="48" width="59" height="4" rx="1.5" fill="url(#fl-orn)" opacity="0.8"/>
+              <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="rgba(255,255,255,0.7)" letter-spacing="2">TETRIX</text>
+              <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#fl-orn)" opacity="0.7"/>
+            </svg>
+          </div>
+          <p class="footer-desc">Soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras em todo o estado de São Paulo.</p>
+          <div class="footer-contact">
+            <a href="https://wa.me/5511943668123" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              (11) 94366-8123
+            </a>
+            <a href="mailto:comercial@tetrixlog.com.br">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              comercial@tetrixlog.com.br
+            </a>
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.5);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;opacity:0.6;flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Estado de São Paulo
+            </span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Soluções</div>
+          <ul class="footer-links">
+            <li><a href="consultoria.html">Consultoria</a></li>
+            <li><a href="venda.html">Venda</a></li>
+            <li><a href="locacao.html">Locação</a></li>
+            <li><a href="simulador.html">Simulador</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Produtos</div>
+          <ul class="footer-links">
+            <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+            <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="sobre.html">Sobre a Tetrix</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Tetrix Soluções Intralogísticas. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://wa.me/5511943668123" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5511943668123" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+    const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setTimeout(() => document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible')), 100);
+  </script>
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre a Tetrix | Armazenagem Vertical em Campinas e SP</title>
+  <meta name="description" content="A Tetrix nasceu para resolver um problema real: empresas que crescem mais rápido do que sua infraestrutura logística acompanha. Diagnóstico gratuito em Campinas e região.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:     #0D1E3D;
+      --navy-mid: #162B55;
+      --navy-lt:  #1E3A6E;
+      --orange:   #FF6E1A;
+      --orange-dk:#E05000;
+      --orange-lt:#FF9A5C;
+      --white:    #FFFFFF;
+      --gray-100: #F4F6FA;
+      --gray-200: #E2E7F0;
+      --gray-500: #7A8BA8;
+      --gray-700: #3D4F6A;
+      --text:     #1A2A40;
+      --font-h:   'Barlow Condensed', sans-serif;
+      --font-b:   'DM Sans', sans-serif;
+      --radius:   10px;
+      --trans:    0.3s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--text); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius);
+      font-family: var(--font-b); font-size: 15px; font-weight: 600;
+      cursor: pointer; border: none; transition: var(--trans); white-space: nowrap;
+    }
+    .btn-primary { background: var(--orange); color: white; }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #FF6E1A44; }
+    .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .tag { display: inline-block; font-family: var(--font-h); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .section-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 50px); font-weight: 800; line-height: 1.05; color: var(--navy); }
+    .section-title.light { color: white; }
+    .section-sub { font-size: 17px; line-height: 1.7; color: var(--gray-700); max-width: 600px; margin-top: 16px; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAVBAR ── */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; transition: background 0.4s, box-shadow 0.4s; }
+    #navbar.scrolled { background: rgba(13,30,61,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 24px #00000040; }
+    .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: color var(--trans), background var(--trans); }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+    .nav-links a.active { color: var(--orange-lt); }
+    .nav-cta { margin-left: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius); background: var(--orange); color: white; font-size: 14px; font-weight: 600; transition: var(--trans); }
+    .nav-cta:hover { background: var(--orange-dk); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: transparent; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: var(--trans); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(13,30,61,0.98); backdrop-filter: blur(12px); padding: 20px 24px 28px; z-index: 999; flex-direction: column; gap: 4px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.85); font-size: 16px; font-weight: 500; padding: 12px 16px; border-radius: 8px; }
+    .mobile-menu .btn-mobile { margin-top: 8px; background: var(--orange); color: white; text-align: center; padding: 14px; border-radius: 10px; font-weight: 600; }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+      padding: 160px 0 120px; position: relative; overflow: hidden; text-align: center;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px);
+    }
+    #hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: white; clip-path: polygon(0 100%, 100% 0, 100% 100%); z-index: 2; }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+    .hero-breadcrumb { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 32px; }
+    .hero-breadcrumb a { color: rgba(255,255,255,0.45); transition: color var(--trans); }
+    .hero-breadcrumb a:hover { color: var(--orange-lt); }
+    .hero-breadcrumb span { color: var(--orange-lt); }
+    .hero-slogan {
+      font-family: var(--font-h); font-size: clamp(38px, 6vw, 76px);
+      font-weight: 900; color: white; line-height: 0.97;
+      margin-bottom: 32px;
+    }
+    .hero-slogan em { color: var(--orange); font-style: normal; display: block; }
+    .hero-divider {
+      width: 64px; height: 4px; background: var(--orange);
+      border-radius: 2px; margin: 0 auto 32px;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px); line-height: 1.7;
+      color: rgba(255,255,255,0.65); max-width: 640px; margin: 0 auto 40px;
+    }
+    .hero-quote {
+      display: inline-block;
+      background: rgba(255,110,26,0.1); border: 1px solid rgba(255,110,26,0.25);
+      border-left: 4px solid var(--orange);
+      padding: 20px 28px; border-radius: 0 12px 12px 0;
+      font-size: 16px; font-style: italic; color: rgba(255,255,255,0.8);
+      line-height: 1.6; text-align: left; max-width: 640px;
+    }
+    .hero-quote strong { color: var(--orange-lt); font-style: normal; }
+
+    /* ── PROPÓSITO ── */
+    #proposito { padding: 0; background: var(--navy); }
+    .proposito-inner {
+      padding: 96px 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .proposito-inner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(255,110,26,0.03) 0px, rgba(255,110,26,0.03) 1px, transparent 1px, transparent 48px);
+    }
+    .proposito-label { position: relative; z-index: 1; font-family: var(--font-h); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 24px; }
+    .proposito-headline {
+      position: relative; z-index: 1;
+      font-family: var(--font-h); font-size: clamp(36px, 5.5vw, 68px);
+      font-weight: 900; color: white; line-height: 1.0;
+      margin-bottom: 32px;
+    }
+    .proposito-headline em { color: var(--orange); font-style: normal; }
+    .proposito-desc {
+      position: relative; z-index: 1;
+      font-size: 17px; color: rgba(255,255,255,0.6);
+      line-height: 1.8; max-width: 660px; margin: 0 auto 48px;
+    }
+    .proposito-numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+    .prop-num {
+      background: rgba(255,255,255,0.05); padding: 36px 24px; text-align: center;
+      transition: background var(--trans);
+    }
+    .prop-num:hover { background: rgba(255,255,255,0.09); }
+    .prop-num:first-child { border-radius: 12px 0 0 12px; }
+    .prop-num:last-child { border-radius: 0 12px 12px 0; }
+    .prop-num-val { font-family: var(--font-h); font-size: 52px; font-weight: 900; color: white; line-height: 1; margin-bottom: 8px; }
+    .prop-num-val em { color: var(--orange); font-style: normal; }
+    .prop-num-label { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* ── PROBLEMA ── */
+    #problema { padding: 96px 0; background: white; }
+    .problema-header { text-align: center; margin-bottom: 52px; }
+    .problema-header .section-sub { margin: 16px auto 0; }
+    .dores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .dor-card {
+      border-radius: 16px; padding: 32px 28px;
+      border: 1.5px solid var(--gray-200); background: white;
+      transition: all var(--trans);
+    }
+    .dor-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px #FF6E1A10; }
+    .dor-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,110,26,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .dor-icon svg { width: 20px; height: 20px; }
+    .dor-title { font-family: var(--font-h); font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .dor-desc { font-size: 14px; color: var(--gray-700); line-height: 1.7; margin-bottom: 16px; }
+    .dor-impactos { display: flex; flex-direction: column; gap: 6px; }
+    .dor-impacto { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--gray-500); }
+    .dor-impacto::before { content: '↑'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+
+    /* ── DIFERENCIAIS ── */
+    #diferenciais { padding: 96px 0; background: var(--gray-100); }
+    .diferenciais-header { text-align: center; margin-bottom: 52px; }
+    .diferenciais-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .diferencial-card {
+      background: white; border-radius: 18px; padding: 32px 24px;
+      border: 1.5px solid var(--gray-200); text-align: center;
+      transition: all var(--trans);
+    }
+    .diferencial-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 16px 40px #FF6E1A10; }
+    .dif-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+    .dif-icon svg { width: 26px; height: 26px; }
+    .dif-title { font-family: var(--font-h); font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .dif-desc { font-size: 13px; color: var(--gray-700); line-height: 1.6; }
+
+    /* ── QUEM ATENDEMOS ── */
+    #segmentos { padding: 96px 0; background: white; }
+    .segmentos-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .segmentos-left {}
+    .segmentos-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 48px); font-weight: 900; color: var(--navy); line-height: 1.05; margin-bottom: 20px; }
+    .segmentos-desc { font-size: 16px; color: var(--gray-700); line-height: 1.7; margin-bottom: 32px; }
+    .segmentos-tipos { display: flex; flex-direction: column; gap: 16px; }
+    .tipo-row { display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: 12px; background: var(--gray-100); border: 1px solid var(--gray-200); }
+    .tipo-num-badge { width: 32px; height: 32px; border-radius: 8px; background: var(--orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-h); font-size: 14px; font-weight: 900; color: white; flex-shrink: 0; }
+    .tipo-row-text {}
+    .tipo-row-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .tipo-row-desc { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+
+    .segmentos-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 16px; border-radius: 24px;
+      font-size: 13px; font-weight: 600;
+      border: 1.5px solid var(--gray-200); color: var(--navy);
+      background: white; transition: all var(--trans);
+    }
+    .chip:hover { border-color: var(--orange); color: var(--orange-dk); background: rgba(255,110,26,0.04); }
+    .chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+
+    /* ── REGIÃO ── */
+    #regiao { padding: 96px 0; background: var(--gray-100); }
+    .regiao-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .regiao-text {}
+    .regiao-cidades { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .cidade-card {
+      background: white; border-radius: 14px; padding: 24px 20px;
+      border: 1.5px solid var(--gray-200); transition: all var(--trans);
+    }
+    .cidade-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+    .cidade-nome { font-family: var(--font-h); font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+    .cidade-estado { font-size: 12px; color: var(--gray-500); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .cidade-nota { font-size: 12px; color: var(--gray-700); margin-top: 8px; }
+
+    /* Mapa SVG estilizado */
+    .regiao-mapa { display: flex; justify-content: center; align-items: center; }
+
+    /* ── NÚMEROS ROI ── */
+    #roi { padding: 96px 0; background: var(--navy); position: relative; overflow: hidden; }
+    #roi::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.02) 59px, rgba(255,255,255,0.02) 60px);
+    }
+    .roi-inner { position: relative; z-index: 1; }
+    .roi-header { text-align: center; margin-bottom: 56px; }
+    .roi-header .section-sub { color: rgba(255,255,255,0.55); margin: 16px auto 0; }
+    .roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+    .roi-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px; padding: 36px 28px; text-align: center;
+      transition: all var(--trans);
+    }
+    .roi-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,110,26,0.3); }
+    .roi-val { font-family: var(--font-h); font-size: 56px; font-weight: 900; color: white; line-height: 1; margin-bottom: 8px; }
+    .roi-val em { color: var(--orange); font-style: normal; }
+    .roi-label { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .roi-example {
+      background: rgba(255,110,26,0.08); border: 1px solid rgba(255,110,26,0.2);
+      border-radius: 16px; padding: 36px 40px;
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: center;
+    }
+    .roi-ex-col { text-align: center; }
+    .roi-ex-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
+    .roi-ex-title { font-family: var(--font-h); font-size: 18px; font-weight: 800; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+    .roi-ex-items { display: flex; flex-direction: column; gap: 6px; }
+    .roi-ex-item { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .roi-arrow { font-family: var(--font-h); font-size: 48px; font-weight: 900; color: var(--orange); line-height: 1; }
+    .roi-ex-col.resultado .roi-ex-title { color: white; }
+    .roi-ex-col.resultado .roi-ex-items .roi-ex-item { color: rgba(255,255,255,0.8); }
+    .roi-resultado-badge {
+      display: inline-block; background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3);
+      color: #4ADE80; font-size: 12px; font-weight: 700;
+      padding: 6px 14px; border-radius: 20px; margin-top: 12px;
+    }
+
+    /* ── CTA FINAL ── */
+    #cta-final { padding: 96px 0; background: white; }
+    .cta-inner { text-align: center; max-width: 680px; margin: 0 auto; }
+    .cta-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: var(--navy); line-height: 1.05; margin-bottom: 20px; }
+    .cta-title em { color: var(--orange); font-style: normal; }
+    .cta-sub { font-size: 17px; color: var(--gray-700); margin-bottom: 40px; line-height: 1.6; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary-dark { background: var(--navy); color: white; }
+    .btn-primary-dark:hover { background: var(--navy-mid); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    #footer { background: #080F1E; padding: 60px 0 32px; color: rgba(255,255,255,0.5); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { margin-bottom: 20px; }
+    .footer-logo svg { height: 40px; }
+    .footer-desc { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact a { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); transition: color var(--trans); }
+    .footer-contact a:hover { color: var(--orange); }
+    .footer-contact svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.6; }
+    .footer-col-title { font-family: var(--font-h); font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.55); transition: color var(--trans); }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; transition: background var(--trans); color: rgba(255,255,255,0.4); }
+    .footer-social a:hover { background: var(--orange); color: white; }
+    .footer-social svg { width: 16px; height: 16px; }
+    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 900; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px #25D36660; transition: transform var(--trans); }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .dores-grid { grid-template-columns: 1fr; }
+      .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
+      .segmentos-inner { grid-template-columns: 1fr; gap: 48px; }
+      .regiao-inner { grid-template-columns: 1fr; gap: 48px; }
+      .roi-grid { grid-template-columns: 1fr; }
+      .roi-example { grid-template-columns: 1fr; text-align: center; gap: 16px; }
+      .roi-arrow { transform: rotate(90deg); display: inline-block; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .diferenciais-grid { grid-template-columns: 1fr; }
+      .regiao-cidades { grid-template-columns: 1fr; }
+      .proposito-numeros { grid-template-columns: 1fr; gap: 2px; }
+      .prop-num:first-child { border-radius: 12px 12px 0 0; }
+      .prop-num:last-child { border-radius: 0 0 12px 12px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="nl-orn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
+          <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.95"/>
+          <rect x="7"  y="15" width="45" height="5" rx="1.5" fill="url(#nl-orn)"/>
+          <rect x="7"  y="28" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.7"/>
+          <rect x="7"  y="41" width="45" height="5" rx="1.5" fill="url(#nl-orn)" opacity="0.45"/>
+          <rect x="9"  y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.75"/>
+          <rect x="24" y="10" width="11" height="5" rx="1" fill="#5B9BD5" opacity="0.5"/>
+          <rect x="0"  y="48" width="59" height="4" rx="1.5" fill="url(#nl-orn)" opacity="0.9"/>
+          <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="white" letter-spacing="2">TETRIX</text>
+          <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#nl-orn)"/>
+        </svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="venda.html">Comprar</a></li>
+        <li><a href="locacao.html">Locar</a></li>
+        <li><a href="consultoria.html">Consultoria</a></li>
+        <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+        <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+        <li><a href="sobre.html" class="active">Sobre</a></li>
+      </ul>
+      <a href="contato.html" class="nav-cta">Solicitar Diagnóstico</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Início</a>
+    <a href="venda.html">Comprar</a>
+    <a href="locacao.html">Locar</a>
+    <a href="consultoria.html">Consultoria</a>
+    <a href="porta-pallets.html">Porta-Pallets</a>
+    <a href="empilhadeiras.html">Empilhadeiras</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html" class="btn-mobile">Solicitar Diagnóstico</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-breadcrumb reveal">
+          <a href="index.html">Início</a>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          <span>Sobre</span>
+        </div>
+        <h1 class="hero-slogan reveal reveal-delay-1">
+          Não vendemos estruturas.
+          <em>Vendemos capacidade.</em>
+        </h1>
+        <div class="hero-divider reveal reveal-delay-2"></div>
+        <p class="hero-sub reveal reveal-delay-2">
+          A Tetrix nasceu com um propósito simples: ajudar empresas a crescer sem precisar mudar de endereço. Mais posições de estoque, mesmo galpão, mesmo aluguel.
+        </p>
+        <div class="reveal reveal-delay-3" style="display: flex; justify-content: center;">
+          <div class="hero-quote">
+            <strong>"Não vendemos estruturas. Vendemos aumento de capacidade logística e redução de custo operacional."</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPÓSITO -->
+  <section id="proposito">
+    <div class="proposito-inner">
+      <div class="container">
+        <div class="proposito-label reveal">Nossa missão</div>
+        <div class="proposito-headline reveal">
+          Mais posições de estoque.<br>
+          <em>Mesmo galpão. Mesmo aluguel.</em>
+        </div>
+        <p class="proposito-desc reveal">
+          Muitas empresas crescem mais rápido do que sua infraestrutura logística acompanha. O resultado é espaço desperdiçado, estoque espalhado, custos crescentes e operações ineficientes. A Tetrix resolve isso — com projeto técnico, equipamento certo e suporte do diagnóstico à implantação.
+        </p>
+        <div class="proposito-numeros reveal">
+          <div class="prop-num">
+            <div class="prop-num-val"><em>100%</em></div>
+            <div class="prop-num-label">Diagnóstico e projeto gratuitos para o cliente</div>
+          </div>
+          <div class="prop-num">
+            <div class="prop-num-val">2–5<em>x</em></div>
+            <div class="prop-num-label">Aumento de capacidade no mesmo galpão com verticalização</div>
+          </div>
+          <div class="prop-num">
+            <div class="prop-num-val">2–5<em>m</em></div>
+            <div class="prop-num-label">Meses de payback vs. custo de mudança para galpão maior</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O PROBLEMA QUE RESOLVEMOS -->
+  <section id="problema">
+    <div class="container">
+      <div class="problema-header">
+        <span class="tag reveal">O problema que resolvemos</span>
+        <h2 class="section-title reveal">Sua operação cresceu.<br>A infraestrutura, nem sempre.</h2>
+        <p class="section-sub reveal" style="margin: 16px auto 0;">Estes são os três cenários mais comuns que encontramos nas empresas que atendemos — e que a Tetrix resolve com projeto e equipamento.</p>
+      </div>
+      <div class="dores-grid">
+        <div class="dor-card reveal reveal-delay-1">
+          <div class="dor-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="dor-title">Espaço subutilizado</div>
+          <p class="dor-desc">O galpão tem pé-direito de 6, 7 ou 8 metros — mas o estoque ocupa apenas 2 ou 3 metros de altura. O resto do volume está vazio e sendo pago.</p>
+          <div class="dor-impactos">
+            <div class="dor-impacto">Aluguel pelo metro quadrado total</div>
+            <div class="dor-impacto">Capacidade real desperdiçada</div>
+            <div class="dor-impacto">Pressão por galpão maior</div>
+          </div>
+        </div>
+        <div class="dor-card reveal reveal-delay-2">
+          <div class="dor-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="dor-title">Custo crescente sem resultado</div>
+          <p class="dor-desc">O estoque cresce, a operação expande — e a resposta quase sempre é o mesmo: alugar um galpão maior. Um custo recorrente que corrói a margem todo mês.</p>
+          <div class="dor-impactos">
+            <div class="dor-impacto">Novo contrato de locação</div>
+            <div class="dor-impacto">Mudança e reinstalação</div>
+            <div class="dor-impacto">Mais mão de obra e movimentação</div>
+          </div>
+        </div>
+        <div class="dor-card reveal reveal-delay-3">
+          <div class="dor-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="dor-title">Layout que não acompanha o crescimento</div>
+          <p class="dor-desc">O layout atual foi definido no início da operação. Com o crescimento, virou um gargalo — rotas longas, estoque espalhado e baixa produtividade por turno.</p>
+          <div class="dor-impactos">
+            <div class="dor-impacto">Tempo de separação elevado</div>
+            <div class="dor-impacto">Erros de picking e inventário</div>
+            <div class="dor-impacto">Menor produtividade por operador</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section id="diferenciais">
+    <div class="container">
+      <div class="diferenciais-header">
+        <span class="tag reveal">Por que a Tetrix</span>
+        <h2 class="section-title reveal">Quatro pilares que nos<br>diferenciam.</h2>
+      </div>
+      <div class="diferenciais-grid">
+        <div class="diferencial-card reveal reveal-delay-1">
+          <div class="dif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <div class="dif-title">Projeto Completo</div>
+          <p class="dif-desc">Do diagnóstico à instalação. Não entregamos só o equipamento — entregamos a solução funcionando.</p>
+        </div>
+        <div class="diferencial-card reveal reveal-delay-2">
+          <div class="dif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <div class="dif-title">Parceiro Técnico</div>
+          <p class="dif-desc">Não somos só fornecedores. Atuamos como consultores — entendemos a operação antes de recomendar qualquer equipamento.</p>
+        </div>
+        <div class="diferencial-card reveal reveal-delay-3">
+          <div class="dif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="dif-title">Conformidade ABNT + ART</div>
+          <p class="dif-desc">Estruturas dimensionadas conforme ABNT NBR 17150:2024 e NR-11, com emissão de ART em todos os projetos.</p>
+        </div>
+        <div class="diferencial-card reveal reveal-delay-4">
+          <div class="dif-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="dif-title">Diagnóstico Gratuito</div>
+          <p class="dif-desc">Sem custo e sem compromisso. O cliente recebe o projeto completo antes de decidir qualquer coisa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM ATENDEMOS -->
+  <section id="segmentos">
+    <div class="container">
+      <div class="segmentos-inner">
+        <div class="segmentos-left">
+          <span class="tag reveal">Quem atendemos</span>
+          <h2 class="segmentos-title reveal">Empresas que crescem<br>mais rápido que<br>sua infraestrutura.</h2>
+          <p class="segmentos-desc reveal">Atendemos indústrias, distribuidoras, transportadoras e operações logísticas de qualquer porte — do armazém familiar ao centro de distribuição regional.</p>
+          <div class="segmentos-tipos reveal">
+            <div class="tipo-row">
+              <div class="tipo-num-badge">1</div>
+              <div class="tipo-row-text">
+                <div class="tipo-row-title">Nunca tiveram porta-pallets</div>
+                <div class="tipo-row-desc">Educação sobre ganhos de espaço e produtividade — mostramos o ROI em números reais.</div>
+              </div>
+            </div>
+            <div class="tipo-row">
+              <div class="tipo-num-badge">2</div>
+              <div class="tipo-row-text">
+                <div class="tipo-row-title">Pesquisaram mas não compraram</div>
+                <div class="tipo-row-desc">Entendemos as objeções anteriores e apresentamos condições comerciais e de locação que cabem no caixa.</div>
+              </div>
+            </div>
+            <div class="tipo-row">
+              <div class="tipo-num-badge">3</div>
+              <div class="tipo-row-text">
+                <div class="tipo-row-title">Já possuem porta-pallets</div>
+                <div class="tipo-row-desc">Modernização, ampliação ou otimização do layout existente para extrair mais capacidade do mesmo espaço.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="tag reveal">Segmentos</span>
+          <div class="segmentos-chips reveal">
+            <span class="chip"><span class="chip-dot"></span>Indústrias</span>
+            <span class="chip"><span class="chip-dot"></span>Metalúrgicas</span>
+            <span class="chip"><span class="chip-dot"></span>Autopeças</span>
+            <span class="chip"><span class="chip-dot"></span>Plásticos</span>
+            <span class="chip"><span class="chip-dot"></span>Alimentos</span>
+            <span class="chip"><span class="chip-dot"></span>Químicas</span>
+            <span class="chip"><span class="chip-dot"></span>Centros de Distribuição</span>
+            <span class="chip"><span class="chip-dot"></span>Transportadoras</span>
+            <span class="chip"><span class="chip-dot"></span>Operadores Logísticos</span>
+            <span class="chip"><span class="chip-dot"></span>E-commerce</span>
+            <span class="chip"><span class="chip-dot"></span>Empresas em expansão</span>
+            <span class="chip"><span class="chip-dot"></span>Mudança de galpão</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGIÃO DE ATUAÇÃO -->
+  <section id="regiao">
+    <div class="container">
+      <div class="regiao-inner">
+        <div class="regiao-text">
+          <span class="tag reveal">Onde atuamos</span>
+          <h2 class="section-title reveal">Atendimento presencial<br>em Campinas e região.</h2>
+          <p class="section-sub reveal">Com base no interior paulista, a Tetrix realiza visitas técnicas e diagnósticos presenciais nas principais cidades do eixo industrial de Campinas — e análise remota por planta baixa para todo o Estado de São Paulo.</p>
+          <div class="regiao-cidades reveal" style="margin-top: 32px;">
+            <div class="cidade-card">
+              <div class="cidade-nome">Campinas</div>
+              <div class="cidade-estado">SP</div>
+              <div class="cidade-nota">Principal polo industrial da região</div>
+            </div>
+            <div class="cidade-card">
+              <div class="cidade-nome">Louveira</div>
+              <div class="cidade-estado">SP</div>
+              <div class="cidade-nota">Maior densidade de CDs do Estado</div>
+            </div>
+            <div class="cidade-card">
+              <div class="cidade-nome">Vinhedo</div>
+              <div class="cidade-estado">SP</div>
+              <div class="cidade-nota">Polo logístico e industrial em expansão</div>
+            </div>
+            <div class="cidade-card">
+              <div class="cidade-nome">Valinhos</div>
+              <div class="cidade-estado">SP</div>
+              <div class="cidade-nota">Indústrias e operações logísticas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa estilizado SVG -->
+        <div class="regiao-mapa reveal reveal-delay-2">
+          <svg viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" style="max-width: 320px; width: 100%;" font-family="'DM Sans', Arial, sans-serif">
+            <rect width="340" height="340" rx="20" fill="#F4F6FA" stroke="#E2E7F0" stroke-width="1"/>
+
+            <!-- Fundo suave estilo mapa -->
+            <circle cx="170" cy="170" r="130" fill="rgba(13,30,61,0.03)" stroke="rgba(13,30,61,0.06)" stroke-width="1"/>
+            <circle cx="170" cy="170" r="90" fill="rgba(13,30,61,0.03)" stroke="rgba(13,30,61,0.04)" stroke-width="1"/>
+
+            <!-- Rodovias estilizadas -->
+            <line x1="40" y1="170" x2="300" y2="170" stroke="#C8CEDB" stroke-width="3" stroke-dasharray="8,4"/>
+            <line x1="170" y1="40" x2="170" y2="300" stroke="#C8CEDB" stroke-width="3" stroke-dasharray="8,4"/>
+            <line x1="60" y1="80" x2="280" y2="260" stroke="#C8CEDB" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+
+            <!-- CAMPINAS — maior, centro -->
+            <circle cx="170" cy="178" r="18" fill="var(--navy)" opacity="0.15"/>
+            <circle cx="170" cy="178" r="11" fill="#0D1E3D"/>
+            <circle cx="170" cy="178" r="5" fill="#FF6E1A"/>
+            <text x="186" y="175" font-size="11" font-weight="700" fill="#0D1E3D">Campinas</text>
+            <text x="186" y="188" font-size="9" fill="#7A8BA8">polo industrial</text>
+
+            <!-- LOUVEIRA -->
+            <circle cx="106" cy="120" r="8" fill="#162B55"/>
+            <circle cx="106" cy="120" r="3.5" fill="#FF6E1A"/>
+            <text x="118" y="117" font-size="10" font-weight="700" fill="#0D1E3D">Louveira</text>
+
+            <!-- VINHEDO -->
+            <circle cx="130" cy="148" r="8" fill="#162B55"/>
+            <circle cx="130" cy="148" r="3.5" fill="#FF6E1A"/>
+            <text x="142" y="145" font-size="10" font-weight="700" fill="#0D1E3D">Vinhedo</text>
+
+            <!-- VALINHOS -->
+            <circle cx="148" cy="218" r="8" fill="#162B55"/>
+            <circle cx="148" cy="218" r="3.5" fill="#FF6E1A"/>
+            <text x="160" y="215" font-size="10" font-weight="700" fill="#0D1E3D">Valinhos</text>
+
+            <!-- Linhas de conexão -->
+            <line x1="106" y1="120" x2="163" y2="170" stroke="#FF6E1A" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+            <line x1="130" y1="148" x2="163" y2="170" stroke="#FF6E1A" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+            <line x1="148" y1="210" x2="163" y2="183" stroke="#FF6E1A" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+
+            <!-- Legenda -->
+            <circle cx="30" cy="308" r="5" fill="#FF6E1A"/>
+            <text x="40" y="312" font-size="9" fill="#7A8BA8">Área de atendimento presencial</text>
+            <text x="170" y="326" font-size="8" fill="#9AA4B5" text-anchor="middle">+ análise remota para todo o Estado de SP</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS / ROI -->
+  <section id="roi">
+    <div class="container">
+      <div class="roi-inner">
+        <div class="roi-header">
+          <span class="tag reveal" style="color: var(--orange-lt);">Resultado em números</span>
+          <h2 class="section-title light reveal">O que a verticalização<br>representa na prática.</h2>
+          <p class="section-sub reveal">Estes são os números que usamos como referência nos diagnósticos. Cada projeto tem suas particularidades — mas a lógica é sempre a mesma.</p>
+        </div>
+        <div class="roi-grid">
+          <div class="roi-card reveal reveal-delay-1">
+            <div class="roi-val"><em>+100%</em></div>
+            <div class="roi-label">De aumento de capacidade de armazenagem no mesmo galpão com verticalização de 3 níveis</div>
+          </div>
+          <div class="roi-card reveal reveal-delay-2">
+            <div class="roi-val">2–5<em>m</em></div>
+            <div class="roi-label">Meses de payback estimado (entre 2 e 5) comparado ao custo de mudança para um galpão maior</div>
+          </div>
+          <div class="roi-card reveal reveal-delay-3">
+            <div class="roi-val">R$<em>0</em></div>
+            <div class="roi-label">Custo do diagnóstico técnico e do projeto de layout para o cliente</div>
+          </div>
+        </div>
+
+        <!-- Exemplo prático -->
+        <div class="roi-example reveal">
+          <div class="roi-ex-col">
+            <div class="roi-ex-label">Situação atual</div>
+            <div class="roi-ex-title">Sem porta-pallets</div>
+            <div class="roi-ex-items">
+              <div class="roi-ex-item">Galpão de 1.000 m²</div>
+              <div class="roi-ex-item">Aluguel: R$ 30.000/mês</div>
+              <div class="roi-ex-item">500 posições-palete</div>
+              <div class="roi-ex-item">Pé-direito subutilizado</div>
+            </div>
+          </div>
+          <div class="roi-arrow">→</div>
+          <div class="roi-ex-col resultado">
+            <div class="roi-ex-label">Com a Tetrix</div>
+            <div class="roi-ex-title">Com verticalização</div>
+            <div class="roi-ex-items">
+              <div class="roi-ex-item">Mesmo galpão de 1.000 m²</div>
+              <div class="roi-ex-item">Mesmo aluguel: R$ 30.000/mês</div>
+              <div class="roi-ex-item">1.000+ posições-palete</div>
+              <div class="roi-ex-item">Pé-direito aproveitado</div>
+            </div>
+            <div class="roi-resultado-badge">+100% de capacidade</div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top: 36px;">
+          <a href="simulador.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:10px; background:#FF6E1A; color:white; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; text-decoration:none; transition:0.3s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Calcule o potencial da sua operação — Simulador gratuito
+          </a>
+          <div style="margin-top:10px; font-size:12px; color:rgba(255,255,255,0.4);">Resultado em menos de 1 minuto · Sem cadastro</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta-final">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="tag reveal">Pronto para começar?</span>
+        <h2 class="cta-title reveal">
+          Mais capacidade.<br><em>Sem mudar de endereço.</em>
+        </h2>
+        <p class="cta-sub reveal">
+          Compartilhe as dimensões do seu galpão e o desafio da sua operação. A Tetrix desenvolve o projeto sem custo e sem compromisso.
+        </p>
+        <div class="cta-buttons reveal">
+          <a href="https://wa.me/5511943668123?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20melhor%20as%20solu%C3%A7%C3%B5es%20da%20Tetrix%20para%20minha%20opera%C3%A7%C3%A3o." target="_blank" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Falar pelo WhatsApp
+          </a>
+          <a href="consultoria.html" class="btn btn-primary-dark">
+            Ver consultoria
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <svg viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="fl-orn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
+              <rect x="2" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="52" y="6" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="7" y="15" width="45" height="5" rx="1.5" fill="url(#fl-orn)"/>
+              <rect x="7" y="28" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.7"/>
+              <rect x="7" y="41" width="45" height="5" rx="1.5" fill="url(#fl-orn)" opacity="0.45"/>
+              <rect x="0" y="48" width="59" height="4" rx="1.5" fill="url(#fl-orn)" opacity="0.8"/>
+              <text x="68" y="38" font-family="'Barlow Condensed', Arial Black, sans-serif" font-size="32" font-weight="900" fill="rgba(255,255,255,0.7)" letter-spacing="2">TETRIX</text>
+              <rect x="68" y="43" width="130" height="2.5" rx="1" fill="url(#fl-orn)" opacity="0.7"/>
+            </svg>
+          </div>
+          <p class="footer-desc">Soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras em todo o estado de São Paulo.</p>
+          <div class="footer-contact">
+            <a href="https://wa.me/5511943668123" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              (11) 94366-8123
+            </a>
+            <a href="mailto:comercial@tetrixlog.com.br">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              comercial@tetrixlog.com.br
+            </a>
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.5);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;opacity:0.6;flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Estado de São Paulo
+            </span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Soluções</div>
+          <ul class="footer-links">
+            <li><a href="consultoria.html">Consultoria</a></li>
+            <li><a href="venda.html">Venda</a></li>
+            <li><a href="locacao.html">Locação</a></li>
+            <li><a href="simulador.html">Simulador</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Produtos</div>
+          <ul class="footer-links">
+            <li><a href="porta-pallets.html">Porta-Pallets</a></li>
+            <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="sobre.html">Sobre a Tetrix</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Tetrix Soluções Intralogísticas. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://wa.me/5511943668123" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5511943668123" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setTimeout(() => document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible')), 100);
+  </script>
+</body>
+</html>
