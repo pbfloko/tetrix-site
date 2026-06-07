@@ -355,23 +355,27 @@
             <div class="form-grid">
               <div class="form-group">
                 <label class="form-label">Nome *</label>
-                <input type="text" class="form-input" placeholder="Seu nome" required>
+                <input type="text" class="form-input" id="campo-nome" placeholder="Seu nome" required>
               </div>
               <div class="form-group">
                 <label class="form-label">Empresa *</label>
-                <input type="text" class="form-input" placeholder="Nome da empresa" required>
+                <input type="text" class="form-input" id="campo-empresa" placeholder="Nome da empresa" required>
               </div>
               <div class="form-group">
                 <label class="form-label">WhatsApp *</label>
-                <input type="tel" class="form-input" id="campo-wpp" placeholder="Ex: (11) 94366-8123" required>
+                <input type="tel" class="form-input" id="campo-wpp" placeholder="(11) 99999-9999" required>
               </div>
               <div class="form-group">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="form-input" id="campo-email" placeholder="seu@email.com">
+              </div>
+              <div class="form-group full">
                 <label class="form-label">Cidade / Região</label>
-                <input type="text" class="form-input" placeholder="Ex: Campinas, Louveira, Vinhedo...">
+                <input type="text" class="form-input" id="campo-cidade" placeholder="Ex: São Bernardo do Campo">
               </div>
               <div class="form-group full">
                 <label class="form-label">Tipo de interesse *</label>
-                <select class="form-select" required>
+                <select class="form-select" id="campo-tipo" required>
                   <option value="" disabled selected>Selecione uma opção</option>
                   <option>Locação de porta-pallets + empilhadeira</option>
                   <option>Compra de porta-pallets</option>
@@ -383,15 +387,15 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Área aproximada do galpão</label>
-                <input type="text" class="form-input" placeholder="Ex: 800 m²">
+                <input type="text" class="form-input" id="campo-area" placeholder="Ex: 800 m²">
               </div>
               <div class="form-group">
                 <label class="form-label">Pé-direito aproximado</label>
-                <input type="text" class="form-input" placeholder="Ex: 6 metros">
+                <input type="text" class="form-input" id="campo-pedireito" placeholder="Ex: 6 metros">
               </div>
               <div class="form-group full">
                 <label class="form-label">Mensagem (opcional)</label>
-                <textarea class="form-textarea" placeholder="Descreva brevemente sua operação, tipo de carga ou dúvida..."></textarea>
+                <textarea class="form-textarea" id="campo-mensagem" placeholder="Descreva brevemente sua operação, tipo de carga ou dúvida..."></textarea>
               </div>
             </div>
 
@@ -508,10 +512,10 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               comercial@tetrixlog.com.br
             </a>
-            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.5);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;opacity:0.6;flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               Estado de São Paulo
-            </span>
+            </a>
           </div>
         </div>
         <div>
@@ -554,7 +558,18 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
+    // ═══════════════════════════════════════════════
+    // CONFIGURAÇÃO DO SUPABASE
+    // ═══════════════════════════════════════════════
+    // Substitua pelos valores do seu projeto:
+    // Settings → API no painel Supabase
+    const SUPABASE_URL = 'https://neattkpxondxfjcepttp.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_Qij_vT0fQDhvWApKMM7zFQ_orqXC6FC';
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
     // Navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
@@ -584,37 +599,62 @@
       this.value = v;
     });
 
-    // Form submit — abre WhatsApp com os dados preenchidos
-    function enviarFormulario(e) {
+    // ═══════════════════════════════════════════════
+    // ENVIO DO FORMULÁRIO
+    // Salva no Supabase + abre WhatsApp
+    // ═══════════════════════════════════════════════
+    async function enviarFormulario(e) {
       e.preventDefault();
-      const form = document.getElementById('form-diagnostico');
-      const inputs = form.querySelectorAll('input, select, textarea');
-      const nome     = inputs[0].value;
-      const empresa  = inputs[1].value;
-      const wpp      = inputs[2].value;
-      const cidade   = inputs[3].value;
-      const tipo     = inputs[4].value;
-      const area     = inputs[5].value;
-      const pedireito= inputs[6].value;
-      const msg      = inputs[7].value;
 
+      // Coleta todos os dados do formulário
+      const dadosLead = {
+        nome:           document.getElementById('campo-nome').value.trim(),
+        empresa:        document.getElementById('campo-empresa').value.trim(),
+        telefone:       document.getElementById('campo-wpp').value.trim(),
+        email:          document.getElementById('campo-email').value.trim() || null,
+        cidade:         document.getElementById('campo-cidade').value.trim() || null,
+        tipo_interesse: document.getElementById('campo-tipo').value,
+        area_galpao:    document.getElementById('campo-area').value.trim() || null,
+        pe_direito:     document.getElementById('campo-pedireito').value.trim() || null,
+        mensagem:       document.getElementById('campo-mensagem').value.trim() || null,
+        origem:         'site_contato',
+        user_agent:     navigator.userAgent.substring(0, 500)
+      };
+
+      // Salva no Supabase (não bloqueia se falhar — fluxo continua)
+      try {
+        const { error } = await supabaseClient
+          .from('leads_contato')
+          .insert([dadosLead]);
+
+        if (error) {
+          console.error('Erro ao salvar lead no Supabase:', error);
+        } else {
+          console.log('✓ Lead salvo no banco com sucesso');
+        }
+      } catch (err) {
+        console.error('Exceção ao salvar lead:', err);
+      }
+
+      // Monta mensagem do WhatsApp
       const texto = encodeURIComponent(
         `Olá! Solicito um diagnóstico gratuito.\n\n` +
-        `*Nome:* ${nome}\n` +
-        `*Empresa:* ${empresa}\n` +
-        `*WhatsApp:* ${wpp}\n` +
-        `*Cidade:* ${cidade || 'Não informado'}\n` +
-        `*Interesse:* ${tipo}\n` +
-        `*Área do galpão:* ${area || 'Não informado'}\n` +
-        `*Pé-direito:* ${pedireito || 'Não informado'}\n` +
-        `*Mensagem:* ${msg || 'Nenhuma'}`
+        `*Nome:* ${dadosLead.nome}\n` +
+        `*Empresa:* ${dadosLead.empresa}\n` +
+        `*WhatsApp:* ${dadosLead.telefone}\n` +
+        `*E-mail:* ${dadosLead.email || 'Não informado'}\n` +
+        `*Cidade:* ${dadosLead.cidade || 'Não informado'}\n` +
+        `*Interesse:* ${dadosLead.tipo_interesse}\n` +
+        `*Área do galpão:* ${dadosLead.area_galpao || 'Não informado'}\n` +
+        `*Pé-direito:* ${dadosLead.pe_direito || 'Não informado'}\n` +
+        `*Mensagem:* ${dadosLead.mensagem || 'Nenhuma'}`
       );
 
-      // Abre WhatsApp com a mensagem pré-preenchida
+      // Abre WhatsApp com mensagem pré-preenchida
       window.open(`https://wa.me/5511943668123?text=${texto}`, '_blank');
 
-      // Mostra confirmação
-      form.style.display = 'none';
+      // Mostra confirmação de sucesso
+      document.getElementById('form-diagnostico').style.display = 'none';
       document.getElementById('form-sucesso').style.display = 'block';
     }
   </script>
