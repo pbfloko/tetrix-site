@@ -419,13 +419,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <!-- Sucesso (oculto) -->
           <div id="form-sucesso" style="display:none; text-align:center; padding: 32px 0;">
-            <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
-            <div style="font-family: var(--font-h); font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 10px;">Recebemos sua solicitação!</div>
-            <p style="font-size: 14px; color: var(--gray-700); line-height: 1.7; margin-bottom: 20px;">Nossa equipe entrará em contato em breve. Para uma resposta mais rápida, fale pelo WhatsApp:</p>
-            <a href="https://wa.me/5511943668123" target="_blank" class="wpp-btn" style="display:inline-flex;">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
-              (11) 94366-8123
-            </a>
+            <div style="font-size: 56px; margin-bottom: 16px;">✅</div>
+            <div style="font-family: var(--font-h); font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 12px;">Recebemos sua solicitação!</div>
+            <p style="font-size: 15px; color: var(--gray-700); line-height: 1.7; margin-bottom: 8px;">
+              Nossa equipe de engenharia já foi notificada e vai analisar seu caso.
+            </p>
+            <p style="font-size: 15px; color: var(--gray-700); line-height: 1.7; margin-bottom: 28px;">
+              <strong style="color: var(--navy);">Retornamos em até 2 horas úteis</strong> pelo canal que preferir.
+            </p>
+            <div style="border-top: 1px solid #E2E7F0; padding-top: 24px; margin-top: 8px;">
+              <p style="font-size: 13px; color: var(--gray-500); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Prefere conversar agora?</p>
+              <a id="link-wpp-sucesso" href="https://wa.me/5511943668123" target="_blank" class="wpp-btn" style="display:inline-flex;">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+                Falar pelo WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -570,16 +578,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     // ═══════════════════════════════════════════════
-    // CONFIGURAÇÃO DO SUPABASE
+    // CONFIGURAÇÃO — SUPABASE
     // ═══════════════════════════════════════════════
-    // Substitua pelos valores do seu projeto:
-    // Settings → API no painel Supabase
     const SUPABASE_URL = 'https://neattkpxondxfjcepttp.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_Qij_vT0fQDhvWApKMM7zFQ_orqXC6FC';
-
     const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ═══════════════════════════════════════════════
+    // CONFIGURAÇÃO — EMAILJS
+    // ═══════════════════════════════════════════════
+    // Substitua pelos valores do seu painel EmailJS:
+    // Account → API Keys (Public Key)
+    // Email Services (Service ID)
+    // Email Templates (Template ID)
+    const EMAILJS_PUBLIC_KEY  = 'Djy7YNw5_v-zt-jqfFMjM';
+    const EMAILJS_SERVICE_ID  = 'service_xz0lz79';
+    const EMAILJS_TEMPLATE_ID = 'template_3yemdd8';
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
     // Navbar scroll
     const navbar = document.getElementById('navbar');
@@ -612,12 +630,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     // ═══════════════════════════════════════════════
     // ENVIO DO FORMULÁRIO
-    // Salva no Supabase + abre WhatsApp
+    // 1. Salva no Supabase
+    // 2. Envia email via EmailJS
+    // 3. Mostra tela de sucesso (WhatsApp vira opção secundária)
     // ═══════════════════════════════════════════════
     async function enviarFormulario(e) {
       e.preventDefault();
 
-      // Coleta todos os dados do formulário
+      // Bloqueia botão pra evitar duplo envio
+      const btnSubmit = document.querySelector('#form-diagnostico button[type="submit"]');
+      const textoOriginal = btnSubmit.innerHTML;
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = 'Enviando...';
+
+      // Coleta dados do formulário
       const dadosLead = {
         nome:           document.getElementById('campo-nome').value.trim(),
         empresa:        document.getElementById('campo-empresa').value.trim(),
@@ -632,23 +658,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         user_agent:     navigator.userAgent.substring(0, 500)
       };
 
-      // Salva no Supabase (não bloqueia se falhar — fluxo continua)
+      // 1. Salva no Supabase (não bloqueia se falhar)
       try {
-        const { error } = await supabaseClient
-          .from('leads_contato')
-          .insert([dadosLead]);
-
-        if (error) {
-          console.error('Erro ao salvar lead no Supabase:', error);
-        } else {
-          console.log('✓ Lead salvo no banco com sucesso');
-        }
+        const { error } = await supabaseClient.from('leads_contato').insert([dadosLead]);
+        if (error) console.error('Erro Supabase:', error);
+        else console.log('✓ Lead salvo no Supabase');
       } catch (err) {
-        console.error('Exceção ao salvar lead:', err);
+        console.error('Exceção Supabase:', err);
       }
 
-      // Monta mensagem do WhatsApp
-      const texto = encodeURIComponent(
+      // 2. Envia email via EmailJS (não bloqueia se falhar)
+      try {
+        const params = {
+          nome:           dadosLead.nome,
+          empresa:        dadosLead.empresa,
+          telefone:       dadosLead.telefone,
+          email:          dadosLead.email || 'Não informado',
+          cidade:         dadosLead.cidade || 'Não informado',
+          tipo_interesse: dadosLead.tipo_interesse,
+          area_galpao:    dadosLead.area_galpao || 'Não informado',
+          pe_direito:     dadosLead.pe_direito || 'Não informado',
+          mensagem:       dadosLead.mensagem || 'Nenhuma mensagem adicional',
+          data_envio:     new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+        };
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+        console.log('✓ Email enviado via EmailJS');
+      } catch (err) {
+        console.error('Erro EmailJS:', err);
+      }
+
+      // 3. Prepara e ABRE o WhatsApp automaticamente (comportamento original mantido)
+      const textoWpp = encodeURIComponent(
         `Olá! Solicito um diagnóstico gratuito.\n\n` +
         `*Nome:* ${dadosLead.nome}\n` +
         `*Empresa:* ${dadosLead.empresa}\n` +
@@ -660,13 +700,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         `*Pé-direito:* ${dadosLead.pe_direito || 'Não informado'}\n` +
         `*Mensagem:* ${dadosLead.mensagem || 'Nenhuma'}`
       );
+      const urlWpp = `https://wa.me/5511943668123?text=${textoWpp}`;
 
-      // Abre WhatsApp com mensagem pré-preenchida
-      window.open(`https://wa.me/5511943668123?text=${texto}`, '_blank');
+      // Abre WhatsApp em nova aba (comportamento antigo)
+      window.open(urlWpp, '_blank');
 
-      // Mostra confirmação de sucesso
+      // Também popula o botão de fallback na tela de sucesso
+      // (caso o navegador bloqueie o popup ou cliente feche a aba)
+      document.getElementById('link-wpp-sucesso').href = urlWpp;
+
+      // 4. Mostra tela de sucesso
       document.getElementById('form-diagnostico').style.display = 'none';
       document.getElementById('form-sucesso').style.display = 'block';
+
+      // Restaura botão (caso o cliente use o botão voltar)
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = textoOriginal;
+
+      // Dispara evento no dataLayer pro GTM/Analytics
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'lead_form_submit',
+          form_type: 'contato',
+          tipo_interesse: dadosLead.tipo_interesse
+        });
+      }
     }
   </script>
 </body>
