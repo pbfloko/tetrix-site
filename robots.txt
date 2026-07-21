@@ -1,0 +1,26 @@
+# robots.txt — Tetrix Soluções Intralogísticas
+# https://www.tetrixlog.com.br
+
+# Regra geral: todos os robôs (Google, Bing, DuckDuckGo, etc)
+User-agent: *
+Allow: /
+
+# Bloqueio preventivo de áreas que podem existir no futuro
+# (mesmo que ainda não existam, deixa configurado)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?debug=
+
+# Bloqueio de bots agressivos que consomem banda sem trazer valor
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Localização do sitemap (essencial para descoberta rápida das páginas)
+Sitemap: https://www.tetrixlog.com.br/sitemap.xml
