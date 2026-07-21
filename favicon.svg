@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="orange-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF8140"/>
+      <stop offset="100%" stop-color="#E85D00"/>
+    </linearGradient>
+  </defs>
+  <!-- Background navy com cantos arredondados -->
+  <rect x="0" y="0" width="64" height="64" rx="12" fill="#0D1E3D"/>
+  <!-- Colunas verticais (montantes) -->
+  <rect x="14" y="12" width="4" height="40" rx="1.5" fill="white"/>
+  <rect x="46" y="12" width="4" height="40" rx="1.5" fill="white"/>
+  <!-- Nivel 1 -->
+  <rect x="18" y="18" width="28" height="4" rx="1" fill="url(#orange-grad)"/>
+  <rect x="22" y="14" width="20" height="4" rx="1" fill="white" opacity="0.85"/>
+  <!-- Nivel 2 -->
+  <rect x="18" y="30" width="28" height="4" rx="1" fill="url(#orange-grad)"/>
+  <rect x="22" y="26" width="20" height="4" rx="1" fill="white" opacity="0.85"/>
+  <!-- Nivel 3 -->
+  <rect x="18" y="42" width="28" height="4" rx="1" fill="url(#orange-grad)"/>
+  <rect x="22" y="38" width="20" height="4" rx="1" fill="white" opacity="0.85"/>
+</svg>
