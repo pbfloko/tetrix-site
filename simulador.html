@@ -223,6 +223,64 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: rgba(255,255,255,0.5);
       text-transform: uppercase;
     }
+
+    /* ── Botão de ajuda (?) e painel expansível ── */
+    .info-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      font-size: 11px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      margin-left: 6px;
+      vertical-align: middle;
+      padding: 0;
+      line-height: 1;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      font-family: inherit;
+    }
+    .info-btn:hover {
+      background: var(--orange);
+      color: white;
+      transform: scale(1.1);
+    }
+    .info-btn.active {
+      background: var(--orange);
+      color: white;
+    }
+    .info-panel {
+      display: none;
+      background: rgba(91, 155, 213, 0.08);
+      border-left: 3px solid var(--orange);
+      padding: 12px 14px;
+      margin-top: 4px;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      animation: infoFadeIn 0.25s ease;
+    }
+    .info-panel.open { display: block; }
+    .info-panel strong { color: #FFB57A; }
+    .info-panel em {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      font-style: normal;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    @keyframes infoFadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
     .input-wrap {
       position: relative;
       display: flex; align-items: center;
@@ -737,38 +795,120 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <!-- Área -->
         <div class="input-group">
-          <label class="input-label" for="inp-area">Área total do galpão</label>
+          <label class="input-label" for="inp-area">
+            Área total do galpão
+            <button type="button" class="info-btn" onclick="toggleInfo(this,'info-area')" aria-label="Como preencher">?</button>
+          </label>
           <div class="input-wrap">
-            <input type="number" id="inp-area" value="1000" min="100" max="50000" placeholder="1000">
+            <input type="number" id="inp-area" value="800" min="100" max="50000" placeholder="800">
             <span class="input-unit right">m²</span>
+          </div>
+          <div class="info-panel" id="info-area">
+            <strong>Use a área útil dedicada à armazenagem.</strong> Não inclua docas, escritórios, banheiros, refeitório ou áreas de picking dedicadas.
+            <em>Dica: é a mesma área que deve ser usada no cálculo do "custo do aluguel por m²" abaixo.</em>
           </div>
         </div>
 
         <!-- Pé-direito slider -->
         <div class="input-group slider-group">
-          <label class="input-label" for="inp-pd">Pé-direito disponível</label>
+          <label class="input-label" for="inp-pd">
+            Pé-direito disponível
+            <button type="button" class="info-btn" onclick="toggleInfo(this,'info-pd')" aria-label="Como preencher">?</button>
+          </label>
           <div class="slider-display">
-            <span class="slider-val" id="pd-val">5,0</span>
+            <span class="slider-val" id="pd-val">5,5</span>
             <span class="slider-unit-inline">m</span>
             <span class="slider-levels" id="pd-levels">→ 3 níveis</span>
           </div>
-          <input type="range" id="inp-pd" min="3.0" max="12.0" step="0.5" value="5.0">
+          <input type="range" id="inp-pd" min="3.0" max="12.0" step="0.5" value="5.5">
+          <div class="info-panel" id="info-pd">
+            <strong>Meça do piso até a parte inferior da estrutura</strong> (viga ou telha) — não até o cume do telhado. Se houver sprinklers, iluminação suspensa ou vigas de contraventamento, considere o ponto mais baixo.
+            <em>Regra prática: se você tem dúvida, use o valor mais conservador — o projeto de engenharia da Tetrix confirma a altura útil real com um levantamento no local.</em>
+          </div>
         </div>
 
         <!-- Custo m² -->
         <div class="input-group">
-          <label class="input-label" for="inp-custo">Custo do aluguel por m²</label>
+          <label class="input-label" for="inp-custo">
+            Custo do aluguel por m²
+            <button type="button" class="info-btn" onclick="toggleInfo(this,'info-custo')" aria-label="Como calcular">?</button>
+          </label>
           <div class="input-wrap">
             <span class="input-unit left">R$</span>
-            <input type="number" id="inp-custo" class="has-left-unit" value="25" min="5" max="200" placeholder="25">
+            <input type="number" id="inp-custo" class="has-left-unit" value="30" min="5" max="200" placeholder="30">
           </div>
           <div class="input-hint">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             Não sabe o valor? Divida o aluguel mensal que você paga pela área construída do galpão.
           </div>
+          <div class="info-panel" id="info-custo">
+            <strong>Divida o valor do aluguel mensal pela metragem de armazenamento disponível do galpão.</strong> Não inclua condomínio, IPTU, energia ou serviços — é o custo puro da locação do espaço.
+            <em>Exemplo: aluguel de R$ 20.000/mês em galpão de 800 m² → R$ 25/m². Se você paga condomínio à parte, esse valor não entra aqui.</em>
+          </div>
         </div>
 
+        <!-- Empilhadeira -->
+        <div class="input-group">
+          <label class="input-label" for="inp-emp">
+            Tipo de empilhadeira
+            <button type="button" class="info-btn" onclick="toggleInfo(this,'info-emp')" aria-label="Diferença entre empilhadeiras">?</button>
+          </label>
+          <div class="input-wrap">
+            <select id="inp-emp" style="width:100%; padding:14px 16px; background:#F4F6FA; border:2px solid transparent; border-radius:10px; font-size:16px; font-weight:600; color:var(--navy); font-family:inherit;">
+              <option value="CB" selected>Contrabalançada (corredor 3,5 m)</option>
+              <option value="PT">Patolada (corredor 2,7 m)</option>
+              <option value="TR">Trilateral (corredor 1,7 m)</option>
+            </select>
+          </div>
+          <div class="input-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Empilhadeiras mais estreitas permitem mais posições no mesmo galpão.
+          </div>
+          <div class="info-panel" id="info-emp">
+            <strong>Contrabalançada:</strong> a mais comum e barata. Corredor largo (~3,5m). Boa pra operações mistas com carga e descarga em docas.<br><br>
+            <strong>Patolada (Reach truck):</strong> tem "patins" na frente que estabilizam o mastro. Corredor médio (~2,7m). Ideal pra verticalização.<br><br>
+            <strong>Trilateral (Turret truck):</strong> gira apenas os garfos, opera em corredor estreitíssimo (~1,7m). Maior densidade possível, mas exige piso super plano e é mais cara.
+            <em>Não sabe qual escolher? A engenharia da Tetrix indica a melhor relação custo-benefício pra sua operação — normalmente há um ponto ótimo entre densidade e custo do equipamento.</em>
+          </div>
+        </div>
 
+        <!-- Camadas hoje -->
+        <div class="input-group">
+          <label class="input-label" for="inp-cam-hoje">
+            Quantas camadas você empilha hoje?
+            <button type="button" class="info-btn" onclick="toggleInfo(this,'info-cam')" aria-label="Como preencher">?</button>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="inp-cam-hoje" value="2" min="1" max="6" step="1" placeholder="2">
+            <span class="input-unit right">camada(s)</span>
+          </div>
+          <div class="input-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <strong>1 = só no chão</strong>, sem empilhar. 2 = dois pallets empilhados. Etc.
+          </div>
+          <div class="info-panel" id="info-cam">
+            <strong>1 camada = você não empilha nada e provavelmente opera com transpaleteira</strong> (manual ou elétrica). Nesse caso, seus corredores são estreitos (1,5–2 m) e sua densidade de piso é alta.<br><br>
+            <strong>2 ou mais camadas = você já empilha pallets uns sobre os outros com empilhadeira.</strong> Nesse caso, os corredores são maiores (3,5 m pra contrabalançada) e a densidade cai — mas você aproveita a vertical.
+            <em>Considere apenas empilhamento seguro — pallets estáveis, carga homogênea, sem risco de queda. Cargas frágeis, líquidas ou desbalanceadas normalmente ficam limitadas a 1 camada.</em>
+          </div>
+        </div>
+
+        <!-- Altura da carga -->
+        <div class="input-group slider-group">
+          <label class="input-label" for="inp-alt-carga">
+            Altura da carga por pallet
+            <button type="button" class="info-btn" onclick="toggleInfo(this,'info-alt')" aria-label="Como medir">?</button>
+          </label>
+          <div class="slider-display">
+            <span class="slider-val" id="alt-val">1,2</span>
+            <span class="slider-unit-inline">m</span>
+          </div>
+          <input type="range" id="inp-alt-carga" min="1.0" max="2.5" step="0.1" value="1.2">
+          <div class="info-panel" id="info-alt">
+            <strong>Altura TOTAL do pallet carregado</strong> — soma da altura do pallet (aprox. 15 cm) com a altura da carga em cima.
+            <em>Exemplo comum: pallet de madeira 0,15m + carga de 1,05m = 1,20m total. Pallets muito altos reduzem o número de níveis possíveis no rack.</em>
+          </div>
+        </div>
 
       </div>
 
@@ -785,17 +925,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- KPIs -->
       <div class="kpi-grid" id="kpi-grid">
         <div class="kpi">
-          <div class="kpi-label">Posições-palete estimadas</div>
-          <div class="kpi-value" id="r-posicoes">—</div>
-          <div class="kpi-sub" id="r-niveis-sub">—</div>
+          <div class="kpi-label">Posições-palete hoje</div>
+          <div class="kpi-value" id="r-hoje">—</div>
+          <div class="kpi-sub" id="r-hoje-sub">—</div>
         </div>
         <div class="kpi highlight">
-          <div class="kpi-label" id="kpi2-label">Custo mensal evitado</div>
-          <div class="kpi-value" id="r-economia">—</div>
-          <div class="kpi-sub" id="r-economia-sub">—</div>
+          <div class="kpi-label" id="kpi2-label">Posições-palete com verticalização*</div>
+          <div class="kpi-value" id="r-posicoes">—</div>
+          <div class="kpi-sub" id="r-posicoes-sub">—</div>
         </div>
         <div class="kpi positive">
-          <div class="kpi-label" id="kpi3-label">Locação total/mês</div>
+          <div class="kpi-label" id="kpi3-label">Locação porta-pallets + empilhadeira</div>
           <div class="kpi-value" id="r-payback">—</div>
           <div class="kpi-sub" id="r-payback-sub">—</div>
         </div>
@@ -810,8 +950,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="economia-value" id="r-economia-banner">—</div>
       </div>
 
+      <!-- Aviso quando não há redução -->
+      <div class="economia-banner" id="sem-reducao-banner" style="display:none; background:#F4F6FA; border:1px solid #E2E7F0;">
+        <div class="economia-left">
+          <div class="economia-label" style="color:var(--navy);">✓ Sua operação já está otimizada para a área disponível</div>
+          <div class="economia-sub" style="color:var(--gray-700);">A verticalização ainda pode trazer ganhos operacionais (seletividade, FIFO, redução de danos e movimentação). Fale com nossos engenheiros para um estudo completo.</div>
+        </div>
+      </div>
+
       <!-- Breakdown -->
       <div class="breakdown" id="breakdown-locacao">
+        <div class="breakdown-row">
+          <span class="breakdown-label">Ganho de capacidade (posições-palete)</span>
+          <span class="breakdown-val" id="r-ganho">—</span>
+        </div>
         <div class="breakdown-row">
           <span class="breakdown-label">Área equivalente evitada</span>
           <span class="breakdown-val" id="r-area-equiv">—</span>
@@ -821,12 +973,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="breakdown-val orange" id="r-custo-evitado">—</span>
         </div>
         <div class="breakdown-row">
-          <span class="breakdown-label">Locação porta-pallets <strong>(5% do investimento/mês)</strong></span>
+          <span class="breakdown-label">Locação porta-pallets <strong>(5% do valor por mês · R$ 300/posição)</strong></span>
           <span class="breakdown-val" id="r-loc-pp">—</span>
         </div>
         <div class="breakdown-row">
           <span class="breakdown-label">Locação empilhadeira <strong>(a partir de)</strong></span>
-          <span class="breakdown-val" id="r-loc-emp">R$ 4.500/mês</span>
+          <span class="breakdown-val" id="r-loc-emp">R$ 4.000/mês</span>
         </div>
         <div class="breakdown-row total">
           <span class="breakdown-label"><strong>Economia mensal com locação Tetrix</strong></span>
@@ -836,19 +988,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="breakdown" id="breakdown-compra" style="display:none;">
         <div class="breakdown-row">
+          <span class="breakdown-label">Ganho de capacidade (posições-palete)</span>
+          <span class="breakdown-val" id="r-ganho-c">—</span>
+        </div>
+        <div class="breakdown-row">
           <span class="breakdown-label">Área equivalente evitada</span>
           <span class="breakdown-val" id="r-area-equiv-c">—</span>
         </div>
         <div class="breakdown-row">
-          <span class="breakdown-label">Custo mensal evitado <strong>(aluguel de área maior)</strong></span>
+          <span class="breakdown-label">Custo mensal evitado <strong>do ganho</strong></span>
           <span class="breakdown-val orange" id="r-custo-evitado-c">—</span>
         </div>
         <div class="breakdown-row">
-          <span class="breakdown-label">Investimento total estimado <strong>(R$ 250/posição)</strong></span>
+          <span class="breakdown-label">Investimento total estimado <strong>(R$ 300/posição-palete)</strong></span>
           <span class="breakdown-val" id="r-investimento">—</span>
         </div>
         <div class="breakdown-row total">
-          <span class="breakdown-label"><strong>Payback estimado do investimento</strong></span>
+          <span class="breakdown-label"><strong>Payback estimado (sobre o ganho)</strong></span>
           <span class="breakdown-val green" id="r-payback-total">—</span>
         </div>
       </div>
@@ -864,13 +1020,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
+      <!-- Nota do asterisco -->
+      <p style="font-size:12px; color:var(--gray-500); margin:12px 0 0; font-style:italic;">
+        * Densidade estimada. Depende do layout específico, obstruções e definição de corredores. Nossos engenheiros realizam a simulação real e precisa sem custo.
+      </p>
+
       <!-- Disclaimer -->
       <div class="disclaimer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF9A5C" stroke-width="2" stroke-linecap="round">
           <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
         </svg>
         <p>
-          <strong>Esta é uma estimativa simplificada.</strong> O número real de posições-palete depende do layout específico do seu galpão, tipo de carga, obstruções e — principalmente — do tipo de empilhadeira utilizada. Equipamentos como <em>patoladas</em> e trilaterais permitem corredores mais estreitos, aumentando significativamente a capacidade de armazenagem. <strong>Nossos engenheiros realizam a simulação real e precisa sem custo.</strong>
+          <strong>Como calculamos.</strong> Os valores usam parâmetros típicos da <strong>ABNT NBR 17150-2:2024</strong> (folgas verticais mínimas entre carga e viga) e larguras de corredor recomendadas por tipo de empilhadeira. A capacidade é uma <em>estimativa</em> — o resultado real depende do layout específico do seu galpão, do tipo e dimensões da carga, do posicionamento de portas/docas e do dimensionamento estrutural. <strong>Nossos engenheiros realizam o estudo real e sem custo.</strong>
         </p>
       </div>
 
@@ -905,23 +1066,88 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   let scenario = 'locacao';
   let lastResult = null;
 
-  // ── SLIDER PÉ-DIREITO
+  // ── TOGGLE DE PAINÉIS DE AJUDA
+  function toggleInfo(btn, panelId) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const isOpen = panel.classList.toggle('open');
+    btn.classList.toggle('active', isOpen);
+  }
+
+  // ── CONSTANTES DE ENGENHARIA
+  // Folga do topo (última viga → topo do rack, aproximação)
+  const FOLGA_TOPO = 0.55;
+
+  // Densidade de posições-palete por m² e por nível, calibrada em referência
+  // técnica: 880 m² × 4 níveis com Contrabalançada = 740 posições-palete
+  // Valores por tipo de empilhadeira (corredores mais estreitos → mais posições)
+  const DENS = { CB: 0.21, PT: 0.29, TR: 0.33 };
+
+  // Densidade do piso QUANDO O CLIENTE NÃO USA EMPILHADEIRA
+  // (opera com transpaleteira manual/elétrica, corredor de 1,5–2,0m → mais denso)
+  // Só se aplica quando camadasHoje === 1 (não empilha)
+  const DENS_PISO_SEM_EMP = 0.40;
+
+  // Preços de referência
+  const PRECO_POSICAO       = 300;   // R$ por posição-palete
+  const TAXA_LOCACAO_MENSAL = 0.05;  // 5% do valor total ao mês
+  const LOCACAO_EMPILHADEIRA = 4000; // R$/mês (a partir de)
+
+  // ── ELEMENTOS
   const sliderPD  = document.getElementById('inp-pd');
   const pdVal     = document.getElementById('pd-val');
   const pdLevels  = document.getElementById('pd-levels');
+  const sliderAlt = document.getElementById('inp-alt-carga');
+  const altVal    = document.getElementById('alt-val');
 
-  function calcNiveis(pd) {
-    return Math.floor((pd - 0.5) / 1.35);
+  // ── FUNÇÕES DE ENGENHARIA (NBR 17150-2:2024)
+  // Folga Y3: entre topo da carga e a viga superior
+  // Regra: máx(20 cm, 10% da altura da carga, 15 cm)
+  function folgaY3(altCarga) {
+    const min = 0.20;
+    const perc = 0.10 * altCarga;
+    const abs = 0.15;
+    return Math.max(min, perc, abs);
   }
 
+  // Cálculo de níveis considerando altura da carga e folgas normativas
+  // passo = altura carga + folga Y3 + espessura da viga (0,14 m)
+  function calcNiveis(pd, altCarga) {
+    const passo = altCarga + folgaY3(altCarga) + 0.14;
+    const usavel = pd - FOLGA_TOPO;
+    return Math.max(1, Math.floor(usavel / passo));
+  }
+
+  // Densidade de porta-pallets pelo tipo de empilhadeira
+  function densPortaPallets(emp) {
+    return DENS[emp] || DENS.CB;
+  }
+
+  // Densidade da operação HOJE (antes da verticalização)
+  // — 1 camada: cliente não usa empilhadeira → transpaleteira, corredor menor
+  // — 2+ camadas: cliente já usa empilhadeira → mesmo corredor que a solução PP
+  function densHoje(camadasHoje, emp) {
+    return camadasHoje === 1 ? DENS_PISO_SEM_EMP : densPortaPallets(emp);
+  }
+
+  // ── SLIDER PÉ-DIREITO
   sliderPD.addEventListener('input', () => {
     const pd = parseFloat(sliderPD.value);
+    const altCarga = parseFloat(sliderAlt.value) || 1.5;
     pdVal.textContent = pd.toFixed(1).replace('.', ',');
-    const n = calcNiveis(pd);
+    const n = calcNiveis(pd, altCarga);
     pdLevels.textContent = n === 1 ? '→ 1 nível' : `→ ${n} níveis`;
   });
 
-
+  // ── SLIDER ALTURA DA CARGA
+  sliderAlt.addEventListener('input', () => {
+    const altCarga = parseFloat(sliderAlt.value);
+    altVal.textContent = altCarga.toFixed(1).replace('.', ',');
+    // Recalcula níveis também (dependem da altura da carga)
+    const pd = parseFloat(sliderPD.value) || 5;
+    const n = calcNiveis(pd, altCarga);
+    pdLevels.textContent = n === 1 ? '→ 1 nível' : `→ ${n} níveis`;
+  });
 
   // ── MODO (topo do card)
   function setModo(val) {
@@ -961,11 +1187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const p = Math.min((now - start) / duration, 1);
       const ease = 1 - Math.pow(1 - p, 3);
       const val = from + (target - from) * ease;
-      if (isCurrency) {
-        el.textContent = prefix + Math.round(val).toLocaleString('pt-BR') + suffix;
-      } else {
-        el.textContent = prefix + Math.round(val).toLocaleString('pt-BR') + suffix;
-      }
+      el.textContent = prefix + Math.round(val).toLocaleString('pt-BR') + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -973,34 +1195,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // ── CALCULAR
   function calcular() {
-    const area  = parseFloat(document.getElementById('inp-area').value)  || 1000;
-    const pd    = parseFloat(sliderPD.value) || 5;
-    const custo = parseFloat(document.getElementById('inp-custo').value) || 30;
+    const area          = parseFloat(document.getElementById('inp-area').value)      || 800;
+    const pd            = parseFloat(sliderPD.value)                                  || 5.5;
+    const custo         = parseFloat(document.getElementById('inp-custo').value)     || 30;
+    const emp           = document.getElementById('inp-emp').value                    || 'CB';
+    const camadasHoje   = parseInt(document.getElementById('inp-cam-hoje').value)    || 2;
+    const altCarga      = parseFloat(sliderAlt.value)                                 || 1.2;
 
-    // Níveis
-    const niveis = Math.max(1, calcNiveis(pd));
+    // Níveis considerando altura da carga
+    const niveis = calcNiveis(pd, altCarga);
 
-    // Densidade base (âncora: 1000m², 3 níveis = 576 posições)
-    const densBase = 0.576;
-    const posicoes = Math.round(area * densBase * (niveis / 3));
+    // Densidade por empilhadeira (usado no cálculo do porta-pallets)
+    const densPP = densPortaPallets(emp);
 
-    // Área equivalente extra no piso (sem verticalização)
-    // Extra = área × (niveis - 1) — derivado da simulação âncora
-    const areaExtra = Math.round(area * (niveis - 1));
+    // Densidade HOJE — depende de camadas empilhadas hoje
+    // 1 camada → sem empilhadeira → densidade maior (corredor menor)
+    // 2+ camadas → com empilhadeira → mesma densidade da solução PP
+    const densAtual = densHoje(camadasHoje, emp);
+
+    // Posições no porta-pallets (verticalizado)
+    const posicoes = Math.round(area * densPP * niveis);
+
+    // Posições hoje no piso (chão + eventual empilhamento livre)
+    const capacidadeHoje = Math.round(area * densAtual * camadasHoje);
+
+    // Ganho (pode ser negativo se operação já otimizada)
+    const ganho = posicoes - capacidadeHoje;
+
+    // Área equivalente evitada — usa a densidade DO MODO ATUAL de operação
+    // (quantos m² a mais seriam necessários pra ter esse ganho no layout atual)
+    const areaExtra = ganho > 0 ? Math.round(ganho / densAtual) : 0;
 
     // Financeiro
     const custoEvitado   = areaExtra * custo;
-    const investimento   = posicoes * 250;
-    const locacaoPP      = investimento * 0.05;
-    const locacaoEmp     = 4500;
+    const investimento   = posicoes * PRECO_POSICAO;
+    const locacaoPP      = investimento * TAXA_LOCACAO_MENSAL;
+    const locacaoEmp     = LOCACAO_EMPILHADEIRA;
     const locacaoTotal   = locacaoPP + locacaoEmp;
+    const custoPorPos    = posicoes > 0 ? locacaoTotal / posicoes : 0;
     const economiaMensal = custoEvitado - locacaoTotal;
     const economiaPct    = custoEvitado > 0 ? (economiaMensal / custoEvitado * 100) : 0;
     const paybackMeses   = custoEvitado > 0 ? (investimento / custoEvitado) : 0;
 
-    lastResult = { area, pd, custo, niveis, posicoes, areaExtra,
+    lastResult = { area, pd, custo, emp, camadasHoje, altCarga,
+                   niveis, densPP, densAtual, posicoes, capacidadeHoje, ganho, areaExtra,
                    custoEvitado, investimento, locacaoPP, locacaoEmp,
-                   locacaoTotal, economiaMensal, economiaPct, paybackMeses };
+                   locacaoTotal, custoPorPos, economiaMensal, economiaPct, paybackMeses };
 
     // Mostra resultados
     const resultsEl = document.getElementById('results');
@@ -1012,86 +1252,112 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function renderResults(r) {
     const isLocacao = scenario === 'locacao';
+    const temGanho  = r.ganho > 0;
 
-    // KPI 1 — posições (igual nos dois cenários)
+    // ── KPI 1 — Posições-palete hoje
+    animateCount(document.getElementById('r-hoje'), r.capacidadeHoje, '', '', false);
+    document.getElementById('r-hoje-sub').textContent = r.camadasHoje === 1
+      ? `apenas no chão · sem empilhar · área ${fmtNum(r.area)} m²`
+      : `${r.camadasHoje} camadas empilhadas · área ${fmtNum(r.area)} m²`;
+
+    // ── KPI 2 — Posições-palete com verticalização (destaque)
+    document.getElementById('kpi2-label').textContent = 'Posições-palete com verticalização*';
     animateCount(document.getElementById('r-posicoes'), r.posicoes, '', '', false);
-    document.getElementById('r-niveis-sub').textContent =
-      `${r.niveis} ${r.niveis !== 1 ? 'níveis' : 'nível'} de altura · área ${fmtNum(r.area)} m²`;
+    document.getElementById('r-posicoes-sub').textContent = temGanho
+      ? `${r.niveis} ${r.niveis === 1 ? 'nível' : 'níveis'} · +${fmtNum(r.ganho)} posições vs. hoje`
+      : `${r.niveis} ${r.niveis === 1 ? 'nível' : 'níveis'} · operação já otimizada`;
 
     if (isLocacao) {
-      // KPI 2 — custo evitado
-      document.getElementById('kpi2-label').textContent = 'Custo mensal evitado';
-      animateCount(document.getElementById('r-economia'), r.custoEvitado, 'R$ ', '/mês', true);
-      document.getElementById('r-economia-sub').textContent =
-        `Com ${r.niveis} níveis, ${r.niveis}x mais capacidade no mesmo galpão — equivale a alugar +${fmtNum(r.areaExtra)} m²`;
-
-      // KPI 3 — locação total
-      document.getElementById('kpi3-label').textContent = 'Locação total/mês';
+      // ── KPI 3 — Locação porta-pallets + empilhadeira
+      document.getElementById('kpi3-label').textContent = 'Locação porta-pallets + empilhadeira';
       animateCount(document.getElementById('r-payback'), r.locacaoTotal, 'R$ ', '', true);
       document.getElementById('r-payback-sub').textContent =
-        `porta-pallets + empilhadeira (estimativa)`;
+        `${fmtBRL(r.custoPorPos)}/posição-palete · a partir de`;
 
-      // Banner economia
+      // Banner
       const banner = document.getElementById('economia-banner');
-      banner.style.display = 'flex';
-      animateCount(document.getElementById('r-economia-banner'), r.economiaMensal, 'R$ ', '/mês', true);
-      document.getElementById('r-economia-pct-banner').textContent =
-        `${Math.round(r.economiaPct)}% de economia vs. alugar área maior`;
+      const semReducao = document.getElementById('sem-reducao-banner');
 
-      // Breakdown locação
-      document.getElementById('breakdown-locacao').style.display = 'block';
+      if (temGanho && r.economiaMensal > 0) {
+        banner.style.display = 'flex';
+        semReducao.style.display = 'none';
+        animateCount(document.getElementById('r-economia-banner'), r.economiaMensal, 'R$ ', '/mês', true);
+        document.getElementById('r-economia-pct-banner').textContent =
+          `${Math.round(r.economiaPct)}% de economia vs. alugar área maior`;
+      } else {
+        banner.style.display = 'none';
+        semReducao.style.display = 'flex';
+      }
+
+      // Breakdown locação — só mostra se tem ganho real
+      if (temGanho) {
+        document.getElementById('breakdown-locacao').style.display = 'block';
+        document.getElementById('r-ganho').textContent         = '+' + fmtNum(r.ganho);
+        document.getElementById('r-area-equiv').textContent    = fmtNum(r.areaExtra) + ' m²';
+        document.getElementById('r-custo-evitado').textContent = fmtBRL(r.custoEvitado) + '/mês';
+        document.getElementById('r-loc-pp').textContent        = fmtBRL(r.locacaoPP) + '/mês';
+        document.getElementById('r-loc-emp').textContent       = 'R$ 4.000/mês';
+        document.getElementById('r-economia-total').textContent = fmtBRL(r.economiaMensal) + '/mês';
+      } else {
+        document.getElementById('breakdown-locacao').style.display = 'none';
+      }
+
       document.getElementById('breakdown-compra').style.display  = 'none';
       document.getElementById('payback-bar-wrap').style.display  = 'none';
 
-      document.getElementById('r-area-equiv').textContent   = fmtNum(r.areaExtra) + ' m²';
-      document.getElementById('r-custo-evitado').textContent = fmtBRL(r.custoEvitado) + '/mês';
-      document.getElementById('r-loc-pp').textContent       = fmtBRL(r.locacaoPP) + '/mês';
-      document.getElementById('r-loc-emp').textContent      = 'R$ 4.500/mês';
-      document.getElementById('r-economia-total').textContent = fmtBRL(r.economiaMensal) + '/mês';
-
     } else {
-      // Esconde banner economia
-      document.getElementById('economia-banner').style.display = 'none';
+      // MODO COMPRA
+      document.getElementById('economia-banner').style.display   = 'none';
+      const semReducao = document.getElementById('sem-reducao-banner');
 
-      // KPI 2 — investimento
-      document.getElementById('kpi2-label').textContent = 'Investimento estimado';
-      animateCount(document.getElementById('r-economia'), r.investimento, 'R$ ', '', true);
-      document.getElementById('r-economia-sub').textContent =
-        `R$ 250 por posição-palete`;
-
-      // KPI 3 — payback
+      // ── KPI 3 — Payback estimado sobre o GANHO
       document.getElementById('kpi3-label').textContent = 'Payback estimado';
       const pb = r.paybackMeses;
-      const pbText = pb < 1
-        ? '< 1 mês'
-        : pb <= 12
-          ? pb.toFixed(1).replace('.',',') + ' meses'
-          : (pb/12).toFixed(1).replace('.',',') + ' anos';
+      let pbText;
+      if (!temGanho || pb === 0) {
+        pbText = '—';
+      } else if (pb < 1) {
+        pbText = '< 1 mês';
+      } else if (pb <= 12) {
+        pbText = pb.toFixed(1).replace('.', ',') + ' meses';
+      } else {
+        pbText = (pb/12).toFixed(1).replace('.', ',') + ' anos';
+      }
       document.getElementById('r-payback').textContent = pbText;
-      document.getElementById('r-payback-sub').textContent =
-        `com economia de ${fmtBRL(r.custoEvitado)}/mês`;
+      document.getElementById('r-payback-sub').textContent = temGanho
+        ? `com economia de ${fmtBRL(r.custoEvitado)}/mês (sobre o ganho)`
+        : 'sua operação já está otimizada';
 
-      // Breakdown compra
+      // Aviso de sem redução (mesmo comportamento da locação)
+      if (temGanho) {
+        semReducao.style.display = 'none';
+        document.getElementById('breakdown-compra').style.display  = 'block';
+        document.getElementById('r-ganho-c').textContent         = '+' + fmtNum(r.ganho);
+        document.getElementById('r-area-equiv-c').textContent    = fmtNum(r.areaExtra) + ' m²';
+        document.getElementById('r-custo-evitado-c').textContent = fmtBRL(r.custoEvitado) + '/mês';
+        document.getElementById('r-investimento').textContent    = fmtBRL(r.investimento);
+        document.getElementById('r-payback-total').textContent   = pbText;
+
+        // Barra de payback (máx 24 meses = 100%)
+        document.getElementById('payback-bar-wrap').style.display = 'block';
+        const pct = Math.min(r.paybackMeses / 24 * 100, 100);
+        document.getElementById('r-payback-bar-label').textContent = pbText;
+        setTimeout(() => {
+          document.getElementById('payback-bar').style.width = pct + '%';
+        }, 100);
+      } else {
+        semReducao.style.display = 'flex';
+        document.getElementById('breakdown-compra').style.display  = 'none';
+        document.getElementById('payback-bar-wrap').style.display  = 'none';
+      }
+
       document.getElementById('breakdown-locacao').style.display = 'none';
-      document.getElementById('breakdown-compra').style.display  = 'block';
-
-      document.getElementById('r-area-equiv-c').textContent    = fmtNum(r.areaExtra) + ' m²';
-      document.getElementById('r-custo-evitado-c').textContent = fmtBRL(r.custoEvitado) + '/mês';
-      document.getElementById('r-investimento').textContent    = fmtBRL(r.investimento);
-      document.getElementById('r-payback-total').textContent   = pbText;
-
-      // Barra de payback (máx 24 meses para 100%)
-      document.getElementById('payback-bar-wrap').style.display = 'block';
-      const pct = Math.min(r.paybackMeses / 24 * 100, 100);
-      document.getElementById('r-payback-bar-label').textContent = pbText;
-      setTimeout(() => {
-        document.getElementById('payback-bar').style.width = pct + '%';
-      }, 100);
     }
   }
 
-  // ── INIT slider label
+  // ── INIT
   sliderPD.dispatchEvent(new Event('input'));
+  sliderAlt.dispatchEvent(new Event('input'));
 </script>
 
   <!-- FOOTER -->
