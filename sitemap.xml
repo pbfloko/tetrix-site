@@ -65,9 +65,25 @@
   <!-- Institucional -->
   <url>
     <loc>https://www.tetrixlog.com.br/sobre.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+  <!-- Blog — índice -->
+  <url>
+    <loc>https://www.tetrixlog.com.br/blog/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog — artigos -->
+  <url>
+    <loc>https://www.tetrixlog.com.br/blog/quantos-paletes-cabem-no-galpao.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
