@@ -150,9 +150,17 @@
       position: relative;
       overflow: hidden;
     }
+    .article-hero-photo {
+      position: absolute; inset: 0;
+      background-image: url('/blog/quantos-paletes-hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.32;
+    }
     .article-hero::before {
       content: ''; position: absolute; inset: 0;
       background:
+        linear-gradient(180deg, rgba(13,30,61,0.55) 0%, rgba(13,30,61,0.88) 65%, var(--navy) 100%),
         radial-gradient(circle at 15% 20%, rgba(255,110,26,0.15), transparent 45%),
         radial-gradient(circle at 85% 80%, rgba(91,155,213,0.12), transparent 40%);
       pointer-events: none;
@@ -233,6 +241,65 @@
       font-weight: 600;
     }
     .toc-item.sub { padding-left: 24px; font-size: 12.5px; }
+
+    /* ── Versão mobile do CTA do simulador (aparece só quando o TOC/sidebar some) ── */
+    .sim-banner-mobile { display: none; }
+    @media (max-width: 1024px) {
+      .sim-banner-mobile {
+        display: flex; align-items: center; gap: 14px;
+        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+        border-radius: 12px; padding: 16px 18px;
+        text-decoration: none; margin-bottom: 28px;
+        box-shadow: 0 4px 16px rgba(13,30,61,0.15);
+      }
+      .sim-banner-mobile:hover { text-decoration: none; }
+      .sim-banner-mobile .icon {
+        flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+        background: rgba(255,110,26,0.18); color: var(--orange-lt);
+        display: flex; align-items: center; justify-content: center;
+      }
+      .sim-banner-mobile .icon svg { width: 21px; height: 21px; }
+      .sim-banner-mobile .text-title { font-family: var(--font-head); font-weight: 700; font-size: 14.5px; color: white; }
+      .sim-banner-mobile .text-sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+      .sim-banner-mobile .arrow { margin-left: auto; color: rgba(255,255,255,0.5); flex-shrink: 0; }
+    }
+
+    /* ── Card sticky do simulador (sempre visível junto ao índice) ── */
+    .toc-sim-card {
+      display: block; margin-top: 16px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+      border-radius: 12px; padding: 20px 20px 22px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(13,30,61,0.15);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative; overflow: hidden;
+    }
+    .toc-sim-card::before {
+      content: ''; position: absolute; top: -20px; right: -20px;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle, rgba(255,110,26,0.25), transparent 70%);
+    }
+    .toc-sim-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(13,30,61,0.25);
+      text-decoration: none;
+    }
+    .toc-sim-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: rgba(255,110,26,0.18);
+      color: var(--orange-lt);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px; position: relative; z-index: 2;
+    }
+    .toc-sim-icon svg { width: 19px; height: 19px; }
+    .toc-sim-title {
+      font-family: var(--font-head); font-weight: 700; font-size: 15px;
+      color: white; margin-bottom: 4px; position: relative; z-index: 2;
+    }
+    .toc-sim-sub {
+      font-size: 12px; color: rgba(255,255,255,0.65);
+      line-height: 1.4; position: relative; z-index: 2;
+    }
 
     /* ===== ARTIGO — CONTEÚDO ===== */
     .article-content {
@@ -415,6 +482,19 @@
       width: 240px; height: 240px;
       background: radial-gradient(circle, rgba(255,110,26,0.18), transparent 70%);
     }
+    .cta-final {
+      border: 1px solid rgba(255,110,26,0.35);
+      padding: 44px 44px 40px;
+      margin-top: 56px;
+    }
+    .cta-final-eyebrow {
+      display: inline-block; position: relative; z-index: 2;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--orange-lt);
+      background: rgba(255,110,26,0.15);
+      padding: 5px 12px; border-radius: 999px;
+      margin-bottom: 16px;
+    }
     .cta-block h3 {
       font-family: var(--font-head); font-weight: 700; font-size: 26px;
       color: white; margin-bottom: 12px;
@@ -579,6 +659,7 @@
 
   <!-- ARTICLE HERO -->
   <header class="article-hero">
+    <div class="article-hero-photo" role="img" aria-label="Corredores de porta-pallets em galpão com empilhadeiras em operação"></div>
     <div class="container">
       <div class="breadcrumb">
         <a href="/">Início</a>
@@ -628,12 +709,31 @@
               <a href="#erros" class="toc-item">Os 3 erros mais comuns</a>
             </div>
           </nav>
+
+          <a href="/simulador.html" class="toc-sim-card">
+            <div class="toc-sim-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2"/></svg>
+            </div>
+            <div class="toc-sim-title">Calcule o seu galpão</div>
+            <div class="toc-sim-sub">Simulador gratuito de posições-palete</div>
+          </a>
         </aside>
 
         <!-- CONTEÚDO -->
         <article class="article-content">
 
           <p class="lead">Se você já tentou estimar quantos paletes cabem no seu galpão, provavelmente fez esta conta — e ela está errada.</p>
+
+          <a href="/simulador.html" class="sim-banner-mobile">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2"/></svg>
+            </div>
+            <div>
+              <div class="text-title">Calcule o seu galpão</div>
+              <div class="text-sub">Simulador gratuito de posições-palete</div>
+            </div>
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
 
           <p>O galpão tem 1.000 m². O palete PBR ocupa 1,20 m². Logo, cabem 833 paletes por nível. Com cinco níveis, 4.165 posições.</p>
 
@@ -949,7 +1049,8 @@
             <li><strong>Comparar com o empilhamento no piso sem descontar a perda de colmeia.</strong> Quem hoje empilha em bloco não aproveita 100% do espaço: cada rua de bloco só aceita um SKU, e quando ela esvazia pela metade o espaço fica ocioso. Essa perda — chamada de colmeia, ou <em>honeycombing</em> — costuma consumir 20% da capacidade teórica. Ignorar isso faz a verticalização parecer melhor do que é, e destrói a credibilidade da proposta na primeira pergunta difícil.</li>
           </ol>
 
-          <div class="cta-block">
+          <div class="cta-block cta-final">
+            <span class="cta-final-eyebrow">Fim do guia</span>
             <h3>Uma estimativa não é um projeto</h3>
             <p>O simulador não conhece a resistência do seu piso, a posição dos seus pilares, o traçado dos seus sprinklers nem o giro do seu estoque — e são esses fatores que separam uma estimativa de um projeto executável. No <a href="/consultoria.html" style="color:var(--orange-lt);">diagnóstico técnico gratuito</a>, a engenharia da Tetrix vai até o seu galpão, levanta essas variáveis e apresenta o layout de melhor custo-benefício para a sua operação, com a ART do responsável técnico.</p>
             <div class="cta-btns">
@@ -957,9 +1058,9 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 Solicitar diagnóstico gratuito
               </a>
-              <a href="contato.html" class="cta-btn secondary">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-                Falar com a engenharia
+              <a href="/simulador.html" class="cta-btn secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                Ou calcule uma estimativa agora
               </a>
             </div>
           </div>
