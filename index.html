@@ -247,6 +247,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .hero-stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; max-width: 120px; line-height: 1.4; }
 
+    /* ── Card flutuante do simulador (lado direito do hero) ── */
+    .hero-sim-card {
+      position: absolute;
+      top: 50%; right: 64px;
+      transform: translateY(-50%);
+      width: 300px; z-index: 3;
+      background: rgba(13,30,61,0.55);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,110,26,0.3);
+      border-radius: 16px;
+      padding: 28px 26px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .hero-sim-card:hover {
+      transform: translateY(-50%) translateY(-4px);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.45);
+      border-color: rgba(255,110,26,0.55);
+      text-decoration: none;
+    }
+    .hero-sim-icon {
+      width: 44px; height: 44px; border-radius: 11px;
+      background: rgba(255,110,26,0.18);
+      color: #FF9A5C;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .hero-sim-icon svg { width: 22px; height: 22px; }
+    .hero-sim-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #FF9A5C;
+      margin-bottom: 10px;
+    }
+    .hero-sim-title {
+      font-family: var(--font-head); font-weight: 800; font-size: 20px;
+      line-height: 1.25; color: white; margin-bottom: 10px;
+    }
+    .hero-sim-sub {
+      font-size: 13.5px; line-height: 1.55; color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .hero-sim-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 700; color: white;
+      background: var(--orange); padding: 11px 18px; border-radius: 9px;
+      width: 100%; justify-content: center;
+    }
+    @media (max-width: 1200px) {
+      .hero-sim-card { display: none; }
+    }
+
     /* Diagonal bottom cut */
     #hero::after {
       content: ''; position: absolute; bottom: -1px; left: 0; right: 0; z-index: 3;
@@ -707,6 +759,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+
+    <!-- Card flutuante do simulador -->
+    <a href="simulador.html" class="hero-sim-card reveal reveal-delay-4">
+      <div class="hero-sim-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2M13 8h4M13 11h4M7 14h2M13 14h4"/></svg>
+      </div>
+      <div class="hero-sim-eyebrow">Simulador gratuito</div>
+      <div class="hero-sim-title">Quantas posições-palete cabem no seu galpão?</div>
+      <div class="hero-sim-sub">Descubra em segundos sua capacidade e economia potencial.</div>
+      <span class="hero-sim-cta">
+        Calcular agora
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </span>
+    </a>
   </section>
 
   <!-- ===========================
