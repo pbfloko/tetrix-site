@@ -583,6 +583,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .modo-divider { margin: 0 24px 28px; }
       .modo-toggle { grid-template-columns: 1fr; }
       .inputs-grid { grid-template-columns: 1fr; }
+      /* No mobile, o campo interativo (slider de pé-direito) vem primeiro,
+         antes do campo numérico de área — engaja a pessoa de cara */
+      .campo-pd { order: -1; }
       .kpi-grid { grid-template-columns: 1fr; }
       .cta-wrap { flex-direction: column; }
     }
@@ -779,7 +782,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="inputs-grid">
 
         <!-- Área -->
-        <div class="input-group">
+        <div class="input-group campo-area">
           <label class="input-label" for="inp-area">
             Área total do galpão
             <button type="button" class="info-btn" onclick="toggleInfo(this,'info-area')" aria-label="Como preencher">?</button>
@@ -795,7 +798,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <!-- Pé-direito slider -->
-        <div class="input-group slider-group">
+        <div class="input-group slider-group campo-pd">
           <label class="input-label" for="inp-pd">
             Pé-direito disponível
             <button type="button" class="info-btn" onclick="toggleInfo(this,'info-pd')" aria-label="Como preencher">?</button>
@@ -1038,7 +1041,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <p class="footer-note">
     <a href="index.html">Tetrix Soluções Intralogísticas</a> · Estado de São Paulo<br>
-    <a href="https://wa.me/5511992353669">(11) 99235-3669</a> · <a href="mailto:comercial@tetrixlog.com.br">comercial@tetrixlog.com.br</a><br>
+    <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e">(11) 99235-3669</a> · <a href="mailto:comercial@tetrixlog.com.br">comercial@tetrixlog.com.br</a><br>
     <a href="locacao.html">← Voltar para a página de Locação</a>
   </p>
 
@@ -1365,7 +1368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
-  <a href="https://wa.me/5511992353669" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
   </a>
 
