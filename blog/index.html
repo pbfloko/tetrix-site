@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Tetrix | Guias técnicos de intralogística e verticalização</title>
+  <link rel="canonical" href="https://www.tetrixlog.com.br/blog/index.html">
   <!-- Open Graph / Social Preview (WhatsApp, Facebook, LinkedIn) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Tetrix Soluções Intralogísticas">
@@ -252,6 +253,19 @@
       .articles-grid { grid-template-columns: 1fr; }
       .articles-section { padding: 60px 0 80px; }
     }
+    /* ===================================================================
+       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
+       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
+       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
+       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
+       números, barras e detalhes — onde não há texto por cima.
+       =================================================================== */
+    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
+    .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
+    .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
+    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
+
   </style>
 </head>
 <body>
@@ -262,7 +276,7 @@
   <!-- NAVBAR -->
   <nav id="navbar">
     <div class="container">
-      <a href="/" class="logo-mark" aria-label="Tetrix Soluções Intralogísticas">
+      <a href="../index.html" class="logo-mark" aria-label="Tetrix Soluções Intralogísticas">
         <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="og-nav" x1="0" y1="0" x2="0" y2="1">
@@ -287,16 +301,16 @@
         </svg>
       </a>
       <ul class="nav-links">
-        <li><a href="/">Início</a></li>
-        <li><a href="/venda.html">Comprar</a></li>
-        <li><a href="/locacao.html">Locar</a></li>
-        <li><a href="/consultoria.html">Consultoria</a></li>
-        <li><a href="/porta-pallets.html">Porta-Pallets</a></li>
-        <li><a href="/empilhadeiras.html">Empilhadeiras</a></li>
-        <li><a href="/sobre.html">Sobre</a></li>
-        <li><a href="/blog/" class="active">Blog</a></li>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../venda.html">Comprar</a></li>
+        <li><a href="../locacao.html">Locar</a></li>
+        <li><a href="../consultoria.html">Consultoria</a></li>
+        <li><a href="../porta-pallets.html">Porta-Pallets</a></li>
+        <li><a href="../empilhadeiras.html">Empilhadeiras</a></li>
+        <li><a href="../sobre.html">Sobre</a></li>
+        <li><a href="index.html" class="active">Blog</a></li>
       </ul>
-      <a href="/contato.html" class="nav-cta">Solicitar Diagnóstico</a>
+      <a href="../contato.html" class="nav-cta">Solicitar Diagnóstico</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -305,16 +319,16 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="/">Início</a>
-    <a href="/venda.html">Comprar</a>
-    <a href="/locacao.html">Locar</a>
-    <a href="/consultoria.html">Consultoria</a>
-    <a href="/porta-pallets.html">Porta-Pallets</a>
-    <a href="/empilhadeiras.html">Empilhadeiras</a>
-    <a href="/sobre.html">Sobre</a>
-    <a href="/blog/">Blog</a>
-    <a href="/contato.html">Contato</a>
-    <a href="/contato.html" class="nav-cta" style="text-align:center;">Solicitar Diagnóstico</a>
+    <a href="../index.html">Início</a>
+    <a href="../venda.html">Comprar</a>
+    <a href="../locacao.html">Locar</a>
+    <a href="../consultoria.html">Consultoria</a>
+    <a href="../porta-pallets.html">Porta-Pallets</a>
+    <a href="../empilhadeiras.html">Empilhadeiras</a>
+    <a href="../sobre.html">Sobre</a>
+    <a href="index.html">Blog</a>
+    <a href="../contato.html">Contato</a>
+    <a href="../contato.html" class="nav-cta" style="text-align:center;">Solicitar Diagnóstico</a>
   </div>
 
   <!-- HERO -->
@@ -331,7 +345,7 @@
     <div class="container">
       <div class="articles-grid">
         <!-- Artigo 1 (o único até agora) -->
-        <a href="/blog/quantos-paletes-cabem-no-galpao.html" class="article-card">
+        <a href="quantos-paletes-cabem-no-galpao.html" class="article-card">
           <div class="article-card-visual">
             <img src="/blog/quantos-paletes-card.jpg" alt="Corredores de porta-pallets em galpão com empilhadeiras em operação" loading="lazy">
           </div>
@@ -352,7 +366,7 @@
         </a>
 
         <!-- Artigo 2 -->
-        <a href="/blog/locacao-ou-compra-porta-paletes.html" class="article-card">
+        <a href="locacao-ou-compra-porta-paletes.html" class="article-card">
           <div class="article-card-visual">
             <img src="/blog/locacao-ou-compra-card.jpg" alt="Profissional conferindo estoque em corredor de porta-pallets" loading="lazy">
           </div>
@@ -373,7 +387,7 @@
         </a>
 
         <!-- Artigo 3 -->
-        <a href="/blog/vacancia-galpoes-sao-paulo-metro-cubico.html" class="article-card">
+        <a href="vacancia-galpoes-sao-paulo-metro-cubico.html" class="article-card">
           <div class="article-card-visual">
             <img src="/blog/vacancia-card.jpg" alt="Corredor de porta-pallets em galpão logístico de grande altura" loading="lazy">
           </div>
@@ -424,32 +438,32 @@
         </div>
         <div class="footer-col">
           <h4>Soluções</h4>
-          <a href="/venda.html">Comprar</a>
-          <a href="/locacao.html">Locar</a>
-          <a href="/consultoria.html">Consultoria</a>
-          <a href="/simulador.html">Simulador</a>
+          <a href="../venda.html">Comprar</a>
+          <a href="../locacao.html">Locar</a>
+          <a href="../consultoria.html">Consultoria</a>
+          <a href="../simulador.html">Simulador</a>
         </div>
         <div class="footer-col">
           <h4>Produtos</h4>
-          <a href="/porta-pallets.html">Porta-Pallets</a>
-          <a href="/empilhadeiras.html">Empilhadeiras</a>
+          <a href="../porta-pallets.html">Porta-Pallets</a>
+          <a href="../empilhadeiras.html">Empilhadeiras</a>
         </div>
         <div class="footer-col">
           <h4>Empresa</h4>
-          <a href="/sobre.html">Sobre</a>
-          <a href="/blog/">Blog</a>
-          <a href="/contato.html">Contato</a>
-          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank">WhatsApp</a>
+          <a href="../sobre.html">Sobre</a>
+          <a href="index.html">Blog</a>
+          <a href="../contato.html">Contato</a>
+          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
       <div class="footer-bottom">
-        © 2026 Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · São Paulo/SP
+        © <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · São Paulo/SP · <a href="../politica-de-privacidade.html" style="color:inherit;text-decoration:underline">Política de Privacidade</a>
       </div>
     </div>
   </footer>
 
   <!-- WhatsApp Float -->
-  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
   </a>
 
@@ -470,5 +484,27 @@
       );
     }
   </script>
+  <script>document.querySelectorAll(".js-ano").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+<script>
+  /* V2 — rastreio de clique nos CTAs (faltava no simulador e no blog) */
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    document.querySelectorAll('a[href*="wa.me"], a[href*="tintim.link"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        window.dataLayer.push({ event: 'whatsapp_click', origem_pagina: location.pathname });
+      });
+    });
+    document.querySelectorAll('a[href*="contato.html"], a[href*="simulador.html"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        window.dataLayer.push({
+          event: 'cta_click',
+          cta_destino: a.getAttribute('href'),
+          cta_texto: (a.textContent || '').trim().slice(0, 40),
+          origem_pagina: location.pathname
+        });
+      });
+    });
+  })();
+</script>
 </body>
 </html>

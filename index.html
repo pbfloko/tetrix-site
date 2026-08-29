@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.className=document.documentElement.className.replace('no-js','');</script>
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -12,6 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <title>Porta-Pallets e Empilhadeiras — Venda e Locação em SP | Tetrix</title>
   <link rel="canonical" href="https://www.tetrixlog.com.br/">
+  <link rel="preload" as="image" href="img/galpao-corredor.webp" type="image/webp" fetchpriority="high">
   <!-- Favicon (múltiplas resoluções) -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -122,6 +124,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
+    /* Sem JS o IntersectionObserver nunca roda e a pagina inteira ficaria
+       em opacity:0. Aqui o conteudo aparece de qualquer jeito. */
+    .no-js .reveal { opacity: 1; transform: none; transition: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
 
     /* ===========================
        NAVBAR
@@ -196,9 +206,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: flex; align-items: center;
       overflow: hidden;
     }
+    /* Imagem propria, servida do proprio dominio. Antes era hotlink do Unsplash:
+       era o LCP da pagina dependendo de um terceiro, e foto generica de banco. */
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      background-image: url('https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=80');
+      background-image: url('img/galpao-corredor.jpg');
+      background-image: image-set(url('img/galpao-corredor.webp') type('image/webp'),
+                                  url('img/galpao-corredor.jpg') type('image/jpeg'));
       background-size: cover; background-position: center;
     }
     .hero-overlay {
@@ -250,89 +264,213 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .hero-stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; max-width: 120px; line-height: 1.4; }
 
-    /* ── Card flutuante do simulador (lado direito do hero) ── */
-    .hero-sim-card {
-      position: absolute;
-      top: 50%; right: 64px;
-      transform: translateY(-50%);
-      width: 300px; z-index: 3;
-      background: rgba(13,30,61,0.55);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,110,26,0.3);
-      border-radius: 16px;
-      padding: 28px 26px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    /* ===========================
+       HERO V2 — duas colunas: copy + simulador que captura
+    =========================== */
+    /* 3 filhos diretos (copy, simulador, stats) para que no mobile a ordem vire
+       copy -> SIMULADOR -> stats. Com o simulador dentro da coluna de texto ele
+       caia para ~890px e sumia da primeira tela do celular. */
+    .hero-grid {
+      display: grid; grid-template-columns: 1.02fr .98fr;
+      grid-template-areas: "copy sim" "stats sim";
+      gap: 0 44px; align-items: start;
     }
-    .hero-sim-card:hover {
-      box-shadow: 0 24px 70px rgba(255,110,26,0.25), 0 20px 60px rgba(0,0,0,0.4);
-      border-color: rgba(255,110,26,0.6);
-      text-decoration: none;
+    .hero-copy { grid-area: copy; }
+    .hero-grid .sim-card { grid-area: sim; }
+    .hero-grid .hero-stats { grid-area: stats; }
+    .hero-grid .hero-title { max-width: 15ch; }
+    .hero-grid .hero-sub { max-width: 46ch; margin-bottom: 24px; }
+    .hero-ofertas { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+    .hero-oferta { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: #fff; line-height: 1.5; }
+    .hero-oferta svg { flex-shrink: 0; width: 19px; height: 19px; color: #25D366; margin-top: 2px; }
+    .hero-oferta strong { color: #FF9A5C; font-weight: 700; }
+    .hero-grid .hero-stats { padding-top: 28px; gap: 32px; margin-bottom: 0; }
+
+    /* ── Simulador embutido no hero ── */
+    .sim-card {
+      background: rgba(13,30,61,0.62); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,110,26,0.34); border-radius: 16px;
+      padding: 26px 24px 22px; box-shadow: 0 24px 66px rgba(0,0,0,0.42);
+      position: relative;
     }
-    .hero-sim-cta svg { transition: transform 0.25s ease; }
-    .hero-sim-card:hover .hero-sim-cta svg { transform: translateX(4px); }
-    .hero-sim-card:hover .hero-sim-icon { background: rgba(255,110,26,0.3); }
-    .hero-sim-icon {
-      width: 44px; height: 44px; border-radius: 11px;
-      background: rgba(255,110,26,0.18);
-      color: #FF9A5C;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-    }
-    .hero-sim-icon svg { width: 22px; height: 22px; }
-    .hero-sim-eyebrow {
+    .sim-card-eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; color: #FF9A5C;
-      margin-bottom: 10px;
+      text-transform: uppercase; color: #FF9A5C; margin-bottom: 9px;
     }
-    .hero-sim-title {
-      font-family: var(--font-head); font-weight: 800; font-size: 20px;
-      line-height: 1.25; color: white; margin-bottom: 10px;
+    .sim-card-title {
+      font-family: var(--font-head); font-weight: 800; font-size: 23px;
+      line-height: 1.16; color: #fff; margin-bottom: 6px;
     }
-    .hero-sim-sub {
-      font-size: 13.5px; line-height: 1.55; color: rgba(255,255,255,0.7);
-      margin-bottom: 20px;
+    .sim-card-sub { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.68); margin-bottom: 18px; }
+    .sim-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 13px; }
+    .sim-f { min-width: 0; }
+    .sim-f.full { grid-column: 1 / -1; }
+    .sim-f label {
+      display: block; font-size: 11px; font-weight: 700; letter-spacing: .5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.66); margin-bottom: 6px;
     }
-    .hero-sim-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 14px; font-weight: 700; color: white;
-      background: var(--orange); padding: 11px 18px; border-radius: 9px;
-      width: 100%; justify-content: center;
+    .sim-f input, .sim-f select {
+      width: 100%; padding: 11px 12px; background: var(--gray-100);
+      border: 2px solid transparent; border-radius: 8px;
+      font-size: 16px; font-weight: 600; color: var(--navy); font-family: var(--font-body);
     }
-    @media (max-width: 1200px) {
-      .hero-sim-card { display: none; }
-      .hero-sim-mobile { display: flex; }
+    .sim-f input:focus, .sim-f select:focus { outline: none; border-color: var(--orange); background: #fff; }
+    .sim-f input[type=range] { padding: 0; background: transparent; accent-color: var(--orange); border: none; }
+    .sim-pd-val { font-family: var(--font-head); font-size: 23px; font-weight: 800; color: #fff; line-height: 1; }
+    .sim-pd-val small { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 600; }
+    .sim-pd-niveis { font-size: 12px; color: #FF9A5C; font-weight: 700; margin-left: 7px; }
+    .sim-go {
+      width: 100%; margin-top: 4px; padding: 14px; background: var(--orange); color: #fff;
+      border: none; border-radius: var(--radius); font-size: 15.5px; font-weight: 700;
+      font-family: var(--font-body); cursor: pointer; transition: var(--trans);
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+    }
+    .sim-go:hover { background: var(--orange-dk); }
+    .sim-go svg { width: 17px; height: 17px; }
+    .sim-nota { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-top: 11px; }
+
+    .sim-out { display: none; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.14); }
+    .sim-out.show { display: block; animation: simfade .38s ease; }
+    @keyframes simfade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .sim-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 15px; }
+    .sim-kpi { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 13px 9px; text-align: center; }
+    .sim-kpi.hl { background: rgba(255,110,26,0.16); border: 1px solid rgba(255,110,26,0.38); }
+    .sim-kpi-l { font-size: 9.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: rgba(255,255,255,0.66); margin-bottom: 6px; line-height: 1.25; }
+    .sim-kpi-v { font-family: var(--font-head); font-weight: 900; font-size: 26px; line-height: 1; color: #fff; }
+    .sim-kpi.hl .sim-kpi-v { color: #FF9A5C; }
+    .sim-msg { font-size: 13px; color: rgba(255,255,255,0.86); line-height: 1.5; margin-bottom: 14px; }
+    .sim-msg strong { color: #fff; }
+
+    /* formulario que abre depois do resultado */
+    .sim-lead { display: none; }
+    .sim-lead.show { display: block; animation: simfade .38s ease; }
+    .sim-lead-tit { font-family: var(--font-head); font-weight: 800; font-size: 18px; color: #fff; line-height: 1.2; margin-bottom: 4px; }
+    .sim-lead-sub { font-size: 12.5px; color: rgba(255,255,255,0.66); margin-bottom: 14px; line-height: 1.5; }
+
+    /* ===========================
+       FORMULARIOS (padrao do site)
+    =========================== */
+    .fgroup { margin-bottom: 11px; }
+    .fgroup label { display: block; font-size: 11.5px; font-weight: 700; color: rgba(255,255,255,0.72); margin-bottom: 5px; }
+    .fgroup label .opc { font-weight: 400; color: rgba(255,255,255,0.45); }
+    .fgroup input, .fgroup select {
+      width: 100%; padding: 12px 13px; background: var(--gray-100);
+      border: 2px solid transparent; border-radius: 8px;
+      font-size: 16px; font-family: var(--font-body); color: var(--navy);
+    }
+    .fgroup input:focus, .fgroup select:focus { outline: none; border-color: var(--orange); background: #fff; }
+    .f2col { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .f2col .fgroup { margin-bottom: 0; }
+    .fbtn {
+      width: 100%; margin-top: 13px; padding: 15px; background: var(--orange); color: #fff;
+      border: none; border-radius: var(--radius); font-size: 15.5px; font-weight: 700;
+      font-family: var(--font-body); cursor: pointer; transition: var(--trans);
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+    }
+    .fbtn:hover { background: var(--orange-dk); }
+    .fbtn:disabled { opacity: .6; cursor: not-allowed; }
+    .fbtn svg { width: 16px; height: 16px; }
+    .f-selos {
+      display: flex; align-items: center; justify-content: center; gap: 6px 13px;
+      flex-wrap: wrap; margin-top: 11px; font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 600;
+    }
+    .f-selos span { display: inline-flex; align-items: center; gap: 5px; }
+    .f-selos svg { width: 12px; height: 12px; color: #25D366; }
+    .f-consent { font-size: 10.5px; color: rgba(255,255,255,0.45); line-height: 1.5; margin-top: 9px; text-align: center; }
+    .f-consent a { color: #FF9A5C; text-decoration: underline; }
+    .fgroup input.err, .fgroup select.err { border-color: #FF6B6B; background: #FEF2F1; }
+    .fmsg { display: none; font-size: 11px; color: #FFB4B4; margin-top: 4px; font-weight: 600; }
+    .fgroup.bad .fmsg { display: block; }
+    .fbanner {
+      display: none; background: rgba(255,107,107,0.14); border: 1px solid rgba(255,107,107,0.45);
+      color: #FFC9C9; font-size: 12.5px; font-weight: 600; border-radius: 8px;
+      padding: 10px 12px; margin-bottom: 12px; line-height: 1.45;
+    }
+    .fbanner.show { display: block; }
+    .hp { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .fsucesso { text-align: center; padding: 8px 0; }
+    .fsucesso-ico {
+      width: 54px; height: 54px; border-radius: 50%; background: rgba(37,211,102,0.16);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+    }
+    .fsucesso h3 { font-family: var(--font-head); font-weight: 800; font-size: 21px; color: #fff; margin-bottom: 8px; }
+    .fsucesso p { font-size: 13.5px; color: rgba(255,255,255,0.75); margin-bottom: 15px; line-height: 1.6; }
+
+    /* ===========================
+       FAIXA DE CREDIBILIDADE
+    =========================== */
+    #credibilidade { background: var(--navy-mid); padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+    .cred-inner { display: flex; justify-content: center; gap: 14px 34px; flex-wrap: wrap; }
+    .cred-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85); font-size: 13.5px; font-weight: 600; }
+    .cred-ico {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(255,110,26,0.16);
+      border: 1px solid rgba(255,110,26,0.34); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
+    .cred-ico svg { width: 17px; height: 17px; color: #FF9A5C; }
+
+    /* ===========================
+       CARD DE FORMULARIO NO CTA FINAL
+    =========================== */
+    .cta-grid { display: grid; grid-template-columns: 1fr .88fr; gap: 44px; align-items: start; text-align: left; }
+    .cta-grid .cta-title, .cta-grid .cta-sub { margin-left: 0; margin-right: 0; }
+    .cta-lista { margin: 22px 0 26px; }
+    .cta-lista li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: rgba(255,255,255,0.86); margin-bottom: 10px; line-height: 1.5; }
+    .cta-lista svg { flex-shrink: 0; width: 17px; height: 17px; color: #25D366; margin-top: 2px; }
+    .form-card {
+      background: rgba(255,255,255,0.06); backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.16); border-top: 4px solid var(--orange);
+      border-radius: 16px; padding: 26px 24px 22px;
+    }
+    .form-card h3 { font-family: var(--font-head); font-weight: 800; font-size: 22px; color: #fff; line-height: 1.18; margin-bottom: 6px; }
+    .form-card > p { font-size: 13px; color: rgba(255,255,255,0.68); margin-bottom: 16px; line-height: 1.5; }
+    .sim-chip {
+      display: none; background: rgba(255,110,26,0.14); border: 1px solid rgba(255,110,26,0.36);
+      border-radius: 9px; padding: 10px 12px; margin-bottom: 13px;
+      font-size: 12px; color: rgba(255,255,255,0.9); line-height: 1.5;
+    }
+    .sim-chip.show { display: block; }
+    .sim-chip b { color: #FF9A5C; }
+
+    /* ===========================
+       BARRA FIXA MOBILE
+    =========================== */
+    .mbar { display: none; }
+    @media (max-width: 860px) {
+      .mbar {
+        display: grid; grid-template-columns: 1fr 1fr; position: fixed;
+        left: 0; right: 0; bottom: 0; z-index: 995; background: var(--navy);
+        border-top: 1px solid rgba(255,255,255,0.14); box-shadow: 0 -4px 20px rgba(0,0,0,0.28);
+      }
+      .mbar a {
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        padding: 14px 8px; font-size: 14.5px; font-weight: 700; color: #fff; font-family: var(--font-body);
+      }
+      .mbar a svg { width: 18px; height: 18px; }
+      .mbar a.wa { background: #25D366; }
+      .mbar a.or { background: var(--orange); }
+      body { padding-bottom: 56px; }
+      .whatsapp-float { display: none; }
     }
 
-    /* ── Versão mobile/tablet do CTA do simulador ── */
-    .hero-sim-mobile {
-      display: none; /* só aparece <1200px, via media query acima */
-      align-items: center; gap: 16px;
-      background: rgba(255,110,26,0.1);
-      border: 1px solid rgba(255,110,26,0.35);
-      border-radius: 14px;
-      padding: 18px 20px;
-      text-decoration: none;
-      margin-top: 32px;
-      max-width: 480px;
-      transition: background 0.25s ease, transform 0.25s ease;
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; grid-template-areas: "copy" "sim" "stats"; gap: 30px; }
+      .hero-grid .hero-title, .hero-grid .hero-sub { max-width: none; }
+      .cta-grid { grid-template-columns: 1fr; gap: 32px; }
     }
-    .hero-sim-mobile:hover {
-      background: rgba(255,110,26,0.16);
-      transform: translateY(-2px);
-      text-decoration: none;
+    @media (max-width: 700px) {
+      .hero-grid .hero-sub { display: none; }
+      .hero-ofertas { gap: 8px; margin-bottom: 22px; }
+      .hero-oferta { font-size: 14px; }
+      .sim-row { grid-template-columns: 1fr; gap: 11px; }
+      .f2col { grid-template-columns: 1fr; gap: 0; }
+      .f2col .fgroup { margin-bottom: 11px; }
+      .sim-kpis { grid-template-columns: 1fr; gap: 8px; }
+      .sim-kpi { display: flex; align-items: center; justify-content: space-between; text-align: left; padding: 11px 14px; }
+      .sim-kpi-l { margin-bottom: 0; }
     }
-    .hero-sim-mobile-icon {
-      flex-shrink: 0; width: 44px; height: 44px; border-radius: 11px;
-      background: var(--orange); color: white;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .hero-sim-mobile-icon svg { width: 22px; height: 22px; }
-    .hero-sim-mobile-text { display: flex; flex-direction: column; gap: 3px; }
-    .hero-sim-mobile-text strong { font-size: 14.5px; color: white; line-height: 1.3; }
-    .hero-sim-mobile-text span { font-size: 12.5px; color: rgba(255,255,255,0.65); }
-    .hero-sim-mobile-arrow { flex-shrink: 0; margin-left: auto; color: #FF9A5C; }
+
 
     /* Diagonal bottom cut */
     #hero::after {
@@ -613,6 +751,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 12px 32px #25D36680; }
     .whatsapp-float svg { width: 28px; height: 28px; }
+    /* Precisa vir DEPOIS da regra base acima, senao o display:flex dela vence
+       e o botao flutuante fica duplicado com a barra fixa no celular. */
+    @media (max-width: 860px) { .whatsapp-float { display: none; } }
 
     /* ===========================
        RESPONSIVE
@@ -639,6 +780,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .segmentos { gap: 12px; }
       .segmento { min-width: 140px; padding: 20px 20px; }
     }
+    /* ===================================================================
+       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
+       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
+       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
+       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
+       números, barras e detalhes — onde não há texto por cima.
+       =================================================================== */
+    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
+    .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
+    .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
+    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
+
   </style>
 <!-- Structured Data - Organization (Schema.org) -->
   <script type="application/ld+json">
@@ -725,7 +879,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="porta-pallets.html">Porta-Pallets</a></li>
         <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
         <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="blog/">Blog</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
       <a href="contato.html" class="nav-cta">Solicitar Diagnóstico</a>
@@ -758,68 +912,224 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-overlay"></div>
     <div class="hero-content" style="width:100%">
       <div class="container">
-        <div class="hero-eyebrow reveal">
-          <div class="hero-eyebrow-dot"></div>
-          <span>Mais posições-palete no mesmo galpão · São Paulo</span>
-        </div>
-        <h1 class="hero-title">
-          Verticalize seu estoque.<br><em>Aumente sua capacidade sem mudar de galpão.</em>
-        </h1>
-        <p class="hero-sub reveal reveal-delay-2">
-          <strong>Venda e locação</strong> de porta-pallets e empilhadeiras — a combinação certa para ganhar capacidade gastando menos.
-        </p>
-        <div class="hero-ctas reveal reveal-delay-3">
-          <a href="contato.html" class="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.42 2 2 0 0 1 3.62 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Solicitar Diagnóstico Gratuito
-          </a>
-          <a href="#solucoes" class="btn btn-outline">
-            Conheça as Soluções
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="hero-stats reveal reveal-delay-4">
-          <div>
-            <div class="hero-stat-num">60%</div>
-            <div class="hero-stat-label">mais barato que ampliar o galpão</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">até 3x</div>
-            <div class="hero-stat-label">mais capacidade de armazenagem</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">SP</div>
-            <div class="hero-stat-label">atendimento no estado</div>
-          </div>
-        </div>
+        <div class="hero-grid">
 
-        <!-- CTA do simulador — versão mobile/tablet (o card flutuante só aparece em telas largas) -->
-        <a href="simulador.html" class="hero-sim-mobile reveal reveal-delay-4">
-          <div class="hero-sim-mobile-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2M13 8h4M13 11h4"/></svg>
+          <div class="hero-copy">
+            <div class="hero-eyebrow reveal">
+              <div class="hero-eyebrow-dot"></div>
+              <span>Mais posições-palete no mesmo galpão · São Paulo</span>
+            </div>
+            <h1 class="hero-title">
+              Verticalize seu estoque.<br><em>Aumente sua capacidade sem mudar de galpão.</em>
+            </h1>
+            <p class="hero-sub reveal reveal-delay-2">
+              <strong>Venda e locação</strong> de porta-pallets e empilhadeiras — a combinação certa para ganhar capacidade gastando menos.
+            </p>
+
+            <div class="hero-ofertas reveal reveal-delay-3">
+              <div class="hero-oferta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Estrutura calculada para a sua carga.</strong> Nada de tabela padrão.</span>
+              </div>
+              <div class="hero-oferta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Material a pronta entrega.</strong> Sem espera de fabricação.</span>
+              </div>
+              <div class="hero-oferta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Diagnóstico gratuito</strong> — o projeto é seu mesmo que não feche conosco.</span>
+              </div>
+              <div class="hero-oferta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Orçamento e projeto em até 24 horas úteis</strong>, com os dados do galpão.</span>
+              </div>
+            </div>
+
           </div>
-          <div class="hero-sim-mobile-text">
-            <strong>Quantas posições-palete cabem no seu galpão?</strong>
-            <span>Simulador gratuito · Calcule sua economia potencial</span>
+
+          <!-- SIMULADOR QUE CAPTURA -->
+          <div class="sim-card reveal reveal-delay-2" id="sim-card">
+            <div id="sim-bloco">
+              <div class="sim-card-eyebrow">Simulador gratuito · sem cadastro</div>
+              <div class="sim-card-title">Quantas posições-palete cabem no seu galpão?</div>
+              <p class="sim-card-sub">Responda quatro campos e veja a estimativa na hora.</p>
+
+              <div class="sim-row">
+                <div class="sim-f">
+                  <label for="sim-area">Área de armazenagem (m²)</label>
+                  <input type="number" id="sim-area" value="800" min="100" max="50000" inputmode="numeric">
+                </div>
+                <div class="sim-f">
+                  <label for="sim-emp">Empilhadeira</label>
+                  <select id="sim-emp">
+                    <option value="CB" selected>Contrabalançada</option>
+                    <option value="PT">Patolada</option>
+                    <option value="TR">Trilateral</option>
+                  </select>
+                </div>
+                <div class="sim-f full">
+                  <label for="sim-pd">Pé-direito</label>
+                  <div style="margin-bottom:6px">
+                    <span class="sim-pd-val" id="sim-pd-val">10,0</span><span class="sim-pd-val"><small> m</small></span>
+                    <span class="sim-pd-niveis" id="sim-pd-niveis">→ 5 níveis</span>
+                  </div>
+                  <!-- Padrao 10 m: e o pe-direito tipico do galpao alvo (a propria copia da
+                       Tetrix fala em "8, 10 ou 12"). Com o padrao antigo de 6 m so cabiam
+                       2 niveis e o simulador abria mostrando ~5% de ganho. -->
+                  <input type="range" id="sim-pd" min="3" max="14" step="0.5" value="10">
+                </div>
+                <div class="sim-f full">
+                  <label for="sim-cam">Como você armazena hoje</label>
+                  <select id="sim-cam">
+                    <option value="1" selected>Paletes no piso, 1 camada</option>
+                    <option value="2">Empilhado em bloco, 2 camadas</option>
+                    <option value="3">Empilhado em bloco, 3 camadas</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="button" class="sim-go" id="sim-go">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/></svg>
+                Calcular minha capacidade
+              </button>
+
+              <div class="sim-out" id="sim-out">
+                <div class="sim-kpis">
+                  <div class="sim-kpi">
+                    <div class="sim-kpi-l">Hoje, no chão</div>
+                    <div class="sim-kpi-v" id="sim-hoje">—</div>
+                  </div>
+                  <div class="sim-kpi hl">
+                    <div class="sim-kpi-l">Verticalizado</div>
+                    <div class="sim-kpi-v" id="sim-novo">—</div>
+                  </div>
+                  <div class="sim-kpi">
+                    <div class="sim-kpi-l">Ganho</div>
+                    <div class="sim-kpi-v" id="sim-ganho">—</div>
+                  </div>
+                </div>
+                <p class="sim-msg" id="sim-msg"></p>
+
+                <button type="button" class="sim-go" id="sim-quero">
+                  Receber o projeto do meu galpão
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+
+                <!-- captura, aberta pelo resultado -->
+                <div class="sim-lead" id="sim-lead">
+                  <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.14)">
+                    <div class="sim-lead-tit">Para onde enviamos o projeto?</div>
+                    <p class="sim-lead-sub">Nossa engenharia confere esse número no seu galpão e devolve o projeto em até 24 horas úteis.</p>
+
+                    <div class="fbanner" id="f1-banner" role="alert" aria-live="assertive"></div>
+
+                    <form id="home-form1" novalidate>
+                      <input type="hidden" name="simulacao" id="f1-sim">
+                      <input type="hidden" name="area" id="f1-area">
+                      <input type="hidden" name="pe_direito" id="f1-pe">
+                      <input type="hidden" name="objetivo" value="Verticalizar — veio do simulador">
+
+                      <div class="fgroup" id="g1-nome">
+                        <label for="f1-nome">Nome</label>
+                        <input type="text" id="f1-nome" name="nome" placeholder="Seu nome" autocomplete="name" required>
+                        <span class="fmsg">Informe seu nome.</span>
+                      </div>
+                      <div class="fgroup" id="g1-telefone">
+                        <label for="f1-telefone">WhatsApp</label>
+                        <input type="tel" id="f1-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" required>
+                        <span class="fmsg">WhatsApp com DDD.</span>
+                      </div>
+                      <div class="f2col">
+                        <div class="fgroup" id="g1-empresa">
+                          <label for="f1-empresa">Empresa</label>
+                          <input type="text" id="f1-empresa" name="empresa" placeholder="Nome da empresa" autocomplete="organization" required>
+                          <span class="fmsg">Informe a empresa.</span>
+                        </div>
+                        <div class="fgroup" id="g1-cidade">
+                          <label for="f1-cidade">Cidade <span class="opc">(opcional)</span></label>
+                          <input type="text" id="f1-cidade" name="cidade" placeholder="Ex.: Guarulhos" autocomplete="address-level2">
+                          <span class="fmsg">Informe a cidade.</span>
+                        </div>
+                      </div>
+
+                      <div class="hp" aria-hidden="true">
+                        <label for="f1-site">Não preencha este campo</label>
+                        <input type="text" id="f1-site" name="site" tabindex="-1" autocomplete="off">
+                      </div>
+
+                      <button type="submit" class="fbtn" id="f1-btn">
+                        Quero meu projeto e orçamento
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                      </button>
+
+                      <div class="f-selos">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem custo</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Resposta em 24 horas úteis</span>
+                      </div>
+                      <p class="f-consent">Ao enviar, você autoriza o contato da Tetrix e o tratamento dos seus dados conforme a <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <p class="sim-nota" id="sim-nota">Estimativa por densidade típica de cada empilhadeira e folgas verticais da ABNT NBR 17150-2:2024, com carga de 1,5 m. O número real depende de pilares, docas e sprinklers — e sai no diagnóstico. <a href="simulador.html" style="color:#FF9A5C;text-decoration:underline">Ver simulador completo</a>.</p>
+            </div>
+
+            <div class="fsucesso" id="form1-ok" style="display:none">
+              <div class="fsucesso-ico">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3>Solicitação enviada!</h3>
+              <p>Nossa engenharia entra em contato em até <strong>24 horas úteis</strong> para conferir os dados do galpão.</p>
+              <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center" data-wpp="pos_formulario_hero">Adiantar pelo WhatsApp</a>
+            </div>
           </div>
-          <svg class="hero-sim-mobile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
+
+          <div class="hero-stats reveal reveal-delay-4">
+            <div>
+              <div class="hero-stat-num">60%</div>
+              <div class="hero-stat-label">mais barato que ampliar o galpão</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">+60% a +300%</div>
+              <div class="hero-stat-label">mais capacidade de armazenagem</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">SP</div>
+              <div class="hero-stat-label">atendimento no estado</div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Card flutuante do simulador -->
-    <a href="simulador.html" class="hero-sim-card reveal reveal-delay-4">
-      <div class="hero-sim-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2M13 8h4M13 11h4M7 14h2M13 14h4"/></svg>
+  <!-- ===========================
+       CREDIBILIDADE TÉCNICA
+  =========================== -->
+  <section id="credibilidade">
+    <div class="container">
+      <div class="cred-inner">
+        <div class="cred-item">
+          <span class="cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          Projeto com ART e responsável técnico
+        </div>
+        <div class="cred-item">
+          <span class="cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+          ABNT NBR 17150-1 e 17150-2:2024
+        </div>
+        <div class="cred-item">
+          <span class="cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg></span>
+          NR-11 e NR-12
+        </div>
+        <div class="cred-item">
+          <span class="cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          Todo o estado de São Paulo
+        </div>
       </div>
-      <div class="hero-sim-eyebrow">Simulador gratuito</div>
-      <div class="hero-sim-title">Quantas posições-palete cabem no seu galpão?</div>
-      <div class="hero-sim-sub">Descubra em segundos sua capacidade e economia potencial.</div>
-      <span class="hero-sim-cta">
-        Calcular agora
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </span>
-    </a>
+    </div>
   </section>
 
   <!-- ===========================
@@ -1055,23 +1365,107 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   =========================== -->
   <section id="cta-final">
     <div class="container">
-      <div class="cta-inner">
-        <span class="tag reveal" style="color:#FF9A5C;">Diagnóstico gratuito</span>
-        <h2 class="cta-title reveal">
-          Solicite um diagnóstico<br><em>gratuito</em> da sua operação.
-        </h2>
-        <p class="cta-sub reveal">
-          Nossa equipe analisa o seu galpão e apresenta um projeto de verticalização com estimativa de capacidade e custo. Sem compromisso.
-        </p>
-        <div class="cta-buttons reveal">
-          <a href="contato.html" class="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
-            Falar pelo WhatsApp
-          </a>
-          <a href="contato.html" class="btn btn-outline">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            comercial@tetrixlog.com.br
-          </a>
+      <div class="cta-grid">
+        <div>
+          <span class="tag reveal" style="color:#FF9A5C;">Diagnóstico gratuito</span>
+          <h2 class="cta-title reveal">
+            Solicite um diagnóstico<br><em>gratuito</em> da sua operação.
+          </h2>
+          <p class="cta-sub reveal">
+            Nossa equipe analisa o seu galpão e apresenta um projeto de verticalização com estimativa de capacidade e custo. Sem compromisso.
+          </p>
+          <ul class="cta-lista reveal">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Visita técnica e projeto de layout <strong>sem custo</strong></span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Orçamento e projeto em até 24 horas úteis</strong> com os dados em mãos</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>O projeto é seu <strong>mesmo que você não feche conosco</strong></span></li>
+          </ul>
+          <div class="cta-buttons reveal">
+            <!-- Antes este botao dizia "Falar pelo WhatsApp" e ia para contato.html. -->
+            <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="btn btn-primary" data-wpp="cta_final">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
+              Falar pelo WhatsApp
+            </a>
+            <!-- Antes este botao mostrava o e-mail mas ia para contato.html. -->
+            <a href="mailto:comercial@tetrixlog.com.br" class="btn btn-outline" data-cta="email_cta_final">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              comercial@tetrixlog.com.br
+            </a>
+          </div>
+        </div>
+
+        <div class="form-card reveal reveal-delay-2">
+          <div id="form2-campos">
+            <h3>Peça o diagnóstico agora</h3>
+            <p>Três campos. Nossa engenharia responde em até 24 horas úteis.</p>
+
+            <div class="sim-chip" id="chip-sim"></div>
+            <div class="fbanner" id="f2-banner" role="alert" aria-live="assertive"></div>
+
+            <form id="home-form2" novalidate>
+              <input type="hidden" name="simulacao" id="f2-sim">
+              <input type="hidden" name="pe_direito" id="f2-pe">
+
+              <div class="fgroup" id="g2-nome">
+                <label for="f2-nome">Nome</label>
+                <input type="text" id="f2-nome" name="nome" placeholder="Seu nome" autocomplete="name" required>
+                <span class="fmsg">Informe seu nome.</span>
+              </div>
+              <div class="fgroup" id="g2-telefone">
+                <label for="f2-telefone">WhatsApp</label>
+                <input type="tel" id="f2-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" required>
+                <span class="fmsg">Informe um WhatsApp com DDD.</span>
+              </div>
+              <div class="f2col">
+                <div class="fgroup" id="g2-empresa">
+                  <label for="f2-empresa">Empresa</label>
+                  <input type="text" id="f2-empresa" name="empresa" placeholder="Nome da empresa" autocomplete="organization" required>
+                  <span class="fmsg">Informe a empresa.</span>
+                </div>
+                <div class="fgroup" id="g2-cidade">
+                  <label for="f2-cidade">Cidade <span class="opc">(opcional)</span></label>
+                  <input type="text" id="f2-cidade" name="cidade" placeholder="Ex.: Guarulhos" autocomplete="address-level2">
+                  <span class="fmsg">Informe a cidade.</span>
+                </div>
+              </div>
+              <div class="fgroup">
+                <label for="f2-objetivo">O que você precisa <span class="opc">(opcional)</span></label>
+                <select id="f2-objetivo" name="objetivo">
+                  <option value="">Selecione</option>
+                  <option>Comprar porta-pallets</option>
+                  <option>Locar porta-pallets</option>
+                  <option>Comprar ou locar empilhadeira</option>
+                  <option>Consultoria e projeto</option>
+                  <option>Ainda não sei — quero orientação</option>
+                </select>
+              </div>
+
+              <div class="hp" aria-hidden="true">
+                <label for="f2-site">Não preencha este campo</label>
+                <input type="text" id="f2-site" name="site" tabindex="-1" autocomplete="off">
+              </div>
+
+              <button type="submit" class="fbtn" id="f2-btn">
+                Quero o diagnóstico gratuito
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+
+              <div class="f-selos">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem custo</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>24 horas úteis</span>
+              </div>
+              <p class="f-consent">Ao enviar, você autoriza o contato da Tetrix e o tratamento dos seus dados conforme a <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+            </form>
+          </div>
+
+          <div class="fsucesso" id="form2-ok" style="display:none">
+            <div class="fsucesso-ico">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Solicitação enviada!</h3>
+            <p>Nossa engenharia entra em contato em até <strong>24 horas úteis</strong>. Prefere adiantar?</p>
+            <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center" data-wpp="pos_formulario_final">Falar agora no WhatsApp</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1158,13 +1552,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-bottom">
         <span class="footer-copy">© <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · Todos os direitos reservados.</span>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram">
+          <!-- >>> PEDRO: os icones de Instagram e LinkedIn estavam com href="#" (link morto).
+               Deixei comentados para nao entregar link quebrado. Basta preencher a URL
+               real do perfil e descomentar. <<<
+          <a href="https://www.instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <a href="#" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/SEU_PERFIL" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
-          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" aria-label="WhatsApp">
+          -->
+          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" data-wpp="rodape_social" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
           </a>
         </div>
@@ -1172,8 +1570,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
+  <!-- Barra fixa mobile — no celular o unico CTA permanente era o botao flutuante -->
+  <nav class="mbar" aria-label="Ações rápidas">
+    <a class="or" href="#cta-final" data-cta="barra_mobile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Pedir diagnóstico
+    </a>
+    <a class="wa" href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" data-wpp="barra_mobile">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      WhatsApp
+    </a>
+  </nav>
+
   <!-- WhatsApp Flutuante -->
-  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Fale pelo WhatsApp">
+  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="whatsapp-float" data-wpp="botao_flutuante" aria-label="Fale pelo WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.034-1.376l-.362-.214-3.733.979.997-3.648-.237-.374A9.869 9.869 0 0 1 2.107 12C2.107 6.589 6.589 2.107 12 2.107c5.41 0 9.893 4.482 9.893 9.893 0 5.41-4.483 9.894-9.893 9.894z"/></svg>
   </a>
 
@@ -1203,21 +1613,425 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     // --- Scroll reveal ---
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
+    // Forca a visibilidade sem depender da transicao concluir: em aba de segundo
+    // plano, ou em qualquer contexto que nao pinte frames, a transicao nao avanca
+    // e o conteudo ficaria travado em opacity:0.
+    function revelarTudo(){
+      document.querySelectorAll('.reveal').forEach(function(el){
+        el.classList.add('visible');
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
       });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      // Rede de seguranca: se algo travar o observer, o conteudo aparece assim mesmo.
+      setTimeout(revelarTudo, 3000);
+    } else {
+      revelarTudo();
+    }
 
     // Hero reveals on load
     setTimeout(() => {
       document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
     }, 100);
+  </script>
+
+  <script>
+  (function(){
+    'use strict';
+    var $ = function(id){ return document.getElementById(id); };
+    var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.dataLayer = window.dataLayer || [];
+    function track(event, extra){ window.dataLayer.push(Object.assign({ event: event }, extra || {})); }
+
+    /* =========================================================
+       SIMULADOR — constantes iguais as de simulador.html, para
+       que a home e o simulador completo nunca divirjam.
+       ========================================================= */
+    var FOLGA_TOPO = 0.55;
+    var DENS = { CB: 0.21, PT: 0.29, TR: 0.33 };
+    var DENS_PISO_SEM_EMP = 0.40;
+    var ALT_CARGA = 1.5;              // mesmo padrao do slider de simulador.html
+    var GANHO_CAMADA = 0.70;          // cada camada extra em bloco rende ~70%
+
+    var SIM = null;
+
+    function folgaY3(a){ return Math.max(0.20, 0.10 * a, 0.15); }
+    function calcNiveis(pd, a){
+      var passo = a + folgaY3(a) + 0.14;
+      return Math.max(1, Math.floor((pd - FOLGA_TOPO) / passo));
+    }
+    function densPortaPallets(emp){ return DENS[emp] || DENS.CB; }
+    // Capacidade de hoje: 1 camada = opera no piso (transpaleteira, corredor menor);
+    // 2+ camadas = ja empilha em bloco, com desconto por perda de SKU por rua.
+    function capacidadeHoje(area, camadas, emp){
+      if (camadas === 1) return Math.round(area * DENS_PISO_SEM_EMP);
+      var fator = 1 + (camadas - 1) * GANHO_CAMADA;
+      return Math.round(area * DENS_PISO_SEM_EMP * fator);
+    }
+
+    var sPd = $('sim-pd');
+    function atualizaPd(){
+      var pd = parseFloat(sPd.value);
+      $('sim-pd-val').textContent = pd.toFixed(1).replace('.', ',');
+      var n = calcNiveis(pd, ALT_CARGA);
+      $('sim-pd-niveis').textContent = n === 1 ? '→ 1 nível' : '→ ' + n + ' níveis';
+    }
+    sPd.addEventListener('input', atualizaPd);
+    atualizaPd();
+
+    function anima(el, alvo){
+      var final = Math.round(alvo).toLocaleString('pt-BR');
+      if (semMovimento || document.hidden){ el.textContent = final; return; }
+      var dur = 620, ini = performance.now();
+      function passo(now){
+        var p = Math.min((now - ini) / dur, 1);
+        el.textContent = Math.round(alvo * (1 - Math.pow(1 - p, 3))).toLocaleString('pt-BR');
+        if (p < 1) requestAnimationFrame(passo);
+      }
+      requestAnimationFrame(passo);
+      setTimeout(function(){ el.textContent = final; }, dur + 120);
+    }
+
+    function faixaArea(m2){
+      if (m2 <= 500)  return 'Até 500 m²';
+      if (m2 <= 1000) return '501 a 1.000 m²';
+      if (m2 <= 3000) return '1.001 a 3.000 m²';
+      return 'Acima de 3.000 m²';
+    }
+
+    function simular(){
+      var area = parseFloat($('sim-area').value) || 800;
+      var pd   = parseFloat(sPd.value) || 10;
+      var emp  = $('sim-emp').value || 'CB';
+      var cam  = parseInt($('sim-cam').value, 10) || 1;
+
+      var niveis = calcNiveis(pd, ALT_CARGA);
+      var novo   = Math.round(area * densPortaPallets(emp) * niveis);
+      var hoje   = capacidadeHoje(area, cam, emp);
+      var ganho  = novo - hoje;
+
+      $('sim-out').classList.add('show');
+      anima($('sim-hoje'), hoje);
+      anima($('sim-novo'), novo);
+
+      var elG = $('sim-ganho'), elM = $('sim-msg');
+      if (ganho > 0){
+        elG.textContent = '+' + ganho.toLocaleString('pt-BR');
+        elG.style.color = '#FF9A5C';
+        var pct = hoje > 0 ? Math.round(ganho / hoje * 100) : 0;
+        elM.innerHTML = '<strong>São ' + ganho.toLocaleString('pt-BR') + ' posições a mais — ' + pct + '% de ganho</strong>, em ' +
+          niveis + (niveis === 1 ? ' nível' : ' níveis') + '. Quer esse cálculo feito no seu galpão, com pilares e sprinklers medidos?';
+      } else {
+        elG.textContent = '—';
+        elG.style.color = '#fff';
+        elM.innerHTML = '<strong>Neste cenário a verticalização não amplia a capacidade.</strong> O ganho seria acesso direto a todos os paletes, controle FIFO e menos avaria. Vale falar com a engenharia.';
+      }
+
+      SIM = { area: area, pd: pd, emp: emp, cam: cam, niveis: niveis, novo: novo, hoje: hoje, ganho: ganho };
+      aplicaSim();
+
+      track('home_simulador_uso', {
+        sim_area: area, sim_pe_direito: pd, sim_empilhadeira: emp,
+        sim_cenario_atual: cam, sim_niveis: niveis, sim_posicoes: novo, sim_ganho: ganho
+      });
+    }
+    $('sim-go').addEventListener('click', simular);
+    ['sim-area','sim-emp','sim-cam'].forEach(function(id){
+      $(id).addEventListener('change', function(){ if (SIM) simular(); });
+    });
+    sPd.addEventListener('change', function(){ if (SIM) simular(); });
+
+    // Leva o resultado para dentro dos dois formularios
+    function aplicaSim(){
+      if (!SIM) return;
+      var resumo = SIM.novo.toLocaleString('pt-BR') + ' posições-palete · ' +
+                   SIM.area.toLocaleString('pt-BR') + ' m² · pé-direito ' + String(SIM.pd).replace('.', ',') + ' m · ' +
+                   SIM.niveis + (SIM.niveis === 1 ? ' nível' : ' níveis');
+      var texto = 'Simulação: ' + resumo;
+      ['f1-sim','f2-sim'].forEach(function(id){ if ($(id)) $(id).value = texto; });
+      ['f1-pe','f2-pe'].forEach(function(id){ if ($(id)) $(id).value = String(SIM.pd); });
+      if ($('f1-area')) $('f1-area').value = faixaArea(SIM.area);
+      var chip = $('chip-sim');
+      if (chip){
+        chip.innerHTML = '<b>Sua simulação:</b> ' + resumo + '. Vamos conferir esse número no seu galpão.';
+        chip.classList.add('show');
+      }
+    }
+
+    // Abre a captura logo abaixo do resultado
+    $('sim-quero').addEventListener('click', function(){
+      $('sim-lead').classList.add('show');
+      this.style.display = 'none';
+      track('home_simulador_cta', { sim_posicoes: SIM ? SIM.novo : 0 });
+      var n = $('f1-nome');
+      if (n){
+        n.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+        if (window.innerWidth > 860) setTimeout(function(){ n.focus({ preventScroll: true }); }, 400);
+      }
+    });
+
+    /* =========================================================
+       RASTREIO
+       ========================================================= */
+    document.querySelectorAll('[data-wpp]').forEach(function(a){
+      a.addEventListener('click', function(){ track('home_whatsapp_click', { wpp_origem: a.dataset.wpp }); });
+    });
+    document.querySelectorAll('[data-cta]').forEach(function(a){
+      a.addEventListener('click', function(){ track('home_cta_click', { cta_origem: a.dataset.cta }); });
+    });
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function(a){
+      a.addEventListener('click', function(){ track('home_menu_click', { menu_destino: a.getAttribute('href') }); });
+    });
+
+    var marcos = [25, 50, 75, 100], trava = false;
+    window.addEventListener('scroll', function(){
+      if (trava) return;
+      trava = true;
+      requestAnimationFrame(function(){
+        var pct = Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100);
+        while (marcos.length && pct >= marcos[0]) track('home_scroll', { scroll_pct: marcos.shift() });
+        trava = false;
+      });
+    }, { passive: true });
+
+    /* =========================================================
+       SDKs sob demanda — so carregam na primeira interacao
+       ========================================================= */
+    var SUPABASE_URL = 'https://neattkpxondxfjcepttp.supabase.co';
+    var SUPABASE_ANON_KEY = 'sb_publishable_Qij_vT0fQDhvWApKMM7zFQ_orqXC6FC';
+    var EMAILJS_PUBLIC_KEY  = '3RMl5t0U5HtR6bw5-';
+    var EMAILJS_SERVICE_ID  = 'service_xz0lz79';
+    var EMAILJS_TEMPLATE_ID = 'template_3yemdd8';
+
+    var supabaseClient = null, emailjsOk = false, sdkPromise = null;
+
+    function carregaScript(src){
+      return new Promise(function(res, rej){
+        var s = document.createElement('script');
+        s.src = src; s.async = true;
+        s.onload = res; s.onerror = function(){ rej(new Error('falhou: ' + src)); };
+        document.head.appendChild(s);
+      });
+    }
+    function carregaSDKs(){
+      if (sdkPromise) return sdkPromise;
+      sdkPromise = Promise.all([
+        carregaScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2').catch(function(e){ console.error(e); }),
+        carregaScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js').catch(function(e){ console.error(e); })
+      ]).then(function(){
+        try {
+          if (window.supabase && window.supabase.createClient){
+            supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+          }
+        } catch(e){ console.error('Supabase init:', e); }
+        try {
+          if (window.emailjs){ window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); emailjsOk = true; }
+        } catch(e){ console.error('EmailJS init:', e); }
+      });
+      return sdkPromise;
+    }
+    ['pointerdown','keydown','touchstart'].forEach(function(ev){
+      document.addEventListener(ev, function gatilho(e){
+        if (e.target.closest && (e.target.closest('form') || e.target.closest('.sim-card') || e.target.closest('.form-card'))){
+          carregaSDKs();
+          ['pointerdown','keydown','touchstart'].forEach(function(x){ document.removeEventListener(x, gatilho); });
+        }
+      }, { passive: true });
+    });
+    setTimeout(carregaSDKs, 6000);
+
+    /* =========================================================
+       Atribuicao de campanha
+       ========================================================= */
+    function paramsCampanha(){
+      var p = new URLSearchParams(location.search);
+      var keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid','fbclid'];
+      var out = {};
+      keys.forEach(function(k){ var v = p.get(k); if (v) out[k] = v; });
+      return out;
+    }
+    var CAMPANHA = paramsCampanha();
+    var campanhaTexto = Object.keys(CAMPANHA).map(function(k){ return k + '=' + CAMPANHA[k]; }).join(' | ');
+
+    /* =========================================================
+       Mascara de telefone
+       ========================================================= */
+    function mascaraTelefone(el){
+      if (!el) return;
+      el.addEventListener('input', function(e){
+        var v = e.target.value.replace(/\D/g,'').slice(0,11);
+        if (v.length > 10)      v = v.replace(/^(\d{2})(\d{1})(\d{4})(\d{4}).*/, '($1) $2 $3-$4');
+        else if (v.length > 6)  v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+        else if (v.length > 2)  v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+        else if (v.length > 0)  v = v.replace(/^(\d{0,2})/, '($1');
+        e.target.value = v;
+      });
+    }
+    ['f1-telefone','f2-telefone'].forEach(function(id){ mascaraTelefone($(id)); });
+
+    /* =========================================================
+       MOTOR DOS FORMULARIOS
+       ========================================================= */
+    var ABERTO_EM = Date.now();
+    var jaComecou = {};
+
+    function ligarFormulario(cfg){
+      var form = $(cfg.form);
+      if (!form) return;
+      var grupo = function(nome){ return $(cfg.grp + nome); };
+
+      function erro(nome){
+        var g = grupo(nome); if (!g) return;
+        g.classList.add('bad');
+        var campo = g.querySelector('input,select');
+        if (campo) campo.classList.add('err');
+      }
+      function limpar(){
+        form.querySelectorAll('.fgroup.bad').forEach(function(g){
+          g.classList.remove('bad');
+          var c = g.querySelector('input,select'); if (c) c.classList.remove('err');
+        });
+        $(cfg.banner).classList.remove('show');
+      }
+      function banner(msg){
+        var b = $(cfg.banner);
+        b.textContent = msg; b.classList.add('show');
+        b.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+      }
+
+      form.addEventListener('input', function(){
+        if (!jaComecou[cfg.origem]){
+          jaComecou[cfg.origem] = true;
+          track('home_form_start', { form_origem: cfg.origem });
+          carregaSDKs();
+        }
+      });
+
+      form.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        limpar();
+
+        var d = new FormData(form);
+        var v = function(k){ return (d.get(k) || '').toString().trim(); };
+        var nome = v('nome'), tel = v('telefone'), empresa = v('empresa');
+        var email = v('email'), cidade = v('cidade');
+        var area = v('area'), obj = v('objetivo');
+        var pe = v('pe_direito'), simulacao = v('simulacao');
+
+        if (v('site') !== '' || Date.now() - ABERTO_EM < 2500){
+          track('home_form_spam_bloqueado', { form_origem: cfg.origem });
+          banner('Aguarde um instante e clique de novo para enviar.');
+          return;
+        }
+
+        var falhou = false;
+        if (!nome){ erro('nome'); falhou = true; }
+        if (tel.replace(/\D/g,'').length < 10){ erro('telefone'); falhou = true; }
+        if (!empresa){ erro('empresa'); falhou = true; }
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ erro('email'); falhou = true; }
+        if (falhou){
+          banner('Confira os campos destacados.');
+          track('home_form_erro_validacao', { form_origem: cfg.origem });
+          return;
+        }
+
+        var btn = $(cfg.btn);
+        var rotulo = btn.innerHTML;
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        var notas = ['[' + cfg.origem + ']', simulacao || null, campanhaTexto || null].filter(Boolean).join(' | ');
+
+        // Colunas espelham a tabela leads_contato do CRM.
+        var lead = {
+          nome: nome, empresa: empresa, telefone: tel,
+          email: email || null, cidade: cidade || null,
+          tipo_interesse: obj || 'Nao informado',
+          area_galpao: area || null,
+          pe_direito: pe || null,
+          mensagem: notas,
+          origem: cfg.origem,
+          user_agent: navigator.userAgent.substring(0,500)
+        };
+
+        carregaSDKs().then(function(){
+          var tarefas = [], okSupabase = false, okEmail = false;
+
+          if (supabaseClient){
+            tarefas.push(
+              supabaseClient.from('leads_contato').insert([lead]).then(function(r){
+                if (r.error) console.error('Supabase:', r.error); else okSupabase = true;
+              }).catch(function(e){ console.error('Supabase:', e); })
+            );
+          }
+          if (emailjsOk){
+            tarefas.push(
+              window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                nome: nome, empresa: empresa, telefone: tel,
+                email: email || 'Nao informado',
+                cidade: cidade || 'Nao informado',
+                tipo_interesse: obj || 'Nao informado',
+                area_galpao: area || 'Nao informado',
+                pe_direito: pe || 'Nao informado',
+                mensagem: 'Origem: ' + cfg.origem +
+                          (simulacao ? '\n' + simulacao : '') +
+                          (campanhaTexto ? '\n' + campanhaTexto : ''),
+                data_envio: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+              }).then(function(){ okEmail = true; }).catch(function(e){ console.error('EmailJS:', e); })
+            );
+          }
+          return Promise.all(tarefas).then(function(){ return { okSupabase: okSupabase, okEmail: okEmail }; });
+        }).then(function(r){
+          // Os dois canais falharam: nao finge sucesso, leva o lead pro WhatsApp
+          if (!r.okSupabase && !r.okEmail){
+            btn.disabled = false;
+            btn.innerHTML = rotulo;
+            var msg = encodeURIComponent(
+              'Olá! Solicitei diagnóstico pelo site.\n\nNome: ' + nome + '\nEmpresa: ' + empresa +
+              '\nWhatsApp: ' + tel + '\nCidade: ' + (cidade || 'nao informada') +
+              '\nPreciso de: ' + (obj || 'orientacao') + (simulacao ? '\n' + simulacao : ''));
+            banner('Não conseguimos enviar agora. Abrimos o WhatsApp para você falar direto com a gente.');
+            window.open('https://wa.me/5511992353669?text=' + msg, '_blank');
+            track('home_form_erro', { form_origem: cfg.origem });
+            return;
+          }
+
+          track('home_form_submit', {
+            form_origem:   cfg.origem,
+            lead_objetivo: obj || 'nao_informado',
+            lead_area:     area || 'nao_informado',
+            lead_simulou:  simulacao ? 'sim' : 'nao'
+          });
+          track('generate_lead', { form_origem: cfg.origem, value: 1, currency: 'BRL' });
+
+          $(cfg.campos).style.display = 'none';
+          var ok = $(cfg.ok);
+          ok.style.display = 'block';
+          ok.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+        });
+      });
+    }
+
+    ligarFormulario({ form:'home-form1', grp:'g1-', banner:'f1-banner', btn:'f1-btn',
+                      campos:'sim-bloco', ok:'form1-ok', origem:'home_v2_simulador' });
+
+    ligarFormulario({ form:'home-form2', grp:'g2-', banner:'f2-banner', btn:'f2-btn',
+                      campos:'form2-campos', ok:'form2-ok', origem:'home_v2_rodape' });
+
+    track('home_view', { home_versao: 'v2' });
+  })();
   </script>
   <script>document.querySelectorAll(".js-ano").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>

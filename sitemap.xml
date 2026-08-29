@@ -4,7 +4,7 @@
   <!-- Homepage — prioridade máxima -->
   <url>
     <loc>https://www.tetrixlog.com.br/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- Página de contato — alta prioridade (conversão) -->
   <url>
     <loc>https://www.tetrixlog.com.br/contato.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -20,21 +20,21 @@
   <!-- Serviços principais -->
   <url>
     <loc>https://www.tetrixlog.com.br/venda.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.tetrixlog.com.br/locacao.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.tetrixlog.com.br/consultoria.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -42,14 +42,14 @@
   <!-- Páginas de produto -->
   <url>
     <loc>https://www.tetrixlog.com.br/porta-pallets.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.tetrixlog.com.br/empilhadeiras.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -57,7 +57,7 @@
   <!-- Ferramenta interativa -->
   <url>
     <loc>https://www.tetrixlog.com.br/simulador.html</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -65,7 +65,7 @@
   <!-- Institucional -->
   <url>
     <loc>https://www.tetrixlog.com.br/sobre.html</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -73,7 +73,7 @@
   <!-- Blog — índice -->
   <url>
     <loc>https://www.tetrixlog.com.br/blog/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -81,22 +81,28 @@
   <!-- Blog — artigos -->
   <url>
     <loc>https://www.tetrixlog.com.br/blog/quantos-paletes-cabem-no-galpao.html</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.tetrixlog.com.br/blog/locacao-ou-compra-porta-paletes.html</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.tetrixlog.com.br/blog/vacancia-galpoes-sao-paulo-metro-cubico.html</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://www.tetrixlog.com.br/politica-de-privacidade.html</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

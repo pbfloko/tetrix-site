@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porta-Paletes em São Paulo — Projeto e Orçamento em 24h | Tetrix</title>
+  <meta name="description" content="Aumente a capacidade do seu galpão sem trocar de endereço. Porta-paletes e empilhadeiras com engenharia própria, material a pronta entrega e projeto com orçamento em até 24 horas úteis. Atendemos todo o estado de SP.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.tetrixlog.com.br/lp/porta-paletes-v3/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tetrix Soluções Intralogísticas">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://www.tetrixlog.com.br/lp/porta-paletes-v3/">
+  <meta property="og:title" content="Porta-Paletes em São Paulo — Projeto e Orçamento em 24h | Tetrix">
+  <meta property="og:description" content="Aumente a capacidade do seu galpão sem trocar de endereço. Engenharia própria, material a pronta entrega e projeto com orçamento em até 24 horas úteis.">
+  <meta property="og:image" content="https://www.tetrixlog.com.br/og-image.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <meta name="theme-color" content="#0D1E3D">
+  <!-- Fundo do hero = LCP da pagina. Preload separado por viewport para o celular
+       nao baixar a versao wide de 1800px que ele nunca vai usar. -->
+  <link rel="preload" as="image" href="img/galpao-fundo.jpg" fetchpriority="high" media="(min-width: 701px)">
+  <link rel="preload" as="image" href="img/galpao-fundo-mobile.jpg" fetchpriority="high" media="(max-width: 700px)">
+  <!-- v3: o render do rack esta na primeira tela do desktop, entao entra no preload.
+       No celular ele fica abaixo do formulario e carrega em lazy. -->
+  <link rel="preload" as="image" href="img/rack-hero.webp" type="image/webp" media="(min-width: 941px)">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P7HG4VJ4');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://neattkpxondxfjcepttp.supabase.co" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#0D1E3D; --navy-mid:#162B55; --navy-lt:#1E3A6E;
+      --orange:#FF6E1A; --orange-dk:#E05000; --orange-lt:#FF9A5C;
+      --white:#fff; --gray-100:#F4F6FA; --gray-200:#E2E7F0;
+      --gray-500:#63748F; --gray-700:#374A64; --text:#1A2A40;
+      --green:#25D366;
+      --fh:'Barlow Condensed',sans-serif; --fb:'DM Sans',sans-serif;
+      --radius:10px; --trans:.3s ease;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:74px;overflow-x:hidden}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    :focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+    body{font-family:var(--fb);color:var(--text);background:#fff;overflow-x:hidden;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto;display:block}
+    ul{list-style:none}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+    .tag{display:inline-block;background:rgba(255,110,26,.14);color:var(--orange-dk);
+      font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      padding:6px 14px;border-radius:999px;margin-bottom:18px}
+
+    /* ===== TOPO FIXO ===== */
+    .lp-top{background:var(--navy);padding:12px 0;position:sticky;top:0;z-index:900;
+      transition:box-shadow var(--trans)}
+    .lp-top.stuck{box-shadow:0 6px 24px rgba(0,0,0,.28)}
+    .lp-top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .lp-logo svg{height:32px;width:auto}
+    .lp-top-acoes{display:flex;align-items:center;gap:14px}
+    .lp-fone{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:14px;font-weight:600;white-space:nowrap}
+    .lp-fone svg{width:16px;height:16px;color:var(--orange-lt)}
+    .top-cta{display:none;background:var(--orange);color:#fff;font-family:var(--fb);font-weight:700;
+      font-size:14px;padding:10px 20px;border-radius:8px;white-space:nowrap;transition:var(--trans)}
+    .top-cta:hover{background:var(--orange-dk)}
+    .lp-top.stuck .top-cta{display:inline-flex}
+    @media(max-width:760px){.lp-fone span.num{display:none}.lp-top{position:static}}
+
+    /* ===== HERO ===== */
+    /* Foto real de galpao verticalizado da propria Tetrix, no lugar do gradiente.
+       O overlay escuro garante contraste do texto branco sobre a foto. */
+    .hero{position:relative;color:#fff;padding:18px 0 16px;overflow:hidden;background:var(--navy)}
+    .hero-bg{position:absolute;inset:0;z-index:0;
+      background-image:url('img/galpao-fundo.jpg');
+      background-size:cover;background-position:center 62%}
+    .hero-overlay{position:absolute;inset:0;z-index:1;
+      background:linear-gradient(100deg,rgba(9,20,42,.95) 0%,rgba(11,24,50,.90) 42%,rgba(13,30,61,.72) 100%)}
+    .hero-chev{position:absolute;right:-30px;top:6%;opacity:.16;z-index:2;pointer-events:none}
+    .hero-chev2{position:absolute;left:-26px;bottom:16%;opacity:.12;z-index:2;pointer-events:none;transform:rotate(180deg)}
+    /* v3: quatro areas. O render do rack fica sob a copy, na coluna esquerda,
+       e o formulario ocupa a direita inteira — assim os dois aparecem juntos
+       na primeira tela do desktop. */
+    .hero .wrap{position:relative;z-index:3;display:grid;grid-template-columns:1.02fr .98fr;
+      grid-template-areas:"copy form" "palco form" "cred cred";gap:0 38px;align-items:start}
+    .hero-copy{grid-area:copy}
+    .hero-formcol{grid-area:form}
+    .palco{grid-area:palco;position:relative;display:flex;align-items:flex-end;justify-content:flex-start;margin-top:4px}
+    .palco picture,.palco img{display:block;line-height:0}
+    .palco img{height:auto;width:auto;max-width:100%;
+      max-height:clamp(168px,16vw,208px);
+      filter:drop-shadow(0 20px 36px rgba(0,0,0,.6))}
+    .selo-cap{position:absolute;left:0;bottom:6px;z-index:4;background:var(--orange);color:#fff;
+      border-radius:12px;padding:11px 16px;box-shadow:0 14px 32px rgba(0,0,0,.45);text-align:left}
+    .selo-cap b{font-family:var(--fh);font-weight:900;font-size:26px;display:block;line-height:1}
+    .selo-cap span{font-size:11px;font-weight:600;opacity:.96;display:block;max-width:16ch;line-height:1.3;margin-top:2px}
+    .hero h1{font-family:var(--fh);font-weight:900;font-size:clamp(30px,3.4vw,41px);line-height:1.04;
+      margin-bottom:10px;letter-spacing:-.5px;max-width:23ch;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+    .hero h1 em{font-style:normal;color:var(--orange)}
+    /* O numero que antes vinha no selo sobre o render do rack */
+    .hero-num{display:inline-flex;align-items:baseline;gap:9px;background:rgba(255,110,26,.18);
+      border:1px solid rgba(255,110,26,.42);border-radius:10px;padding:8px 14px;margin-bottom:14px}
+    .hero-num b{font-family:var(--fh);font-weight:900;font-size:26px;color:var(--orange-lt);line-height:1}
+    .hero-num span{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.86)}
+    .hero-sub{font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.84);margin-bottom:14px;max-width:52ch}
+    .hero-ofertas{display:flex;flex-direction:column;gap:8px;margin-bottom:0}
+    .oferta{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:#fff}
+    .oferta svg{flex-shrink:0;width:18px;height:18px;color:var(--green);margin-top:2px}
+    .oferta strong{color:var(--orange-lt)}
+
+    /* Faixa de credibilidade DENTRO do grid do hero: normas e cobertura precisam
+       aparecer junto com o formulario, sem exigir rolagem. E area de grid para
+       poder subir acima do formulario no celular. */
+    .hero-cred{grid-area:cred;display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;
+      margin-top:8px;padding-top:9px;border-top:1px solid rgba(255,255,255,.18)}
+    .hero-cred-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.9);
+      font-size:12px;font-weight:600;line-height:1.25}
+    .hero-cred-ico{width:26px;height:26px;border-radius:50%;background:rgba(255,110,26,.18);
+      border:1px solid rgba(255,110,26,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .hero-cred-ico svg{width:15px;height:15px;color:var(--orange-lt)}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:15px 26px;border-radius:var(--radius);font-size:15px;font-weight:700;
+      font-family:var(--fb);border:none;cursor:pointer;transition:var(--trans)}
+    .btn svg{width:17px;height:17px}
+    .btn-primary{background:var(--orange);color:#fff;box-shadow:0 6px 22px rgba(255,110,26,.32)}
+    .btn-primary:hover{background:var(--orange-dk);box-shadow:0 10px 30px rgba(255,110,26,.45)}
+    .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.28)}
+    .btn-ghost:hover{background:rgba(255,255,255,.16)}
+
+    /* ===== CARD DE FORMULÁRIO (hero) ===== */
+    .card-form{background:#fff;border-radius:16px;padding:24px 24px 18px;
+      box-shadow:0 26px 70px rgba(0,0,0,.4);border-top:5px solid var(--orange);position:relative}
+    .cf-selo{position:absolute;top:-15px;right:22px;background:var(--orange);color:#fff;
+      display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 15px;
+      font-size:12px;font-weight:700;box-shadow:0 10px 24px rgba(255,110,26,.42)}
+    .cf-selo svg{width:14px;height:14px}
+    .card-form h2{font-family:var(--fh);font-weight:800;font-size:24px;color:var(--navy);line-height:1.16;margin-bottom:6px;max-width:24ch}
+    .card-form h2 em{font-style:normal;color:var(--orange-dk)}
+    .cf-sub{font-size:13px;color:var(--gray-500);margin-bottom:13px;line-height:1.45}
+
+    /* barra de progresso do multi-step */
+    .ms-prog{display:flex;align-items:center;gap:9px;margin-bottom:13px}
+    .ms-bar{flex:1;height:6px;border-radius:99px;background:var(--gray-200);overflow:hidden}
+    .ms-bar i{display:block;height:100%;width:33%;background:var(--orange);border-radius:99px;transition:width .35s ease}
+    .ms-txt{font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gray-500);white-space:nowrap}
+
+    .ms-step{display:none}
+    .ms-step.on{display:block;animation:fade .3s ease}
+    .ms-perg{font-family:var(--fh);font-weight:800;font-size:20px;color:var(--navy);line-height:1.2;margin-bottom:4px}
+    .ms-ajuda{font-size:12.5px;color:var(--gray-500);margin-bottom:14px;line-height:1.5}
+    .opts{display:flex;flex-direction:column;gap:8px}
+    .opt{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;
+      padding:12px 15px;border:2px solid var(--gray-200);border-radius:10px;background:#fff;
+      font-family:var(--fb);font-size:14.5px;font-weight:600;color:var(--navy);
+      text-align:left;cursor:pointer;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+    .opt:hover{border-color:var(--orange);background:#FFF7F2}
+    .opt.sel{border-color:var(--orange);background:#FFF1E6}
+    .opt em{font-style:normal;font-weight:400;font-size:12.5px;color:var(--gray-500)}
+    .opt svg{width:16px;height:16px;color:var(--orange);flex-shrink:0;opacity:.55}
+    .opt:hover svg{opacity:1}
+    .ms-voltar{background:none;border:none;font-family:var(--fb);font-size:12.5px;font-weight:600;
+      color:var(--gray-500);cursor:pointer;padding:10px 0 0;display:inline-flex;align-items:center;gap:6px}
+    .ms-voltar:hover{color:var(--orange-dk)}
+    .ms-voltar svg{width:13px;height:13px}
+
+    .fgroup{margin-bottom:11px}
+    .fgroup label{display:block;font-size:12px;font-weight:700;color:var(--gray-700);margin-bottom:5px}
+    .fgroup label .opc{font-weight:400;color:var(--gray-500)}
+    .fgroup input,.fgroup select{width:100%;padding:12px 14px;background:var(--gray-100);
+      border:2px solid var(--gray-200);border-radius:9px;font-size:16px;font-family:var(--fb);color:var(--navy)}
+    .fgroup input:focus,.fgroup select:focus{outline:none;border-color:var(--orange);background:#fff}
+    .f2col{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    .f2col .fgroup{margin-bottom:0}
+    .fbtn{width:100%;margin-top:14px;padding:16px;background:var(--orange);color:#fff;
+      border:none;border-radius:var(--radius);font-size:16px;font-weight:700;
+      font-family:var(--fb);cursor:pointer;transition:var(--trans);
+      box-shadow:0 8px 24px rgba(255,110,26,.34);display:flex;align-items:center;justify-content:center;gap:9px}
+    .fbtn:hover{background:var(--orange-dk);box-shadow:0 12px 30px rgba(255,110,26,.46)}
+    .fbtn:disabled{opacity:.62;cursor:not-allowed}
+    .fbtn svg{width:17px;height:17px}
+    .f-selos{display:flex;align-items:center;justify-content:center;gap:7px 14px;flex-wrap:wrap;
+      margin-top:12px;font-size:11.5px;color:var(--gray-500);font-weight:600}
+    .f-selos span{display:inline-flex;align-items:center;gap:5px}
+    .f-selos svg{width:13px;height:13px;color:var(--green)}
+    .f-consent{font-size:11px;color:var(--gray-500);line-height:1.5;margin-top:10px;text-align:center}
+    .f-consent a{color:var(--orange-dk);text-decoration:underline}
+    .cf-wpp{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;
+      padding-top:13px;border-top:1px solid var(--gray-200);font-size:13px;color:var(--gray-500)}
+    .cf-wpp a{color:var(--green);font-weight:700;display:inline-flex;align-items:center;gap:6px}
+    .cf-wpp svg{width:16px;height:16px;fill:currentColor}
+
+    /* sucesso */
+    .fsucesso{text-align:center;padding:10px 0}
+    .fsucesso-ico{width:58px;height:58px;border-radius:50%;background:rgba(37,211,102,.14);
+      display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+    .fsucesso h2{font-family:var(--fh);font-weight:800;font-size:23px;color:var(--navy);margin-bottom:9px}
+    .fsucesso p{font-size:14px;color:var(--gray-700);margin-bottom:16px;line-height:1.6}
+    .pos-email{background:var(--gray-100);border-radius:12px;padding:16px;margin-bottom:16px;text-align:left}
+    .pos-email p{font-size:13px;color:var(--gray-700);margin-bottom:9px}
+    .pos-email .lin{display:flex;gap:8px}
+    .pos-email input{flex:1;padding:11px 12px;border:2px solid var(--gray-200);border-radius:8px;
+      font-size:15px;font-family:var(--fb);background:#fff}
+    .pos-email input:focus{outline:none;border-color:var(--orange)}
+    .pos-email button{background:var(--navy);color:#fff;border:none;border-radius:8px;padding:0 16px;
+      font-family:var(--fb);font-weight:700;font-size:13.5px;cursor:pointer;white-space:nowrap}
+    .pos-email button:hover{background:var(--navy-lt)}
+    .pos-email .ok{display:none;font-size:13px;color:#1E7B45;font-weight:700}
+    .pos-email.done .lin,.pos-email.done p{display:none}
+    .pos-email.done .ok{display:block}
+
+    /* erros */
+    .fgroup input.err,.fgroup select.err{border-color:#D93025;background:#FEF2F1}
+    .fmsg{display:none;font-size:11.5px;color:#B3261E;margin-top:4px;font-weight:600}
+    .fgroup.bad .fmsg{display:block}
+    .fbanner{display:none;background:#FEF2F1;border:1px solid #F3B6B0;color:#B3261E;
+      font-size:13px;font-weight:600;border-radius:8px;padding:11px 13px;margin-bottom:13px;line-height:1.45}
+    .fbanner.show{display:block}
+    .hp{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+      clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
+    /* chip com o resultado do simulador levado para o formulário */
+    .sim-chip{display:none;background:rgba(255,110,26,.12);border:1px solid rgba(255,110,26,.34);
+      border-radius:10px;padding:11px 13px;margin-bottom:14px;font-size:12.5px;color:var(--navy);line-height:1.5}
+    .sim-chip.show{display:block}
+    .sim-chip b{color:var(--orange-dk)}
+
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+
+    .cut-b{position:relative}
+    .cut-b::after{content:'';position:absolute;left:-4%;right:-4%;bottom:-30px;height:60px;
+      background:#fff;transform:skewY(-1.5deg);z-index:0}
+
+    /* ===== SEÇÕES ===== */
+    section{padding:72px 0}
+    .sec-head{text-align:center;max-width:680px;margin:0 auto 44px}
+    h2.sec{font-family:var(--fh);font-weight:800;font-size:clamp(28px,3.6vw,42px);
+      line-height:1.12;color:var(--navy);letter-spacing:-.3px}
+    h2.sec em{font-style:normal;color:var(--orange-dk)}
+    .sec-sub{font-size:16.5px;color:var(--gray-700);margin-top:14px;line-height:1.65}
+
+    /* dor */
+    .dor{background:var(--gray-100)}
+    .dor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .dor-card{background:#fff;border-radius:14px;padding:28px 26px;box-shadow:0 3px 16px rgba(13,30,61,.06)}
+    .dor-card h3{font-family:var(--fh);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:9px}
+    .dor-card p{font-size:14.5px;color:var(--gray-700);line-height:1.65}
+
+    /* ===== SIMULADOR ===== */
+    .sim{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+    .sim::before{content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 18% 25%,rgba(255,110,26,.16),transparent 48%),
+                 radial-gradient(circle at 85% 75%,rgba(91,155,213,.13),transparent 44%)}
+    .sim .wrap{position:relative;z-index:2}
+    .sim h2.sec{color:#fff}
+    .sim h2.sec em{color:var(--orange-lt)}
+    .sim .sec-sub{color:rgba(255,255,255,.75)}
+    .sim-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;padding:34px 32px;max-width:860px;margin:0 auto}
+    .sim-inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:22px}
+    .sim-g label{display:block;font-size:11.5px;font-weight:700;letter-spacing:.6px;
+      text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:7px}
+    .sim-g input,.sim-g select{width:100%;padding:13px 15px;background:var(--gray-100);
+      border:2px solid transparent;border-radius:9px;font-size:16px;font-weight:600;
+      color:var(--navy);font-family:var(--fb)}
+    .sim-g input[type=range]{padding:0;background:transparent;accent-color:var(--orange)}
+    .sim-slider-val{font-family:var(--fh);font-size:26px;font-weight:800;color:#fff}
+    .sim-slider-val span{font-size:14px;color:rgba(255,255,255,.5);font-weight:600}
+    .sim-niveis{font-size:12.5px;color:var(--orange-lt);font-weight:700;margin-left:8px}
+    .sim-btn{width:100%;padding:16px;background:var(--orange);color:#fff;border:none;
+      border-radius:var(--radius);font-size:16px;font-weight:700;font-family:var(--fb);
+      cursor:pointer;transition:var(--trans);display:flex;align-items:center;justify-content:center;gap:9px}
+    .sim-btn:hover{background:var(--orange-dk)}
+    .sim-btn svg{width:18px;height:18px}
+    .sim-res{display:none;margin-top:26px;padding-top:26px;border-top:1px solid rgba(255,255,255,.13)}
+    .sim-res.show{display:block;animation:fade .4s ease}
+    .sim-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+    .kpi{background:rgba(255,255,255,.06);border-radius:12px;padding:20px 18px;text-align:center}
+    .kpi.hl{background:rgba(255,110,26,.14);border:1px solid rgba(255,110,26,.35)}
+    .kpi-lbl{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+      color:rgba(255,255,255,.72);margin-bottom:8px;line-height:1.3}
+    .kpi-val{font-family:var(--fh);font-weight:900;font-size:36px;line-height:1;color:#fff}
+    .kpi.hl .kpi-val{color:var(--orange-lt)}
+    .kpi-sub{font-size:11.5px;color:rgba(255,255,255,.66);margin-top:6px}
+    .sim-cta{background:rgba(255,255,255,.08);border:1px solid rgba(255,110,26,.3);border-radius:14px;
+      padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .sim-cta p{font-size:15px;color:rgba(255,255,255,.88);line-height:1.5;flex:1;min-width:260px}
+    .sim-cta strong{color:#fff}
+    .sim-nota{font-size:12px;color:rgba(255,255,255,.62);margin-top:14px;font-style:italic;line-height:1.55}
+    .sim-preco{display:none;background:rgba(255,110,26,.10);border:1px solid rgba(255,110,26,.32);
+      border-radius:12px;padding:20px 22px;margin-bottom:18px}
+    .sim-preco.show{display:block}
+    .sim-preco .pl{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+      color:rgba(255,255,255,.72);margin-bottom:9px}
+    .sim-preco .pv{font-family:var(--fh);font-weight:900;font-size:29px;color:var(--orange-lt);line-height:1.15}
+    .sim-preco .pd{font-size:12.5px;color:rgba(255,255,255,.66);margin-top:7px;line-height:1.5}
+
+    /* ===== DECISÕES DO PROJETO ===== */
+    .decisoes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .decisao{border:1px solid var(--gray-200);border-radius:14px;padding:30px 26px;transition:var(--trans)}
+    .decisao:hover{border-color:var(--orange);box-shadow:0 10px 34px rgba(13,30,61,.09)}
+    .decisao-n{font-family:var(--fh);font-weight:900;font-size:15px;color:var(--orange);
+      letter-spacing:1px;margin-bottom:12px}
+    .decisao h3{font-family:var(--fh);font-weight:700;font-size:21px;color:var(--navy);margin-bottom:11px;line-height:1.2}
+    .decisao p{font-size:14.5px;color:var(--gray-700);line-height:1.65;margin-bottom:14px}
+    .decisao-sol{background:var(--gray-100);border-left:3px solid var(--orange);
+      padding:13px 15px;border-radius:0 8px 8px 0;font-size:13.5px;color:var(--navy);line-height:1.55}
+    .decisao-sol strong{color:var(--orange-dk)}
+
+    /* ===== COMPRAR x LOCAR ===== */
+    .cxl{background:var(--gray-100)}
+    .cxl-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+    .cxl-card{background:#fff;border-radius:16px;padding:32px 30px;border:2px solid transparent}
+    .cxl-card.dest{border-color:var(--orange);position:relative}
+    .cxl-badge{position:absolute;top:-12px;left:30px;background:var(--orange);color:#fff;
+      font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+      padding:5px 13px;border-radius:999px}
+    .cxl-card h3{font-family:var(--fh);font-weight:800;font-size:25px;color:var(--navy);margin-bottom:8px}
+    .cxl-card>p{font-size:14px;color:var(--gray-500);margin-bottom:20px}
+    .cxl-list li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;
+      color:var(--gray-700);margin-bottom:12px;line-height:1.55}
+    .cxl-list svg{flex-shrink:0;width:17px;height:17px;color:var(--orange);margin-top:2px}
+
+    /* ===== COMO FUNCIONA ===== */
+    .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .passo{text-align:center}
+    .passo-n{width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;
+      font-family:var(--fh);font-weight:900;font-size:19px;
+      display:flex;align-items:center;justify-content:center;margin:0 auto 15px}
+    .passo h3{font-family:var(--fh);font-weight:700;font-size:17.5px;color:var(--navy);margin-bottom:8px}
+    .passo p{font-size:13.5px;color:var(--gray-700);line-height:1.6}
+
+    /* ===== CTA FINAL ===== */
+    .final{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+    .final::before{content:'';position:absolute;top:-60px;right:-60px;width:340px;height:340px;
+      background:radial-gradient(circle,rgba(255,110,26,.2),transparent 70%)}
+    .final .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr .92fr;gap:44px;align-items:start}
+    .final h2{font-family:var(--fh);font-weight:800;font-size:clamp(28px,3.4vw,40px);line-height:1.12;margin-bottom:16px}
+    .final h2 em{font-style:normal;color:var(--orange-lt)}
+    .final p{font-size:16px;color:rgba(255,255,255,.78);line-height:1.65;margin-bottom:20px}
+    .final-lista{margin:0 0 24px}
+    .final-lista li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;
+      color:rgba(255,255,255,.86);margin-bottom:10px;line-height:1.5}
+    .final-lista svg{flex-shrink:0;width:17px;height:17px;color:var(--green);margin-top:2px}
+
+    /* ===== FAQ ===== */
+    .faq{max-width:780px;margin:0 auto}
+    .faq-item{border-bottom:1px solid var(--gray-200)}
+    .faq-q{width:100%;background:none;border:none;padding:20px 0;text-align:left;cursor:pointer;
+      display:flex;justify-content:space-between;align-items:center;gap:16px;
+      font-family:var(--fh);font-weight:700;font-size:18.5px;color:var(--navy)}
+    .faq-q svg{flex-shrink:0;width:19px;height:19px;color:var(--orange);transition:transform var(--trans)}
+    .faq-item.open .faq-q svg{transform:rotate(45deg)}
+    .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+    .faq-a>div{overflow:hidden}
+    .faq-item.open .faq-a{grid-template-rows:1fr}
+    .faq-a p{font-size:14.5px;color:var(--gray-700);line-height:1.7;padding-bottom:20px}
+    .faq-cta{text-align:center;margin-top:34px;font-size:15px;color:var(--gray-700)}
+    .faq-cta a{color:var(--orange-dk);font-weight:700;text-decoration:underline}
+
+    /* ===== RODAPÉ ===== */
+    footer{background:var(--navy);color:rgba(255,255,255,.68);padding:34px 0;
+      border-top:1px solid rgba(255,255,255,.09);text-align:center;font-size:12.5px;line-height:1.8}
+    footer a{color:var(--orange-lt)}
+
+    /* WhatsApp flutuante */
+    .wpp{position:fixed;bottom:22px;right:22px;width:58px;height:58px;background:var(--green);
+      border-radius:50%;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:990;transition:transform var(--trans)}
+    .wpp:hover{transform:scale(1.08)}
+    .wpp svg{width:30px;height:30px;fill:#fff}
+
+    /* ===== CONFIGURAÇÕES ===== */
+    .cfg-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:880px;margin:0 auto}
+    .cfg{background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--gray-200);
+      display:flex;flex-direction:column;transition:transform var(--trans),box-shadow var(--trans)}
+    .cfg:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(13,30,61,.14)}
+    @media(prefers-reduced-motion:reduce){.cfg:hover{transform:none}}
+    .cfg-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--gray-100)}
+    .cfg-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .cfg-tag{position:absolute;left:14px;bottom:14px;background:var(--orange);color:#fff;
+      font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:6px 12px;border-radius:6px}
+    .cfg-txt{padding:22px 22px 24px;display:flex;flex-direction:column;gap:9px;flex:1}
+    .cfg-txt h3{font-family:var(--fh);font-weight:700;font-size:20px;color:var(--navy);line-height:1.2}
+    .cfg-txt p{font-size:14px;color:var(--gray-700);line-height:1.6}
+    .cfg-meta{margin-top:auto;padding-top:12px;border-top:1px solid var(--gray-200);
+      font-size:12.5px;color:var(--gray-500);display:flex;justify-content:space-between;gap:10px}
+    .cfg-meta b{color:var(--navy);font-weight:700}
+
+    .spec-faixa{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px;
+      background:var(--navy);border-radius:14px;overflow:hidden}
+    .spec-cel{padding:24px 26px;border-right:1px solid rgba(255,255,255,.13)}
+    .spec-cel:last-child{border-right:0}
+    .spec-k{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;
+      color:var(--orange-lt);margin-bottom:9px}
+    .spec-v{font-family:var(--fh);font-weight:900;font-size:29px;color:#fff;line-height:1.05}
+    .spec-v small{font-size:15px;font-weight:700;color:rgba(255,255,255,.72)}
+    .spec-d{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55;margin-top:8px}
+
+    /* banda */
+    .banda{position:relative;padding:0;overflow:hidden}
+    .banda img{width:100%;height:clamp(280px,34vw,420px);object-fit:cover;display:block}
+    .banda::before{content:'';position:absolute;inset:0;z-index:2;
+      background:linear-gradient(90deg,rgba(13,30,61,.94) 0%,rgba(13,30,61,.72) 42%,rgba(13,30,61,.12) 100%)}
+    .banda-txt{position:absolute;inset:0;z-index:3;display:flex;align-items:center}
+    .banda-txt .wrap{width:100%}
+    .banda-txt h2{font-family:var(--fh);font-weight:800;font-size:clamp(26px,3.4vw,40px);
+      color:#fff;line-height:1.1;max-width:16ch;margin-bottom:14px}
+    .banda-txt h2 em{font-style:normal;color:var(--orange-lt)}
+    .banda-txt p{color:rgba(255,255,255,.86);font-size:15.5px;max-width:46ch;line-height:1.6;margin-bottom:20px}
+
+    /* conta do metro cúbico */
+    .m3{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:30px;
+      border:1px solid var(--gray-200);border-radius:14px;overflow:hidden;background:#fff}
+    .m3-col{padding:26px 28px}
+    .m3-col+.m3-col{border-left:1px solid var(--gray-200)}
+    .m3-col.paga{background:var(--navy);color:#fff}
+    .m3-k{font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+      color:var(--gray-500);margin-bottom:10px}
+    .m3-col.paga .m3-k{color:var(--orange-lt)}
+    .m3-v{font-family:var(--fh);font-weight:900;font-size:40px;line-height:1;color:var(--navy)}
+    .m3-col.paga .m3-v{color:#fff}
+    .m3-v small{font-size:17px;font-weight:700}
+    .m3-d{font-size:13.5px;color:var(--gray-700);line-height:1.55;margin-top:9px}
+    .m3-col.paga .m3-d{color:rgba(255,255,255,.8)}
+    .m3-barra{height:9px;border-radius:99px;background:var(--gray-200);margin-top:16px;overflow:hidden}
+    .m3-barra i{display:block;height:100%;background:var(--orange);border-radius:99px}
+    .m3-col.paga .m3-barra{background:rgba(255,255,255,.18)}
+    .m3-nota{font-size:12.5px;color:var(--gray-500);margin-top:14px;line-height:1.55;font-style:italic}
+
+    /* render técnico */
+    .rt-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;max-width:1000px;margin:0 auto}
+    .rt-grid.larga{grid-template-columns:1.45fr 1fr;gap:36px;max-width:1080px}
+    .rt-img{background:#fff;border-radius:16px;padding:14px;box-shadow:0 6px 26px rgba(13,30,61,.10)}
+    .rt-img picture{display:block;line-height:0}
+    .rt-img img{border-radius:10px;width:100%;height:auto}
+    .rt-txt h3{font-family:var(--fh);font-weight:800;font-size:26px;color:var(--navy);margin-bottom:14px;line-height:1.2}
+    .rt-txt>p{font-size:15.5px;color:var(--gray-700);line-height:1.7;margin-bottom:20px}
+    .rt-list li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;
+      color:var(--gray-700);margin-bottom:13px;line-height:1.55}
+    .rt-list svg{flex-shrink:0;width:18px;height:18px;color:var(--orange);margin-top:2px}
+    .rt-list strong{color:var(--navy)}
+
+    /* prova / garantias */
+    .prova{background:var(--gray-100)}
+    .prova-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:30px}
+    .prova-card{background:#fff;border-radius:14px;padding:26px 24px;box-shadow:0 3px 16px rgba(13,30,61,.06);
+      position:relative;transition:transform var(--trans),box-shadow var(--trans)}
+    .prova-card:hover,.dor-card:hover{transform:translateY(-4px);box-shadow:0 14px 38px rgba(13,30,61,.13)}
+    @media(prefers-reduced-motion:reduce){.prova-card:hover,.dor-card:hover{transform:none}}
+    .prova-card h3{font-family:var(--fh);font-weight:700;font-size:19px;color:var(--navy);margin-bottom:9px;line-height:1.25}
+    .prova-card p{font-size:14.5px;color:var(--gray-700);line-height:1.65}
+    .prova-card .pn{font-family:var(--fh);font-weight:900;font-size:13px;color:var(--orange-dk);letter-spacing:1px;margin-bottom:11px}
+    .docs{background:var(--navy);border-radius:16px;padding:30px 32px;color:#fff}
+    .docs h3{font-family:var(--fh);font-weight:800;font-size:23px;margin-bottom:6px}
+    .docs>p{font-size:14.5px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.6}
+    .docs-list{display:grid;grid-template-columns:repeat(2,1fr);gap:13px 26px}
+    .docs-list li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:rgba(255,255,255,.9);line-height:1.5}
+    .docs-list svg{flex-shrink:0;width:17px;height:17px;color:var(--orange-lt);margin-top:3px}
+
+    .dor-card{position:relative}
+    .badge-ico{position:absolute;top:-18px;right:22px;width:52px;height:52px;border-radius:50%;
+      background:var(--orange);display:flex;align-items:center;justify-content:center;
+      box-shadow:0 8px 22px rgba(255,110,26,.34)}
+    .badge-ico svg{width:24px;height:24px;color:#fff}
+
+    .chev{position:absolute;pointer-events:none;opacity:.5;z-index:0}
+    .sec-rel{position:relative;overflow:hidden}
+    @media(max-width:860px){.chev,.hero-chev,.hero-chev2{display:none}}
+
+    /* ===== MODAL DE SAÍDA ===== */
+    .modal{display:none;position:fixed;inset:0;z-index:1200;background:rgba(9,18,36,.72);
+      align-items:center;justify-content:center;padding:20px}
+    .modal.show{display:flex;animation:fade .25s ease}
+    .modal-box{background:#fff;border-radius:18px;max-width:460px;width:100%;padding:32px 30px 26px;
+      position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5);border-top:5px solid var(--orange)}
+    .modal-x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:26px;
+      line-height:1;color:var(--gray-500);cursor:pointer;padding:4px 8px}
+    .modal-x:hover{color:var(--navy)}
+    .modal-box h3{font-family:var(--fh);font-weight:800;font-size:26px;color:var(--navy);
+      line-height:1.14;margin-bottom:10px}
+    .modal-box h3 em{font-style:normal;color:var(--orange-dk)}
+    .modal-box>p{font-size:14.5px;color:var(--gray-700);line-height:1.6;margin-bottom:18px}
+
+    /* ===== BARRA FIXA MOBILE ===== */
+    .mbar{display:none}
+    @media(max-width:760px){
+      .mbar{display:grid;grid-template-columns:1fr 1fr;gap:0;position:fixed;left:0;right:0;bottom:0;z-index:995;
+        background:var(--navy);border-top:1px solid rgba(255,255,255,.14);box-shadow:0 -4px 20px rgba(0,0,0,.28)}
+      .mbar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 8px;
+        font-size:14.5px;font-weight:700;color:#fff;font-family:var(--fb)}
+      .mbar a svg{width:18px;height:18px}
+      .mbar a.wa{background:var(--green)}
+      .mbar a.or{background:var(--orange)}
+      body{padding-bottom:58px}
+      .wpp{display:none}
+    }
+
+    /* ===== RESPONSIVO ===== */
+    /* Telas de desktop BAIXAS (ex.: notebook 1366x768, que sobra ~658px de
+       viewport depois da barra do navegador). Sem isto o render do rack e a
+       faixa de normas caem abaixo da dobra justamente nas telas mais comuns. */
+    @media(min-width:941px) and (max-height:760px){
+      .hero{padding:12px 0 12px}
+      .hero-sub{display:none}
+      .hero h1{font-size:clamp(28px,3vw,36px);margin-bottom:8px}
+      .hero-ofertas{gap:6px}
+      .oferta{font-size:13.5px}
+      .palco img{max-height:150px}
+      .palco{margin-top:2px}
+      .hero-cred{margin-top:6px;padding-top:8px}
+      .hero-cred-item{font-size:11.5px}
+      .hero-cred-ico{width:24px;height:24px}
+      .card-form{padding:20px 22px 16px}
+      .card-form h2{font-size:21px}
+      .cf-sub{margin-bottom:11px}
+    }
+
+    @media(max-width:940px){
+      .hero{padding:22px 0 26px}
+      /* No celular a credibilidade sobe para ANTES do formulario: normas e cobertura
+         ficam visiveis ao abrir, e o formulario comeca logo abaixo. Empilhar tudo
+         (copy + 4 bullets + card de ~540px + faixa) nao cabe numa tela de 812px. */
+      /* No celular o formulario vem antes do render: converter importa mais que
+         ilustrar. O render fecha o hero. */
+      .hero .wrap{grid-template-columns:1fr;grid-template-areas:"copy" "cred" "form" "palco";gap:18px}
+      .hero-cred{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin-top:2px}
+      .hero-cred-item{font-size:12px}
+      .palco{justify-content:center;margin-top:14px}
+      .palco img{max-height:210px}
+      .selo-cap{left:2%;bottom:0;padding:10px 14px}
+      .selo-cap b{font-size:23px}
+      .final .wrap{grid-template-columns:1fr;gap:28px}
+      .hero h1{max-width:none}
+      .hero-overlay{background:linear-gradient(180deg,rgba(9,20,42,.92) 0%,rgba(11,24,50,.88) 52%,rgba(13,30,61,.95) 100%)}
+      .dor-grid,.decisoes-grid,.sim-kpis,.prova-grid{grid-template-columns:1fr}
+      .sim-inputs{grid-template-columns:1fr}
+      .cfg-grid{grid-template-columns:1fr}
+      .docs-list{grid-template-columns:1fr}
+      .cxl-grid{grid-template-columns:1fr}
+      .passos{grid-template-columns:1fr 1fr}
+      .rt-grid,.rt-grid.larga{grid-template-columns:1fr;gap:28px}
+      .spec-faixa{grid-template-columns:1fr}
+      .spec-cel{border-right:0;border-bottom:1px solid rgba(255,255,255,.13)}
+      .spec-cel:last-child{border-bottom:0}
+      .m3{grid-template-columns:1fr}
+      .m3-col+.m3-col{border-left:0;border-top:1px solid var(--gray-200)}
+    }
+    /* No mobile o que importa e chegar no formulario. O paragrafo de apoio
+       repete o que os bullets ja dizem, entao ele sai e o hero encolhe ~170px:
+       o card sobe de ~660 para ~490 e as opcoes do passo 1 entram na 1a tela. */
+    @media(max-width:700px){
+      .hero{padding:22px 0 0}
+      .hero .wrap{gap:20px}
+      /* Retrato quadrado no celular: a foto wide (2,4:1) cortaria demais numa tela
+         alta e estreita. Breakpoint casado com o <link rel=preload> do <head>. */
+      .hero-bg{background-image:url('img/galpao-fundo-mobile.jpg');background-position:center 42%}
+      .hero-sub{display:none}
+      .hero-num{margin-bottom:12px;padding:7px 12px}
+      .hero-num b{font-size:22px}
+      .hero h1{font-size:clamp(29px,8vw,36px);margin-bottom:16px}
+      .hero-ofertas{gap:7px;margin-bottom:0}
+      .oferta{font-size:14px}
+      .card-form h2{font-size:21px}
+      .cf-sub{margin-bottom:13px}
+    }
+    @media(max-width:560px){
+      section{padding:52px 0}
+      .passos{grid-template-columns:1fr}
+      .sim-box{padding:24px 18px}
+      .card-form{padding:24px 18px 20px}
+      .f2col{grid-template-columns:1fr;gap:0}
+      .f2col .fgroup{margin-bottom:11px}
+      .sim-cta{flex-direction:column;align-items:stretch}
+      .sim-cta .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7HG4VJ4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- TOPO -->
+<div class="lp-top" id="topbar">
+  <div class="wrap">
+    <div class="lp-logo">
+      <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg" aria-label="Tetrix">
+        <defs><linearGradient id="og" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
+        <rect x="2" y="8" width="5" height="42" rx="1.5" fill="#fff"/>
+        <rect x="52" y="8" width="5" height="42" rx="1.5" fill="#fff"/>
+        <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#og)"/>
+        <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#og)"/>
+        <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#og)"/>
+        <rect x="11" y="10" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
+        <rect x="24" y="10" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
+        <rect x="37" y="10" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
+        <rect x="24" y="24" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
+        <rect x="24" y="38" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
+        <text x="72" y="42" font-family="Barlow Condensed,sans-serif" font-size="34" font-weight="900" fill="#fff" letter-spacing="1">TETRIX</text>
+        <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#og)"/>
+      </svg>
+    </div>
+    <div class="lp-top-acoes">
+      <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="lp-fone" data-wpp="topo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="num">(11) 99235-3669</span>
+      </a>
+      <a href="#orcamento" class="top-cta" data-cta="topo_fixo">Pedir orçamento</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="topo">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <span class="hero-chev"><svg width="74" height="234" viewBox="0 0 60 190" fill="none" aria-hidden="true">
+      <g stroke="#FF6E1A" stroke-width="5" stroke-linecap="round">
+        <path d="M8 12 L30 34 L52 12"/><path d="M8 40 L30 62 L52 40"/><path d="M8 68 L30 90 L52 68"/>
+      </g>
+      <g stroke="#5B9BD5" stroke-width="5" stroke-linecap="round">
+        <path d="M8 100 L30 122 L52 100"/><path d="M8 128 L30 150 L52 128"/><path d="M8 156 L30 178 L52 156"/>
+      </g>
+    </svg></span>
+  <span class="hero-chev2"><svg width="58" height="184" viewBox="0 0 60 190" fill="none" aria-hidden="true">
+      <g stroke="#FF6E1A" stroke-width="5" stroke-linecap="round">
+        <path d="M8 12 L30 34 L52 12"/><path d="M8 40 L30 62 L52 40"/><path d="M8 68 L30 90 L52 68"/>
+      </g>
+      <g stroke="#5B9BD5" stroke-width="5" stroke-linecap="round">
+        <path d="M8 100 L30 122 L52 100"/><path d="M8 128 L30 150 L52 128"/><path d="M8 156 L30 178 L52 156"/>
+      </g>
+    </svg></span>
+
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="tag" style="background:rgba(255,110,26,.20);color:var(--orange-lt)">Porta-paletes · São Paulo</span>
+      <h1>Porta-paletes em São Paulo.<br><em>Projeto e orçamento em 24 horas úteis.</em></h1>
+
+      <!-- v3: o +57% saiu daqui e voltou para o selo sobre o render do rack -->
+      <!-- v3: subtítulo enxuto. A versão longa repetia NBR e cobertura em SP,
+           que já aparecem na faixa logo abaixo — e custava ~40px da primeira tela. -->
+      <p class="hero-sub">Mais capacidade no galpão que você já tem, sem trocar de endereço. Engenharia própria, para venda ou locação.</p>
+
+      <div class="hero-ofertas">
+        <div class="oferta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Estrutura calculada para a sua carga.</strong> Nada de tabela padrão.</span>
+        </div>
+        <div class="oferta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Material a pronta entrega.</strong> Sem espera de fabricação.</span>
+        </div>
+        <div class="oferta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Diagnóstico técnico gratuito</strong> no seu galpão, com projeto de layout.</span>
+        </div>
+        <div class="oferta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Orçamento e projeto em até 24 horas úteis</strong>, a partir dos dados do galpão.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RENDER DO RACK — aparece junto com o formulário na primeira tela -->
+    <div class="palco">
+      <img src="img/rack-hero.webp" alt="Porta-paletes de quatro níveis totalmente carregados com paletes" width="1300" height="1064" fetchpriority="high" decoding="async">
+      <div class="selo-cap"><b>+57%</b><span>de capacidade no mesmo galpão</span></div>
+    </div>
+
+    <!-- FORMULÁRIO PRINCIPAL — 3 passos -->
+    <div class="hero-formcol">
+      <div class="card-form" id="hero-card">
+        <span class="cf-selo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          Resposta em 24h úteis
+        </span>
+
+        <div id="form1-campos">
+          <h2>Descubra <em>quantas posições-palete</em> cabem no seu galpão</h2>
+          <p class="cf-sub">Responda 2 perguntas rápidas. Nossa engenharia devolve o projeto e o orçamento — sem custo e sem compromisso.</p>
+
+          <div class="ms-prog">
+            <div class="ms-bar"><i id="ms-bar-i"></i></div>
+            <span class="ms-txt" id="ms-txt">Passo 1 de 3</span>
+          </div>
+
+          <div class="fbanner" id="f1-banner" role="alert" aria-live="assertive"></div>
+
+          <form id="lp-form1" novalidate>
+            <input type="hidden" name="area" id="f1-area">
+            <input type="hidden" name="objetivo" id="f1-objetivo">
+            <input type="hidden" name="pe_direito" id="f1-pe">
+            <input type="hidden" name="simulacao" id="f1-sim">
+
+            <!-- PASSO 1 -->
+            <div class="ms-step on" id="p1" data-step="1">
+              <p class="ms-perg">Qual a área de armazenagem do galpão?</p>
+              <p class="ms-ajuda">Só a área usada para estoque — não precisa ser exato.</p>
+              <div class="opts">
+                <button type="button" class="opt" data-campo="area" data-valor="Até 500 m²">Até 500 m²<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button type="button" class="opt" data-campo="area" data-valor="501 a 1.000 m²">501 a 1.000 m²<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button type="button" class="opt" data-campo="area" data-valor="1.001 a 3.000 m²">1.001 a 3.000 m²<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button type="button" class="opt" data-campo="area" data-valor="Acima de 3.000 m²">Acima de 3.000 m²<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+              </div>
+            </div>
+
+            <!-- PASSO 2 -->
+            <div class="ms-step" id="p2" data-step="2">
+              <p class="ms-perg">O que você precisa resolver?</p>
+              <p class="ms-ajuda">Isso define quem da engenharia vai te atender.</p>
+              <div class="opts">
+                <button type="button" class="opt" data-campo="objetivo" data-valor="Comprar porta-paletes">Comprar porta-paletes<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button type="button" class="opt" data-campo="objetivo" data-valor="Locar porta-paletes">Locar porta-paletes <em>sem imobilizar capital</em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button type="button" class="opt" data-campo="objetivo" data-valor="Comprar ou locar empilhadeira">Comprar ou locar empilhadeira<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+                <button type="button" class="opt" data-campo="objetivo" data-valor="Ainda não sei — quero orientação">Ainda não sei <em>— quero orientação</em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg></button>
+              </div>
+              <button type="button" class="ms-voltar" data-voltar="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button>
+            </div>
+
+            <!-- PASSO 3 -->
+            <div class="ms-step" id="p3" data-step="3">
+              <p class="ms-perg">Para onde enviamos o projeto?</p>
+              <p class="ms-ajuda">Nossa engenharia fala com você em até 24 horas úteis.</p>
+
+              <div class="sim-chip" id="chip-sim-1"></div>
+
+              <div class="fgroup" id="g1-nome">
+                <label for="f1-nome">Nome</label>
+                <input type="text" id="f1-nome" name="nome" placeholder="Seu nome" autocomplete="name" enterkeyhint="next" required>
+                <span class="fmsg">Informe seu nome.</span>
+              </div>
+              <div class="fgroup" id="g1-telefone">
+                <label for="f1-telefone">WhatsApp</label>
+                <input type="tel" id="f1-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" enterkeyhint="next" required>
+                <span class="fmsg">WhatsApp com DDD.</span>
+              </div>
+              <div class="f2col">
+                <div class="fgroup" id="g1-empresa">
+                  <label for="f1-empresa">Empresa</label>
+                  <input type="text" id="f1-empresa" name="empresa" placeholder="Nome da empresa" autocomplete="organization" enterkeyhint="next" required>
+                  <span class="fmsg">Informe a empresa.</span>
+                </div>
+                <div class="fgroup" id="g1-cidade">
+                  <label for="f1-cidade">Cidade <span class="opc">(opcional)</span></label>
+                  <input type="text" id="f1-cidade" name="cidade" placeholder="Ex.: Guarulhos" autocomplete="address-level2" enterkeyhint="send">
+                  <span class="fmsg">Informe a cidade.</span>
+                </div>
+              </div>
+
+              <div class="hp" aria-hidden="true">
+                <label for="f1-site">Não preencha este campo</label>
+                <input type="text" id="f1-site" name="site" tabindex="-1" autocomplete="off">
+              </div>
+
+              <button type="submit" class="fbtn" id="f1-btn">
+                Quero meu projeto e orçamento
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+
+              <div class="f-selos">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem custo</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Resposta em 24h úteis</span>
+              </div>
+
+              <p class="f-consent">Ao enviar, você autoriza o contato da Tetrix e o tratamento dos seus dados conforme a <a href="../../politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+
+              <button type="button" class="ms-voltar" data-voltar="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button>
+            </div>
+          </form>
+
+          <div class="cf-wpp">
+            Prefere falar agora?
+            <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" data-wpp="card_hero">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- SUCESSO -->
+        <div class="fsucesso" id="form1-ok" style="display:none">
+          <div class="fsucesso-ico">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>Solicitação enviada!</h2>
+          <p>Nossa engenharia entra em contato em até <strong>24 horas úteis</strong> para levantar os dados do galpão. Com eles em mãos, o orçamento e o projeto saem em mais 24 horas úteis.</p>
+
+          <div class="pos-email" data-pos-email>
+            <p><strong>Quer receber o projeto por e-mail também?</strong></p>
+            <div class="lin">
+              <input type="email" placeholder="voce@empresa.com.br" autocomplete="email" aria-label="E-mail para receber o projeto">
+              <button type="button">Enviar</button>
+            </div>
+            <div class="ok">✓ E-mail registrado. Vamos mandar o projeto para lá.</div>
+          </div>
+
+          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%" data-wpp="pos_formulario_hero">Adiantar pelo WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Credibilidade dentro do hero: aparece junto com o formulário, sem rolagem.
+         No celular ela sobe para antes do formulário (ver media query). -->
+    <div class="hero-cred">
+      <div class="hero-cred-item">
+        <span class="hero-cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        Projeto com responsável técnico
+      </div>
+      <div class="hero-cred-item">
+        <span class="hero-cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+        ABNT NBR 17150-1 e 17150-2:2024
+      </div>
+      <div class="hero-cred-item">
+        <span class="hero-cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg></span>
+        NR-11 e NR-12
+      </div>
+      <div class="hero-cred-item">
+        <span class="hero-cred-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        Todo o estado de São Paulo
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- DOR -->
+<section class="dor sec-rel">
+  <span class="chev" style="right:2.5%;top:12%" aria-hidden="true">
+      <svg width="46" height="76" viewBox="0 0 46 76" fill="none">
+        <g stroke="#FF6E1A" stroke-width="4" stroke-linecap="round">
+          <path d="M6 10 L23 26 L40 10"/><path d="M6 30 L23 46 L40 30"/>
+        </g>
+        <g stroke="#1E3A6E" stroke-width="4" stroke-linecap="round" opacity=".7">
+          <path d="M6 50 L23 66 L40 50"/>
+        </g>
+      </svg>
+    </span>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">O problema</span>
+      <h2 class="sec">Seu aluguel cobra o metro quadrado.<br><em>Sua carga ocupa metro cúbico.</em></h2>
+      <p class="sec-sub">O contrato mede o chão. A mercadoria ocupa volume. Todo o espaço entre o topo do seu estoque e a estrutura do telhado já está dentro do que você paga todo mês — e, na maioria das operações, está vazio.</p>
+    </div>
+
+    <div class="dor-grid">
+      <div class="dor-card">
+        <span class="badge-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+        <h3>O metro quadrado ficou caro</h3>
+        <p>Em Guarulhos a vacância está em <strong>1,21%</strong> e o preço pedido em <strong>R$ 38,07 por m²</strong>. Não é só o preço: praticamente não há área vaga para alugar perto da capital.</p>
+      </div>
+      <div class="dor-card">
+        <span class="badge-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        <h3>O metro cúbico continua de graça</h3>
+        <p>Empilhar no piso aproveita 2 ou 3 metros de um pé-direito que costuma ter 8, 10 ou 12. O volume acima disso não é cobrado à parte — ele já está no aluguel, e está ocioso.</p>
+      </div>
+      <div class="dor-card">
+        <span class="badge-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+        <h3>Trocar de endereço custa o dobro</h3>
+        <p>Sair de onde você está para achar espaço significa ir para longe do consumidor, e o frete come a economia do aluguel. Fora que o galpão em obras sai bem mais caro que o pronto.</p>
+      </div>
+    </div>
+
+    <div class="m3">
+      <div class="m3-col">
+        <div class="m3-k">Volume dentro do seu contrato</div>
+        <div class="m3-v">24.000 <small>m³</small></div>
+        <p class="m3-d">Um galpão de 2.000 m² com 12 m de pé-direito. É isso que o aluguel entrega — e cobra.</p>
+        <div class="m3-barra"><i style="width:100%"></i></div>
+      </div>
+      <div class="m3-col paga">
+        <div class="m3-k">Volume que a operação usa</div>
+        <div class="m3-v">6.000 <small>m³</small></div>
+        <p class="m3-d">A mesma área com estoque empilhado a 3 m de altura. Um quarto do volume em uso — os outros três quartos você paga e não ocupa.</p>
+        <div class="m3-barra"><i style="width:25%"></i></div>
+      </div>
+    </div>
+    <p class="m3-nota">Conta ilustrativa, aritmética simples — o número do seu galpão sai no diagnóstico. Vacância e preço pedido: SiiLA, 2º trimestre de 2026. Usar esse volume não é automático: depende da capacidade do piso, do projeto estrutural e da empilhadeira certa — que é exatamente o que dimensionamos.</p>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section class="sim cut-b" id="simulador">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag" style="background:rgba(255,110,26,.18);color:var(--orange-lt)">Exclusivo Tetrix</span>
+      <h2 class="sec">Descubra <em>agora</em> quantas posições-palete cabem no seu galpão</h2>
+      <p class="sec-sub">Nenhum dos grandes fornecedores mostra esse número antes do contato comercial. Aqui você preenche quatro campos e vê a estimativa na hora — sem cadastro.</p>
+    </div>
+
+    <div class="sim-box">
+      <div class="sim-inputs">
+        <div class="sim-g">
+          <label for="s-area">Área de armazenagem (m²)</label>
+          <input type="number" id="s-area" value="800" min="100" max="50000" inputmode="numeric">
+        </div>
+        <div class="sim-g">
+          <label for="s-pd">Pé-direito</label>
+          <div style="margin-bottom:6px">
+            <span class="sim-slider-val" id="s-pd-val">5,5</span><span class="sim-slider-val"><span> m</span></span>
+            <span class="sim-niveis" id="s-niveis">→ 3 níveis</span>
+          </div>
+          <input type="range" id="s-pd" min="3" max="12" step="0.5" value="5.5">
+        </div>
+        <div class="sim-g">
+          <label for="s-emp">Empilhadeira</label>
+          <select id="s-emp">
+            <option value="CB" selected>Contrabalançada</option>
+            <option value="PT">Patolada</option>
+            <option value="RT">Retrátil</option>
+            <option value="TR">Trilateral</option>
+          </select>
+        </div>
+        <div class="sim-g">
+          <label for="s-cam">Como você armazena hoje</label>
+          <select id="s-cam">
+            <option value="1" selected>Paletes no piso, 1 camada</option>
+            <option value="2">Empilhado em bloco, 2 camadas</option>
+            <option value="3">Empilhado em bloco, 3 camadas</option>
+            <option value="R">Já tenho porta-paletes</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="sim-btn" type="button" id="s-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/></svg>
+        Calcular posições-palete
+      </button>
+
+      <div class="sim-res" id="s-res">
+        <div class="sim-kpis">
+          <div class="kpi">
+            <div class="kpi-lbl">Hoje, no chão</div>
+            <div class="kpi-val" id="s-hoje">—</div>
+            <div class="kpi-sub">posições-palete</div>
+          </div>
+          <div class="kpi hl">
+            <div class="kpi-lbl">Com verticalização</div>
+            <div class="kpi-val" id="s-novo">—</div>
+            <div class="kpi-sub" id="s-niveis-sub">posições-palete</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-lbl">Ganho de capacidade</div>
+            <div class="kpi-val" id="s-ganho">—</div>
+            <div class="kpi-sub">posições a mais</div>
+          </div>
+        </div>
+
+        <div class="sim-preco" id="s-preco">
+          <div class="pl">Faixa de investimento estimada</div>
+          <div class="pv" id="s-preco-val">—</div>
+          <div class="pd" id="s-preco-det"></div>
+        </div>
+
+        <div class="sim-cta">
+          <p id="s-msg"><strong>Quer o número exato do seu galpão?</strong> No diagnóstico gratuito medimos pilares, docas e sprinklers para fechar o projeto real.</p>
+          <button type="button" class="btn btn-primary" id="s-cta">
+            Receber o projeto do meu galpão
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <p class="sim-nota">Estimativa baseada em densidades típicas por tipo de empilhadeira e nas folgas verticais da ABNT NBR 17150-2:2024, a partir do cenário de armazenagem que você informou. O número real depende do layout, dos pilares, das docas, do traçado de sprinklers e das dimensões da carga — e é isso que o diagnóstico técnico fecha.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA / GARANTIAS -->
+<section class="prova sec-rel">
+  <span class="chev" style="left:2.5%;bottom:12%;transform:rotate(180deg)" aria-hidden="true">
+      <svg width="46" height="76" viewBox="0 0 46 76" fill="none">
+        <g stroke="#1E3A6E" stroke-width="4" stroke-linecap="round">
+          <path d="M6 10 L23 26 L40 10"/><path d="M6 30 L23 46 L40 30"/>
+        </g>
+        <g stroke="#FF6E1A" stroke-width="4" stroke-linecap="round" opacity=".7">
+          <path d="M6 50 L23 66 L40 50"/>
+        </g>
+      </svg>
+    </span>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Sem letra miúda</span>
+      <h2 class="sec">O compromisso é nosso<br><em>antes de ser seu</em></h2>
+      <p class="sec-sub">Somos uma operação nova e preferimos provar isso com compromisso assumido em contrato do que com número redondo em banner.</p>
+    </div>
+
+    <div class="prova-grid">
+      <div class="prova-card">
+        <div class="pn">GARANTIA 01</div>
+        <h3>Você recebe o projeto mesmo que não feche</h3>
+        <p>O diagnóstico e o layout dimensionado são seus, sem custo e sem cláusula de exclusividade. Se decidir comprar de outro fornecedor, leva o projeto junto.</p>
+      </div>
+      <div class="prova-card">
+        <div class="pn">GARANTIA 02</div>
+        <h3>Se a conta não fechar, a gente diz</h3>
+        <p>Se a verticalização não compensar no seu caso, falamos isso — mesmo que signifique não vender. Preferimos perder uma venda a entregar um projeto que não se paga.</p>
+      </div>
+      <div class="prova-card">
+        <div class="pn">GARANTIA 03</div>
+        <h3>Responsável técnico com nome e registro</h3>
+        <p>O memorial de cálculo sai com o nome e o número CREA-SP do engenheiro que assinou o projeto — consultável no site do conselho. Não é selo de rodapé, é responsabilidade pessoal.</p>
+      </div>
+    </div>
+
+    <div class="docs">
+      <h3>O que vai junto com a estrutura</h3>
+      <p>A documentação é o que a sua área de SST vai pedir na próxima auditoria. Ela sai com a obra, não depois.</p>
+      <ul class="docs-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Projeto assinado por engenheiro registrado no CREA-SP</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Memorial de cálculo com carga admissível por nível</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Placa de características fixada na estrutura</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Projeto de layout com corredores e fluxo cotados</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Checklist de montagem assinado na entrega</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Orientação de uso seguro e limites de carga para a equipe</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DECISÕES DO PROJETO -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Por que a Tetrix</span>
+      <h2 class="sec">Três decisões que definem<br><em>o resultado do seu projeto</em></h2>
+      <p class="sec-sub">São as escolhas que aparecem em todo projeto de verticalização. Veja como resolvemos cada uma.</p>
+    </div>
+    <div class="decisoes-grid">
+      <div class="decisao">
+        <div class="decisao-n">DECISÃO 01</div>
+        <h3>Como o investimento entra no seu caixa</h3>
+        <p>Operação que ainda pode mudar de tamanho, de mix ou de endereço pede flexibilidade financeira. Por isso você escolhe o formato, em vez de aceitar um só.</p>
+        <div class="decisao-sol"><strong>Como fazemos:</strong> locação com mensalidade fixa, que preserva o seu capital — ou compra, com o <strong>payback calculado sobre o seu custo real de m²</strong>.</div>
+      </div>
+      <div class="decisao">
+        <div class="decisao-n">DECISÃO 02</div>
+        <h3>O que sustenta a estrutura no papel</h3>
+        <p>A carga por nível, a bitola do perfil e o protetor de coluna vêm de cálculo, não de catálogo. É esse memorial que a sua área de SST apresenta em auditoria.</p>
+        <div class="decisao-sol"><strong>Como fazemos:</strong> dimensionamento conforme <strong>ABNT NBR 17150-1 e 17150-2:2024</strong>, com responsável técnico registrado no CREA-SP.</div>
+      </div>
+      <div class="decisao">
+        <div class="decisao-n">DECISÃO 03</div>
+        <h3>Quem dimensiona o conjunto</h3>
+        <p>A largura do corredor, a altura útil e a máquina que vai operar são um cálculo só. Quando saem de fornecedores diferentes, é você que concilia as três pontas.</p>
+        <div class="decisao-sol"><strong>Como fazemos:</strong> dimensionamos <strong>estrutura, corredor e equipamento juntos</strong>, como um sistema só — porque fornecemos os dois.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDA CTA -->
+<section class="banda">
+  <picture>
+    <source srcset="img/hero-galpao.webp" type="image/webp">
+    <img src="img/hero-galpao.jpg" alt="Corredor de galpao verticalizado com porta-paletes de grande altura" width="1800" height="2234" loading="lazy" decoding="async">
+  </picture>
+  <div class="banda-txt">
+    <div class="wrap">
+      <h2>Cada nível a mais é <em>um galpão a menos</em> para alugar</h2>
+      <p>Antes de vender estrutura, medimos o seu. O diagnóstico técnico é gratuito e devolve o número real de posições que cabem no espaço que você já paga.</p>
+      <a href="#orcamento" class="btn btn-primary" data-cta="banda">Solicitar diagnóstico gratuito</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURAÇÕES -->
+<section class="sec-rel">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Modelos de porta-paletes</span>
+      <h2 class="sec">Fileira simples ou fileira dupla:<br><em>a escolha muda tudo</em></h2>
+      <p class="sec-sub">É a primeira decisão do projeto. Ela define quantas posições cabem, quanto de corredor você perde e qual empilhadeira vai operar. No diagnóstico definimos qual das duas atende a sua operação.</p>
+    </div>
+
+    <div class="cfg-grid">
+      <article class="cfg">
+        <div class="cfg-img">
+          <picture>
+            <source srcset="img/seletivo-simples.webp" type="image/webp">
+            <img src="img/seletivo-simples.jpg" alt="Porta-paletes em fileira simples, com acesso direto a todos os paletes" width="1400" height="1050" loading="lazy" decoding="async">
+          </picture>
+          <span class="cfg-tag">Mais usado</span>
+        </div>
+        <div class="cfg-txt">
+          <h3>Fileira simples</h3>
+          <p>Uma posição por vão, com acesso direto a todos os paletes sem precisar remover nenhum outro. É a escolha certa para quem tem muitos SKUs e poucos paletes por item.</p>
+          <div class="cfg-meta"><span>Seletividade <b>100%</b></span><span>Contrabalançada ou retrátil</span></div>
+        </div>
+      </article>
+
+      <article class="cfg">
+        <div class="cfg-img">
+          <picture>
+            <source srcset="img/dupla-profundidade.webp" type="image/webp">
+            <img src="img/dupla-profundidade.jpg" alt="Porta-paletes em fileira dupla, com um palete armazenado atras do outro" width="1400" height="1050" loading="lazy" decoding="async">
+          </picture>
+          <span class="cfg-tag">Mais capacidade</span>
+        </div>
+        <div class="cfg-txt">
+          <h3>Fileira dupla</h3>
+          <p>Um palete atrás do outro, o que elimina corredores e aumenta a capacidade no mesmo espaço. O custo é acessar primeiro o da frente — indicado quando há vários paletes por SKU.</p>
+          <div class="cfg-meta"><span>Seletividade <b>50%</b></span><span>Exige garfo telescópico</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="spec-faixa">
+      <div class="spec-cel">
+        <div class="spec-k">Altura do montante</div>
+        <div class="spec-v">3 a 10 <small>metros</small></div>
+        <p class="spec-d">Do galpão de pé-direito baixo ao de grande altura. A altura útil é definida pela empilhadeira e pelo traçado de sprinklers, não só pelo telhado.</p>
+      </div>
+      <div class="spec-cel">
+        <div class="spec-k">Carga por posição-palete</div>
+        <div class="spec-v">500 a 1.200 <small>kg</small></div>
+        <p class="spec-d">A longarina é escolhida pelo peso real do seu palete, com a flecha limitada ao rigor da norma. Carga admissível declarada no memorial.</p>
+      </div>
+      <div class="spec-cel">
+        <div class="spec-k">O que acompanha</div>
+        <div class="spec-v">Memorial <small>+ projeto</small></div>
+        <p class="spec-d">Projeto assinado por engenheiro com registro CREA-SP, placa de características e protetor de coluna conforme NBR 17150.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RENDER TÉCNICO -->
+<section class="dor">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">O que você recebe</span>
+      <h2 class="sec">Cada componente<br><em>tem uma função de segurança</em></h2>
+      <p class="sec-sub">Porta-palete não é prateleira reforçada. É estrutura calculada, e cada peça responde por uma parte da carga.</p>
+    </div>
+
+    <div class="rt-grid larga">
+      <div class="rt-img">
+        <picture>
+          <source srcset="img/render-componentes.webp" type="image/webp">
+          <img src="img/render-componentes.jpg" alt="Estrutura porta-palete seletivo com montante, longarina, protetor de coluna, sapata e chumbador identificados" loading="lazy" width="1401" height="1120" onerror="this.closest('.rt-img').style.display='none'">
+        </picture>
+      </div>
+      <div class="rt-txt">
+        <h3>Dimensionado, não improvisado</h3>
+        <p>O que define se a estrutura aguenta não é a aparência — é o cálculo por trás de cada elemento, feito a partir da sua carga real e da altura do seu galpão.</p>
+        <ul class="rt-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Montante</strong> — a coluna e o contraventamento que sustentam a carga vertical</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Longarina</strong> — a viga horizontal, dimensionada pelo peso por nível</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Protetor de coluna</strong> — absorve o impacto de empilhadeira, item exigido em auditoria</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Sapata e chumbador</strong> — a fixação ao piso, que evita o tombamento</span></li>
+        </ul>
+        <p style="font-size:13px;color:var(--gray-500);font-style:italic;margin-bottom:0">Referência: ABNT NBR 17150-2:2024. O projeto entregue traz a carga admissível por nível e a assinatura do responsável técnico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPRAR x LOCAR -->
+<section class="cxl">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Duas saídas</span>
+      <h2 class="sec">Comprar ou locar?<br><em>Fazemos as duas.</em></h2>
+      <p class="sec-sub">A maioria dos fornecedores só vende. Aqui você escolhe o modelo que faz sentido para o seu caixa — e a gente ajuda a decidir.</p>
+    </div>
+    <div class="cxl-grid">
+      <div class="cxl-card dest">
+        <span class="cxl-badge">Sem imobilizar capital</span>
+        <h3>Locação</h3>
+        <p>Para quem prefere manter o caixa livre</p>
+        <ul class="cxl-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Zero de entrada — mensalidade fixa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Manutenção e responsabilidade técnica inclusas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Despesa operacional, sem controle de ativo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Se mudar de galpão, a logística é conosco</li>
+        </ul>
+      </div>
+      <div class="cxl-card">
+        <h3>Compra</h3>
+        <p>Para operação madura e galpão próprio</p>
+        <ul class="cxl-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><strong>Conferência na entrega, contra o memorial</strong></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Material a pronta entrega</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Payback calculado no diagnóstico, sobre o seu custo de m²</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Ativo próprio, sem custo mensal depois</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="dor">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">O processo</span>
+      <h2 class="sec">Do primeiro contato<br><em>à estrutura operando</em></h2>
+    </div>
+    <div class="passos">
+      <div class="passo">
+        <div class="passo-n">1</div>
+        <h3>Diagnóstico gratuito</h3>
+        <p>Nossa engenharia vai até o seu galpão medir pé-direito útil, pilares, docas, piso e carga.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-n">2</div>
+        <h3>Projeto e proposta</h3>
+        <p>Layout dimensionado, número real de posições e proposta nos dois modelos: compra e locação.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-n">3</div>
+        <h3>Entrega e montagem</h3>
+        <p>Material a pronta entrega, montagem por equipe técnica, com protetores de coluna.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-n">4</div>
+        <h3>Entrega e documentação</h3>
+        <p>Estrutura montada e conferida, com a documentação técnica para auditoria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Dúvidas frequentes</span>
+      <h2 class="sec">Perguntas que sempre<br><em>chegam até nós</em></h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">Em quanto tempo recebo o orçamento e o projeto?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Em até 24 horas úteis — contadas a partir do momento em que temos as informações do galpão, não do preenchimento do formulário. Precisamos de área de armazenagem, pé-direito útil, tipo de palete, carga por nível e qual empilhadeira opera hoje. Se você já tiver esses dados, mande junto e a proposta sai no mesmo prazo. Se não tiver, a visita técnica gratuita levanta tudo e o prazo passa a contar dali.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">Quanto custa um porta-paletes?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>O preço é definido por posição-palete e depende da carga por nível, da altura e da quantidade — quanto maior o projeto, menor o custo unitário. Rode o simulador aqui em cima: junto com o número de posições ele mostra a faixa de investimento estimada para o seu cenário. O valor fechado sai no orçamento, depois do diagnóstico.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">Qual o prazo de entrega e montagem?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Trabalhamos com material a pronta entrega, sem fila de fabricação — por isso o prazo é contado em semanas, não nos 60 a 90 dias típicos de quem produz sob encomenda. O prazo exato do seu projeto entra na proposta, com data de entrega e de montagem.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">Como é a conferência na entrega?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Quando o material chega ao seu galpão, você confere quantidade, bitola e acabamento contra o memorial de cálculo antes do aceite. Qualquer divergência é resolvida antes da montagem começar.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">Vocês atendem fora da Grande São Paulo?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Sim. Atendemos todo o estado de São Paulo, incluindo interior e litoral, com projeto, entrega e montagem.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">O diagnóstico é realmente gratuito?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>É. A visita técnica, o levantamento de medidas e o projeto de layout não têm custo e não geram compromisso de compra. Se a conta não fechar para você, a gente diz.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">Preciso comprar a empilhadeira junto?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Não. Mas vale saber que a largura do corredor depende do equipamento — e a capacidade final do galpão muda muito conforme a empilhadeira. Como fornecemos os dois, dimensionamos o conjunto para o melhor custo-benefício, mesmo que você já tenha a máquina.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false">Quem assina o dimensionamento da estrutura?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Um engenheiro registrado no CREA-SP. Todo projeto é dimensionado conforme a ABNT NBR 17150-1 e 17150-2:2024, e o memorial de cálculo entregue traz a carga admissível por nível e a assinatura do responsável técnico — o que a sua área de SST apresenta em auditoria de NR-11.</p></div></div>
+      </div>
+    </div>
+    <p class="faq-cta">Ficou alguma dúvida que não está aqui? <a href="#orcamento" data-cta="faq">Pergunte para a engenharia →</a></p>
+  </div>
+</section>
+
+<!-- alias do ancora antiga -->
+<span id="form" aria-hidden="true"></span>
+
+<!-- CTA FINAL -->
+<section class="final" id="orcamento">
+  <div class="wrap">
+    <div>
+      <h2>Comece pelo diagnóstico.<br><em>É gratuito e sem compromisso.</em></h2>
+      <p>Nossa engenharia vai até o seu galpão, mede o que precisa ser medido e devolve o número real de posições-palete — junto com a proposta nos dois modelos, compra e locação.</p>
+      <ul class="final-lista">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>Visita técnica e projeto de layout <strong>sem custo</strong></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Orçamento e projeto em até 24 horas úteis</strong> com os dados em mãos</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><span>O projeto é seu <strong>mesmo que você não feche conosco</strong></span></li>
+      </ul>
+      <p style="font-size:14.5px;margin-bottom:22px">Prefere falar direto? Chame no WhatsApp <strong>(11) 99235-3669</strong> ou escreva para <strong>comercial@tetrixlog.com.br</strong>.</p>
+      <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="btn" style="background:var(--green);color:#fff" data-wpp="cta_final">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Falar agora no WhatsApp
+      </a>
+    </div>
+
+    <div>
+      <div class="card-form" id="final-card">
+        <div id="form2-campos">
+          <h2>Solicite o <em>diagnóstico gratuito</em></h2>
+          <p class="cf-sub">Quanto mais você contar sobre o galpão aqui, mais rápido o orçamento e o projeto saem.</p>
+
+          <div class="sim-chip" id="chip-sim-2"></div>
+          <div class="fbanner" id="f2-banner" role="alert" aria-live="assertive"></div>
+
+          <form id="lp-form2" novalidate>
+            <div class="fgroup" id="g2-nome">
+              <label for="f2-nome">Nome</label>
+              <input type="text" id="f2-nome" name="nome" placeholder="Seu nome" autocomplete="name" required>
+              <span class="fmsg">Informe seu nome.</span>
+            </div>
+            <div class="fgroup" id="g2-telefone">
+              <label for="f2-telefone">WhatsApp</label>
+              <input type="tel" id="f2-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" required>
+              <span class="fmsg">Informe um WhatsApp com DDD.</span>
+            </div>
+            <div class="f2col">
+              <div class="fgroup" id="g2-empresa">
+                <label for="f2-empresa">Empresa</label>
+                <input type="text" id="f2-empresa" name="empresa" placeholder="Nome da empresa" autocomplete="organization" required>
+                <span class="fmsg">Informe a empresa.</span>
+              </div>
+              <div class="fgroup" id="g2-cidade">
+                <label for="f2-cidade">Cidade <span class="opc">(opcional)</span></label>
+                <input type="text" id="f2-cidade" name="cidade" placeholder="Ex.: Guarulhos" autocomplete="address-level2">
+                <span class="fmsg">Informe a cidade.</span>
+              </div>
+            </div>
+            <div class="fgroup" id="g2-email">
+              <label for="f2-email">E-mail <span class="opc">(opcional — para receber o projeto)</span></label>
+              <input type="email" id="f2-email" name="email" placeholder="voce@empresa.com.br" autocomplete="email">
+              <span class="fmsg">Confira o e-mail digitado.</span>
+            </div>
+            <div class="f2col">
+              <div class="fgroup">
+                <label for="f2-area">Área de armazenagem</label>
+                <select id="f2-area" name="area">
+                  <option value="">Selecione</option>
+                  <option>Até 500 m²</option>
+                  <option>501 a 1.000 m²</option>
+                  <option>1.001 a 3.000 m²</option>
+                  <option>Acima de 3.000 m²</option>
+                </select>
+              </div>
+              <div class="fgroup">
+                <label for="f2-objetivo">O que você precisa</label>
+                <select id="f2-objetivo" name="objetivo">
+                  <option value="">Selecione</option>
+                  <option>Comprar porta-paletes</option>
+                  <option>Locar porta-paletes</option>
+                  <option>Comprar ou locar empilhadeira</option>
+                  <option>Ainda não sei — quero orientação</option>
+                </select>
+              </div>
+            </div>
+            <div class="fgroup">
+              <label for="f2-prazo">Quando pretende implantar</label>
+              <select id="f2-prazo" name="prazo">
+                <option value="">Selecione</option>
+                <option>Este mês</option>
+                <option>Nos próximos 3 meses</option>
+                <option>Ainda este ano</option>
+                <option>Só pesquisando preço</option>
+              </select>
+            </div>
+
+            <input type="hidden" name="pe_direito" id="f2-pe">
+            <input type="hidden" name="simulacao" id="f2-sim">
+
+            <div class="hp" aria-hidden="true">
+              <label for="f2-site">Não preencha este campo</label>
+              <input type="text" id="f2-site" name="site" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button type="submit" class="fbtn" id="f2-btn">
+              Quero o diagnóstico gratuito
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+
+            <div class="f-selos">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem custo</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Resposta em 24h úteis</span>
+            </div>
+
+            <p class="f-consent">Ao enviar, você autoriza o contato da Tetrix e o tratamento dos seus dados conforme a <a href="../../politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+          </form>
+        </div>
+
+        <div class="fsucesso" id="form2-ok" style="display:none">
+          <div class="fsucesso-ico">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>Solicitação enviada!</h2>
+          <p>Nossa engenharia entra em contato em até <strong>24 horas úteis</strong>. Prefere adiantar?</p>
+          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%" data-wpp="pos_formulario_final">
+            Falar agora no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © <span id="ano"></span> Tetrix Soluções Intralogísticas LTDA · CNPJ 67.829.778/0001-89 · São Paulo/SP<br>
+    <a href="../../politica-de-privacidade.html">Política de Privacidade</a> · <a href="../../index.html">Site institucional</a>
+  </div>
+</footer>
+
+<!-- MODAL DE SAÍDA -->
+<div class="modal" id="modal-saida" role="dialog" aria-modal="true" aria-labelledby="modal-tit">
+  <div class="modal-box">
+    <button type="button" class="modal-x" id="modal-x" aria-label="Fechar">&times;</button>
+    <h3 id="modal-tit">Antes de sair:<br><em>Vamos fazer um projeto?</em></h3>
+    <p>Deixe nome e WhatsApp. Nossa engenharia calcula quantas posições-palete cabem no seu espaço e devolve o projeto — sem custo e sem compromisso.</p>
+
+    <div class="fbanner" id="f3-banner" role="alert" aria-live="assertive"></div>
+
+    <div id="form3-campos">
+      <form id="lp-form3" novalidate>
+        <div class="fgroup" id="g3-nome">
+          <label for="f3-nome">Nome</label>
+          <input type="text" id="f3-nome" name="nome" placeholder="Seu nome" autocomplete="name" required>
+          <span class="fmsg">Informe seu nome.</span>
+        </div>
+        <div class="fgroup" id="g3-telefone">
+          <label for="f3-telefone">WhatsApp</label>
+          <input type="tel" id="f3-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" required>
+          <span class="fmsg">WhatsApp com DDD.</span>
+        </div>
+        <div class="fgroup" id="g3-empresa">
+          <label for="f3-empresa">Empresa</label>
+          <input type="text" id="f3-empresa" name="empresa" placeholder="Nome da empresa" autocomplete="organization" required>
+          <span class="fmsg">Informe a empresa.</span>
+        </div>
+
+        <input type="hidden" name="objetivo" value="Ainda não sei — quero orientação">
+        <input type="hidden" name="simulacao" id="f3-sim">
+
+        <div class="hp" aria-hidden="true">
+          <label for="f3-site">Não preencha este campo</label>
+          <input type="text" id="f3-site" name="site" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="fbtn" id="f3-btn">Quero o cálculo do meu galpão</button>
+        <p class="f-consent">Ao enviar, você autoriza o contato da Tetrix conforme a <a href="../../politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+      </form>
+    </div>
+
+    <div class="fsucesso" id="form3-ok" style="display:none">
+      <div class="fsucesso-ico">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Recebemos!</h2>
+      <p>Nossa engenharia entra em contato em até 24 horas úteis.</p>
+    </div>
+  </div>
+</div>
+
+<nav class="mbar" aria-label="Ações rápidas">
+  <a class="or" href="#orcamento" data-cta="barra_mobile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Pedir orçamento
+  </a>
+  <a class="wa" href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" data-wpp="barra_mobile">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    WhatsApp
+  </a>
+</nav>
+
+<a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="wpp" aria-label="Falar no WhatsApp" data-wpp="botao_flutuante">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+</a>
+
+<script>
+(function(){
+  'use strict';
+
+  var WPP = 'https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e';
+  var $  = function(id){ return document.getElementById(id); };
+  var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  window.dataLayer = window.dataLayer || [];
+  function track(event, extra){ window.dataLayer.push(Object.assign({ event: event }, extra || {})); }
+
+  /* =========================================================
+     TOPO FIXO — CTA aparece depois do hero
+     ========================================================= */
+  var topbar = $('topbar');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 420) topbar.classList.add('stuck');
+    else topbar.classList.remove('stuck');
+  }, { passive:true });
+
+  /* =========================================================
+     FAQ
+     ========================================================= */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.parentElement;
+      item.classList.toggle('open');
+      var aberto = item.classList.contains('open');
+      btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+      if (aberto) track('lp_faq_abre', { faq_pergunta: btn.textContent.trim().slice(0,80) });
+    });
+  });
+
+  /* =========================================================
+     SIMULADOR
+     ========================================================= */
+  var FOLGA_TOPO = 0.55;
+  var DENS = { CB:0.21, PT:0.29, RT:0.27, TR:0.33 };  // posicoes/m2 por tipo de empilhadeira
+  var DENS_BLOCO   = 0.40;   // empilhamento em bloco, 1 camada (valor original do simulador.html)
+  var GANHO_CAMADA = 0.70;   // cada camada extra no bloco rende ~70%: efeito colmeia + segregacao de SKU
+  var ALT_CARGA = 1.2;
+
+  /* ---------------------------------------------------------------------
+     >>> ATENCAO, PEDRO — REVISAR ESTE PAR DE CONSTANTES <<<
+     DENS (porta-paletes) e DENS_BLOCO nao parecem estar na mesma base de area.
+       porta-paletes CB : 0.21 pos/m2 por nivel  ->  4,8 m2 por posicao
+       bloco 1 camada   : 0.40 pos/m2            ->  2,5 m2 por posicao
+     Efeito pratico: quem ja empilha 2 ou 3 camadas recebe "ganho zero ou
+     negativo" na simulacao. Valores mantidos IDENTICOS aos da v1 de proposito,
+     para que o teste A/B compare so as mudancas de conversao, e nao a conta.
+     --------------------------------------------------------------------- */
+
+  /* ---------------------------------------------------------
+     >>> PEDRO: PREENCHER ANTES DE PUBLICAR <<<
+     Faixa de investimento por posicao-palete, em R$.
+     Enquanto estiver null, o bloco de preco nao aparece.
+     Ex.: compra: [230, 340]  /  locacao: [9, 16]  (mensal por posicao)
+     --------------------------------------------------------- */
+  var PRECO = {
+    compra:  [null, null],
+    locacao: [null, null]
+  };
+
+  var SIM = null;  // guarda o ultimo resultado para levar ao formulario
+
+  function folgaY3(a){ return Math.max(0.20, 0.10*a, 0.15); }
+  function calcNiveis(pd, a){
+    var passo = a + folgaY3(a) + 0.14;
+    return Math.max(1, Math.floor((pd - FOLGA_TOPO) / passo));
+  }
+  function brl(n){ return n.toLocaleString('pt-BR', { style:'currency', currency:'BRL', maximumFractionDigits:0 }); }
+
+  var sPd = $('s-pd');
+  function atualizaPd(){
+    var pd = parseFloat(sPd.value);
+    $('s-pd-val').textContent = pd.toFixed(1).replace('.', ',');
+    var n = calcNiveis(pd, ALT_CARGA);
+    $('s-niveis').textContent = n === 1 ? '→ 1 nível' : '→ ' + n + ' níveis';
+  }
+  sPd.addEventListener('input', atualizaPd);
+  atualizaPd();
+
+  function anima(el, alvo){
+    var final = Math.round(alvo).toLocaleString('pt-BR');
+    if (semMovimento || document.hidden){ el.textContent = final; return; }
+    var dur = 650, ini = performance.now();
+    function passo(now){
+      var p = Math.min((now - ini) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(alvo * e).toLocaleString('pt-BR');
+      if (p < 1) requestAnimationFrame(passo);
+    }
+    requestAnimationFrame(passo);
+    // Rede de seguranca: se a aba estiver em segundo plano o rAF nao dispara
+    // e o numero ficaria travado em "—". Aqui ele sempre chega ao valor final.
+    setTimeout(function(){ el.textContent = final; }, dur + 120);
+  }
+
+  // Cenario atual declarado pelo cliente — evita superestimar o ganho.
+  function capacidadeHoje(area, cam, emp, niveis){
+    if (cam === 'R') return Math.round(area * (DENS[emp] || DENS.CB) * niveis);
+    var camadas = parseInt(cam, 10) || 1;
+    var fator = 1 + (camadas - 1) * GANHO_CAMADA;
+    return Math.round(area * DENS_BLOCO * fator);
+  }
+
+  function mostraPreco(posicoes){
+    var box = $('s-preco');
+    var temCompra  = PRECO.compra[0]  && PRECO.compra[1];
+    var temLocacao = PRECO.locacao[0] && PRECO.locacao[1];
+    if (!temCompra && !temLocacao){ box.classList.remove('show'); return; }
+
+    if (temCompra){
+      $('s-preco-val').textContent = brl(posicoes*PRECO.compra[0]) + ' a ' + brl(posicoes*PRECO.compra[1]);
+    }
+    var det = temCompra
+      ? 'Compra da estrutura para ' + posicoes.toLocaleString('pt-BR') + ' posições, já com protetores de coluna e montagem.'
+      : '';
+    if (temLocacao){
+      det += ' Na locação, a mensalidade estimada fica entre ' + brl(posicoes*PRECO.locacao[0]) + ' e ' + brl(posicoes*PRECO.locacao[1]) + '.';
+    }
+    det += ' Faixa de referência — o valor fechado sai no orçamento, após o diagnóstico.';
+    $('s-preco-det').textContent = det;
+    box.classList.add('show');
+  }
+
+  // Traduz a area digitada no simulador para a faixa usada nos formularios
+  function faixaArea(m2){
+    if (m2 <= 500)   return 'Até 500 m²';
+    if (m2 <= 1000)  return '501 a 1.000 m²';
+    if (m2 <= 3000)  return '1.001 a 3.000 m²';
+    return 'Acima de 3.000 m²';
+  }
+
+  function simular(){
+    var area = parseFloat($('s-area').value) || 800;
+    var pd   = parseFloat(sPd.value) || 5.5;
+    var emp  = $('s-emp').value || 'CB';
+    var cam  = $('s-cam').value || '1';
+
+    var niveis = calcNiveis(pd, ALT_CARGA);
+    var novo   = Math.round(area * (DENS[emp] || DENS.CB) * niveis);
+    var hoje   = capacidadeHoje(area, cam, emp, niveis);
+    var ganho  = novo - hoje;
+
+    $('s-res').classList.add('show');
+    anima($('s-hoje'), hoje);
+    anima($('s-novo'), novo);
+
+    var elG = $('s-ganho'), elM = $('s-msg');
+    if (ganho > 0){
+      elG.textContent = '+' + ganho.toLocaleString('pt-BR');
+      elG.style.color = 'var(--orange-lt)';
+      var pct = hoje > 0 ? Math.round(ganho / hoje * 100) : 0;
+      elM.innerHTML = '<strong>São ' + ganho.toLocaleString('pt-BR') + ' posições a mais — ' + pct + '% de ganho.</strong> ' +
+        'No diagnóstico gratuito medimos pilares, docas e sprinklers para fechar o número real do seu galpão.';
+      mostraPreco(novo);
+    } else {
+      elG.textContent = '—';
+      elG.style.color = '#fff';
+      elM.innerHTML = '<strong>Neste cenário a verticalização não amplia a capacidade.</strong> ' +
+        'O ganho seria acesso direto a todos os paletes, controle FIFO e menos avaria. Fale com a engenharia para avaliar.';
+      $('s-preco').classList.remove('show');
+    }
+    $('s-niveis-sub').textContent = niveis === 1 ? '1 nível' : niveis + ' níveis';
+
+    SIM = { area:area, pd:pd, emp:emp, cam:cam, niveis:niveis, novo:novo, hoje:hoje, ganho:ganho };
+    aplicaSimNosFormularios();
+
+    track('lp_simulador_uso', {
+      sim_area: area, sim_pe_direito: pd, sim_empilhadeira: emp,
+      sim_cenario_atual: cam, sim_niveis: niveis, sim_posicoes: novo, sim_ganho: ganho
+    });
+  }
+  $('s-btn').addEventListener('click', simular);
+  // Recalcula ao mexer nos campos depois do primeiro calculo — mantem o numero vivo
+  ['s-area','s-emp','s-cam'].forEach(function(id){
+    $(id).addEventListener('change', function(){ if (SIM) simular(); });
+  });
+  sPd.addEventListener('change', function(){ if (SIM) simular(); });
+
+  // Leva o resultado do simulador para dentro dos formularios (visivel + campo oculto)
+  function aplicaSimNosFormularios(){
+    if (!SIM) return;
+    var resumo = SIM.novo.toLocaleString('pt-BR') + ' posições-palete · ' +
+                 SIM.area.toLocaleString('pt-BR') + ' m² · pé-direito ' + String(SIM.pd).replace('.', ',') + ' m · ' +
+                 SIM.niveis + (SIM.niveis === 1 ? ' nível' : ' níveis');
+    var texto = 'Simulação: ' + resumo;
+
+    ['f1-sim','f2-sim','f3-sim'].forEach(function(id){ if ($(id)) $(id).value = texto; });
+    ['f1-pe','f2-pe'].forEach(function(id){ if ($(id)) $(id).value = String(SIM.pd); });
+
+    var html = '<b>Sua simulação:</b> ' + resumo + '. Vamos conferir esse número no seu galpão.';
+    ['chip-sim-1','chip-sim-2'].forEach(function(id){
+      var c = $(id); if (!c) return;
+      c.innerHTML = html; c.classList.add('show');
+    });
+
+    // pre-seleciona a faixa de area no formulario completo
+    var f2area = $('f2-area');
+    if (f2area && !f2area.value){
+      var alvo = faixaArea(SIM.area);
+      for (var i=0;i<f2area.options.length;i++){
+        if (f2area.options[i].text === alvo){ f2area.selectedIndex = i; break; }
+      }
+    }
+    // e no multi-step, caso o usuario ainda nao tenha respondido
+    if ($('f1-area') && !$('f1-area').value) $('f1-area').value = faixaArea(SIM.area);
+  }
+
+  // CTA do resultado do simulador -> leva ao formulario completo
+  $('s-cta').addEventListener('click', function(){
+    track('lp_simulador_cta', { sim_posicoes: SIM ? SIM.novo : 0 });
+    aplicaSimNosFormularios();
+    $('orcamento').scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block:'start' });
+    setTimeout(function(){ var n = $('f2-nome'); if (n && window.innerWidth > 760) n.focus({ preventScroll:true }); }, 620);
+  });
+
+  /* =========================================================
+     RASTREIO: WhatsApp, CTAs e profundidade de rolagem
+     ========================================================= */
+  document.querySelectorAll('[data-wpp]').forEach(function(a){
+    a.addEventListener('click', function(){ track('lp_whatsapp_click', { wpp_origem: a.dataset.wpp }); });
+  });
+  document.querySelectorAll('[data-cta]').forEach(function(a){
+    a.addEventListener('click', function(){ track('lp_cta_click', { cta_origem: a.dataset.cta }); });
+  });
+
+  var marcos = [25, 50, 75, 100];
+  var travaScroll = false;
+  window.addEventListener('scroll', function(){
+    if (travaScroll) return;
+    travaScroll = true;
+    requestAnimationFrame(function(){
+      var doc = document.documentElement;
+      var pct = Math.round((window.scrollY + window.innerHeight) / doc.scrollHeight * 100);
+      while (marcos.length && pct >= marcos[0]) track('lp_scroll', { scroll_pct: marcos.shift() });
+      travaScroll = false;
+    });
+  }, { passive:true });
+
+  /* =========================================================
+     SDKs sob demanda — Supabase e EmailJS so carregam na
+     primeira interacao com formulario. Tira ~180 KB do
+     carregamento inicial, que e o que pesa no trafego pago.
+     ========================================================= */
+  var SUPABASE_URL = 'https://neattkpxondxfjcepttp.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_Qij_vT0fQDhvWApKMM7zFQ_orqXC6FC';
+  var EMAILJS_PUBLIC_KEY  = '3RMl5t0U5HtR6bw5-';
+  var EMAILJS_SERVICE_ID  = 'service_xz0lz79';
+  var EMAILJS_TEMPLATE_ID = 'template_3yemdd8';
+
+  var supabaseClient = null, emailjsOk = false, sdkPromise = null;
+
+  function carregaScript(src){
+    return new Promise(function(res, rej){
+      var s = document.createElement('script');
+      s.src = src; s.async = true;
+      s.onload = res; s.onerror = function(){ rej(new Error('falhou: ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function carregaSDKs(){
+    if (sdkPromise) return sdkPromise;
+    sdkPromise = Promise.all([
+      carregaScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2').catch(function(e){ console.error(e); }),
+      carregaScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js').catch(function(e){ console.error(e); })
+    ]).then(function(){
+      try {
+        if (window.supabase && window.supabase.createClient){
+          supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        }
+      } catch(e){ console.error('Supabase init:', e); }
+      try {
+        if (window.emailjs){ window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); emailjsOk = true; }
+      } catch(e){ console.error('EmailJS init:', e); }
+    });
+    return sdkPromise;
+  }
+
+  // dispara o carregamento no primeiro sinal de intencao
+  ['pointerdown','keydown','touchstart'].forEach(function(ev){
+    document.addEventListener(ev, function gatilho(e){
+      if (e.target.closest && (e.target.closest('form') || e.target.closest('.card-form') || e.target.closest('.sim-box'))){
+        carregaSDKs();
+        ['pointerdown','keydown','touchstart'].forEach(function(x){ document.removeEventListener(x, gatilho); });
+      }
+    }, { passive:true });
+  });
+  // rede de seguranca: carrega sozinho apos 6 s de pagina aberta
+  setTimeout(carregaSDKs, 6000);
+
+  /* =========================================================
+     Atribuicao de campanha
+     ========================================================= */
+  function paramsCampanha(){
+    var p = new URLSearchParams(location.search);
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid','fbclid'];
+    var out = {};
+    keys.forEach(function(k){ var v = p.get(k); if (v) out[k] = v; });
+    return out;
+  }
+  var CAMPANHA = paramsCampanha();
+  var campanhaTexto = Object.keys(CAMPANHA).map(function(k){ return k + '=' + CAMPANHA[k]; }).join(' | ');
+
+  /* =========================================================
+     Mascara de telefone
+     ========================================================= */
+  function mascaraTelefone(el){
+    if (!el) return;
+    el.addEventListener('input', function(e){
+      var v = e.target.value.replace(/\D/g,'').slice(0,11);
+      if (v.length > 10)      v = v.replace(/^(\d{2})(\d{1})(\d{4})(\d{4}).*/, '($1) $2 $3-$4');
+      else if (v.length > 6)  v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+      else if (v.length > 2)  v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+      else if (v.length > 0)  v = v.replace(/^(\d{0,2})/, '($1');
+      e.target.value = v;
+    });
+  }
+  ['f1-telefone','f2-telefone','f3-telefone'].forEach(function(id){ mascaraTelefone($(id)); });
+
+  /* =========================================================
+     MULTI-STEP do formulario do hero
+     ========================================================= */
+  var passoAtual = 1, TOTAL_PASSOS = 3;
+  function irParaPasso(n){
+    passoAtual = n;
+    document.querySelectorAll('#lp-form1 .ms-step').forEach(function(s){
+      s.classList.toggle('on', parseInt(s.dataset.step,10) === n);
+    });
+    $('ms-bar-i').style.width = Math.round(n / TOTAL_PASSOS * 100) + '%';
+    $('ms-txt').textContent = 'Passo ' + n + ' de ' + TOTAL_PASSOS;
+    if (n === 3){
+      setTimeout(function(){
+        var nome = $('f1-nome');
+        if (nome && window.innerWidth > 760) nome.focus({ preventScroll:true });
+      }, 150);
+    }
+  }
+  irParaPasso(1);
+
+  document.querySelectorAll('#lp-form1 .opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var campo = btn.dataset.campo, valor = btn.dataset.valor;
+      var alvo = campo === 'area' ? $('f1-area') : $('f1-objetivo');
+      alvo.value = valor;
+
+      btn.closest('.opts').querySelectorAll('.opt').forEach(function(o){ o.classList.remove('sel'); });
+      btn.classList.add('sel');
+
+      track('lp_form_passo', { passo: passoAtual, campo: campo, valor: valor });
+      carregaSDKs();
+      setTimeout(function(){ irParaPasso(Math.min(passoAtual + 1, TOTAL_PASSOS)); }, 130);
+    });
+  });
+  document.querySelectorAll('#lp-form1 .ms-voltar').forEach(function(b){
+    b.addEventListener('click', function(){ irParaPasso(parseInt(b.dataset.voltar,10)); });
+  });
+  // Enter em campo de texto avanca para o proximo, em vez de enviar cedo demais
+  document.querySelectorAll('#lp-form1 input[type=text], #lp-form1 input[type=tel]').forEach(function(inp, i, lista){
+    inp.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' && i < lista.length - 1){ e.preventDefault(); lista[i+1].focus(); }
+    });
+  });
+
+  /* =========================================================
+     MOTOR DOS FORMULARIOS
+     ========================================================= */
+  var ABERTO_EM = Date.now();
+  var jaComecou = {};
+  var ultimoLeadId = null, ultimoLead = null;
+
+  function ligarFormulario(cfg){
+    var form = $(cfg.form);
+    if (!form) return;
+    var grupo = function(nome){ return $(cfg.grp + nome); };
+
+    function erro(nome){
+      var g = grupo(nome); if (!g) return;
+      g.classList.add('bad');
+      var campo = g.querySelector('input,select');
+      if (campo) campo.classList.add('err');
+    }
+    function limpar(){
+      form.querySelectorAll('.fgroup.bad').forEach(function(g){
+        g.classList.remove('bad');
+        var c = g.querySelector('input,select'); if (c) c.classList.remove('err');
+      });
+      $(cfg.banner).classList.remove('show');
+    }
+    function banner(msg){
+      var b = $(cfg.banner);
+      b.textContent = msg; b.classList.add('show');
+      b.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block:'center' });
+    }
+
+    form.addEventListener('input', function(){
+      if (!jaComecou[cfg.origem]){
+        jaComecou[cfg.origem] = true;
+        track('lp_form_start', { form_origem: cfg.origem });
+        carregaSDKs();
+      }
+    });
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      limpar();
+
+      var d = new FormData(form);
+      var v = function(k){ return (d.get(k) || '').toString().trim(); };
+      var nome = v('nome'), tel = v('telefone'), empresa = v('empresa');
+      var email = v('email'), cidade = v('cidade');
+      var area = v('area'), obj = v('objetivo'), prazo = v('prazo');
+      var pe = v('pe_direito'), simulacao = v('simulacao');
+
+      // Anti-spam: honeypot + tempo minimo de preenchimento
+      if (v('site') !== '' || Date.now() - ABERTO_EM < 2500){
+        track('lp_form_spam_bloqueado', { form_origem: cfg.origem });
+        banner('Aguarde um instante e clique de novo para enviar.');
+        return;
+      }
+
+      var falhou = false;
+      if (!nome){ erro('nome'); falhou = true; }
+      if (tel.replace(/\D/g,'').length < 10){ erro('telefone'); falhou = true; }
+      if (!empresa){ erro('empresa'); falhou = true; }
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ erro('email'); falhou = true; }
+      if (falhou){
+        banner('Confira os campos destacados.');
+        track('lp_form_erro_validacao', { form_origem: cfg.origem });
+        return;
+      }
+
+      var btn = $(cfg.btn);
+      var rotulo = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      var notas = ['[' + cfg.origem + ']',
+                   prazo ? 'Prazo: ' + prazo : null,
+                   simulacao || null,
+                   campanhaTexto || null].filter(Boolean).join(' | ');
+
+      // NOTA: colunas espelham a tabela leads_contato do CRM. Para importar conversao
+      // offline no Google Ads, crie colunas proprias gclid / utm_source / utm_campaign.
+      var lead = {
+        nome: nome,
+        empresa: empresa,
+        telefone: tel,
+        email: email || null,
+        cidade: cidade || null,
+        tipo_interesse: obj || 'Nao informado',
+        area_galpao: area || null,
+        pe_direito: pe || null,
+        mensagem: notas,
+        origem: cfg.origem,
+        user_agent: navigator.userAgent.substring(0,500)
+      };
+
+      carregaSDKs().then(function(){
+        var tarefas = [];
+        var okSupabase = false, okEmail = false;
+
+        if (supabaseClient){
+          tarefas.push(
+            supabaseClient.from('leads_contato').insert([lead]).select().then(function(r){
+              if (r.error){ console.error('Supabase:', r.error); }
+              else { okSupabase = true; if (r.data && r.data[0]) ultimoLeadId = r.data[0].id; }
+            }).catch(function(e){ console.error('Supabase:', e); })
+          );
+        }
+
+        if (emailjsOk){
+          tarefas.push(
+            window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+              nome: nome, empresa: empresa, telefone: tel,
+              email: email || 'Nao informado',
+              cidade: cidade || 'Nao informado',
+              tipo_interesse: obj || 'Nao informado',
+              area_galpao: area || 'Nao informado',
+              pe_direito: pe || 'Nao informado',
+              mensagem: 'Origem: ' + cfg.origem +
+                        (prazo ? '\nPrazo: ' + prazo : '') +
+                        (simulacao ? '\n' + simulacao : '') +
+                        (campanhaTexto ? '\n' + campanhaTexto : ''),
+              data_envio: new Date().toLocaleString('pt-BR', { timeZone:'America/Sao_Paulo' })
+            }).then(function(){ okEmail = true; }).catch(function(e){ console.error('EmailJS:', e); })
+          );
+        }
+
+        return Promise.all(tarefas).then(function(){ return { okSupabase: okSupabase, okEmail: okEmail }; });
+      }).then(function(r){
+        // Se os dois canais falharem, nao finge sucesso: leva o lead pro WhatsApp
+        if (!r.okSupabase && !r.okEmail){
+          btn.disabled = false;
+          btn.innerHTML = rotulo;
+          var msg = encodeURIComponent(
+            'Olá! Solicitei orçamento pelo site.\n\nNome: ' + nome + '\nEmpresa: ' + empresa +
+            '\nWhatsApp: ' + tel + '\nCidade: ' + (cidade || 'nao informada') +
+            '\nÁrea: ' + (area || 'nao informada') + '\nPreciso de: ' + (obj || 'orientacao') +
+            (simulacao ? '\n' + simulacao : ''));
+          banner('Não conseguimos enviar agora. Abrimos o WhatsApp para você falar direto com a gente.');
+          window.open('https://wa.me/5511992353669?text=' + msg, '_blank');
+          track('lp_form_erro', { form_origem: cfg.origem });
+          return;
+        }
+
+        ultimoLead = lead;
+
+        track('lp_form_submit', {
+          form_origem:   cfg.origem,
+          lead_objetivo: obj   || 'nao_informado',
+          lead_prazo:    prazo || 'nao_informado',
+          lead_area:     area  || 'nao_informado',
+          lead_simulou:  simulacao ? 'sim' : 'nao'
+        });
+        // evento padrao GA4 — facilita configurar a conversao no Google Ads
+        track('generate_lead', { form_origem: cfg.origem, value: 1, currency: 'BRL' });
+
+        $(cfg.campos).style.display = 'none';
+        var ok = $(cfg.ok);
+        ok.style.display = 'block';
+        ok.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block:'center' });
+        conversaoFeita = true;
+      });
+    });
+  }
+
+  ligarFormulario({ form:'lp-form1', grp:'g1-', banner:'f1-banner', btn:'f1-btn',
+                    campos:'form1-campos', ok:'form1-ok', origem:'lp_v3_hero' });
+
+  ligarFormulario({ form:'lp-form2', grp:'g2-', banner:'f2-banner', btn:'f2-btn',
+                    campos:'form2-campos', ok:'form2-ok', origem:'lp_v3_rodape' });
+
+  ligarFormulario({ form:'lp-form3', grp:'g3-', banner:'f3-banner', btn:'f3-btn',
+                    campos:'form3-campos', ok:'form3-ok', origem:'lp_v3_saida' });
+
+  /* =========================================================
+     E-MAIL PÓS-CONVERSAO — pede o e-mail so depois do lead
+     entrar, para nao cobrar mais um campo antes da conversao.
+     ========================================================= */
+  document.querySelectorAll('[data-pos-email]').forEach(function(box){
+    var inp = box.querySelector('input');
+    var bt  = box.querySelector('button');
+    bt.addEventListener('click', function(){
+      var email = inp.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+        inp.style.borderColor = '#D93025'; inp.focus(); return;
+      }
+      inp.style.borderColor = '';
+      box.classList.add('done');
+      track('lp_email_pos_conversao', {});
+
+      // grava onde der: atualiza a linha no Supabase e avisa por e-mail
+      try {
+        if (supabaseClient && ultimoLeadId){
+          supabaseClient.from('leads_contato').update({ email: email }).eq('id', ultimoLeadId)
+            .then(function(r){ if (r.error) console.error('Supabase update:', r.error); });
+        }
+      } catch(e){ console.error(e); }
+
+      try {
+        if (emailjsOk && ultimoLead){
+          window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            nome: ultimoLead.nome, empresa: ultimoLead.empresa, telefone: ultimoLead.telefone,
+            email: email, cidade: ultimoLead.cidade || 'Nao informado',
+            tipo_interesse: ultimoLead.tipo_interesse, area_galpao: ultimoLead.area_galpao || 'Nao informado',
+            pe_direito: ultimoLead.pe_direito || 'Nao informado',
+            mensagem: 'COMPLEMENTO — e-mail informado apos o envio. Lead original: ' + ultimoLead.origem,
+            data_envio: new Date().toLocaleString('pt-BR', { timeZone:'America/Sao_Paulo' })
+          }).catch(function(e){ console.error('EmailJS complemento:', e); });
+        }
+      } catch(e){ console.error(e); }
+    });
+  });
+
+  /* =========================================================
+     MODAL DE SAIDA — desktop, uma vez por sessao
+     ========================================================= */
+  var conversaoFeita = false;
+  var modalJaMostrado = false;   // trava em memoria: sessionStorage pode falhar (origem opaca, aba anonima)
+  var modal = $('modal-saida');
+  function abreModal(){
+    if (conversaoFeita || modalJaMostrado || modal.classList.contains('show')) return;
+    try { if (sessionStorage.getItem('tetrix_saida') === '1') return; sessionStorage.setItem('tetrix_saida','1'); } catch(e){}
+    modalJaMostrado = true;
+    aplicaSimNosFormularios();
+    modal.classList.add('show');
+    carregaSDKs();
+    track('lp_exit_intent', {});
+    var n = $('f3-nome'); if (n) setTimeout(function(){ n.focus({ preventScroll:true }); }, 200);
+  }
+  function fechaModal(){ modal.classList.remove('show'); }
+  $('modal-x').addEventListener('click', fechaModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) fechaModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') fechaModal(); });
+
+  if (window.matchMedia('(pointer:fine)').matches){
+    document.addEventListener('mouseout', function(e){
+      if (!e.relatedTarget && e.clientY <= 4) abreModal();
+    });
+  }
+
+  track('lp_view', { lp_versao: 'v3' });
+})();
+</script>
+</body>
+</html>

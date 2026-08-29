@@ -625,6 +625,19 @@
       .box-dark { padding: 24px 22px; }
       .callout { padding: 18px 20px; }
     }
+    /* ===================================================================
+       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
+       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
+       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
+       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
+       números, barras e detalhes — onde não há texto por cima.
+       =================================================================== */
+    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
+    .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
+    .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
+    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
+
   </style>
 </head>
 <body>
@@ -637,7 +650,7 @@
   <!-- NAVBAR -->
   <nav id="navbar">
     <div class="container">
-      <a href="/" class="logo-mark" aria-label="Tetrix Soluções Intralogísticas">
+      <a href="../index.html" class="logo-mark" aria-label="Tetrix Soluções Intralogísticas">
         <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="og-nav" x1="0" y1="0" x2="0" y2="1">
@@ -662,16 +675,16 @@
         </svg>
       </a>
       <ul class="nav-links">
-        <li><a href="/">Início</a></li>
-        <li><a href="/venda.html">Comprar</a></li>
-        <li><a href="/locacao.html">Locar</a></li>
-        <li><a href="/consultoria.html">Consultoria</a></li>
-        <li><a href="/porta-pallets.html">Porta-Pallets</a></li>
-        <li><a href="/empilhadeiras.html">Empilhadeiras</a></li>
-        <li><a href="/sobre.html">Sobre</a></li>
-        <li><a href="/blog/" class="active">Blog</a></li>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../venda.html">Comprar</a></li>
+        <li><a href="../locacao.html">Locar</a></li>
+        <li><a href="../consultoria.html">Consultoria</a></li>
+        <li><a href="../porta-pallets.html">Porta-Pallets</a></li>
+        <li><a href="../empilhadeiras.html">Empilhadeiras</a></li>
+        <li><a href="../sobre.html">Sobre</a></li>
+        <li><a href="index.html" class="active">Blog</a></li>
       </ul>
-      <a href="/contato.html" class="nav-cta">Solicitar Diagnóstico</a>
+      <a href="../contato.html" class="nav-cta">Solicitar Diagnóstico</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -680,16 +693,16 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
-    <a href="/">Início</a>
-    <a href="/venda.html">Comprar</a>
-    <a href="/locacao.html">Locar</a>
-    <a href="/consultoria.html">Consultoria</a>
-    <a href="/porta-pallets.html">Porta-Pallets</a>
-    <a href="/empilhadeiras.html">Empilhadeiras</a>
-    <a href="/sobre.html">Sobre</a>
-    <a href="/blog/">Blog</a>
-    <a href="/contato.html">Contato</a>
-    <a href="/contato.html" class="nav-cta" style="text-align:center;">Solicitar Diagnóstico</a>
+    <a href="../index.html">Início</a>
+    <a href="../venda.html">Comprar</a>
+    <a href="../locacao.html">Locar</a>
+    <a href="../consultoria.html">Consultoria</a>
+    <a href="../porta-pallets.html">Porta-Pallets</a>
+    <a href="../empilhadeiras.html">Empilhadeiras</a>
+    <a href="../sobre.html">Sobre</a>
+    <a href="index.html">Blog</a>
+    <a href="../contato.html">Contato</a>
+    <a href="../contato.html" class="nav-cta" style="text-align:center;">Solicitar Diagnóstico</a>
   </div>
 
   <!-- ARTICLE HERO -->
@@ -697,9 +710,9 @@
     <div class="article-hero-photo" role="img" aria-label="Profissional conferindo estoque em corredor de porta-pallets"></div>
     <div class="container">
       <div class="breadcrumb">
-        <a href="/">Início</a>
+        <a href="../index.html">Início</a>
         <span class="breadcrumb-sep">/</span>
-        <a href="/blog/">Blog</a>
+        <a href="index.html">Blog</a>
         <span class="breadcrumb-sep">/</span>
         <span class="breadcrumb-current">Vacância de galpões em São Paulo</span>
       </div>
@@ -747,7 +760,7 @@
             </div>
           </nav>
 
-          <a href="/simulador.html" class="toc-sim-card">
+          <a href="../simulador.html" class="toc-sim-card">
             <div class="toc-sim-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2"/></svg>
             </div>
@@ -761,7 +774,7 @@
 
           <p class="lead">O gestor de logística precisa de mais espaço. A operação cresceu, o estoque não cabe mais, e a decisão parece óbvia: procurar um galpão maior.</p>
 
-          <a href="/simulador.html" class="sim-banner-mobile">
+          <a href="../simulador.html" class="sim-banner-mobile">
             <div class="icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2"/></svg>
             </div>
@@ -920,13 +933,13 @@
 
           <p>Vale a referência de altura, porque nem todo galpão é alto. Os 12 metros de pé-direito livre do exemplo são o que caracteriza um galpão <strong>classe A</strong> no Brasil, segundo especificações de operadores como GLP, LOG CP e Bresco. Uma altura de 12 a 15 metros comporta tipicamente 6 a 7 níveis de porta-palete, já consideradas as folgas de projeto (IL Brokers, agosto de 2025).</p>
 
-          <p>Mas — e isso precisa estar claro — apenas 18% do estoque logístico brasileiro é classe A, cerca de 35,7 milhões de m² num total próximo de 175 milhões (LOG CP, 2026). A maioria dos galpões tem menos altura para trabalhar. O ganho da verticalização existe na maior parte deles, mas é proporcional ao pé-direito disponível: quanto mais baixo o galpão, menor o volume ocioso a recuperar. <a href="/blog/quantos-paletes-cabem-no-galpao.html">A conta do metro cúbico</a> vale para todo mundo — só entrega mais para quem tem mais altura.</p>
+          <p>Mas — e isso precisa estar claro — apenas 18% do estoque logístico brasileiro é classe A, cerca de 35,7 milhões de m² num total próximo de 175 milhões (LOG CP, 2026). A maioria dos galpões tem menos altura para trabalhar. O ganho da verticalização existe na maior parte deles, mas é proporcional ao pé-direito disponível: quanto mais baixo o galpão, menor o volume ocioso a recuperar. <a href="quantos-paletes-cabem-no-galpao.html">A conta do metro cúbico</a> vale para todo mundo — só entrega mais para quem tem mais altura.</p>
 
           <div class="cta-block">
             <h3>Quanto do seu galpão você paga e não usa?</h3>
             <p>A calculadora de posições-palete da Tetrix estima quantas posições cabem no seu galpão conforme a altura, a carga e o tipo de empilhadeira — sem cadastro e com resultado na hora.</p>
             <div class="cta-btns">
-              <a href="/simulador.html" class="cta-btn primary">
+              <a href="../simulador.html" class="cta-btn primary">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                 Calcular posições-palete
               </a>
@@ -943,7 +956,7 @@
 
           <h3>O custo da transição</h3>
 
-          <p>Mudar de galpão para a operação inteira. Há parada de operação durante a transferência, transporte de estoque e de estrutura, desmontagem e remontagem dos <a href="/porta-pallets.html">porta-pallets</a>, requalificação do layout no novo endereço, readequação de docas. Nada disso aparece no valor do metro quadrado, e tudo isso consome caixa e tempo antes de a operação voltar a rodar.</p>
+          <p>Mudar de galpão para a operação inteira. Há parada de operação durante a transferência, transporte de estoque e de estrutura, desmontagem e remontagem dos <a href="../porta-pallets.html">porta-pallets</a>, requalificação do layout no novo endereço, readequação de docas. Nada disso aparece no valor do metro quadrado, e tudo isso consome caixa e tempo antes de a operação voltar a rodar.</p>
 
           <h3>O custo da distância</h3>
 
@@ -969,7 +982,7 @@
 
           <h3>Equipamento e corredor</h3>
 
-          <p>De nada adianta a estrutura alta se a <a href="/empilhadeiras.html">empilhadeira</a> não alcança o último nível com a carga, ou não opera na largura de corredor projetada. Contrabalançada, patolada e trilateral pedem corredores bem diferentes — e é o corredor que define quantas ruas cabem no galpão e, portanto, quantas posições-palete existem no total. A escolha do equipamento e a largura do corredor são a mesma decisão, tomada junto.</p>
+          <p>De nada adianta a estrutura alta se a <a href="../empilhadeiras.html">empilhadeira</a> não alcança o último nível com a carga, ou não opera na largura de corredor projetada. Contrabalançada, patolada e trilateral pedem corredores bem diferentes — e é o corredor que define quantas ruas cabem no galpão e, portanto, quantas posições-palete existem no total. A escolha do equipamento e a largura do corredor são a mesma decisão, tomada junto.</p>
 
           <h3>Quando verticalizar não é a resposta</h3>
 
@@ -1013,7 +1026,7 @@
           Depende do pé-direito útil, da capacidade do piso e do perfil da operação. Este artigo dá os critérios; a decisão exige medir os três números do fim do texto e, idealmente, uma visita técnica.</p>
 
           <p><strong>Quantos níveis cabem em um galpão de 12 metros?</strong><br>
-          Tipicamente 6 a 7 níveis de porta-palete, conforme a altura da carga e as folgas de projeto. <a href="/blog/quantos-paletes-cabem-no-galpao.html">Veja o método de cálculo completo</a>.</p>
+          Tipicamente 6 a 7 níveis de porta-palete, conforme a altura da carga e as folgas de projeto. <a href="quantos-paletes-cabem-no-galpao.html">Veja o método de cálculo completo</a>.</p>
 
           <p><strong>O que é um galpão classe A?</strong><br>
           Um padrão construtivo com pé-direito livre a partir de 12 metros, entre outros requisitos. Representa cerca de 18% do estoque logístico nacional — a maior parte dos galpões brasileiros tem altura menor.</p>
@@ -1021,13 +1034,13 @@
           <div class="cta-block cta-final">
             <span class="cta-final-eyebrow">Fim do guia</span>
             <h3>Descubra quanto volume o seu galpão já paga e não usa</h3>
-            <p>A engenharia da Tetrix faz o diagnóstico e o projeto de verticalização do seu galpão sem custo, com atendimento em todo o estado de São Paulo. Você recebe o número real de posições-palete que cabem na sua altura disponível — e a proposta nos dois modelos, <a href="/locacao.html" style="color:var(--orange-lt);">locação</a> e <a href="/venda.html" style="color:var(--orange-lt);">compra</a>.</p>
+            <p>A engenharia da Tetrix faz o diagnóstico e o projeto de verticalização do seu galpão sem custo, com atendimento em todo o estado de São Paulo. Você recebe o número real de posições-palete que cabem na sua altura disponível — e a proposta nos dois modelos, <a href="../locacao.html" style="color:var(--orange-lt);">locação</a> e <a href="../venda.html" style="color:var(--orange-lt);">compra</a>.</p>
             <div class="cta-btns">
-              <a href="/simulador.html" class="cta-btn primary">
+              <a href="../simulador.html" class="cta-btn primary">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                 Calcular posições-palete
               </a>
-              <a href="/contato.html" class="cta-btn secondary">
+              <a href="../contato.html" class="cta-btn secondary">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 Solicitar diagnóstico gratuito
               </a>
@@ -1081,26 +1094,26 @@
         </div>
         <div class="footer-col">
           <h4>Soluções</h4>
-          <a href="/venda.html">Comprar</a>
-          <a href="/locacao.html">Locar</a>
-          <a href="/consultoria.html">Consultoria</a>
-          <a href="/simulador.html">Simulador</a>
+          <a href="../venda.html">Comprar</a>
+          <a href="../locacao.html">Locar</a>
+          <a href="../consultoria.html">Consultoria</a>
+          <a href="../simulador.html">Simulador</a>
         </div>
         <div class="footer-col">
           <h4>Produtos</h4>
-          <a href="/porta-pallets.html">Porta-Pallets</a>
-          <a href="/empilhadeiras.html">Empilhadeiras</a>
+          <a href="../porta-pallets.html">Porta-Pallets</a>
+          <a href="../empilhadeiras.html">Empilhadeiras</a>
         </div>
         <div class="footer-col">
           <h4>Empresa</h4>
-          <a href="/sobre.html">Sobre</a>
-          <a href="/blog/">Blog</a>
-          <a href="/contato.html">Contato</a>
+          <a href="../sobre.html">Sobre</a>
+          <a href="index.html">Blog</a>
+          <a href="../contato.html">Contato</a>
           <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
       <div class="footer-bottom">
-        © <span id="ano-rodape"></span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · São Paulo/SP
+        © <span id="ano-rodape"></span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · São Paulo/SP · <a href="../politica-de-privacidade.html" style="color:inherit;text-decoration:underline">Política de Privacidade</a>
       </div>
     </div>
   </footer>
@@ -1165,5 +1178,26 @@
   <script>
     (function(){ var el = document.getElementById('ano-rodape'); if (el) el.textContent = new Date().getFullYear(); })();
   </script>
+<script>
+  /* V2 — rastreio de clique nos CTAs (faltava no simulador e no blog) */
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    document.querySelectorAll('a[href*="wa.me"], a[href*="tintim.link"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        window.dataLayer.push({ event: 'whatsapp_click', origem_pagina: location.pathname });
+      });
+    });
+    document.querySelectorAll('a[href*="contato.html"], a[href*="simulador.html"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        window.dataLayer.push({
+          event: 'cta_click',
+          cta_destino: a.getAttribute('href'),
+          cta_texto: (a.textContent || '').trim().slice(0, 40),
+          origem_pagina: location.pathname
+        });
+      });
+    });
+  })();
+</script>
 </body>
 </html>
