@@ -1463,7 +1463,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <h3>Solicitação enviada!</h3>
-            <p>Nossa engenharia entra em contato em até <strong>24 horas úteis</strong>. Prefere adiantar?</p>
+              <p>Nossa engenharia entra em contato em até <strong>24 horas úteis</strong>.<br>Abrimos o WhatsApp com os seus dados — se ele não abrir, use o botão abaixo.</p>
             <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center" data-wpp="pos_formulario_final">Falar agora no WhatsApp</a>
           </div>
         </div>
@@ -1952,6 +1952,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         btn.disabled = true;
         btn.textContent = 'Enviando...';
 
+        // A aba do WhatsApp precisa ser aberta AQUI, ainda dentro do clique.
+        // Chamar window.open depois do envio (que e assincrono) faz o navegador
+        // tratar como pop-up nao solicitado e bloquear — era exatamente o motivo
+        // de o WhatsApp nunca abrir. Abrimos vazia agora e so preenchemos a URL
+        // no final, quando o e-mail ja saiu.
+        var janelaWpp = null;
+        try { janelaWpp = window.open('', '_blank'); } catch (e) { janelaWpp = null; }
+
         var notas = ['[' + cfg.origem + ']', simulacao || null, campanhaTexto || null].filter(Boolean).join(' | ');
 
         // Colunas espelham a tabela leads_contato do CRM.
@@ -1988,8 +1996,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 tipo_interesse: obj || 'Nao informado',
                 area_galpao: area || 'Nao informado',
                 pe_direito: pe || 'Nao informado',
-                mensagem: 'Origem: ' + cfg.origem + (email ? '' : '
-[sem e-mail informado]') +
+                mensagem: 'Origem: ' + cfg.origem +
                           (simulacao ? '\n' + simulacao : '') +
                           (campanhaTexto ? '\n' + campanhaTexto : ''),
                 data_envio: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
@@ -1998,16 +2005,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           }
           return Promise.all(tarefas).then(function(){ return { okSupabase: okSupabase, okEmail: okEmail }; });
         }).then(function(r){
-          // Os dois canais falharam: nao finge sucesso, leva o lead pro WhatsApp
+          // Mensagem do WhatsApp, sempre montada com os dados do lead
+          var urlWpp = 'https://wa.me/5511992353669?text=' + encodeURIComponent(
+            'Olá! Solicitei diagnóstico pelo site.\n\nNome: ' + nome + '\nEmpresa: ' + empresa +
+            '\nWhatsApp: ' + tel + '\nCidade: ' + (cidade || 'nao informada') +
+            '\nPreciso de: ' + (obj || 'orientacao') + (simulacao ? '\n' + simulacao : ''));
+
+          // O botao da tela de sucesso recebe a mensagem pronta. Isto e o que
+          // garante a abertura: um clique do usuario nunca e bloqueado.
+          var btnOk = $(cfg.ok).querySelector('a[href*="wa.me"], a[href*="tintim.link"]');
+          if (btnOk) btnOk.href = urlWpp;
+
           if (!r.okSupabase && !r.okEmail){
             btn.disabled = false;
             btn.innerHTML = rotulo;
-            var msg = encodeURIComponent(
-              'Olá! Solicitei diagnóstico pelo site.\n\nNome: ' + nome + '\nEmpresa: ' + empresa +
-              '\nWhatsApp: ' + tel + '\nCidade: ' + (cidade || 'nao informada') +
-              '\nPreciso de: ' + (obj || 'orientacao') + (simulacao ? '\n' + simulacao : ''));
-            banner('Não conseguimos enviar agora. Abrimos o WhatsApp para você falar direto com a gente.');
-            window.open('https://wa.me/5511992353669?text=' + msg, '_blank');
+            banner('Não conseguimos registrar seu contato agora. Clique no botão abaixo para falar direto no WhatsApp com os dados já preenchidos.');
+            if (janelaWpp) janelaWpp.location.href = urlWpp; else location.href = urlWpp;
             track('home_form_erro', { form_origem: cfg.origem });
             return;
           }
@@ -2020,10 +2033,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           });
           track('generate_lead', { form_origem: cfg.origem, value: 1, currency: 'BRL' });
 
+          btn.disabled = false;
+          btn.innerHTML = rotulo;
           $(cfg.campos).style.display = 'none';
           var ok = $(cfg.ok);
           ok.style.display = 'block';
           ok.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+
+          // E-mail ja saiu; agora abre o WhatsApp preenchido. A aba foi aberta no
+          // clique (gesto do usuario), entao o bloqueador de pop-up nao a barra —
+          // era exatamente isso que impedia o WhatsApp de abrir antes.
+          if (janelaWpp) {
+            janelaWpp.location.href = urlWpp;
+            track('home_whatsapp_click', { wpp_origem: 'pos_formulario_' + cfg.origem });
+          }
+        }).catch(function(e){
+          // Nenhum erro pode deixar o botao travado em "Enviando..."
+          console.error('Falha inesperada no envio:', e);
+          if (janelaWpp) janelaWpp.close();
+          btn.disabled = false;
+          btn.innerHTML = rotulo;
+          banner('Não conseguimos enviar agora. Tente novamente ou fale pelo WhatsApp.');
+          track('home_form_erro', { form_origem: cfg.origem, motivo: 'excecao' });
         });
       });
     }
