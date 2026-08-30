@@ -1121,7 +1121,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
             nome, empresa,
             telefone:       tel,
-            email:          'Nao informado',
+            // Este formulario nao coleta e-mail. Enviar texto aqui quebrava o
+            // Reply-To do template e derrubava TODO envio com erro 412.
+            email:          '',
             cidade:         cidade || 'Nao informado',
             tipo_interesse: 'Consultoria e projeto',
             area_galpao:    'Nao informado',

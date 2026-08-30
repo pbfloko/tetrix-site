@@ -783,7 +783,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           nome:           dadosLead.nome,
           empresa:        dadosLead.empresa,
           telefone:       dadosLead.telefone,
-          email:          dadosLead.email || 'Não informado',
+          // Reply-To do template: string invalida faz o Outlook recusar (412).
+          email:          dadosLead.email || '',
           cidade:         dadosLead.cidade || 'Não informado',
           tipo_interesse: dadosLead.tipo_interesse,
           area_galpao:    dadosLead.area_galpao || 'Não informado',

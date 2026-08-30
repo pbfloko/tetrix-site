@@ -1980,12 +1980,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             tarefas.push(
               window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                 nome: nome, empresa: empresa, telefone: tel,
-                email: email || 'Nao informado',
+                // O template do EmailJS usa {{email}} como Reply-To. Uma string que nao
+                // seja endereco valido faz o Outlook recusar com 412 e o envio falha.
+                // Vazio funciona; a ausencia fica registrada na mensagem abaixo.
+                email: email || '',
                 cidade: cidade || 'Nao informado',
                 tipo_interesse: obj || 'Nao informado',
                 area_galpao: area || 'Nao informado',
                 pe_direito: pe || 'Nao informado',
-                mensagem: 'Origem: ' + cfg.origem +
+                mensagem: 'Origem: ' + cfg.origem + (email ? '' : '
+[sem e-mail informado]') +
                           (simulacao ? '\n' + simulacao : '') +
                           (campanhaTexto ? '\n' + campanhaTexto : ''),
                 data_envio: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
