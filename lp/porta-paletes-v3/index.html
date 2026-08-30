@@ -1930,6 +1930,11 @@
       btn.disabled = true;
       btn.textContent = 'Enviando...';
 
+      // Aba aberta AQUI, dentro do clique: chamada depois do envio assincrono,
+      // o navegador trata como pop-up e bloqueia — e o lead se perde.
+      var janelaWpp = null;
+      try { janelaWpp = window.open('', '_blank'); } catch (e) { janelaWpp = null; }
+
       var notas = ['[' + cfg.origem + ']',
                    prazo ? 'Prazo: ' + prazo : null,
                    simulacao || null,
@@ -1974,8 +1979,7 @@
               tipo_interesse: obj || 'Nao informado',
               area_galpao: area || 'Nao informado',
               pe_direito: pe || 'Nao informado',
-              mensagem: 'Origem: ' + cfg.origem + (email ? '' : '
-[sem e-mail informado]') +
+              mensagem: 'Origem: ' + cfg.origem +
                         (prazo ? '\nPrazo: ' + prazo : '') +
                         (simulacao ? '\n' + simulacao : '') +
                         (campanhaTexto ? '\n' + campanhaTexto : ''),
@@ -1996,7 +2000,10 @@
             '\nÁrea: ' + (area || 'nao informada') + '\nPreciso de: ' + (obj || 'orientacao') +
             (simulacao ? '\n' + simulacao : ''));
           banner('Não conseguimos enviar agora. Abrimos o WhatsApp para você falar direto com a gente.');
-          window.open('https://wa.me/5511992353669?text=' + msg, '_blank');
+          var urlWpp = 'https://wa.me/5511992353669?text=' + msg;
+          var btnOk = $(cfg.ok).querySelector('a[href*="wa.me"], a[href*="tintim.link"]');
+          if (btnOk) btnOk.href = urlWpp;
+          if (janelaWpp) janelaWpp.location.href = urlWpp; else location.href = urlWpp;
           track('lp_form_erro', { form_origem: cfg.origem });
           return;
         }
@@ -2018,6 +2025,15 @@
         ok.style.display = 'block';
         ok.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block:'center' });
         conversaoFeita = true;
+      }).catch(function(e){
+        // Sem isto, qualquer erro inesperado deixa o botao preso em "Enviando..."
+        // e o visitante sem saida — o lead se perde em silencio.
+        console.error('Falha inesperada no envio:', e);
+        if (janelaWpp) janelaWpp.close();
+        btn.disabled = false;
+        btn.innerHTML = rotulo;
+        banner('Não conseguimos enviar agora. Tente novamente ou fale pelo WhatsApp.');
+        track('lp_form_erro', { form_origem: cfg.origem, motivo: 'excecao' });
       });
     });
   }
