@@ -1968,12 +1968,14 @@
           tarefas.push(
             window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
               nome: nome, empresa: empresa, telefone: tel,
-              email: email || 'Nao informado',
+              // O template usa {{email}} como Reply-To: string invalida = erro 412.
+              email: email || '',
               cidade: cidade || 'Nao informado',
               tipo_interesse: obj || 'Nao informado',
               area_galpao: area || 'Nao informado',
               pe_direito: pe || 'Nao informado',
-              mensagem: 'Origem: ' + cfg.origem +
+              mensagem: 'Origem: ' + cfg.origem + (email ? '' : '
+[sem e-mail informado]') +
                         (prazo ? '\nPrazo: ' + prazo : '') +
                         (simulacao ? '\n' + simulacao : '') +
                         (campanhaTexto ? '\n' + campanhaTexto : ''),
