@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- REBRAND EM APROVACAO: noindex para nao duplicar o site atual.
+       >>> REMOVER ao promover. <<< -->
+  <meta name="robots" content="noindex, follow">
   <title>6 vantagens da locação de porta-paletes que a compra não oferece | Tetrix</title>
   <link rel="canonical" href="https://www.tetrixlog.com.br/blog/locacao-ou-compra-porta-paletes.html">
   <meta name="description" content="Comprar porta-paletes exige desembolsar tudo de uma vez. Veja as 6 vantagens reais da locação: capital preservado, simplicidade operacional, manutenção inclusa e mais.">
@@ -31,7 +34,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0D1E3D">
+  <meta name="theme-color" content="#0F2030">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -82,23 +85,23 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy:     #0D1E3D;
-      --navy-mid: #162B55;
-      --navy-lt:  #1E3A6E;
-      --orange:   #FF6E1A;
-      --orange-dk:#E05000;
-      --orange-lt:#FF9A5C;
+      --navy:     #0F2030;
+      --navy-mid: #16293B;
+      --navy-lt:  #1E3548;
+      --orange:   #F96400;
+      --orange-dk:#D45600;
+      --orange-lt:#FF9B57;
       --white:    #FFFFFF;
       --gray-100: #F4F6FA;
-      --gray-200: #E2E7F0;
+      --gray-200: #DCDCDC;
       --gray-500: #7A8BA8;
       --gray-700: #3D4F6A;
       --text:     #1A2A40;
-      --font-head: 'Barlow Condensed', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
+      --font-head: 'Montserrat', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --radius:   10px;
       --trans:    0.3s ease;
@@ -127,7 +130,7 @@
     /* ===== NAVBAR ===== */
     #navbar { position: fixed; top: 3px; left: 0; right: 0; z-index: 1000; padding: 0 24px; background: rgba(13,30,61,0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
     #navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0; }
-    .logo-mark svg { height: 38px; width: auto; }
+    .logo-mark img { height: 32px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: color var(--trans), background var(--trans); }
     .nav-links a:hover, .nav-links a.active { color: white; background: rgba(255,255,255,0.08); text-decoration: none; }
@@ -187,7 +190,7 @@
     .article-hero h1 {
       position: relative; z-index: 2;
       font-family: var(--font-head); font-weight: 800;
-      font-size: clamp(32px, 4.5vw, 52px); line-height: 1.1;
+      font-size: clamp(23px, 3.24vw, 37px); line-height: 1.1;
       margin-bottom: 24px; letter-spacing: -0.5px;
       max-width: 900px;
     }
@@ -592,17 +595,27 @@
       .callout { padding: 18px 20px; }
     }
     /* ===================================================================
-       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
-       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
-       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
-       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
-       números, barras e detalhes — onde não há texto por cima.
+       MARCA NOVA — CONTRASTE WCAG AA
+       O laranja da marca #F96400 com texto BRANCO da 3,07:1 e reprova.
+       Com texto NAVY #0F2030 da 5,40:1 e passa — entao o botao mantem o
+       laranja exato do manual e so troca a cor do texto. Nada de escurecer
+       a cor da marca, como era preciso na identidade anterior.
+       Hover #FA7420 (5,97:1). Links laranja sobre fundo claro usam
+       #C24E00 (4,79:1), ja que #F96400 sobre branco da so 3,07:1.
        =================================================================== */
-    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
+    :root { --orange-btn: #F96400; --orange-btn-dk: #FA7420; --orange-link: #C24E00; }
     .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
-    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
+    .mobile-menu .btn-primary, .mobile-menu .btn-mobile, .mobile-menu a.btn,
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn, .btn-calcular {
+      background: var(--orange-btn); color: #0F2030;
+    }
     .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
-    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
+    .fbtn:hover, .sim-go:hover, .form-btn:hover, .btn-calcular:hover {
+      background: var(--orange-btn-dk); color: #0F2030;
+    }
+    .btn-primary svg, .nav-cta svg, .fbtn svg, .sim-go svg,
+    .mbar a.or svg, .form-btn svg { color: #0F2030; stroke: currentColor; }
+
 
   </style>
 </head>
@@ -617,28 +630,7 @@
   <nav id="navbar">
     <div class="container">
       <a href="../index.html" class="logo-mark" aria-label="Tetrix Soluções Intralogísticas">
-        <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="og-nav" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FF7A2F"/>
-              <stop offset="100%" stop-color="#E05000"/>
-            </linearGradient>
-          </defs>
-          <!-- Rack símbolo -->
-          <rect x="2" y="8" width="5" height="42" rx="1.5" fill="white"/>
-          <rect x="52" y="8" width="5" height="42" rx="1.5" fill="white"/>
-          <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#og-nav)"/>
-          <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#og-nav)"/>
-          <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#og-nav)"/>
-          <rect x="11" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="24" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="37" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="24" y="24" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="24" y="38" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <!-- Wordmark -->
-          <text x="72" y="42" font-family="Barlow Condensed, sans-serif" font-size="34" font-weight="900" fill="white" letter-spacing="1">TETRIX</text>
-          <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#og-nav)"/>
-        </svg>
+        <img src="../img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
       </a>
       <ul class="nav-links">
         <li><a href="../index.html">Início</a></li>
