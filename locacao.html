@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- REBRAND EM APROVACAO: noindex para nao duplicar o site atual.
+       >>> REMOVER ao promover. <<< -->
+  <meta name="robots" content="noindex, follow">
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -21,7 +24,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0D1E3D">
+  <meta name="theme-color" content="#0F2030">
   <!-- End Favicon -->
   <!-- Open Graph / Social Preview (WhatsApp, Facebook, LinkedIn) -->
   <meta property="og:type" content="website">
@@ -43,24 +46,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="description" content="Loque porta-pallets e empilhadeiras com a Tetrix e ganhe até 60% de economia em relação a alugar um galpão maior. Solução completa para verticalizar sua operação em São Paulo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy:     #0D1E3D;
-      --navy-mid: #162B55;
-      --navy-lt:  #1E3A6E;
-      --orange:   #FF6E1A;
-      --orange-dk:#E05000;
-      --orange-lt:#FF9A5C;
+      --navy:     #0F2030;
+      --navy-mid: #16293B;
+      --navy-lt:  #1E3548;
+      --orange:   #F96400;
+      --orange-dk:#D45600;
+      --orange-lt:#FF9B57;
       --white:    #FFFFFF;
       --gray-100: #F4F6FA;
-      --gray-200: #E2E7F0;
+      --gray-200: #DCDCDC;
       --gray-500: #7A8BA8;
       --gray-700: #3D4F6A;
       --green:    #1A9E5C;
       --text:     #1A2A40;
-      --font-h:   'Barlow Condensed', sans-serif;
-      --font-b:   'DM Sans', sans-serif;
+      --font-h:   'Montserrat', sans-serif;
+      --font-b:   'Montserrat', sans-serif;
       --radius:   10px;
       --trans:    0.3s ease;
     }
@@ -79,7 +82,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       cursor: pointer; border: none; transition: var(--trans); white-space: nowrap;
     }
     .btn-primary { background: var(--orange); color: var(--white); }
-    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #FF6E1A44; }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #F9640044; }
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.6); }
     .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
     .btn-outline-dark { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
@@ -90,7 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
     }
     .section-title {
-      font-family: var(--font-h); font-size: clamp(34px, 5vw, 52px);
+      font-family: var(--font-h); font-size: clamp(24px, 3.60vw, 37px);
       font-weight: 800; line-height: 1.05; color: var(--navy);
     }
     .section-title.light { color: var(--white); }
@@ -120,7 +123,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: flex; align-items: center; justify-content: space-between;
       height: 76px;
     }
-    .nav-logo svg { height: 44px; width: auto; }
+    .nav-logo img { height: 38px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a {
       color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500;
@@ -182,7 +185,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .hero-title {
       font-family: var(--font-h); font-weight: 900;
-      font-size: clamp(44px, 6.5vw, 80px); line-height: 0.97;
+      font-size: clamp(32px, 4.68vw, 58px); line-height: 0.97;
       color: white; max-width: 720px; margin-bottom: 24px;
     }
     .hero-title em { font-style: normal; color: var(--orange); }
@@ -204,7 +207,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gap: 72px; align-items: center;
     }
     .argumento-numero {
-      font-family: var(--font-h); font-size: clamp(100px, 16vw, 180px);
+      font-family: var(--font-h); font-size: clamp(72px, 11.52vw, 130px);
       font-weight: 900; color: var(--navy); line-height: 0.85;
       position: relative; display: inline-block;
     }
@@ -214,7 +217,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: var(--orange);
     }
     .argumento-numero span {
-      font-size: clamp(56px, 8vw, 96px); color: var(--orange);
+      font-size: clamp(40px, 5.76vw, 69px); color: var(--orange);
     }
     .argumento-desc {
       font-size: 18px; line-height: 1.7; color: var(--gray-700); margin-top: 28px;
@@ -248,7 +251,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border: 1px solid var(--gray-200);
       overflow: hidden; transition: box-shadow var(--trans), transform var(--trans);
     }
-    .solucao-card:hover { box-shadow: 0 20px 48px #0D1E3D14; transform: translateY(-4px); }
+    .solucao-card:hover { box-shadow: 0 20px 48px #0F203014; transform: translateY(-4px); }
     .solucao-card-header {
       padding: 32px 36px 28px;
       display: flex; align-items: flex-start; gap: 20px;
@@ -304,7 +307,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .sim-cta-text { flex: 1; min-width: 300px; }
     .sim-cta-title {
-      font-family: var(--font-h); font-size: clamp(30px, 4vw, 48px);
+      font-family: var(--font-h); font-size: clamp(22px, 2.88vw, 35px);
       font-weight: 900; color: white; line-height: 1.05; margin-bottom: 14px;
     }
     .sim-cta-title em { color: var(--orange); font-style: normal; }
@@ -428,7 +431,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s ease;
     }
-    .dor-card:hover { box-shadow: 0 16px 40px #0D1E3D12; transform: translateY(-4px); }
+    .dor-card:hover { box-shadow: 0 16px 40px #0F203012; transform: translateY(-4px); }
     .dor-card:hover::before { transform: scaleX(1); }
     .dor-icon {
       width: 48px; height: 48px; border-radius: 12px;
@@ -492,7 +495,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .cta-inner { position: relative; z-index: 1; text-align: center; max-width: 680px; margin: 0 auto; }
     .cta-title {
-      font-family: var(--font-h); font-size: clamp(34px, 5vw, 58px);
+      font-family: var(--font-h); font-size: clamp(24px, 3.60vw, 42px);
       font-weight: 900; color: white; line-height: 1.05; margin-bottom: 20px;
     }
     .cta-title em { color: var(--orange); font-style: normal; }
@@ -503,7 +506,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     #footer { background: #080F1E; padding: 60px 0 32px; color: rgba(255,255,255,0.5); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .footer-logo { margin-bottom: 20px; }
-    .footer-logo svg { height: 40px; }
+    .footer-logo img { height: 34px; width: auto; }
     .footer-desc { font-size: 13px; line-height: 1.7; max-width: 280px; }
     .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
     .footer-contact a { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); transition: color var(--trans); }
@@ -549,17 +552,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .argumento-stats { grid-template-columns: 1fr; }
     }
     /* ===================================================================
-       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
-       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
-       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
-       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
-       números, barras e detalhes — onde não há texto por cima.
+       MARCA NOVA — CONTRASTE WCAG AA
+       O laranja da marca #F96400 com texto BRANCO da 3,07:1 e reprova.
+       Com texto NAVY #0F2030 da 5,40:1 e passa — entao o botao mantem o
+       laranja exato do manual e so troca a cor do texto. Nada de escurecer
+       a cor da marca, como era preciso na identidade anterior.
+       Hover #FA7420 (5,97:1). Links laranja sobre fundo claro usam
+       #C24E00 (4,79:1), ja que #F96400 sobre branco da so 3,07:1.
        =================================================================== */
-    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
+    :root { --orange-btn: #F96400; --orange-btn-dk: #FA7420; --orange-link: #C24E00; }
     .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
-    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
+    .mobile-menu .btn-primary, .mobile-menu .btn-mobile, .mobile-menu a.btn,
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn, .btn-calcular {
+      background: var(--orange-btn); color: #0F2030;
+    }
     .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
-    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
+    .fbtn:hover, .sim-go:hover, .form-btn:hover, .btn-calcular:hover {
+      background: var(--orange-btn-dk); color: #0F2030;
+    }
+    .btn-primary svg, .nav-cta svg, .fbtn svg, .sim-go svg,
+    .mbar a.or svg, .form-btn svg { color: #0F2030; stroke: currentColor; }
+
 
   </style>
 <!-- Structured Data - Organization (Schema.org) -->
@@ -611,28 +624,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <nav id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Tetrix Home">
-        <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="og-nav" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FF7A2F"/>
-              <stop offset="100%" stop-color="#E05000"/>
-            </linearGradient>
-          </defs>
-          <!-- Rack símbolo -->
-          <rect x="2" y="8" width="5" height="42" rx="1.5" fill="white"/>
-          <rect x="52" y="8" width="5" height="42" rx="1.5" fill="white"/>
-          <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#og-nav)"/>
-          <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#og-nav)"/>
-          <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#og-nav)"/>
-          <rect x="11" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="24" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="37" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="24" y="24" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <rect x="24" y="38" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
-          <!-- Wordmark -->
-          <text x="72" y="42" font-family="Barlow Condensed, sans-serif" font-size="34" font-weight="900" fill="white" letter-spacing="1">TETRIX</text>
-          <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#og-nav)"/>
-        </svg>
+        <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Início</a></li>
@@ -672,7 +664,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span>Locação</span>
         </div>
         <div class="hero-tag reveal">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="#FF9A5C"><circle cx="12" cy="12" r="12"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#FF9B57"><circle cx="12" cy="12" r="12"/></svg>
           Locação de Soluções Intralogísticas
         </div>
         <h1 class="hero-title reveal reveal-delay-1">
@@ -932,42 +924,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="dores-grid">
         <div class="dor-card reveal reveal-delay-1">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
           </div>
           <p class="dor-problema">Preciso de mais espaço mas não quero mudar de galpão</p>
           <p class="dor-solucao">Verticalize o que já tem e multiplique a capacidade sem sair do lugar</p>
         </div>
         <div class="dor-card reveal reveal-delay-2">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>
           </div>
           <p class="dor-problema">Não tenho empilhadeira e não quero comprar agora</p>
           <p class="dor-solucao">Locamos porta-pallets e empilhadeira em um único contrato, sem necessidade de investimento próprio</p>
         </div>
         <div class="dor-card reveal reveal-delay-3">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
           <p class="dor-problema">Minha operação está crescendo e preciso de capacidade imediata</p>
           <p class="dor-solucao">Implantação rápida, sem burocracia — você ganha capacidade em semanas, não meses</p>
         </div>
         <div class="dor-card reveal reveal-delay-1">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
           </div>
           <p class="dor-problema">Minha demanda tem sazonalidade e não quero imobilizar capital</p>
           <p class="dor-solucao">Pague mensalmente e preserve o caixa para quando a operação crescer de verdade</p>
         </div>
         <div class="dor-card reveal reveal-delay-2">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           </div>
           <p class="dor-problema">Quero testar a verticalização antes de comprar estrutura própria</p>
           <p class="dor-solucao">A locação é o caminho ideal — valide o modelo operacional antes de investir em estrutura permanente</p>
         </div>
         <div class="dor-card reveal reveal-delay-3">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
           <p class="dor-problema">Estou pensando em alugar um galpão maior por falta de espaço</p>
           <p class="dor-solucao">Antes de assinar, simule quanto espaço você pode ganhar dentro do galpão que já tem — pode surpreender</p>
@@ -1030,26 +1022,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="fl-orn" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#FF7A2F"/>
-                  <stop offset="100%" stop-color="#E05000"/>
-                </linearGradient>
-              </defs>
-              <rect x="2" y="8" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
-              <rect x="52" y="8" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
-              <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#fl-orn)"/>
-              <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#fl-orn)" opacity="0.75"/>
-              <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#fl-orn)" opacity="0.55"/>
-              <rect x="11" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
-              <rect x="24" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
-              <rect x="37" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
-              <rect x="24" y="24" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
-              <rect x="24" y="38" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
-              <text x="72" y="42" font-family="Barlow Condensed, sans-serif" font-size="34" font-weight="900" fill="rgba(255,255,255,0.75)" letter-spacing="1">TETRIX</text>
-              <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#fl-orn)" opacity="0.8"/>
-            </svg>
+            <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
           </div>
           <p class="footer-desc">Soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras em todo o estado de São Paulo.</p>
           <div class="footer-contact">

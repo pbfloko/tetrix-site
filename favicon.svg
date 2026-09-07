@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tetrix">
-  <defs>
-    <linearGradient id="laranja" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FF7A2F"/>
-      <stop offset="100%" stop-color="#E05000"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="12" fill="#0D1E3D"/>
-  <!-- montantes -->
-  <rect x="10" y="10" width="5" height="44" rx="1.5" fill="#fff"/>
-  <rect x="49" y="10" width="5" height="44" rx="1.5" fill="#fff"/>
-  <!-- longarinas -->
-  <rect x="15" y="17" width="34" height="4" rx="1" fill="url(#laranja)"/>
-  <rect x="15" y="31" width="34" height="4" rx="1" fill="url(#laranja)"/>
-  <rect x="15" y="45" width="34" height="4" rx="1" fill="url(#laranja)"/>
-  <!-- paletes -->
-  <rect x="18" y="12" width="10" height="5" rx=".8" fill="#fff" opacity=".85"/>
-  <rect x="29" y="12" width="10" height="5" rx=".8" fill="#fff" opacity=".85"/>
-  <rect x="40" y="12" width="8" height="5" rx=".8" fill="#fff" opacity=".85"/>
-  <rect x="29" y="26" width="10" height="5" rx=".8" fill="#fff" opacity=".85"/>
-  <rect x="29" y="40" width="10" height="5" rx=".8" fill="#fff" opacity=".85"/>
+  <rect width="64" height="64" rx="12" fill="#0F2030"/>
+  <!-- Símbolo do palete: 3x3 de blocos sobre a base -->
+  <g>
+    <!-- linha 1 -->
+    <rect x="12" y="12" width="12" height="12" rx="2.5" fill="#DCDCDC"/>
+    <rect x="26" y="12" width="12" height="12" rx="2.5" fill="#DCDCDC"/>
+    <rect x="40" y="12" width="12" height="12" rx="2.5" fill="#DCDCDC"/>
+    <!-- linha 2 -->
+    <rect x="12" y="26" width="12" height="12" rx="2.5" fill="#F96400"/>
+    <rect x="26" y="26" width="12" height="12" rx="2.5" fill="#DCDCDC"/>
+    <rect x="40" y="26" width="12" height="12" rx="2.5" fill="#F96400"/>
+    <!-- linha 3 -->
+    <rect x="12" y="40" width="12" height="12" rx="2.5" fill="#F96400"/>
+    <rect x="26" y="40" width="12" height="12" rx="2.5" fill="#DCDCDC"/>
+    <rect x="40" y="40" width="12" height="12" rx="2.5" fill="#F96400"/>
+  </g>
+  <!-- base do palete -->
+  <path d="M11 54.5h42v-3.5a1.5 1.5 0 0 0-1.5-1.5h-39A1.5 1.5 0 0 0 11 51z" fill="#F96400"/>
+  <rect x="17" y="54.5" width="7" height="3" rx="1" fill="#F96400"/>
+  <rect x="40" y="54.5" width="7" height="3" rx="1" fill="#F96400"/>
 </svg>

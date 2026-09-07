@@ -1,11 +1,11 @@
 {
   "name": "Tetrix Soluções Intralogísticas",
   "short_name": "Tetrix",
-  "description": "Verticalização de estoques com porta-pallets e empilhadeiras. Compra, locação e consultoria intralogística.",
+  "description": "Verticalização de estoques com porta-paletes e empilhadeiras. Compra, locação e consultoria intralogística.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0D1E3D",
-  "theme_color": "#0D1E3D",
+  "background_color": "#0F2030",
+  "theme_color": "#0F2030",
   "orientation": "portrait-primary",
   "lang": "pt-BR",
   "icons": [
