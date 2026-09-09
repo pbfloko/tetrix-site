@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- REBRAND EM APROVACAO: noindex para nao duplicar o site atual.
-       >>> REMOVER ao promover. <<< -->
-  <meta name="robots" content="noindex, follow">
   <script>document.documentElement.className=document.documentElement.className.replace('no-js','');</script>
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -25,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0F2030">
+  <meta name="theme-color" content="#0D1E3D">
   <!-- End Favicon -->
   <!-- Open Graph / Social Preview (WhatsApp, Facebook, LinkedIn) -->
   <meta property="og:type" content="website">
@@ -47,24 +44,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="description" content="Verticalize seu estoque e aumente sua capacidade de armazenagem sem mudar de galpão. Venda e locação de porta-pallets e empilhadeiras — engenharia própria em todo o estado de São Paulo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* ===== VARIABLES ===== */
     :root {
-      --navy:     #0F2030;
-      --navy-mid: #16293B;
-      --navy-lt:  #1E3548;
-      --orange:   #F96400;
-      --orange-dk:#D45600;
+      --navy:     #0D1E3D;
+      --navy-mid: #162B55;
+      --navy-lt:  #1E3A6E;
+      --orange:   #FF6E1A;
+      --orange-dk:#E05000;
       --white:    #FFFFFF;
       --gray-100: #F4F6FA;
-      --gray-200: #DCDCDC;
+      --gray-200: #E2E7F0;
       --gray-500: #7A8BA8;
       --gray-700: #3D4F6A;
       --text:     #1A2A40;
-      --font-head: 'Montserrat', sans-serif;
-      --font-body: 'Montserrat', sans-serif;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
       --radius:   10px;
       --trans:    0.3s ease;
     }
@@ -88,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-primary {
       background: var(--orange); color: var(--white);
     }
-    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #F9640044; }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #FF6E1A44; }
     .btn-outline {
       background: transparent; color: var(--white);
       border: 2px solid rgba(255,255,255,0.6);
@@ -107,7 +104,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 12px;
     }
     .section-title {
-      font-family: var(--font-head); font-size: clamp(26px, 3.60vw, 39px);
+      font-family: var(--font-head); font-size: clamp(36px, 5vw, 54px);
       font-weight: 800; line-height: 1.05; color: var(--navy);
     }
     .section-title.light { color: var(--white); }
@@ -158,7 +155,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: flex; align-items: center; gap: 0;
       flex-shrink: 0;
     }
-    .nav-logo img { height: 38px; width: auto; }
+    .nav-logo svg { height: 44px; width: auto; }
 
     .nav-links {
       display: flex; align-items: center; gap: 4px;
@@ -234,7 +231,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .hero-eyebrow span {
       font-size: 12px; font-weight: 600; letter-spacing: 2px;
-      text-transform: uppercase; color: #FF9B57;
+      text-transform: uppercase; color: #FF9A5C;
     }
     .hero-eyebrow-dot {
       width: 6px; height: 6px; border-radius: 50%;
@@ -246,7 +243,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .hero-title {
       font-family: var(--font-head); font-weight: 900;
-      font-size: clamp(29px, 3.17vw, 46px); line-height: 1.02;
+      font-size: clamp(40px, 4.4vw, 64px); line-height: 1.02;
       color: var(--white); max-width: 900px; margin-bottom: 24px;
     }
     .hero-title em {
@@ -286,7 +283,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero-ofertas { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
     .hero-oferta { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: #fff; line-height: 1.5; }
     .hero-oferta svg { flex-shrink: 0; width: 19px; height: 19px; color: #25D366; margin-top: 2px; }
-    .hero-oferta strong { color: #FF9B57; font-weight: 700; }
+    .hero-oferta strong { color: #FF9A5C; font-weight: 700; }
     .hero-grid .hero-stats { padding-top: 28px; gap: 32px; margin-bottom: 0; }
 
     /* ── Simulador embutido no hero ── */
@@ -298,7 +295,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .sim-card-eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; color: #FF9B57; margin-bottom: 9px;
+      text-transform: uppercase; color: #FF9A5C; margin-bottom: 9px;
     }
     .sim-card-title {
       font-family: var(--font-head); font-weight: 800; font-size: 23px;
@@ -321,7 +318,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .sim-f input[type=range] { padding: 0; background: transparent; accent-color: var(--orange); border: none; }
     .sim-pd-val { font-family: var(--font-head); font-size: 23px; font-weight: 800; color: #fff; line-height: 1; }
     .sim-pd-val small { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 600; }
-    .sim-pd-niveis { font-size: 12px; color: #FF9B57; font-weight: 700; margin-left: 7px; }
+    .sim-pd-niveis { font-size: 12px; color: #FF9A5C; font-weight: 700; margin-left: 7px; }
     .sim-go {
       width: 100%; margin-top: 4px; padding: 14px; background: var(--orange); color: #fff;
       border: none; border-radius: var(--radius); font-size: 15.5px; font-weight: 700;
@@ -340,7 +337,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .sim-kpi.hl { background: rgba(255,110,26,0.16); border: 1px solid rgba(255,110,26,0.38); }
     .sim-kpi-l { font-size: 9.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: rgba(255,255,255,0.66); margin-bottom: 6px; line-height: 1.25; }
     .sim-kpi-v { font-family: var(--font-head); font-weight: 900; font-size: 26px; line-height: 1; color: #fff; }
-    .sim-kpi.hl .sim-kpi-v { color: #FF9B57; }
+    .sim-kpi.hl .sim-kpi-v { color: #FF9A5C; }
     .sim-msg { font-size: 13px; color: rgba(255,255,255,0.86); line-height: 1.5; margin-bottom: 14px; }
     .sim-msg strong { color: #fff; }
 
@@ -355,7 +352,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     =========================== */
     .fgroup { margin-bottom: 11px; }
     .fgroup label { display: block; font-size: 11.5px; font-weight: 700; color: rgba(255,255,255,0.72); margin-bottom: 5px; }
-    .fgroup label .opc { font-weight: 400; color: rgba(255,255,255,0.45); }
+    .fgroup label .opc { font-weight: 400; color: rgba(255,255,255,0.62); }
     .fgroup input, .fgroup select {
       width: 100%; padding: 12px 13px; background: var(--gray-100);
       border: 2px solid transparent; border-radius: 8px;
@@ -379,8 +376,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .f-selos span { display: inline-flex; align-items: center; gap: 5px; }
     .f-selos svg { width: 12px; height: 12px; color: #25D366; }
-    .f-consent { font-size: 10.5px; color: rgba(255,255,255,0.45); line-height: 1.5; margin-top: 9px; text-align: center; }
-    .f-consent a { color: #FF9B57; text-decoration: underline; }
+    .f-consent { font-size: 10.5px; color: rgba(255,255,255,0.62); line-height: 1.5; margin-top: 9px; text-align: center; }
+    .f-consent a { color: #FF9A5C; text-decoration: underline; }
     .fgroup input.err, .fgroup select.err { border-color: #FF6B6B; background: #FEF2F1; }
     .fmsg { display: none; font-size: 11px; color: #FFB4B4; margin-top: 4px; font-weight: 600; }
     .fgroup.bad .fmsg { display: block; }
@@ -411,7 +408,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border: 1px solid rgba(255,110,26,0.34); display: flex; align-items: center;
       justify-content: center; flex-shrink: 0;
     }
-    .cred-ico svg { width: 17px; height: 17px; color: #FF9B57; }
+    .cred-ico svg { width: 17px; height: 17px; color: #FF9A5C; }
 
     /* ===========================
        CARD DE FORMULARIO NO CTA FINAL
@@ -427,14 +424,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 16px; padding: 26px 24px 22px;
     }
     .form-card h3 { font-family: var(--font-head); font-weight: 800; font-size: 22px; color: #fff; line-height: 1.18; margin-bottom: 6px; }
-    .form-card > p { font-size: 13px; color: rgba(255,255,255,0.68); margin-bottom: 16px; line-height: 1.5; }
+    .form-card > p, .form-card .form-sub { font-size: 13px; color: rgba(255,255,255,0.68); margin-bottom: 16px; line-height: 1.5; }
     .sim-chip {
       display: none; background: rgba(255,110,26,0.14); border: 1px solid rgba(255,110,26,0.36);
       border-radius: 9px; padding: 10px 12px; margin-bottom: 13px;
       font-size: 12px; color: rgba(255,255,255,0.9); line-height: 1.5;
     }
     .sim-chip.show { display: block; }
-    .sim-chip b { color: #FF9B57; }
+    .sim-chip b { color: #FF9A5C; }
 
     /* ===========================
        BARRA FIXA MOBILE
@@ -504,7 +501,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 3px; flex-shrink: 0;
     }
     .impacto-text {
-      font-family: var(--font-head); font-size: clamp(19px, 2.52vw, 29px);
+      font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 40px);
       font-weight: 700; color: white; line-height: 1.2; font-style: italic;
     }
     .impacto-text strong { color: var(--orange); font-style: normal; }
@@ -533,7 +530,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s ease;
     }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px #0F203018; border-color: transparent; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px #0D1E3D18; border-color: transparent; }
     .card:hover::before { transform: scaleX(1); }
 
     .card-icon {
@@ -577,10 +574,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
     .locacao-numero {
-      font-family: var(--font-head); font-size: clamp(58px, 8.64vw, 101px);
+      font-family: var(--font-head); font-size: clamp(80px, 12vw, 140px);
       font-weight: 900; color: var(--orange); line-height: 1;
     }
-    .locacao-numero span { font-size: clamp(29px, 4.32vw, 52px); }
+    .locacao-numero span { font-size: clamp(40px, 6vw, 72px); }
     .locacao-stat-desc {
       font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-top: 16px; max-width: 380px;
     }
@@ -651,7 +648,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .segmento:hover {
       border-color: var(--orange); transform: translateY(-4px);
-      box-shadow: 0 12px 32px #F9640018;
+      box-shadow: 0 12px 32px #FF6E1A18;
     }
     .segmento-icon {
       width: 56px; height: 56px; border-radius: 14px;
@@ -685,7 +682,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-align: center; max-width: 680px; margin: 0 auto;
     }
     .cta-title {
-      font-family: var(--font-head); font-size: clamp(26px, 3.60vw, 43px);
+      font-family: var(--font-head); font-size: clamp(36px, 5vw, 60px);
       font-weight: 900; color: white; line-height: 1.05; margin-bottom: 20px;
     }
     .cta-title em { color: var(--orange); font-style: normal; }
@@ -705,7 +702,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-bottom: 48px;
     }
     .footer-logo { margin-bottom: 20px; }
-    .footer-logo img { height: 34px; width: auto; }
+    .footer-logo svg { height: 40px; }
     .footer-desc { font-size: 13px; line-height: 1.7; max-width: 280px; }
     .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
     .footer-contact a {
@@ -784,27 +781,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .segmento { min-width: 140px; padding: 20px 20px; }
     }
     /* ===================================================================
-       MARCA NOVA — CONTRASTE WCAG AA
-       O laranja da marca #F96400 com texto BRANCO da 3,07:1 e reprova.
-       Com texto NAVY #0F2030 da 5,40:1 e passa — entao o botao mantem o
-       laranja exato do manual e so troca a cor do texto. Nada de escurecer
-       a cor da marca, como era preciso na identidade anterior.
-       Hover #FA7420 (5,97:1). Links laranja sobre fundo claro usam
-       #C24E00 (4,79:1), ja que #F96400 sobre branco da so 3,07:1.
+       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
+       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
+       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
+       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
+       números, barras e detalhes — onde não há texto por cima.
        =================================================================== */
-    :root { --orange-btn: #F96400; --orange-btn-dk: #FA7420; --orange-link: #C24E00; }
+    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
     .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
-    .mobile-menu .btn-primary, .mobile-menu .btn-mobile, .mobile-menu a.btn,
-    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn, .btn-calcular {
-      background: var(--orange-btn); color: #0F2030;
-    }
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
     .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
-    .fbtn:hover, .sim-go:hover, .form-btn:hover, .btn-calcular:hover {
-      background: var(--orange-btn-dk); color: #0F2030;
-    }
-    .btn-primary svg, .nav-cta svg, .fbtn svg, .sim-go svg,
-    .mbar a.or svg, .form-btn svg { color: #0F2030; stroke: currentColor; }
-
+    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
 
   </style>
 <!-- Structured Data - Organization (Schema.org) -->
@@ -832,7 +819,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "State",
       "name": "São Paulo"
     },
-    "sameAs": [],
+    "sameAs": ["https://www.instagram.com/tetrixlog"],
     "knowsAbout": [
       "Porta-pallets",
       "Empilhadeiras",
@@ -859,7 +846,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="nav-inner">
       <!-- Logo SVG inline -->
       <a href="index.html" class="nav-logo" aria-label="Tetrix Home">
-        <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
+        <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="og-nav" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF7A2F"/>
+              <stop offset="100%" stop-color="#E05000"/>
+            </linearGradient>
+          </defs>
+          <!-- Rack símbolo -->
+          <rect x="2" y="8" width="5" height="42" rx="1.5" fill="white"/>
+          <rect x="52" y="8" width="5" height="42" rx="1.5" fill="white"/>
+          <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#og-nav)"/>
+          <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#og-nav)"/>
+          <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#og-nav)"/>
+          <rect x="11" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="24" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="37" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="24" y="24" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="24" y="38" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <!-- Wordmark -->
+          <text x="72" y="42" font-family="Barlow Condensed, sans-serif" font-size="34" font-weight="900" fill="white" letter-spacing="1">TETRIX</text>
+          <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#og-nav)"/>
+        </svg>
       </a>
 
       <!-- Desktop nav -->
@@ -1065,7 +1073,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
               </div>
 
-              <p class="sim-nota" id="sim-nota">Estimativa por densidade típica de cada empilhadeira e folgas verticais da ABNT NBR 17150-2:2024, com carga de 1,5 m. O número real depende de pilares, docas e sprinklers — e sai no diagnóstico. <a href="simulador.html" style="color:#FF9B57;text-decoration:underline">Ver simulador completo</a>.</p>
+              <p class="sim-nota" id="sim-nota">Estimativa por densidade típica de cada empilhadeira e folgas verticais da ABNT NBR 17150-2:2024, com carga de 1,5 m. O número real depende de pilares, docas e sprinklers — e sai no diagnóstico. <a href="simulador.html" style="color:#FF9A5C;text-decoration:underline">Ver simulador completo</a>.</p>
             </div>
 
             <div class="fsucesso" id="form1-ok" style="display:none">
@@ -1153,7 +1161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="card reveal reveal-delay-1">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3"/>
               <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
             </svg>
@@ -1168,7 +1176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="card reveal reveal-delay-2">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="7" width="20" height="14" rx="2"/>
               <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
               <line x1="12" y1="12" x2="12" y2="16"/>
@@ -1185,7 +1193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="card reveal reveal-delay-3">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
@@ -1199,7 +1207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="card reveal reveal-delay-4">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
@@ -1310,7 +1318,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="segmentos">
         <div class="segmento reveal reveal-delay-1">
           <div class="segmento-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
             </svg>
           </div>
@@ -1318,7 +1326,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="segmento reveal reveal-delay-2">
           <div class="segmento-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/>
             </svg>
           </div>
@@ -1326,7 +1334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="segmento reveal reveal-delay-3">
           <div class="segmento-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
             </svg>
           </div>
@@ -1334,7 +1342,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="segmento reveal reveal-delay-4">
           <div class="segmento-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
           </div>
@@ -1342,7 +1350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="segmento reveal reveal-delay-1">
           <div class="segmento-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
               <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
             </svg>
           </div>
@@ -1359,7 +1367,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="cta-grid">
         <div>
-          <span class="tag reveal" style="color:#FF9B57;">Diagnóstico gratuito</span>
+          <span class="tag reveal" style="color:#FF9A5C;">Diagnóstico gratuito</span>
           <h2 class="cta-title reveal">
             Solicite um diagnóstico<br><em>gratuito</em> da sua operação.
           </h2>
@@ -1388,7 +1396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="form-card reveal reveal-delay-2">
           <div id="form2-campos">
             <h3>Peça o diagnóstico agora</h3>
-            <p>Três campos. Nossa engenharia responde em até 24 horas úteis.</p>
+            <p class="form-sub">Três campos. Nossa engenharia responde em até 24 horas úteis.</p>
 
             <div class="sim-chip" id="chip-sim"></div>
             <div class="fbanner" id="f2-banner" role="alert" aria-live="assertive"></div>
@@ -1472,7 +1480,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Col 1: marca -->
         <div>
           <div class="footer-logo">
-            <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
+            <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="fl-orn" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FF7A2F"/>
+                  <stop offset="100%" stop-color="#E05000"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="8" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="52" y="8" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#fl-orn)"/>
+              <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#fl-orn)" opacity="0.75"/>
+              <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#fl-orn)" opacity="0.55"/>
+              <rect x="11" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="24" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="37" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="24" y="24" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="24" y="38" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <text x="72" y="42" font-family="Barlow Condensed, sans-serif" font-size="34" font-weight="900" fill="rgba(255,255,255,0.75)" letter-spacing="1">TETRIX</text>
+              <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#fl-orn)" opacity="0.8"/>
+            </svg>
           </div>
           <p class="footer-desc">Soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras para operações em todo o estado de São Paulo.</p>
           <div class="footer-contact">
@@ -1525,12 +1552,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-bottom">
         <span class="footer-copy">© <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · Todos os direitos reservados.</span>
         <div class="footer-social">
-          <!-- >>> PEDRO: os icones de Instagram e LinkedIn estavam com href="#" (link morto).
-               Deixei comentados para nao entregar link quebrado. Basta preencher a URL
-               real do perfil e descomentar. <<<
-          <a href="https://www.instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram">
+          <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
+          <!-- >>> PEDRO: o LinkedIn ainda nao existe. Preencha a URL real
+               do perfil e descomente. <<<
           <a href="https://www.linkedin.com/company/SEU_PERFIL" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
@@ -1702,7 +1728,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var elG = $('sim-ganho'), elM = $('sim-msg');
       if (ganho > 0){
         elG.textContent = '+' + ganho.toLocaleString('pt-BR');
-        elG.style.color = '#FF9B57';
+        elG.style.color = '#FF9A5C';
         var pct = hoje > 0 ? Math.round(ganho / hoje * 100) : 0;
         elM.innerHTML = '<strong>São ' + ganho.toLocaleString('pt-BR') + ' posições a mais — ' + pct + '% de ganho</strong>, em ' +
           niveis + (niveis === 1 ? ' nível' : ' níveis') + '. Quer esse cálculo feito no seu galpão, com pilares e sprinklers medidos?';

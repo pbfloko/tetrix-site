@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- REBRAND EM APROVACAO: noindex para nao duplicar o site atual.
-       >>> REMOVER ao promover. <<< -->
-  <meta name="robots" content="noindex, follow">
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -23,7 +20,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0F2030">
+  <meta name="theme-color" content="#0D1E3D">
   <!-- End Favicon -->
   <!-- Open Graph / Social Preview (WhatsApp, Facebook, LinkedIn) -->
   <meta property="og:type" content="website">
@@ -44,23 +41,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- End Open Graph -->
   <meta name="description" content="A Tetrix nasceu para resolver um problema real: empresas que crescem mais rápido do que sua infraestrutura logística acompanha. Diagnóstico gratuito em Campinas e região.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy:     #0F2030;
-      --navy-mid: #16293B;
-      --navy-lt:  #1E3548;
-      --orange:   #F96400;
-      --orange-dk:#D45600;
-      --orange-lt:#FF9B57;
+      --navy:     #0D1E3D;
+      --navy-mid: #162B55;
+      --navy-lt:  #1E3A6E;
+      --orange:   #FF6E1A;
+      --orange-dk:#E05000;
+      --orange-lt:#FF9A5C;
       --white:    #FFFFFF;
       --gray-100: #F4F6FA;
-      --gray-200: #DCDCDC;
+      --gray-200: #E2E7F0;
       --gray-500: #7A8BA8;
       --gray-700: #3D4F6A;
       --text:     #1A2A40;
-      --font-h:   'Montserrat', sans-serif;
-      --font-b:   'Montserrat', sans-serif;
+      --font-h:   'Barlow Condensed', sans-serif;
+      --font-b:   'DM Sans', sans-serif;
       --radius:   10px;
       --trans:    0.3s ease;
     }
@@ -78,11 +75,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       cursor: pointer; border: none; transition: var(--trans); white-space: nowrap;
     }
     .btn-primary { background: var(--orange); color: white; }
-    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #F9640044; }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); box-shadow: 0 8px 24px #FF6E1A44; }
     .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); }
     .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
     .tag { display: inline-block; font-family: var(--font-h); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
-    .section-title { font-family: var(--font-h); font-size: clamp(23px, 3.60vw, 36px); font-weight: 800; line-height: 1.05; color: var(--navy); }
+    .section-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 50px); font-weight: 800; line-height: 1.05; color: var(--navy); }
     .section-title.light { color: white; }
     .section-sub { font-size: 17px; line-height: 1.7; color: var(--gray-700); max-width: 600px; margin-top: 16px; }
 
@@ -97,7 +94,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; transition: background 0.4s, box-shadow 0.4s; }
     #navbar.scrolled { background: rgba(13,30,61,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 24px #00000040; }
     .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 76px; }
-    .nav-logo img { height: 38px; width: auto; }
+    .nav-logo svg { height: 44px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: color var(--trans), background var(--trans); }
     .nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
@@ -133,7 +130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero-breadcrumb a:hover { color: var(--orange-lt); }
     .hero-breadcrumb span { color: var(--orange-lt); }
     .hero-slogan {
-      font-family: var(--font-h); font-size: clamp(27px, 4.32vw, 55px);
+      font-family: var(--font-h); font-size: clamp(38px, 6vw, 76px);
       font-weight: 900; color: white; line-height: 0.97;
       margin-bottom: 32px;
     }
@@ -170,7 +167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .proposito-label { position: relative; z-index: 1; font-family: var(--font-h); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 24px; }
     .proposito-headline {
       position: relative; z-index: 1;
-      font-family: var(--font-h); font-size: clamp(26px, 3.96vw, 49px);
+      font-family: var(--font-h); font-size: clamp(36px, 5.5vw, 68px);
       font-weight: 900; color: white; line-height: 1.0;
       margin-bottom: 32px;
     }
@@ -202,7 +199,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border: 1.5px solid var(--gray-200); background: white;
       transition: all var(--trans);
     }
-    .dor-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px #F9640010; }
+    .dor-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 12px 32px #FF6E1A10; }
     .dor-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,110,26,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
     .dor-icon svg { width: 20px; height: 20px; }
     .dor-title { font-family: var(--font-h); font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
@@ -220,7 +217,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border: 1.5px solid var(--gray-200); text-align: center;
       transition: all var(--trans);
     }
-    .diferencial-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 16px 40px #F9640010; }
+    .diferencial-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 16px 40px #FF6E1A10; }
     .dif-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
     .dif-icon svg { width: 26px; height: 26px; }
     .dif-title { font-family: var(--font-h); font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
@@ -230,7 +227,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     #segmentos { padding: 96px 0; background: white; }
     .segmentos-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .segmentos-left {}
-    .segmentos-title { font-family: var(--font-h); font-size: clamp(23px, 3.60vw, 35px); font-weight: 900; color: var(--navy); line-height: 1.05; margin-bottom: 20px; }
+    .segmentos-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 48px); font-weight: 900; color: var(--navy); line-height: 1.05; margin-bottom: 20px; }
     .segmentos-desc { font-size: 16px; color: var(--gray-700); line-height: 1.7; margin-bottom: 32px; }
     .segmentos-tipos { display: flex; flex-direction: column; gap: 16px; }
     .tipo-row { display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: 12px; background: var(--gray-100); border: 1px solid var(--gray-200); }
@@ -310,7 +307,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── CTA FINAL ── */
     #cta-final { padding: 96px 0; background: white; }
     .cta-inner { text-align: center; max-width: 680px; margin: 0 auto; }
-    .cta-title { font-family: var(--font-h); font-size: clamp(23px, 3.60vw, 37px); font-weight: 900; color: var(--navy); line-height: 1.05; margin-bottom: 20px; }
+    .cta-title { font-family: var(--font-h); font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: var(--navy); line-height: 1.05; margin-bottom: 20px; }
     .cta-title em { color: var(--orange); font-style: normal; }
     .cta-sub { font-size: 17px; color: var(--gray-700); margin-bottom: 40px; line-height: 1.6; }
     .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -321,7 +318,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     #footer { background: #080F1E; padding: 60px 0 32px; color: rgba(255,255,255,0.5); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .footer-logo { margin-bottom: 20px; }
-    .footer-logo img { height: 34px; width: auto; }
+    .footer-logo svg { height: 40px; }
     .footer-desc { font-size: 13px; line-height: 1.7; max-width: 280px; }
     .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
     .footer-contact a { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); transition: color var(--trans); }
@@ -363,27 +360,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     }
     /* ===================================================================
-       MARCA NOVA — CONTRASTE WCAG AA
-       O laranja da marca #F96400 com texto BRANCO da 3,07:1 e reprova.
-       Com texto NAVY #0F2030 da 5,40:1 e passa — entao o botao mantem o
-       laranja exato do manual e so troca a cor do texto. Nada de escurecer
-       a cor da marca, como era preciso na identidade anterior.
-       Hover #FA7420 (5,97:1). Links laranja sobre fundo claro usam
-       #C24E00 (4,79:1), ja que #F96400 sobre branco da so 3,07:1.
+       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
+       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
+       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
+       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
+       números, barras e detalhes — onde não há texto por cima.
        =================================================================== */
-    :root { --orange-btn: #F96400; --orange-btn-dk: #FA7420; --orange-link: #C24E00; }
+    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
     .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
-    .mobile-menu .btn-primary, .mobile-menu .btn-mobile, .mobile-menu a.btn,
-    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn, .btn-calcular {
-      background: var(--orange-btn); color: #0F2030;
-    }
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
     .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
-    .fbtn:hover, .sim-go:hover, .form-btn:hover, .btn-calcular:hover {
-      background: var(--orange-btn-dk); color: #0F2030;
-    }
-    .btn-primary svg, .nav-cta svg, .fbtn svg, .sim-go svg,
-    .mbar a.or svg, .form-btn svg { color: #0F2030; stroke: currentColor; }
-
+    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
 
   </style>
 <!-- Structured Data - Organization (Schema.org) -->
@@ -411,7 +398,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "State",
       "name": "São Paulo"
     },
-    "sameAs": [],
+    "sameAs": ["https://www.instagram.com/tetrixlog"],
     "knowsAbout": [
       "Porta-pallets",
       "Empilhadeiras",
@@ -435,7 +422,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <nav id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
+        <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="og-nav" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF7A2F"/>
+              <stop offset="100%" stop-color="#E05000"/>
+            </linearGradient>
+          </defs>
+          <!-- Rack símbolo -->
+          <rect x="2" y="8" width="5" height="42" rx="1.5" fill="white"/>
+          <rect x="52" y="8" width="5" height="42" rx="1.5" fill="white"/>
+          <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#og-nav)"/>
+          <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#og-nav)"/>
+          <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#og-nav)"/>
+          <rect x="11" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="24" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="37" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="24" y="24" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <rect x="24" y="38" width="12" height="4" rx="0.6" fill="white" opacity="0.85"/>
+          <!-- Wordmark -->
+          <text x="72" y="42" font-family="Barlow Condensed, sans-serif" font-size="34" font-weight="900" fill="white" letter-spacing="1">TETRIX</text>
+          <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#og-nav)"/>
+        </svg>
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Início</a></li>
@@ -531,7 +539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="dores-grid">
         <div class="dor-card reveal reveal-delay-1">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
           </div>
@@ -545,7 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="dor-card reveal reveal-delay-2">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
               <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
             </svg>
           </div>
@@ -559,7 +567,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="dor-card reveal reveal-delay-3">
           <div class="dor-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
@@ -585,7 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="diferenciais-grid">
         <div class="diferencial-card reveal reveal-delay-1">
           <div class="dif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
               <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
             </svg>
           </div>
@@ -594,7 +602,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="diferencial-card reveal reveal-delay-2">
           <div class="dif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
           </div>
@@ -603,7 +611,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="diferencial-card reveal reveal-delay-3">
           <div class="dif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
@@ -612,7 +620,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="diferencial-card reveal reveal-delay-4">
           <div class="dif-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#F96400" stroke-width="2" stroke-linecap="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF6E1A" stroke-width="2" stroke-linecap="round">
               <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
             </svg>
           </div>
@@ -710,8 +718,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <!-- Mapa estilizado SVG -->
         <div class="regiao-mapa reveal reveal-delay-2">
-          <svg viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" style="max-width: 320px; width: 100%;" font-family="'Montserrat', Arial, sans-serif">
-            <rect width="340" height="340" rx="20" fill="#F4F6FA" stroke="#DCDCDC" stroke-width="1"/>
+          <svg viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" style="max-width: 320px; width: 100%;" font-family="'DM Sans', Arial, sans-serif">
+            <rect width="340" height="340" rx="20" fill="#F4F6FA" stroke="#E2E7F0" stroke-width="1"/>
 
             <!-- Fundo suave estilo mapa -->
             <circle cx="170" cy="170" r="130" fill="rgba(13,30,61,0.03)" stroke="rgba(13,30,61,0.06)" stroke-width="1"/>
@@ -724,33 +732,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <!-- CAMPINAS — maior, centro -->
             <circle cx="170" cy="178" r="18" fill="var(--navy)" opacity="0.15"/>
-            <circle cx="170" cy="178" r="11" fill="#0F2030"/>
-            <circle cx="170" cy="178" r="5" fill="#F96400"/>
-            <text x="186" y="175" font-size="11" font-weight="700" fill="#0F2030">Campinas</text>
+            <circle cx="170" cy="178" r="11" fill="#0D1E3D"/>
+            <circle cx="170" cy="178" r="5" fill="#FF6E1A"/>
+            <text x="186" y="175" font-size="11" font-weight="700" fill="#0D1E3D">Campinas</text>
             <text x="186" y="188" font-size="9" fill="#7A8BA8">polo industrial</text>
 
             <!-- LOUVEIRA -->
-            <circle cx="106" cy="120" r="8" fill="#16293B"/>
-            <circle cx="106" cy="120" r="3.5" fill="#F96400"/>
-            <text x="118" y="117" font-size="10" font-weight="700" fill="#0F2030">Louveira</text>
+            <circle cx="106" cy="120" r="8" fill="#162B55"/>
+            <circle cx="106" cy="120" r="3.5" fill="#FF6E1A"/>
+            <text x="118" y="117" font-size="10" font-weight="700" fill="#0D1E3D">Louveira</text>
 
             <!-- VINHEDO -->
-            <circle cx="130" cy="148" r="8" fill="#16293B"/>
-            <circle cx="130" cy="148" r="3.5" fill="#F96400"/>
-            <text x="142" y="145" font-size="10" font-weight="700" fill="#0F2030">Vinhedo</text>
+            <circle cx="130" cy="148" r="8" fill="#162B55"/>
+            <circle cx="130" cy="148" r="3.5" fill="#FF6E1A"/>
+            <text x="142" y="145" font-size="10" font-weight="700" fill="#0D1E3D">Vinhedo</text>
 
             <!-- VALINHOS -->
-            <circle cx="148" cy="218" r="8" fill="#16293B"/>
-            <circle cx="148" cy="218" r="3.5" fill="#F96400"/>
-            <text x="160" y="215" font-size="10" font-weight="700" fill="#0F2030">Valinhos</text>
+            <circle cx="148" cy="218" r="8" fill="#162B55"/>
+            <circle cx="148" cy="218" r="3.5" fill="#FF6E1A"/>
+            <text x="160" y="215" font-size="10" font-weight="700" fill="#0D1E3D">Valinhos</text>
 
             <!-- Linhas de conexão -->
-            <line x1="106" y1="120" x2="163" y2="170" stroke="#F96400" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
-            <line x1="130" y1="148" x2="163" y2="170" stroke="#F96400" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
-            <line x1="148" y1="210" x2="163" y2="183" stroke="#F96400" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+            <line x1="106" y1="120" x2="163" y2="170" stroke="#FF6E1A" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+            <line x1="130" y1="148" x2="163" y2="170" stroke="#FF6E1A" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+            <line x1="148" y1="210" x2="163" y2="183" stroke="#FF6E1A" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
 
             <!-- Legenda -->
-            <circle cx="30" cy="308" r="5" fill="#F96400"/>
+            <circle cx="30" cy="308" r="5" fill="#FF6E1A"/>
             <text x="40" y="312" font-size="9" fill="#7A8BA8">Área de atendimento presencial</text>
             <text x="170" y="326" font-size="8" fill="#9AA4B5" text-anchor="middle">+ análise remota para todo o Estado de SP</text>
           </svg>
@@ -843,7 +851,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
+            <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="fl-orn" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FF7A2F"/>
+                  <stop offset="100%" stop-color="#E05000"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="8" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="52" y="8" width="5" height="42" rx="1.5" fill="white" opacity="0.6"/>
+              <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#fl-orn)"/>
+              <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#fl-orn)" opacity="0.75"/>
+              <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#fl-orn)" opacity="0.55"/>
+              <rect x="11" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="24" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="37" y="10" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="24" y="24" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <rect x="24" y="38" width="12" height="4" rx="0.6" fill="white" opacity="0.6"/>
+              <text x="72" y="42" font-family="Barlow Condensed, sans-serif" font-size="34" font-weight="900" fill="rgba(255,255,255,0.75)" letter-spacing="1">TETRIX</text>
+              <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#fl-orn)" opacity="0.8"/>
+            </svg>
           </div>
           <p class="footer-desc">Soluções de armazenagem vertical, venda e locação de porta-pallets e empilhadeiras em todo o estado de São Paulo.</p>
           <div class="footer-contact">
@@ -888,8 +915,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-bottom">
         <span class="footer-copy">© <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas. Todos os direitos reservados. · <a href="politica-de-privacidade.html" style="color:inherit;text-decoration:underline">Política de Privacidade</a></span>
         <div class="footer-social">
-          <!-- Instagram e LinkedIn ainda nao existem. Preencha a URL do perfil e descomente.
-          <a href="https://www.instagram.com/SEU_PERFIL" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <!-- LinkedIn ainda nao existe. Preencha a URL do perfil e descomente.
           <a href="https://www.linkedin.com/company/SEU_PERFIL" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
           -->
           <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
