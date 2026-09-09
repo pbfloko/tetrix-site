@@ -30,19 +30,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0D1E3D">
+  <meta name="theme-color" content="#0F2030">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --navy:#0D1E3D; --navy-mid:#162B55; --navy-lt:#1E3A6E;
-      --orange:#FF6E1A; --orange-dk:#E05000; --orange-lt:#FF9A5C;
-      --gray-100:#F4F6FA; --gray-200:#E2E7F0; --gray-500:#63748F;
+      --navy:#0F2030; --navy-mid:#16293B; --navy-lt:#1E3548;
+      --orange:#F96400; --orange-dk:#D45600; --orange-lt:#FF9B57;
+      --gray-100:#F4F6FA; --gray-200:#DCDCDC; --gray-500:#63748F;
       --gray-700:#374A64; --text:#1A2A40;
-      --fh:'Barlow Condensed',sans-serif; --fb:'DM Sans',sans-serif;
+      --fh:'Montserrat', sans-serif; --fb:'Montserrat', sans-serif;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -62,7 +62,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     /* cabeçalho */
     .cabeca{background:var(--navy-mid);color:#fff;padding:52px 0 46px}
-    .cabeca h1{font-family:var(--fh);font-weight:900;font-size:clamp(32px,5vw,46px);line-height:1.05;letter-spacing:-.5px}
+    .cabeca h1{font-family:var(--fh);font-weight:900;font-size: clamp(23px, 3.60vw, 33px);line-height:1.05;letter-spacing:-.5px}
     .cabeca p{color:rgba(255,255,255,.78);font-size:16px;margin-top:14px;max-width:62ch}
     .selo-data{display:inline-block;background:rgba(255,110,26,.18);color:var(--orange-lt);
       font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* conteúdo */
     main{padding:52px 0 20px}
     section{margin-bottom:42px;scroll-margin-top:24px}
-    h2.sec{font-family:var(--fh);font-weight:800;font-size:clamp(23px,3vw,30px);
+    h2.sec{font-family:var(--fh);font-weight:800;font-size: clamp(17px, 2.16vw, 22px);
       color:var(--navy);line-height:1.15;margin-bottom:16px;padding-bottom:10px;
       border-bottom:2px solid var(--gray-200)}
     h2.sec span{color:var(--orange);margin-right:10px}
@@ -120,17 +120,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-top:1px solid rgba(255,255,255,.09);text-align:center;font-size:13px;line-height:1.8;margin-top:40px}
     footer a{color:var(--orange-lt)}
     /* ===================================================================
-       V2 — CONTRASTE WCAG AA NOS ELEMENTOS DE AÇÃO
-       #FFFFFF sobre #FF6E1A dá 2,80:1 e reprova o AA (mínimo 4,5:1 para
-       texto normal). O fundo dos botões passa a #CC4800 (4,67:1) e o hover
-       a #A83A00. O laranja da marca #FF6E1A continua em ícones, tags,
-       números, barras e detalhes — onde não há texto por cima.
+       MARCA NOVA — CONTRASTE WCAG AA
+       O laranja da marca #F96400 com texto BRANCO da 3,07:1 e reprova.
+       Com texto NAVY #0F2030 da 5,40:1 e passa — entao o botao mantem o
+       laranja exato do manual e so troca a cor do texto. Nada de escurecer
+       a cor da marca, como era preciso na identidade anterior.
+       Hover #FA7420 (5,97:1). Links laranja sobre fundo claro usam
+       #C24E00 (4,79:1), ja que #F96400 sobre branco da so 3,07:1.
        =================================================================== */
-    :root { --orange-btn: #CC4800; --orange-btn-dk: #A83A00; }
+    :root { --orange-btn: #F96400; --orange-btn-dk: #FA7420; --orange-link: #C24E00; }
     .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
-    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn { background: var(--orange-btn); }
+    .mobile-menu .btn-primary, .mobile-menu .btn-mobile, .mobile-menu a.btn,
+    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn, .btn-calcular {
+      background: var(--orange-btn); color: #0F2030;
+    }
     .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
-    .fbtn:hover, .sim-go:hover, .form-btn:hover { background: var(--orange-btn-dk); }
+    .fbtn:hover, .sim-go:hover, .form-btn:hover, .btn-calcular:hover {
+      background: var(--orange-btn-dk); color: #0F2030;
+    }
+    .btn-primary svg, .nav-cta svg, .fbtn svg, .sim-go svg,
+    .mbar a.or svg, .form-btn svg { color: #0F2030; stroke: currentColor; }
+
 
   </style>
 </head>
@@ -140,22 +150,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="topo">
   <div class="wrap">
     <a href="index.html" aria-label="Tetrix — página inicial">
-      <svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tetrix">
-        <defs><linearGradient id="og" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#FF7A2F"/><stop offset="100%" stop-color="#E05000"/></linearGradient></defs>
-        <rect x="2" y="8" width="5" height="42" rx="1.5" fill="#fff"/>
-        <rect x="52" y="8" width="5" height="42" rx="1.5" fill="#fff"/>
-        <rect x="7" y="14" width="45" height="4" rx="1" fill="url(#og)"/>
-        <rect x="7" y="28" width="45" height="4" rx="1" fill="url(#og)"/>
-        <rect x="7" y="42" width="45" height="4" rx="1" fill="url(#og)"/>
-        <rect x="11" y="10" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
-        <rect x="24" y="10" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
-        <rect x="37" y="10" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
-        <rect x="24" y="24" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
-        <rect x="24" y="38" width="12" height="4" rx=".6" fill="#fff" opacity=".85"/>
-        <text x="72" y="42" font-family="Barlow Condensed,sans-serif" font-size="34" font-weight="900" fill="#fff" letter-spacing="1">TETRIX</text>
-        <rect x="72" y="46" width="95" height="3" rx="1" fill="url(#og)"/>
-      </svg>
+      <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
     </a>
     <a href="index.html" class="voltar">← Voltar ao site</a>
   </div>
