@@ -537,3 +537,6 @@ select.field { appearance: none; cursor: pointer;
   .phero h1 { font-size: 24px; }
   .phero .lead { margin-top: 8px; }
 }
+
+/* O cabecalho e sticky: sem esta folga a ancora do simulador para atras dele. */
+.hero-sim { scroll-margin-top: 84px; }
