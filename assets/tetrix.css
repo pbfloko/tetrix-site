@@ -366,21 +366,24 @@ select.field { appearance: none; cursor: pointer;
   .g3 { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 860px) {
-  .nav-links, .nav .btn { display: none; }
-  .foot { padding-top: 40px; }
-  .foot-grid { gap: 26px; }
-  .foot h4 { margin-bottom: 10px; }
-  .foot ul { gap: 9px; }
-  .burger { display: block; }
-  .g2, .g3, .g4 { grid-template-columns: 1fr; }
-  .foot-grid { grid-template-columns: 1fr; }
-  .stats { grid-template-columns: 1fr; text-align: center; gap: 22px; }
-  .stat { display: flex; align-items: baseline; justify-content: center; gap: 12px; }
-  .stat b { font-size: 34px; }
-  .stat span { margin-top: 0; text-align: left; }
+/* Entre 1080 e 1200px a barra fica apertada: 8 links mais o botao. Apertar
+   um pouco o espacamento e a fonte dos links evita cair no menu sanduiche
+   cedo demais em notebooks. */
+@media (max-width: 1200px) and (min-width: 1081px) {
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 13.5px; }
+  .nav .btn { padding: 12px 16px; font-size: 13.5px; }
+}
 
-  /* Barra fixa: aparece so aqui, e o body ganha folga para nao cobrir conteudo */
+/* A NAVEGACAO troca antes do resto do layout, em 1080px.
+   Abaixo disso o menu horizontal com 8 links mais o botao nao cabe na barra
+   e o rotulo do botao quebrava em duas linhas. Nessa faixa vale mais o menu
+   sanduiche com a barra fixa embaixo — assim nenhum link some e o botao
+   continua inteiro. As grades de cartao seguem trocando so em 860px. */
+@media (max-width: 1080px) {
+  .nav-links, .nav .btn { display: none; }
+  .burger { display: block; }
+
   .dock {
     display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0;
     z-index: 950; box-shadow: 0 -2px 16px rgba(15,32,48,.16);
@@ -393,6 +396,19 @@ select.field { appearance: none; cursor: pointer;
   .dock .d-form { background: var(--orange-btn); color: #fff; }
   .dock .d-wpp { background: var(--wpp); color: #fff; }
   body { padding-bottom: 58px; }
+}
+
+@media (max-width: 860px) {
+  .foot { padding-top: 40px; }
+  .foot-grid { gap: 26px; }
+  .foot h4 { margin-bottom: 10px; }
+  .foot ul { gap: 9px; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; text-align: center; gap: 22px; }
+  .stat { display: flex; align-items: baseline; justify-content: center; gap: 12px; }
+  .stat b { font-size: 34px; }
+  .stat span { margin-top: 0; text-align: left; }
 }
 
 /* Grade de atalhos: no celular vira ladrilho de duas colunas. Quatro cartoes
