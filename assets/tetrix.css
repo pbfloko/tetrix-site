@@ -1,0 +1,539 @@
+/* ============================================================================
+   TETRIX — SISTEMA VISUAL v2
+   Base clara, navy no texto, laranja so em acao. Cartoes de canto largo,
+   blocos de cor chapada e respiro alto, seguindo o moodboard da C2X.
+
+   ---------------------------------------------------------------------------
+   POR QUE O BOTAO NAO USA O #F96400 EXATO DO MANUAL
+   ---------------------------------------------------------------------------
+   Texto BRANCO sobre o laranja da marca da 3,07:1 — reprova em AA, que pede
+   4,5:1 para texto de tamanho normal. Texto branco sobre o verde do WhatsApp
+   (#25D366) e pior ainda: 1,98:1, praticamente ilegivel.
+
+   Como o texto dos botoes tem de ser branco, o fundo precisou escurecer o
+   suficiente para o branco passar:
+     #C24E00  laranja de botao ..... branco 4,79:1  ✔
+     #A84300  laranja hover ........ branco 6,06:1  ✔
+     #117F43  verde WhatsApp ....... branco 5,07:1  ✔
+     #0C6C39  verde hover .......... branco 6,52:1  ✔
+
+   O #F96400 do manual continua sendo a cor da marca e segue em uso onde NAO
+   ha texto por cima: icones sobre navy, controle do slider, anel de foco,
+   detalhes. Ali ele nao precisa de 4,5:1 — o minimo para elemento grafico
+   e 3:1, e sobre navy ele da 5,40:1.
+
+   CONTRASTE DO RESTO (WCAG AA, medido):
+     #0F2030 sobre #FFFFFF ........ 16,54:1  texto corrido
+     #4A5A68 sobre #FFFFFF .........  7,11:1  texto secundario
+     #4A5A68 sobre #F6F7F8 .........  6,63:1  texto secundario no fundo suave
+     #B34700 sobre #F6F7F8 .........  5,00:1  laranja como texto
+     #949494 sobre #FFFFFF .........  3,03:1  borda de campo (minimo 3:1)
+   ============================================================================ */
+
+:root {
+  --navy:      #0F2030;
+  --navy-2:    #1B3247;
+  --navy-3:    #33485C;
+
+  --orange:    #F96400;   /* marca — so onde NAO ha texto por cima */
+  --orange-btn:#C24E00;   /* fundo de botao com texto branco (4,79:1) */
+  --orange-btn-h: #A84300;/* hover (6,06:1) */
+  --orange-tx: #B34700;   /* laranja como texto em fundo claro (5,00:1) */
+
+  --wpp:       #117F43;   /* verde WhatsApp escurecido p/ texto branco (5,07:1) */
+  --wpp-h:     #0C6C39;
+
+  --gray:      #DCDCDC;   /* separadores e molduras decorativas */
+  --gray-ctl:  #949494;   /* contorno de campo — precisa de 3:1 (da 3,03:1) */
+  --bg:        #FFFFFF;
+  --bg-soft:   #F6F7F8;
+  --ink:       #0F2030;
+  --ink-2:     #4A5A68;
+  --ok:        #0B7A54;
+
+  --r-lg: 28px;
+  --r-md: 18px;
+  --r-sm: 12px;
+
+  --shadow:    0 1px 2px rgba(15,32,48,.04), 0 8px 24px rgba(15,32,48,.06);
+  --shadow-lg: 0 2px 4px rgba(15,32,48,.05), 0 18px 48px rgba(15,32,48,.10);
+
+  --wrap: 1120px;
+  --f: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  font-family: var(--f);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--orange-tx); }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+/* ---------------------------------------------------------------- tipografia
+   Escala fechada. Montserrat e uma fonte larga: os tamanhos abaixo ja foram
+   calibrados para ela, nao reaproveitar valores de fontes condensadas.       */
+h1, h2, h3 { margin: 0; font-weight: 800; line-height: 1.12; letter-spacing: -.02em; }
+h1 { font-size: clamp(30px, 4.2vw, 46px); }
+h2 { font-size: clamp(25px, 3.2vw, 36px); }
+h3 { font-size: clamp(17px, 1.6vw, 20px); font-weight: 700; letter-spacing: -.01em; }
+p  { margin: 0 0 16px; }
+.lead { font-size: clamp(16px, 1.5vw, 18.5px); color: var(--ink-2); line-height: 1.62; }
+.eyebrow {
+  display: inline-block; font-size: 12px; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--orange-tx);
+  margin-bottom: 14px;
+}
+.eyebrow.on-dark { color: #FFB27A; }
+
+/* ------------------------------------------------------------------- secoes */
+.sec { padding: clamp(56px, 7vw, 96px) 0; }
+.sec.tight { padding: clamp(40px, 5vw, 64px) 0; }
+.sec.soft { background: var(--bg-soft); }
+.sec.dark { background: var(--navy); color: #fff; }
+.sec.dark h2, .sec.dark h3 { color: #fff; }
+.sec.dark .lead { color: rgba(255,255,255,.78); }
+
+/* Um cartao claro dentro de uma secao escura precisa desfazer o clareamento
+   acima, senao o texto do cartao fica branco sobre branco. E o espelho do
+   bug oposto — navy sobre navy — que so apareceu na auditoria de contraste. */
+.sec.dark .card:not(.navy) { color: var(--ink); }
+.sec.dark .card:not(.navy) h2,
+.sec.dark .card:not(.navy) h3 { color: var(--ink); }
+.sec.dark .card:not(.navy) .lead { color: var(--ink-2); }
+.sec.dark .card:not(.navy) .checks li { color: var(--ink-2); }
+.sec.dark .card:not(.navy) .checks strong { color: var(--ink); }
+
+.sec-head { max-width: 640px; margin-bottom: clamp(28px, 4vw, 44px); }
+.sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ------------------------------------------------------------------- botoes */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--f); font-size: 15.5px; font-weight: 700; letter-spacing: .01em;
+  padding: 15px 26px; border-radius: var(--r-sm); border: 2px solid transparent;
+  text-decoration: none; cursor: pointer; transition: background .18s, border-color .18s, color .18s, transform .18s;
+  line-height: 1.2; text-align: center;
+}
+.btn:active { transform: translateY(1px); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+.btn-primary { background: var(--orange-btn); color: #fff; }
+.btn-primary:hover { background: var(--orange-btn-h); }
+
+.btn-dark { background: var(--navy); color: #fff; }
+.btn-dark:hover { background: var(--navy-2); }
+
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--gray); }
+.btn-ghost:hover { border-color: var(--navy); }
+.sec.dark .btn-ghost { color: #fff; border-color: rgba(255,255,255,.35); }
+.sec.dark .btn-ghost:hover { border-color: #fff; }
+
+.btn-wpp { background: var(--wpp); color: #fff; }
+.btn-wpp:hover { background: var(--wpp-h); }
+
+.btn-block { width: 100%; }
+.btn-lg { padding: 18px 30px; font-size: 16.5px; }
+
+/* ------------------------------------------------------------------ cartoes */
+.card {
+  background: #fff; border: 1px solid var(--gray); border-radius: var(--r-lg);
+  padding: clamp(24px, 3vw, 32px);
+}
+.card.flat { box-shadow: none; }
+.card.raised { box-shadow: var(--shadow); border-color: transparent; }
+.card.navy { background: var(--navy); color: #fff; border-color: transparent; }
+.card.navy h3 { color: #fff; }
+.card.navy p { color: rgba(255,255,255,.75); }
+
+.grid { display: grid; gap: clamp(16px, 2vw, 24px); }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+
+.card-ico {
+  width: 46px; height: 46px; border-radius: var(--r-sm);
+  background: var(--navy); color: var(--orange);
+  display: grid; place-items: center; margin-bottom: 18px;
+}
+.card-ico svg { width: 23px; height: 23px; }
+.card h3 + p { margin-top: 10px; }
+.card p { color: var(--ink-2); font-size: 15px; margin-bottom: 0; }
+
+.card-link {
+  display: inline-flex; align-items: center; gap: 7px; margin-top: 18px;
+  font-size: 14px; font-weight: 700; color: var(--orange-tx); text-decoration: none;
+}
+.card-link:hover { text-decoration: underline; }
+.card-link svg { width: 14px; height: 14px; }
+
+/* ------------------------------------------------------------------ navbar
+   Fundo navy com o logo negativo. O laranja da marca pode voltar aqui como
+   cor de LINK ativo: sobre navy o #F96400 da 5,40:1 e passa com folga — a
+   restricao dele vale para fundo claro, onde cai para 3,07:1.              */
+.nav {
+  position: sticky; top: 0; z-index: 900; background: var(--navy);
+  border-bottom: 1px solid transparent; transition: box-shadow .2s;
+}
+.nav.scrolled { box-shadow: 0 2px 14px rgba(15,32,48,.28); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+.nav-logo { display: flex; align-items: center; flex: none; }
+.nav-logo img { height: 34px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 26px; list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  font-size: 14.5px; font-weight: 600; color: rgba(255,255,255,.88); text-decoration: none;
+  padding: 6px 0; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s;
+}
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: #FFB27A; border-bottom-color: var(--orange); }
+/* O botao do cabecalho segue igual ao do resto do site: branco sobre
+   #C24E00 (4,79:1). Sobre o navy ele ainda se destaca como componente —
+   a separacao entre o laranja e o fundo da 3,45:1, acima do minimo de 3:1. */
+.nav .btn { padding: 12px 20px; font-size: 14.5px; }
+
+.burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; padding: 10px; }
+.burger span { display: block; height: 2px; background: #fff; border-radius: 2px; transition: transform .22s, opacity .22s; }
+.burger span + span { margin-top: 6px; }
+.burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.menu {
+  display: none; position: fixed; inset: 72px 0 0; background: var(--navy); z-index: 899;
+  padding: 24px; overflow-y: auto; flex-direction: column; gap: 4px;
+}
+.menu.open { display: flex; }
+.menu a {
+  font-size: 17px; font-weight: 600; color: rgba(255,255,255,.92); text-decoration: none;
+  padding: 15px 4px; border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.menu a:hover { color: #FFB27A; }
+/* `.menu a` e mais especifico que `.btn-primary` e roubava a cor do botao,
+   deixando texto navy sobre laranja (3,45:1). Precisa vir depois e ganhar. */
+.menu .btn { margin-top: 18px; border-bottom: 0; }
+.menu .btn-primary { color: #fff; }
+.menu .btn-wpp { color: #fff; }
+.menu .btn-dark { color: #fff; }
+
+/* ------------------------------------------------------------------- forms */
+.fgroup { margin-bottom: 15px; }
+.fgroup label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
+.fgroup .hint { font-weight: 500; color: var(--ink-2); }
+.field {
+  width: 100%; font-family: var(--f); font-size: 16px; color: var(--ink);
+  padding: 13px 15px; border: 1.5px solid var(--gray-ctl); border-radius: var(--r-sm);
+  background: #fff; transition: border-color .15s, box-shadow .15s;
+}
+.field:focus {
+  outline: none; border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(249,100,0,.16);
+}
+select.field { appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A5A68' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 13px center; background-size: 17px; padding-right: 40px;
+}
+.fgroup.bad .field, .field.err { border-color: #D92D20; background: #FFF6F5; }
+.fgroup .msg { display: none; font-size: 12.5px; font-weight: 600; color: #D92D20; margin-top: 5px; }
+.fgroup.bad .msg { display: block; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.banner {
+  display: none; font-size: 14px; font-weight: 600; line-height: 1.5;
+  padding: 13px 16px; border-radius: var(--r-sm); margin-bottom: 16px;
+  background: #FFF4F3; color: #A11B12; border: 1px solid #F3C0BA;
+}
+.banner.show { display: block; }
+
+.form-ok { display: none; text-align: center; padding: 8px 0; }
+.form-ok .tick {
+  width: 60px; height: 60px; margin: 0 auto 18px; border-radius: 50%;
+  background: rgba(14,159,110,.12); color: var(--ok); display: grid; place-items: center;
+}
+.form-ok .tick svg { width: 30px; height: 30px; }
+
+.privacy { font-size: 12px; color: var(--ink-2); line-height: 1.5; margin: 12px 0 0; }
+.privacy a { color: var(--ink-2); }
+
+/* --------------------------------------------------------------- simulador */
+.sim { background: #fff; border-radius: var(--r-lg); box-shadow: var(--shadow-lg); overflow: hidden; }
+.sim-top { background: var(--navy); color: #fff; padding: 22px clamp(20px, 3vw, 28px); }
+.sim-top .eyebrow { color: #FFB27A; margin-bottom: 8px; }
+.sim-top h2, .sim-top .sim-h { font-size: clamp(19px, 2.1vw, 23px); font-weight: 800; line-height: 1.2; margin: 0; letter-spacing: -.015em; }
+.sim-top p { color: rgba(255,255,255,.7); font-size: 13.5px; margin: 8px 0 0; }
+.sim-body { padding: clamp(20px, 3vw, 28px); }
+.sim-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sim-range { display: flex; align-items: center; gap: 12px; }
+.sim-range input[type=range] { flex: 1; accent-color: var(--orange); height: 26px; }
+.sim-val { font-weight: 800; font-size: 15px; min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
+.sim-niveis { font-size: 12.5px; font-weight: 700; color: var(--orange-tx); }
+
+.sim-out { display: none; margin-top: 20px; }
+.sim-out.show { display: block; }
+.sim-nums { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: center; }
+.sim-num { background: var(--bg-soft); border-radius: var(--r-md); padding: 16px 8px; }
+.sim-num.hero { background: var(--navy); color: #fff; }
+.sim-num b { display: block; font-size: clamp(21px, 2.6vw, 27px); font-weight: 900; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.sim-num.hero b { color: #FFB27A; }
+.sim-num span { display: block; font-size: 11.5px; font-weight: 600; color: var(--ink-2); margin-top: 5px; line-height: 1.3; }
+.sim-num.hero span { color: rgba(255,255,255,.72); }
+.sim-msg { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin: 16px 0 0; }
+.sim-msg strong { color: var(--ink); }
+
+.sim-lead { display: none; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--gray); }
+.sim-lead.show { display: block; }
+.sim-lead h3 { margin-bottom: 4px; }
+.sim-lead .lead { font-size: 14.5px; margin-bottom: 18px; }
+
+.chip {
+  display: none; font-size: 13.5px; line-height: 1.5; padding: 12px 15px;
+  border-radius: var(--r-sm); background: rgba(249,100,0,.09);
+  border: 1px solid rgba(249,100,0,.28); color: var(--ink); margin-bottom: 18px;
+}
+.chip.show { display: block; }
+
+/* ------------------------------------------------------------------ provas */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 3vw, 32px); }
+.stat b { display: block; font-size: clamp(30px, 4.4vw, 46px); font-weight: 900; line-height: 1; color: var(--orange); letter-spacing: -.03em; }
+.sec:not(.dark) .stat b { color: var(--orange-tx); }
+.stat span { display: block; font-size: 14px; color: var(--ink-2); margin-top: 10px; line-height: 1.45; }
+.sec.dark .stat span { color: rgba(255,255,255,.72); }
+
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.checks li { display: flex; gap: 11px; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.checks strong { color: var(--ink); }
+.checks svg { width: 20px; height: 20px; flex: none; color: var(--ok); margin-top: 1px; }
+.sec.dark .checks li { color: rgba(255,255,255,.8); }
+.sec.dark .checks strong { color: #fff; }
+
+.steps { counter-reset: s; display: grid; gap: clamp(16px, 2vw, 24px); }
+.step { position: relative; padding-left: 62px; }
+.step::before {
+  counter-increment: s; content: counter(s);
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: var(--r-sm);
+  background: var(--orange-btn); color: #fff; font-weight: 900; font-size: 18px;
+  display: grid; place-items: center;
+}
+.step h3 { margin-bottom: 6px; }
+.step p { color: var(--ink-2); font-size: 15px; margin: 0; }
+.sec.dark .step p { color: rgba(255,255,255,.75); }
+
+/* ------------------------------------------------------------------ rodape */
+.foot { background: var(--navy); color: rgba(255,255,255,.72); padding: clamp(48px, 6vw, 72px) 0 28px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: clamp(28px, 4vw, 48px); }
+.foot img.logo { height: 34px; margin-bottom: 18px; }
+.foot h4 { font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; color: #fff; margin: 0 0 16px; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.foot a { color: rgba(255,255,255,.72); text-decoration: none; font-size: 14.5px; }
+.foot a:hover { color: #FFB27A; }
+.foot-contact a, .foot-contact span { display: flex; align-items: center; gap: 9px; }
+.foot-contact svg { width: 17px; height: 17px; flex: none; }
+.foot-bot {
+  margin-top: clamp(32px, 4vw, 48px); padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 13px;
+}
+.foot-social { display: flex; gap: 10px; }
+.foot-social a {
+  width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,.08);
+  display: grid; place-items: center;
+}
+.foot-social a:hover { background: var(--orange-btn); color: #fff; }
+.foot-social svg { width: 18px; height: 18px; }
+
+/* -------------------------------------------------------- barra fixa mobile
+   So no celular. Duas acoes, nada mais: a decisao ja e binaria o suficiente. */
+.dock { display: none; }
+
+/* --------------------------------------------------------------- revelacao */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* =========================================================== RESPONSIVO === */
+@media (max-width: 1000px) {
+  .g4 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .nav-links, .nav .btn { display: none; }
+  .foot { padding-top: 40px; }
+  .foot-grid { gap: 26px; }
+  .foot h4 { margin-bottom: 10px; }
+  .foot ul { gap: 9px; }
+  .burger { display: block; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .foot-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; text-align: center; gap: 22px; }
+  .stat { display: flex; align-items: baseline; justify-content: center; gap: 12px; }
+  .stat b { font-size: 34px; }
+  .stat span { margin-top: 0; text-align: left; }
+
+  /* Barra fixa: aparece so aqui, e o body ganha folga para nao cobrir conteudo */
+  .dock {
+    display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0;
+    z-index: 950; box-shadow: 0 -2px 16px rgba(15,32,48,.16);
+  }
+  .dock a {
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 15px 8px; font-size: 15px; font-weight: 700; text-decoration: none;
+  }
+  .dock svg { width: 19px; height: 19px; }
+  .dock .d-form { background: var(--orange-btn); color: #fff; }
+  .dock .d-wpp { background: var(--wpp); color: #fff; }
+  body { padding-bottom: 58px; }
+}
+
+/* Grade de atalhos: no celular vira ladrilho de duas colunas. Quatro cartoes
+   descritivos empilhados custam quase duas telas de rolagem so para dizer o
+   que a empresa faz — como ladrilho, a mesma navegacao cabe em meia tela. */
+@media (max-width: 620px) {
+  .grid.tiles { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid.tiles .card { padding: 18px 16px; border-radius: var(--r-md); }
+  .grid.tiles .card p { display: none; }
+  .grid.tiles .card-ico { width: 38px; height: 38px; margin-bottom: 12px; }
+  .grid.tiles .card-ico svg { width: 19px; height: 19px; }
+  .grid.tiles h3 { font-size: 15.5px; }
+  .grid.tiles .card-link { margin-top: 10px; font-size: 13px; }
+}
+
+/* Telas BAIXAS, nao estreitas. Um iPhone SE tem 375px de largura mas so
+   ~553px de altura visivel depois da barra do Safari; ali o que sobra e
+   altura, nao largura. Sem esta compactacao o botao "Calcular" nasce
+   145px abaixo da dobra, e o simulador — a isca do site — nunca e visto.
+   A media query olha a altura de proposito: e o recurso que falta.        */
+@media (max-height: 720px) and (max-width: 900px) {
+  .sim-top { padding: 12px 18px; }
+  .sim-top .eyebrow { display: none; }
+  .sim-body { padding: 14px 18px; }
+  .sim-body .fgroup { margin-bottom: 8px; }
+  .sim-body .fgroup label { margin-bottom: 3px; font-size: 12.5px; }
+  .field { padding: 10px 14px; }
+  .sim-range input[type=range] { height: 22px; }
+  .btn-lg { padding: 13px 18px; }
+}
+
+/* Notebook de 1366x768: com a barra do Chrome sobram ~640px de altura, e a
+   mesma logica vale — o respiro generoso do desktop empurra o simulador
+   para fora da dobra por poucos pixels. */
+@media (min-width: 901px) and (max-height: 700px) {
+  .sim-top { padding: 16px 24px; }
+  .sim-body { padding: 18px 24px; }
+  .sim-body .fgroup { margin-bottom: 11px; }
+  .btn-lg { padding: 14px 24px; }
+}
+
+/* Telas de 360px (iPhone SE e Androids de entrada) ainda sao uma fatia real
+   do trafego. Sem este bloco o rotulo do botao quebra em duas linhas e o
+   "Calcular" cai 43px abaixo da dobra — perde-se justamente o simulador. */
+@media (max-width: 400px) {
+  .btn-lg { padding: 16px 14px; font-size: 15.5px; }
+  .sim-body { padding: 18px 16px; }
+  .sim-body .fgroup { margin-bottom: 12px; }
+  .sim-top { padding: 14px 16px; }
+}
+
+@media (max-width: 560px) {
+  /* .sim-row vira uma coluna, menos onde marcado com .keep2: os campos do
+     simulador sao curtos e empilhar os quatro joga o botao "Calcular" para
+     fora da dobra — que e onde o simulador deixa de ser usado. */
+  .sim-row:not(.keep2) { grid-template-columns: 1fr; }
+  .sim-row.keep2 { gap: 10px; }
+  .sim-nums { grid-template-columns: 1fr; }
+  .sim-num { display: flex; align-items: baseline; justify-content: space-between; text-align: left; padding: 13px 16px; }
+  .sim-num b { font-size: 24px; }
+  .sim-num span { margin-top: 0; }
+  .step { padding-left: 0; padding-top: 56px; }
+  .step::before { width: 42px; height: 42px; }
+}
+
+/* ============================================================================
+   COMPONENTES DE PAGINA INTERNA
+   Usados por venda, locacao, consultoria, empilhadeiras, porta-pallets e
+   sobre. Ficam aqui, e nao no <style> de cada pagina, porque seis copias da
+   mesma regra e exatamente como o site antigo acabou com uma pagina que
+   enviava formulario e cinco que nao enviavam.
+   ============================================================================ */
+
+/* ---- Hero de pagina interna ------------------------------------------
+   Sem simulador na dobra: aqui a isca vem no meio, depois de a pessoa
+   entender o assunto. Em cima ficam a promessa e as duas saidas.        */
+.phero { background: var(--bg-soft); padding: clamp(36px, 5vw, 68px) 0 clamp(44px, 5vw, 72px); }
+.phero-in { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+.phero h1 { margin-bottom: 16px; }
+.phero h1 .or { color: var(--orange-tx); }
+.phero .lead { margin-bottom: 26px; max-width: 32em; }
+.phero-acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+/* O JPG do rack tem o #F6F7F8 gravado no arquivo: esta secao precisa
+   manter esse fundo, senao aparece um retangulo claro em volta. */
+.phero-img img { width: 100%; max-width: 420px; margin-left: auto; height: auto; }
+
+/* No celular a imagem vem DEPOIS dos botoes. Colocada antes, ela sozinha
+   empurrava "Pedir orcamento" para 749px — fora da dobra em todo aparelho
+   testado. Decoracao nao passa na frente da acao. */
+@media (max-width: 900px) {
+  .phero-in { grid-template-columns: 1fr; gap: 18px; }
+  .phero-txt { display: contents; }
+  .phero .eyebrow   { order: 1; margin-bottom: 8px; }
+  .phero h1         { order: 2; margin-bottom: 0; font-size: 27px; }
+  .phero .lead      { order: 3; margin: 10px 0 0; font-size: 15.5px; }
+  .phero-acoes      { order: 4; margin-bottom: 0; }
+  .phero-acoes .btn { flex: 1 1 auto; }
+  .phero-img        { order: 5; }
+  .phero-img img    { max-width: 100%; margin: 0 auto; }
+  .phero .checks    { order: 6; }
+}
+
+/* ---- Cartoes de tipo/configuracao ------------------------------------ */
+.tipos { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 22px); }
+@media (max-width: 860px) { .tipos { grid-template-columns: 1fr; } }
+.tipo-num {
+  display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--orange-tx); margin-bottom: 10px;
+}
+.tipo ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.tipo li { font-size: 14px; color: var(--ink-2); display: flex; gap: 8px; }
+.tipo li::before { content: '—'; color: var(--orange-tx); flex: none; }
+
+/* ---- FAQ em sanfona ---------------------------------------------------
+   Guarda o texto longo sem cobrar rolagem de quem nao quer ler.         */
+.faq { display: grid; gap: 10px; max-width: 780px; margin: 0 auto; }
+.faq details { background: #fff; border: 1px solid var(--gray); border-radius: var(--r-md); overflow: hidden; }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 18px 22px; font-weight: 700; font-size: 15.5px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ''; width: 10px; height: 10px; flex: none;
+  border-right: 2.5px solid var(--orange-tx); border-bottom: 2.5px solid var(--orange-tx);
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .2s;
+}
+.faq details[open] summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+.faq summary:focus-visible { outline: 3px solid var(--orange); outline-offset: -3px; }
+.faq p { padding: 0 22px 20px; margin: 0; font-size: 15px; color: var(--ink-2); line-height: 1.6; }
+
+/* ---- Simulador centralizado no meio da pagina ------------------------ */
+.sim-solo { max-width: 620px; margin: 0 auto; }
+
+/* ---- Bloco final: texto a esquerda, formulario a direita ------------- */
+.cta-final-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 56px); align-items: start; }
+@media (max-width: 900px) { .cta-final-in { grid-template-columns: 1fr; gap: 28px; } }
+
+/* ---- Compactacao em telas baixas, igual a da home -------------------- */
+@media (max-height: 720px) and (max-width: 900px) {
+  .phero { padding-top: 16px; padding-bottom: 32px; }
+  .phero h1 { font-size: 24px; }
+  .phero .lead { margin-top: 8px; }
+}

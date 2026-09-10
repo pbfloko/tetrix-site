@@ -1,161 +1,151 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.className=document.documentElement.className.replace('no-js','');</script>
+
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P7HG4VJ4');</script>
-<!-- End Google Tag Manager -->
+  <!-- Fim Google Tag Manager -->
+
   <title>Política de Privacidade | Tetrix Soluções Intralogísticas</title>
-  <meta name="description" content="Como a Tetrix Soluções Intralogísticas coleta, usa, compartilha e protege os dados pessoais de quem entra em contato pelo site, conforme a LGPD (Lei 13.709/2018).">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Como a Tetrix coleta, usa, compartilha e protege os seus dados pessoais, conforme a LGPD. Seus direitos como titular e como exercê-los.">
   <link rel="canonical" href="https://www.tetrixlog.com.br/politica-de-privacidade.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Tetrix Soluções Intralogísticas">
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:url" content="https://www.tetrixlog.com.br/politica-de-privacidade.html">
-  <meta property="og:title" content="Política de Privacidade | Tetrix">
-  <meta property="og:description" content="Como tratamos os dados pessoais coletados no site, conforme a LGPD.">
+  <meta property="og:title" content="Política de Privacidade | Tetrix Soluções Intralogísticas">
+  <meta property="og:description" content="Como a Tetrix coleta, usa, compartilha e protege os seus dados pessoais, conforme a LGPD. Seus direitos como titular e como exercê-los.">
   <meta property="og:image" content="https://www.tetrixlog.com.br/og-image.jpg">
+  <meta property="og:url" content="https://www.tetrixlog.com.br/politica-de-privacidade.html">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0F2030">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/tetrix.css">
 
   <style>
-    :root{
-      --navy:#0F2030; --navy-mid:#16293B; --navy-lt:#1E3548;
-      --orange:#F96400; --orange-dk:#D45600; --orange-lt:#FF9B57;
-      --gray-100:#F4F6FA; --gray-200:#DCDCDC; --gray-500:#63748F;
-      --gray-700:#374A64; --text:#1A2A40;
-      --fh:'Montserrat', sans-serif; --fb:'Montserrat', sans-serif;
+    /* ---- PAGINA LEGAL -------------------------------------------------
+       Tudo escopado em .legal de proposito. A versao anterior desta pagina
+       trazia seletores globais (p, a, li, h3) e ate um :root que redefinia
+       --orange-btn para o laranja da marca — o que derrubava o contraste do
+       botao do cabecalho para 3,07:1 na pagina inteira. Escopado, o texto
+       juridico nao alcanca mais a navegacao nem o rodape.                  */
+    .cabeca { background: var(--navy-2); color: #fff; padding: clamp(36px, 5vw, 52px) 0 clamp(32px, 4vw, 46px); }
+    .cabeca h1 { font-weight: 900; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.06; }
+    .cabeca p { color: rgba(255,255,255,.82); font-size: 16px; margin: 14px 0 0; max-width: 62ch; }
+    /* Sobre o navy o selo precisa de texto claro: o laranja de texto do
+       sistema e feito para fundo claro e aqui daria 1,93:1. */
+    .selo-data {
+      display: inline-block; background: rgba(249,100,0,.20); color: #FFB27A;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 16px;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;scroll-padding-top:90px}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-    body{font-family:var(--fb);color:var(--text);background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased}
-    a{color:var(--orange-dk)}
-    a:hover{text-decoration:underline}
-    :focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
-    .wrap{max-width:820px;margin:0 auto;padding:0 24px}
 
-    /* topo */
-    .topo{background:var(--navy);padding:16px 0}
-    .topo .wrap{max-width:1120px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .topo svg{height:34px;width:auto}
-    .topo a.voltar{color:rgba(255,255,255,.85);font-size:14px;font-weight:600;text-decoration:none}
-    .topo a.voltar:hover{color:#fff;text-decoration:underline}
+    .legal { padding: clamp(36px, 5vw, 52px) 0 20px; }
+    .legal section { margin-bottom: 42px; scroll-margin-top: 96px; }
 
-    /* cabeçalho */
-    .cabeca{background:var(--navy-mid);color:#fff;padding:52px 0 46px}
-    .cabeca h1{font-family:var(--fh);font-weight:900;font-size: clamp(23px, 3.60vw, 33px);line-height:1.05;letter-spacing:-.5px}
-    .cabeca p{color:rgba(255,255,255,.78);font-size:16px;margin-top:14px;max-width:62ch}
-    .selo-data{display:inline-block;background:rgba(255,110,26,.18);color:var(--orange-lt);
-      font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
-      padding:6px 14px;border-radius:999px;margin-bottom:18px}
-
-    /* índice */
-    .indice{background:var(--gray-100);border:1px solid var(--gray-200);border-radius:14px;
-      padding:24px 26px;margin:0 0 44px}
-    .indice h2{font-family:var(--fh);font-weight:800;font-size:19px;color:var(--navy);margin-bottom:14px}
-    .indice ol{margin:0;padding-left:20px;columns:2;column-gap:32px}
-    .indice li{font-size:14.5px;margin-bottom:7px;break-inside:avoid}
-    .indice a{color:var(--gray-700);text-decoration:none}
-    .indice a:hover{color:var(--orange-dk);text-decoration:underline}
-    @media(max-width:640px){.indice ol{columns:1}}
-
-    /* conteúdo */
-    main{padding:52px 0 20px}
-    section{margin-bottom:42px;scroll-margin-top:24px}
-    h2.sec{font-family:var(--fh);font-weight:800;font-size: clamp(17px, 2.16vw, 22px);
-      color:var(--navy);line-height:1.15;margin-bottom:16px;padding-bottom:10px;
-      border-bottom:2px solid var(--gray-200)}
-    h2.sec span{color:var(--orange);margin-right:10px}
-    h3{font-family:var(--fh);font-weight:700;font-size:19px;color:var(--navy);margin:24px 0 9px}
-    p{margin-bottom:14px;font-size:15.5px;color:var(--gray-700)}
-    ul,ol.lista{margin:0 0 16px;padding-left:22px}
-    li{font-size:15.5px;color:var(--gray-700);margin-bottom:9px}
-    strong{color:var(--navy)}
-
-    .destaque{background:var(--gray-100);border-left:4px solid var(--orange);
-      padding:18px 20px;border-radius:0 10px 10px 0;margin:20px 0}
-    .destaque p:last-child{margin-bottom:0}
-    .destaque p{font-size:15px}
-
-    /* tabela */
-    .tab-wrap{overflow-x:auto;margin:18px 0 20px;border:1px solid var(--gray-200);border-radius:12px}
-    table{width:100%;border-collapse:collapse;min-width:540px}
-    th,td{text-align:left;padding:13px 16px;font-size:14.5px;border-bottom:1px solid var(--gray-200);vertical-align:top}
-    th{background:var(--navy);color:#fff;font-family:var(--fb);font-weight:700;font-size:13px;
-      letter-spacing:.4px;text-transform:uppercase}
-    td{color:var(--gray-700)}
-    tr:last-child td{border-bottom:none}
-    tbody tr:nth-child(even){background:var(--gray-100)}
-
-    /* contato */
-    .contato-box{background:var(--navy);color:#fff;border-radius:16px;padding:30px 32px;margin-top:8px}
-    .contato-box h3{color:#fff;margin-top:0;font-size:22px}
-    .contato-box p{color:rgba(255,255,255,.8);font-size:15px}
-    .contato-box a{color:var(--orange-lt)}
-    .contato-linhas{display:flex;flex-direction:column;gap:11px;margin-top:16px}
-    .contato-linha{display:flex;align-items:flex-start;gap:11px;font-size:15px;color:rgba(255,255,255,.92)}
-    .contato-linha svg{width:18px;height:18px;color:var(--orange-lt);flex-shrink:0;margin-top:3px}
-
-    /* rodapé */
-    footer{background:var(--navy);color:rgba(255,255,255,.68);padding:32px 0;
-      border-top:1px solid rgba(255,255,255,.09);text-align:center;font-size:13px;line-height:1.8;margin-top:40px}
-    footer a{color:var(--orange-lt)}
-    /* ===================================================================
-       MARCA NOVA — CONTRASTE WCAG AA
-       O laranja da marca #F96400 com texto BRANCO da 3,07:1 e reprova.
-       Com texto NAVY #0F2030 da 5,40:1 e passa — entao o botao mantem o
-       laranja exato do manual e so troca a cor do texto. Nada de escurecer
-       a cor da marca, como era preciso na identidade anterior.
-       Hover #FA7420 (5,97:1). Links laranja sobre fundo claro usam
-       #C24E00 (4,79:1), ja que #F96400 sobre branco da so 3,07:1.
-       =================================================================== */
-    :root { --orange-btn: #F96400; --orange-btn-dk: #FA7420; --orange-link: #C24E00; }
-    .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
-    .mobile-menu .btn-primary, .mobile-menu .btn-mobile, .mobile-menu a.btn,
-    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn, .btn-calcular {
-      background: var(--orange-btn); color: #0F2030;
+    .indice {
+      background: var(--bg-soft); border: 1px solid var(--gray); border-radius: var(--r-md);
+      padding: 24px 26px; margin: 0 0 44px;
     }
-    .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
-    .fbtn:hover, .sim-go:hover, .form-btn:hover, .btn-calcular:hover {
-      background: var(--orange-btn-dk); color: #0F2030;
+    .indice h2 { font-weight: 800; font-size: 19px; color: var(--navy); margin-bottom: 14px; }
+    .indice ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+    .indice li { font-size: 14.5px; margin-bottom: 7px; break-inside: avoid; color: var(--ink-2); }
+    .indice a { color: var(--ink-2); text-decoration: none; }
+    .indice a:hover { color: var(--orange-tx); text-decoration: underline; }
+    @media (max-width: 640px) { .indice ol { columns: 1; } }
+
+    .legal h2.secao {
+      font-weight: 800; font-size: clamp(18px, 2.2vw, 23px); color: var(--navy);
+      line-height: 1.15; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--gray);
     }
-    .btn-primary svg, .nav-cta svg, .fbtn svg, .sim-go svg,
-    .mbar a.or svg, .form-btn svg { color: #0F2030; stroke: currentColor; }
+    .legal h2.secao span { color: var(--orange-tx); margin-right: 10px; }
+    .legal h3 { font-weight: 700; font-size: 19px; color: var(--navy); margin: 24px 0 9px; }
+    .legal p { margin: 0 0 14px; font-size: 15.5px; color: var(--ink-2); line-height: 1.7; }
+    .legal ul, .legal ol.lista { margin: 0 0 16px; padding-left: 22px; }
+    .legal li { font-size: 15.5px; color: var(--ink-2); margin-bottom: 9px; line-height: 1.7; }
+    .legal strong { color: var(--ink); }
+    .legal a { color: var(--orange-tx); }
 
+    .destaque {
+      background: var(--bg-soft); border-left: 4px solid var(--orange-tx);
+      padding: 18px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+    }
+    .destaque p { font-size: 15px; }
+    .destaque p:last-child { margin-bottom: 0; }
 
+    .tab-wrap { overflow-x: auto; margin: 18px 0 20px; border: 1px solid var(--gray); border-radius: var(--r-sm); }
+    .legal table { width: 100%; border-collapse: collapse; min-width: 540px; }
+    .legal th, .legal td { text-align: left; padding: 13px 16px; font-size: 14.5px; border-bottom: 1px solid var(--gray); vertical-align: top; }
+    .legal th { background: var(--navy); color: #fff; font-weight: 700; font-size: 13px; letter-spacing: .4px; text-transform: uppercase; }
+    .legal td { color: var(--ink-2); }
+    .legal tr:last-child td { border-bottom: none; }
+    .legal tbody tr:nth-child(even) { background: var(--bg-soft); }
+
+    .contato-box { background: var(--navy); color: #fff; border-radius: var(--r-md); padding: 30px 32px; margin-top: 8px; }
+    .contato-box h3 { color: #fff; margin-top: 0; font-size: 22px; }
+    .contato-box p { color: rgba(255,255,255,.82); font-size: 15px; }
+    .contato-box a { color: #FFB27A; }
+    .contato-linhas { display: flex; flex-direction: column; gap: 11px; margin-top: 16px; }
+    .contato-linha { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: rgba(255,255,255,.92); }
+    .contato-linha svg { width: 18px; height: 18px; color: #FFB27A; flex-shrink: 0; margin-top: 3px; }
   </style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7HG4VJ4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<div class="topo">
-  <div class="wrap">
-    <a href="index.html" aria-label="Tetrix — página inicial">
-      <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7HG4VJ4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="nav-logo" aria-label="Tetrix — página inicial">
+      <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix Soluções Intralogísticas">
     </a>
-    <a href="index.html" class="voltar">← Voltar ao site</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="venda.html">Comprar</a></li>
+        <li><a href="locacao.html">Locar</a></li>
+        <li><a href="consultoria.html">Consultoria</a></li>
+        <li><a href="simulador.html">Simulador</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="blog/">Blog</a></li>
+      </ul>
+    </nav>
+    <a href="#contato-lgpd" class="btn btn-primary" data-cta="nav">Solicitar diagnóstico</a>
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-</div>
+</header>
 
+<div class="menu" id="menu">
+  <a href="index.html">Início</a>
+  <a href="venda.html">Comprar</a>
+  <a href="locacao.html">Locar</a>
+  <a href="consultoria.html">Consultoria</a>
+  <a href="simulador.html">Simulador</a>
+  <a href="porta-pallets.html">Porta-paletes</a>
+  <a href="empilhadeiras.html">Empilhadeiras</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="blog/">Blog</a>
+  <a href="contato.html">Contato</a>
+  <a href="#contato-lgpd" class="btn btn-primary btn-block">Solicitar diagnóstico</a>
+</div>
 <header class="cabeca">
   <div class="wrap">
     <span class="selo-data">Atualizada em 27 de agosto de 2026</span>
@@ -164,7 +154,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </header>
 
-<main>
+<main class="legal">
   <div class="wrap">
 
     <nav class="indice" aria-label="Índice da política">
@@ -187,13 +177,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </nav>
 
     <section id="quem">
-      <h2 class="sec"><span>01</span>Quem é o controlador dos seus dados</h2>
+      <h2 class="secao"><span>01</span>Quem é o controlador dos seus dados</h2>
       <p>O controlador dos dados pessoais tratados neste site é a <strong>Tetrix Soluções Intralogísticas LTDA</strong>, inscrita no CNPJ sob o nº <strong>67.829.778/0001-89</strong>, com sede no estado de São Paulo.</p>
       <p>Controlador é quem decide como e por que os dados são tratados. Sempre que esta política falar em "Tetrix", "nós" ou "nosso", está se referindo a essa empresa.</p>
     </section>
 
     <section id="dados">
-      <h2 class="sec"><span>02</span>Quais dados coletamos</h2>
+      <h2 class="secao"><span>02</span>Quais dados coletamos</h2>
       <p>Coletamos apenas o necessário para responder a quem nos procura e para entender o desempenho das nossas campanhas. Nada além disso.</p>
 
       <h3>Dados que você nos fornece</h3>
@@ -220,7 +210,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
     <section id="finalidades">
-      <h2 class="sec"><span>03</span>Para que usamos os seus dados</h2>
+      <h2 class="secao"><span>03</span>Para que usamos os seus dados</h2>
       <div class="tab-wrap">
         <table>
           <thead>
@@ -258,7 +248,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
     <section id="bases">
-      <h2 class="sec"><span>04</span>Bases legais do tratamento</h2>
+      <h2 class="secao"><span>04</span>Bases legais do tratamento</h2>
       <p>Todo tratamento de dados precisa de uma base legal prevista no art. 7º da LGPD. As nossas são:</p>
       <ul>
         <li><strong>Procedimentos preliminares relacionados a contrato</strong> (art. 7º, V): quando você pede um orçamento, um diagnóstico ou uma proposta, tratamos seus dados para atender a esse pedido — é o passo anterior a um eventual contrato, feito a seu pedido.</li>
@@ -269,7 +259,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
     <section id="compartilhamento">
-      <h2 class="sec"><span>05</span>Com quem compartilhamos</h2>
+      <h2 class="secao"><span>05</span>Com quem compartilhamos</h2>
       <p>Para operar o site e o atendimento, usamos serviços de terceiros que atuam como <strong>operadores</strong> — tratam os dados por nossa conta e seguindo as nossas instruções:</p>
       <div class="tab-wrap">
         <table>
@@ -314,13 +304,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
     <section id="internacional">
-      <h2 class="sec"><span>06</span>Transferência internacional de dados</h2>
+      <h2 class="secao"><span>06</span>Transferência internacional de dados</h2>
       <p>Alguns dos operadores acima mantêm servidores fora do Brasil. Em especial, <strong>o banco de dados que registra os formulários (Supabase) está hospedado nos Estados Unidos</strong>. Os serviços do Google, da Meta e o EmailJS também podem processar dados no exterior.</p>
       <p>Isso significa que os seus dados podem ser transferidos e armazenados fora do Brasil. Essas transferências ocorrem com base no art. 33 da LGPD, e escolhemos fornecedores que oferecem cláusulas contratuais e medidas de segurança compatíveis com o nível de proteção exigido pela lei brasileira.</p>
     </section>
 
     <section id="cookies">
-      <h2 class="sec"><span>07</span>Cookies e tecnologias de rastreamento</h2>
+      <h2 class="secao"><span>07</span>Cookies e tecnologias de rastreamento</h2>
       <p>Cookies são pequenos arquivos gravados no seu navegador. Usamos:</p>
       <ul>
         <li><strong>Cookies necessários</strong>: essenciais para a página funcionar e para manter a segurança. Sem eles o site não opera corretamente.</li>
@@ -331,14 +321,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
     <section id="retencao">
-      <h2 class="sec"><span>08</span>Por quanto tempo guardamos</h2>
+      <h2 class="secao"><span>08</span>Por quanto tempo guardamos</h2>
       <p>Guardamos os dados de contato <strong>enquanto durar o relacionamento comercial e por até 5 (cinco) anos após o último contato</strong>, prazo compatível com o exercício regular de direitos em eventuais discussões contratuais.</p>
       <p>Dados de medição e campanha seguem os prazos de retenção das ferramentas usadas para essa finalidade. Encerrado o prazo, os dados são eliminados ou anonimizados, exceto quando a lei exigir que sejam mantidos por mais tempo.</p>
       <p>Você pode pedir a eliminação antes desse prazo, conforme o item 09.</p>
     </section>
 
     <section id="direitos">
-      <h2 class="sec"><span>09</span>Seus direitos como titular</h2>
+      <h2 class="secao"><span>09</span>Seus direitos como titular</h2>
       <p>A LGPD garante a você, a qualquer momento e gratuitamente, o direito de:</p>
       <ul>
         <li><strong>Confirmar</strong> se tratamos dados seus e <strong>acessar</strong> esses dados;</li>
@@ -356,23 +346,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
     <section id="seguranca">
-      <h2 class="sec"><span>10</span>Segurança da informação</h2>
+      <h2 class="secao"><span>10</span>Segurança da informação</h2>
       <p>Adotamos medidas técnicas e administrativas para proteger os dados contra acessos não autorizados, perda, alteração ou divulgação indevida. Entre elas: tráfego criptografado (HTTPS) entre o seu navegador e o site, acesso restrito à base de contatos apenas às pessoas que precisam atender você, e uso de fornecedores que mantêm práticas reconhecidas de segurança.</p>
       <p>Nenhum sistema é totalmente imune. Caso ocorra um incidente de segurança que possa acarretar risco ou dano relevante a você, comunicaremos o fato a você e à ANPD, conforme o art. 48 da LGPD.</p>
     </section>
 
     <section id="criancas">
-      <h2 class="sec"><span>11</span>Menores de idade</h2>
+      <h2 class="secao"><span>11</span>Menores de idade</h2>
       <p>Nossos produtos e serviços são destinados a empresas e a profissionais. O site não é direcionado a menores de 18 anos e não coletamos intencionalmente dados de crianças e adolescentes. Se identificarmos que recebemos esses dados sem o consentimento adequado, faremos a exclusão.</p>
     </section>
 
     <section id="alteracoes">
-      <h2 class="sec"><span>12</span>Alterações desta política</h2>
+      <h2 class="secao"><span>12</span>Alterações desta política</h2>
       <p>Podemos atualizar esta política para refletir mudanças na lei, nas ferramentas que usamos ou nos nossos processos. A data da última atualização fica sempre indicada no topo da página. Mudanças relevantes serão comunicadas pelos canais de contato que você tiver nos informado.</p>
     </section>
 
     <section id="contato">
-      <h2 class="sec"><span>13</span>Como falar conosco</h2>
+      <h2 class="secao"><span>13</span>Como falar conosco</h2>
       <p>Para dúvidas sobre esta política ou para exercer os seus direitos, use qualquer um destes canais:</p>
       <div class="contato-box">
         <h3>Encarregado pelo tratamento de dados</h3>
@@ -396,14 +386,81 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   </div>
 </main>
-
-<footer>
+<!-- ===================================================== RODAPE ========= -->
+<footer class="foot">
   <div class="wrap">
-    © <span id="ano">2026</span> Tetrix Soluções Intralogísticas LTDA · CNPJ 67.829.778/0001-89 · São Paulo/SP<br>
-    <a href="index.html">Site institucional</a> · <a href="contato.html">Contato</a>
+    <div class="foot-grid">
+      <div>
+        <img class="logo" src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix Soluções Intralogísticas">
+        <p style="font-size:14.5px;max-width:34em">
+          Verticalização de estoques com porta-paletes e empilhadeiras.
+          Compra, locação e consultoria intralogística em todo o estado de São Paulo.
+        </p>
+      </div>
+
+      <div>
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="venda.html">Comprar</a></li>
+          <li><a href="locacao.html">Locar</a></li>
+          <li><a href="consultoria.html">Consultoria</a></li>
+          <li><a href="porta-pallets.html">Porta-paletes</a></li>
+          <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <ul class="foot-contact">
+          <li>
+            <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" data-wpp="rodape">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              (11) 99235-3669
+            </a>
+          </li>
+          <li>
+            <a href="mailto:comercial@tetrixlog.com.br">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              comercial@tetrixlog.com.br
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              @tetrixlog
+            </a>
+          </li>
+          <li>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Estado de São Paulo
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bot">
+      <span>© <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · <a href="politica-de-privacidade.html">Política de privacidade</a></span>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
+<div class="dock">
+  <a href="#contato-lgpd" class="d-form" data-cta="dock">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Diagnóstico
+  </a>
+  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e"
+     class="d-wpp" target="_blank" rel="noopener" data-wpp="dock">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    WhatsApp
+  </a>
+</div>
 
-<script>document.getElementById('ano').textContent=new Date().getFullYear();</script>
-</body>
-</html>
+<script src="assets/tetrix.js"></script>
