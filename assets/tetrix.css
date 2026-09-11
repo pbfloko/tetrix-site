@@ -495,6 +495,11 @@ select.field { appearance: none; cursor: pointer;
    manter esse fundo, senao aparece um retangulo claro em volta. */
 .phero-img img { width: 100%; max-width: 420px; margin-left: auto; height: auto; }
 
+/* Paginas institucionais usam foto de estudio (fundo navy do proprio
+   arquivo) em vez de recorte. Precisa de moldura: sem ela, o retangulo
+   escuro encosta direto no #F6F7F8 da secao e parece erro de montagem. */
+.phero-img.foto img { border-radius: var(--r-md); box-shadow: 0 10px 30px rgba(15, 32, 48, .16); }
+
 /* No celular a imagem vem DEPOIS dos botoes. Colocada antes, ela sozinha
    empurrava "Pedir orcamento" para 749px — fora da dobra em todo aparelho
    testado. Decoracao nao passa na frente da acao. */
