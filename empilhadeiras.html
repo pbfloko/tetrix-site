@@ -37,6 +37,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="assets/tetrix.css">
 
   <style>
+    /* A imagem desta pagina e deitada (duas empilhadeiras lado a lado),
+       ao contrario do porta-paletes em pe usado nas outras. Sem alargar
+       a coluna, os dois equipamentos ficam pequenos demais para serem
+       distinguidos — e distinguir os tipos e o assunto da pagina.
+
+       Precisa estar dentro de min-width: o CSS compartilhado empilha em
+       uma coluna abaixo de 900px, e uma regra solta aqui venceria por vir
+       depois — a imagem encolhia para 129px no celular. */
+    @media (min-width: 901px) {
+      .phero-in { grid-template-columns: .92fr 1.08fr; }
+      .phero-img img { max-width: 520px; }
+    }
   </style>
 </head>
 <body>
@@ -114,11 +126,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="phero-img reveal">
-      <img src="img/rack-4niveis.jpg"
-           srcset="img/rack-4niveis.jpg 660w, img/rack-4niveis@2x.jpg 989w"
-           sizes="(max-width: 900px) 70vw, 420px"
-           alt="Porta-paletes de quatro níveis carregado com paletes"
-           width="660" height="760" fetchpriority="high" decoding="async">
+      <img src="img/empilhadeiras-tipos.jpg"
+           srcset="img/empilhadeiras-tipos.jpg 720w, img/empilhadeiras-tipos@2x.jpg 1440w"
+           sizes="(max-width: 900px) 92vw, 520px"
+           alt="Empilhadeira contrabalançada ao lado de uma empilhadeira patolada, com os nomes identificados"
+           width="720" height="480" fetchpriority="high" decoding="async">
     </div>
   </div>
 </section>
