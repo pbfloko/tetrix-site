@@ -50,6 +50,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .phero-img img { max-width: 520px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Venda e locação de empilhadeiras",
+    "description": "Empilhadeiras contrabalançada, patolada e trilateral, com o layout do galpão dimensionado no mesmo projeto, em todo o estado de São Paulo.",
+    "serviceType": "Venda e locação de empilhadeiras",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Tetrix Soluções Intralogísticas",
+      "url": "https://www.tetrixlog.com.br/",
+      "telephone": "+55-11-99235-3669",
+      "email": "comercial@tetrixlog.com.br",
+      "address": { "@type": "PostalAddress", "addressRegion": "SP", "addressCountry": "BR" }
+    },
+    "areaServed": { "@type": "State", "name": "São Paulo" },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "valueAddedTaxIncluded": true
+      }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.tetrixlog.com.br/" },
+      { "@type": "ListItem", "position": 2, "name": "Empilhadeiras", "item": "https://www.tetrixlog.com.br/empilhadeiras.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Posso manter a empilhadeira que já tenho?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Na maioria dos casos sim, e o projeto é dimensionado em torno dela. O que não dá é projetar corredor estreito e continuar operando com uma contrabalançada — ela não gira no espaço. Por isso o equipamento entra na conta antes de o layout fechar." }
+    },
+    {
+      "@type": "Question",
+      "name": "Elétrica ou a combustão?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Dentro do galpão, elétrica, por causa da emissão e do ruído. A combustão faz sentido em pátio, rampa e piso irregular. Operações que fazem as duas coisas costumam ter um equipamento para cada função em vez de um que faz mal as duas." }
+    },
+    {
+      "@type": "Question",
+      "name": "Trilateral exige piso especial?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Exige piso muito plano, dentro de tolerância de nivelamento apertada. Trabalhando a 10 ou 12 metros de altura, um desnível pequeno no piso vira oscilação grande no topo do mastro. Essa verificação entra no diagnóstico antes de a trilateral ser recomendada." }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês fazem manutenção?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Em equipamento locado, a manutenção preventiva é nossa e está no contrato. Em equipamento vendido, a conversa é caso a caso conforme a marca e o modelo." }
+    }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -67,7 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="index.html">Início</a></li>
         <li><a href="venda.html">Comprar</a></li>
         <li><a href="locacao.html">Locar</a></li>
-        <li><a href="porta-pallets.html">Porta-paletes</a></li>
+        <li><a href="porta-paletes.html">Porta-paletes</a></li>
         <li><a href="consultoria.html">Consultoria</a></li>
         <li><a href="simulador.html">Simulador</a></li>
         <li><a href="sobre.html">Sobre</a></li>
@@ -87,7 +151,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="locacao.html">Locar</a>
   <a href="consultoria.html">Consultoria</a>
   <a href="simulador.html">Simulador</a>
-  <a href="porta-pallets.html">Porta-paletes</a>
+  <a href="porta-paletes.html">Porta-paletes</a>
   <a href="empilhadeiras.html">Empilhadeiras</a>
   <a href="sobre.html">Sobre</a>
   <a href="blog/">Blog</a>
@@ -116,7 +180,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul class="checks reveal">
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Venda e locação</strong>, com o layout dimensionado junto.</span>
+          <span><strong><a href="venda.html">Venda</a> e <a href="locacao.html">locação</a></strong>, com o layout dimensionado junto.</span>
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -201,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="step">
         <h3>Feche o layout</h3>
-        <p>Só então o porta-paletes é dimensionado. Na ordem inversa, quase sempre sobra corredor e falta posição.</p>
+        <p>Só então o <a href="porta-paletes.html">porta-paletes</a> é dimensionado. Na ordem inversa, quase sempre sobra corredor e falta posição.</p>
       </div>
     </div>
   </div>
@@ -459,7 +523,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="venda.html">Comprar</a></li>
           <li><a href="locacao.html">Locar</a></li>
           <li><a href="consultoria.html">Consultoria</a></li>
-          <li><a href="porta-pallets.html">Porta-paletes</a></li>
+          <li><a href="porta-paletes.html">Porta-paletes</a></li>
           <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
           <li><a href="simulador.html">Simulador</a></li>
         </ul>

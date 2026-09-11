@@ -1,0 +1,31 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+
+  "redirects": [
+    {
+      "source": "/porta-pallets.html",
+      "destination": "/porta-paletes.html",
+      "permanent": true
+    },
+    {
+      "source": "/porta-pallets",
+      "destination": "/porta-paletes.html",
+      "permanent": true
+    }
+  ],
+
+  "headers": [
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
+      ]
+    },
+    {
+      "source": "/(favicon.ico|favicon.svg|favicon-16.png|favicon-32.png|favicon-48.png|favicon-96.png|apple-touch-icon.png|icon-192.png|icon-512.png|og-image.jpg)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
+      ]
+    }
+  ]
+}
