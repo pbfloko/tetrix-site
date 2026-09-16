@@ -126,15 +126,46 @@
   })();
   var campanhaTexto = Object.keys(CAMPANHA).map(function (k) { return k + '=' + CAMPANHA[k]; }).join(' | ');
 
-  /* ======================================================== TELEFONE ====== */
+  /* ======================================================== TELEFONE ======
+     A mascara antiga cortava em 11 digitos (`slice(0, 11)`). Quem escrevia o
+     numero com codigo do pais perdia os dois ultimos digitos e ainda via o
+     "55" virar DDD: +55 11 94366-8123 saia como "(55) 1 1943-6681". Numero
+     errado no banco e lead impossivel de retornar.
+
+     Regra agora: ate 11 digitos sem "+" e numero nacional e mantem o formato
+     de sempre. Com "+" ou acima de 11 digitos, entra no modo internacional e
+     nada e descartado ate o limite de 15 digitos do padrao E.164.
+
+     "55" so vira codigo de pais acima de 11 digitos — DDD 55 e Santa Maria
+     (RS), entao (55) 9 9999-8888 continua sendo tratado como nacional.      */
+  function formataTelefone(bruto) {
+    var temMais = /^\s*\+/.test(bruto);
+    var d = bruto.replace(/\D/g, '');
+
+    if (temMais || d.length > 11) {
+      // Brasil com codigo do pais: 55 + DDD + 8 ou 9 digitos.
+      if (d.indexOf('55') === 0 && d.length >= 12 && d.length <= 13) {
+        var r = d.slice(2);
+        if (r.length === 11) {
+          return '+55 (' + r.slice(0, 2) + ') ' + r.slice(2, 3) + ' ' + r.slice(3, 7) + '-' + r.slice(7);
+        }
+        return '+55 (' + r.slice(0, 2) + ') ' + r.slice(2, 6) + '-' + r.slice(6);
+      }
+      // Outro pais, ou ainda digitando: nao inventa agrupamento. Numero sem
+      // mascara e melhor do que numero formatado errado.
+      return '+' + d.slice(0, 15);
+    }
+
+    if (d.length > 10) return '(' + d.slice(0, 2) + ') ' + d.slice(2, 3) + ' ' + d.slice(3, 7) + '-' + d.slice(7);
+    if (d.length > 6)  return '(' + d.slice(0, 2) + ') ' + d.slice(2, 6) + '-' + d.slice(6);
+    if (d.length > 2)  return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length > 0)  return '(' + d;
+    return '';
+  }
+
   $$('[data-mask="tel"]').forEach(function (el) {
     el.addEventListener('input', function (e) {
-      var v = e.target.value.replace(/\D/g, '').slice(0, 11);
-      if (v.length > 10)     v = v.replace(/^(\d{2})(\d{1})(\d{4})(\d{4}).*/, '($1) $2 $3-$4');
-      else if (v.length > 6) v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
-      else if (v.length > 2) v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-      else if (v.length > 0) v = v.replace(/^(\d{0,2})/, '($1');
-      e.target.value = v;
+      e.target.value = formataTelefone(e.target.value);
     });
   });
 

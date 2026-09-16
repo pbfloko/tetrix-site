@@ -754,7 +754,7 @@
               </div>
               <div class="fgroup" id="g1-telefone">
                 <label for="f1-telefone">WhatsApp</label>
-                <input type="tel" id="f1-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" enterkeyhint="next" required>
+                <input type="tel" id="f1-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="tel" maxlength="22" enterkeyhint="next" required>
                 <span class="fmsg">WhatsApp com DDD.</span>
               </div>
               <div class="f2col">
@@ -1335,7 +1335,7 @@
             </div>
             <div class="fgroup" id="g2-telefone">
               <label for="f2-telefone">WhatsApp</label>
-              <input type="tel" id="f2-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" required>
+              <input type="tel" id="f2-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="tel" maxlength="22" required>
               <span class="fmsg">Informe um WhatsApp com DDD.</span>
             </div>
             <div class="f2col">
@@ -1451,7 +1451,7 @@
         </div>
         <div class="fgroup" id="g3-telefone">
           <label for="f3-telefone">WhatsApp</label>
-          <input type="tel" id="f3-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="numeric" maxlength="16" required>
+          <input type="tel" id="f3-telefone" name="telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" inputmode="tel" maxlength="22" required>
           <span class="fmsg">WhatsApp com DDD.</span>
         </div>
         <div class="fgroup" id="g3-empresa">
@@ -1808,16 +1808,38 @@
 
   /* =========================================================
      Mascara de telefone
+
+     Cortava em 11 digitos: quem escrevia com codigo do pais perdia os dois
+     ultimos e o "55" virava DDD (+55 11 94366-8123 saia "(55) 1 1943-6681").
+     Agora ate 11 digitos sem "+" e nacional; com "+" ou acima disso entra no
+     modo internacional e nada e descartado ate os 15 digitos do E.164.
+     "55" so vira codigo de pais acima de 11 digitos — DDD 55 e Santa Maria.
      ========================================================= */
+  function formataTelefone(bruto){
+    var temMais = /^\s*\+/.test(bruto);
+    var d = bruto.replace(/\D/g,'');
+
+    if (temMais || d.length > 11){
+      if (d.indexOf('55') === 0 && d.length >= 12 && d.length <= 13){
+        var r = d.slice(2);
+        if (r.length === 11){
+          return '+55 (' + r.slice(0,2) + ') ' + r.slice(2,3) + ' ' + r.slice(3,7) + '-' + r.slice(7);
+        }
+        return '+55 (' + r.slice(0,2) + ') ' + r.slice(2,6) + '-' + r.slice(6);
+      }
+      return '+' + d.slice(0,15);
+    }
+
+    if (d.length > 10) return '(' + d.slice(0,2) + ') ' + d.slice(2,3) + ' ' + d.slice(3,7) + '-' + d.slice(7);
+    if (d.length > 6)  return '(' + d.slice(0,2) + ') ' + d.slice(2,6) + '-' + d.slice(6);
+    if (d.length > 2)  return '(' + d.slice(0,2) + ') ' + d.slice(2);
+    if (d.length > 0)  return '(' + d;
+    return '';
+  }
   function mascaraTelefone(el){
     if (!el) return;
     el.addEventListener('input', function(e){
-      var v = e.target.value.replace(/\D/g,'').slice(0,11);
-      if (v.length > 10)      v = v.replace(/^(\d{2})(\d{1})(\d{4})(\d{4}).*/, '($1) $2 $3-$4');
-      else if (v.length > 6)  v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
-      else if (v.length > 2)  v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
-      else if (v.length > 0)  v = v.replace(/^(\d{0,2})/, '($1');
-      e.target.value = v;
+      e.target.value = formataTelefone(e.target.value);
     });
   }
   ['f1-telefone','f2-telefone','f3-telefone'].forEach(function(id){ mascaraTelefone($(id)); });
