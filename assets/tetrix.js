@@ -351,10 +351,24 @@
       var area = v('area'), obj = v('objetivo');
       var pe = v('pe_direito'), simulacao = v('simulacao');
 
-      // Armadilha de robo: campo invisivel preenchido, ou envio rapido demais
-      // para um humano ter digitado.
-      if (v('site') !== '' || Date.now() - ABERTO_EM < 2500) {
-        track('form_spam_bloqueado', { form_origem: origem });
+      // Armadilha de robo. NAO bloqueia sozinha: o Chrome e os gerenciadores
+      // de senha preenchem campo escondido, e isso ja barrou lead real. So e
+      // robo quando o campo veio preenchido E nenhum evento de input ocorreu
+      // nesta pagina — bot que escreve direto no .value nao dispara input.
+      var armadilhaCheia = v('campo_b') !== '';
+      var houveDigitacao = !!jaComecou[origem];
+
+      if (armadilhaCheia && !houveDigitacao) {
+        track('form_spam_bloqueado', { form_origem: origem, motivo: 'armadilha' });
+        aviso('Não foi possível enviar. Fale com a gente pelo WhatsApp.');
+        return;
+      }
+      if (armadilhaCheia) {
+        // Preenchimento automatico do navegador, nao robo: segue o envio.
+        track('form_armadilha_autofill', { form_origem: origem });
+      }
+      if (Date.now() - ABERTO_EM < 2500) {
+        track('form_spam_bloqueado', { form_origem: origem, motivo: 'tempo' });
         aviso('Aguarde um instante e clique de novo para enviar.');
         return;
       }
