@@ -619,12 +619,13 @@ footer { background: var(--navy-800); color: #fff; padding: 70px 0 28px; }
 /* ---- Densidade do menu com o site inteiro na barra ---------------------
    Oito itens + botao: a 1100px "Porta-paletes" e "Solicitar orcamento"
    quebravam em duas linhas e desalinhavam a barra. O site anterior trocava
-   para hamburguer em 1080px pelo mesmo motivo. */
-.nav-links { gap: 20px; }
+   para hamburguer em 1080px pelo mesmo motivo. Com o Blog na barra passamos
+   a 8 itens: "Inicio" saiu (a logo ja leva pra home) e o corte virou 1180px. */
+.nav-links { gap: 16px; }
 .nav-links a, .nav-cta .btn { white-space: nowrap; }
 .nav-cta .btn { padding: 12px 20px; font-size: .88rem; }
 .nav-links a[aria-current="page"] { color: var(--orange-tx); }
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
   .nav-links { display: none; }
   .burger { display: block; }
 }
