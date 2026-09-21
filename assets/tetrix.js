@@ -280,6 +280,32 @@
       });
     }
 
+    /* ---- Portao do simulador ---------------------------------------------
+       Quando existe um bloco [data-sim-portao] dentro do simulador, o
+       RESULTADO so aparece depois que a pessoa deixa o contato. A conta e
+       sempre feita na hora: o que fica retido e a exibicao, nunca o calculo.
+       Sem esse bloco o simulador se comporta como sempre — por isso as
+       paginas que nao foram convertidas continuam funcionando iguais.     */
+    var portao = campo('portao');
+    var liberado = !portao;
+
+    function mostraResultado() {
+      if (!SIM) return;
+      elOut.classList.add('show');
+      anima(elHoje, SIM.hoje);
+      anima(elNovo, SIM.novo);
+    }
+
+    function liberar() {
+      if (!SIM || liberado) return;
+      liberado = true;
+      if (portao) portao.classList.remove('show');
+      mostraResultado();
+      elOut.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+      track(origem + '_liberado', { sim_posicoes: SIM.novo, sim_ganho: SIM.ganho });
+    }
+    if (portao) sim.addEventListener('sim:liberar', liberar);
+
     function simular() {
       var area = parseFloat(elArea.value) || 800;
       var pd   = parseFloat(elPd.value) || 10;
@@ -290,10 +316,6 @@
       var novo   = Math.round(area * (DENS[emp] || DENS.CB) * niveis);
       var hoje   = capacidadeHoje(area, cam);
       var ganho  = novo - hoje;
-
-      elOut.classList.add('show');
-      anima(elHoje, hoje);
-      anima(elNovo, novo);
 
       if (ganho > 0) {
         var pct = hoje > 0 ? Math.round(ganho / hoje * 100) : 0;
@@ -315,6 +337,16 @@
         sim_area: area, sim_pe_direito: pd, sim_empilhadeira: emp,
         sim_cenario_atual: cam, sim_niveis: niveis, sim_posicoes: novo, sim_ganho: ganho
       });
+
+      if (liberado) {
+        mostraResultado();
+      } else {
+        portao.classList.add('show');
+        portao.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+        var pn = $('input[name=nome]', portao);
+        if (pn && window.innerWidth > 860) setTimeout(function () { pn.focus({ preventScroll: true }); }, 400);
+        track(origem + '_portao', { sim_posicoes: novo, sim_ganho: ganho });
+      }
     }
 
     if (btnGo) btnGo.addEventListener('click', simular);
@@ -342,11 +374,18 @@
 
   $$('form[data-lead]').forEach(function (form) {
     var origem  = form.getAttribute('data-lead');
+    /* Formulario que destrava o resultado do simulador. Muda tres coisas:
+       nao abre aba do WhatsApp (a pessoa quer o numero, nao um chat), nao
+       troca o painel por "recebemos seu contato" (o painel vira o
+       resultado) e, se o envio falhar, libera o resultado mesmo assim —
+       problema nosso de infraestrutura nao pode punir quem preencheu.   */
+    var ehPortao = form.hasAttribute('data-sim-portao');
     var banner  = $('[data-role=banner]', form);
     var campos  = $('[data-role=campos]', form);
     var btn     = $('[data-role=btn]', form);
     var ok      = $('[data-role=ok]', form);
-    if (!btn || !campos || !ok) return;
+    // O portao nao tem painel de "recebemos": ele vira o resultado.
+    if (!btn || !campos || (!ok && !ehPortao)) return;
 
     function erro(nome) {
       var g = $('.fgroup[data-field=' + nome + ']', form);
@@ -408,6 +447,9 @@
       if (!nome) { erro('nome'); falhou = true; }
       if (tel.replace(/\D/g, '').length < 10) { erro('telefone'); falhou = true; }
       if ($('.fgroup[data-field=empresa]', form) && !empresa) { erro('empresa'); falhou = true; }
+      // No portao o e-mail e obrigatorio: e por ele que o resultado da
+      // simulacao chega depois, entao nao adianta ficar em branco.
+      if (ehPortao && !email) { erro('email'); falhou = true; }
       if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { erro('email'); falhou = true; }
       if (falhou) {
         aviso('Confira os campos destacados.');
@@ -423,9 +465,14 @@
       // window.open depois do envio (assincrono) faz o navegador tratar como
       // pop-up nao solicitado e bloquear — era o motivo de o WhatsApp nunca abrir.
       var janelaWpp = null;
-      try { janelaWpp = window.open('', '_blank'); } catch (e) { janelaWpp = null; }
+      if (!ehPortao) {
+        try { janelaWpp = window.open('', '_blank'); } catch (e) { janelaWpp = null; }
+      }
 
-      var notas = ['[' + origem + ']', simulacao || null, campanhaTexto || null].filter(Boolean).join(' | ');
+      var notas = [
+        ehPortao ? '[SIMULADOR]' : null,
+        '[' + origem + ']', simulacao || null, campanhaTexto || null
+      ].filter(Boolean).join(' | ');
 
       var lead = {
         nome: nome, empresa: empresa || null, telefone: tel,
@@ -460,7 +507,8 @@
               tipo_interesse: obj || 'Nao informado',
               area_galpao: area || 'Nao informado',
               pe_direito: pe || 'Nao informado',
-              mensagem: 'Origem: ' + origem +
+              mensagem: (ehPortao ? '*** LEAD DO SIMULADOR ***\n' : '') +
+                        'Origem: ' + origem +
                         (simulacao ? '\n' + simulacao : '') +
                         (campanhaTexto ? '\n' + campanhaTexto : ''),
               data_envio: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
@@ -477,15 +525,20 @@
           '\nPreciso de: ' + (obj || 'orientação') +
           (simulacao ? '\n' + simulacao : ''));
 
-        var btnOk = ok.querySelector('a[href*="wa.me"], a[href*="tintim.link"]');
+        var btnOk = ok && ok.querySelector('a[href*="wa.me"], a[href*="tintim.link"]');
         if (btnOk) btnOk.href = urlWpp;
 
         if (!r.okSupabase && !r.okEmail) {
           btn.disabled = false;
           btn.innerHTML = rotulo;
+          track('form_erro', { form_origem: origem });
+          if (ehPortao) {
+            // Perdemos o lead, mas o resultado e dela. Libera e segue.
+            form.dispatchEvent(new CustomEvent('sim:liberar', { bubbles: true }));
+            return;
+          }
           aviso('Não conseguimos registrar seu contato agora. Clique no botão abaixo para falar direto no WhatsApp com os dados já preenchidos.');
           if (janelaWpp) janelaWpp.location.href = urlWpp; else location.href = urlWpp;
-          track('form_erro', { form_origem: origem });
           return;
         }
 
@@ -499,6 +552,12 @@
 
         btn.disabled = false;
         btn.innerHTML = rotulo;
+
+        if (ehPortao) {
+          form.dispatchEvent(new CustomEvent('sim:liberar', { bubbles: true }));
+          return;
+        }
+
         campos.style.display = 'none';
         ok.style.display = 'block';
         ok.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
@@ -513,8 +572,14 @@
         if (janelaWpp) janelaWpp.close();
         btn.disabled = false;
         btn.innerHTML = rotulo;
-        aviso('Não conseguimos enviar agora. Tente novamente ou fale pelo WhatsApp.');
         track('form_erro', { form_origem: origem, motivo: 'excecao' });
+        if (ehPortao) {
+          // Mesma regra do outro caminho de erro: a pessoa preencheu, o
+          // resultado e dela. Prender o numero aqui so cria um abandono.
+          form.dispatchEvent(new CustomEvent('sim:liberar', { bubbles: true }));
+          return;
+        }
+        aviso('Não conseguimos enviar agora. Tente novamente ou fale pelo WhatsApp.');
       });
     });
   });

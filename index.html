@@ -13,17 +13,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P7HG4VJ4');</script>
   <!-- Fim Google Tag Manager -->
 
-  <title>Porta-Paletes e Empilhadeiras SP: Venda e Locação | Tetrix</title>
-  <meta name="description" content="Até 80% mais capacidade no galpão que já tem. Porta-paletes e empilhadeiras com engenharia própria e orçamento em 24 horas úteis, no estado de SP.">
+  <title>Tetrix — Engenharia de Armazenagem em São Paulo</title>
+  <meta name="description" content="A Tetrix nasceu no mercado imobiliário e hoje projeta, fornece e monta estruturas de armazenagem em todo o estado de São Paulo. Porta-paletes, empilhadeiras, projeto e montagem com equipe própria.">
   <link rel="canonical" href="https://www.tetrixlog.com.br/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Até 80% mais capacidade no galpão que você já tem | Tetrix">
-  <meta property="og:description" content="Simule grátis quantas posições-palete cabem no seu galpão. Projeto e orçamento em até 24 horas úteis.">
+  <meta property="og:title" content="Tetrix — Engenharia de Armazenagem em São Paulo">
+  <meta property="og:description" content="Mais de 25 anos de mercado imobiliário na origem. Projeto, fornecimento e montagem de estruturas de armazenagem em todo o estado de SP.">
   <meta property="og:image" content="https://www.tetrixlog.com.br/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:url" content="https://www.tetrixlog.com.br/">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
@@ -31,771 +30,681 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0F2030">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/tetrix.css">
-
-  <style>
-    /* ATENCAO: `.hero` aqui e a SECAO de topo desta pagina. Nao reutilizar
-       essa classe como modificador de componente — ja aconteceu com o card
-       do simulador, que herdou `padding: 64px 0 80px` e desalinhou os
-       numeros. Modificador de card: use `.destaque`. */
-    /* ---- HERO da home -------------------------------------------------
-       Duas colunas no desktop, com o simulador ocupando a direita inteira.
-       No celular a ordem e outra e esta explicada na media query abaixo. */
-    .hero { background: var(--bg-soft); padding: clamp(36px, 5vw, 64px) 0 clamp(48px, 6vw, 80px); }
-    .hero-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 56px); align-items: start; }
-    .hero h1 { margin-bottom: 18px; }
-    .hero h1 .or { color: var(--orange-tx); }
-    .hero .lead { margin-bottom: 26px; max-width: 30em; }
-    .hero-selo {
-      display: inline-flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 600;
-      background: #fff; border: 1.5px solid var(--orange); border-radius: 999px;
-      padding: 8px 17px 8px 14px; margin-bottom: 18px; color: var(--ink-2);
-    }
-    .hero-selo b { color: var(--ink); font-weight: 800; }
-    .hero-selo svg { width: 17px; height: 17px; flex: none; color: var(--orange-tx); }
-
-    /* Atalho para o simulador. Link fino, nao cartao: como cartao ele custava
-       118px da primeira tela do celular para dizer o que ja aparece na rolagem
-       seguinte. Definido ANTES das media queries de proposito — declarado
-       depois, venceria o `display:none` do desktop por ordem de cascata. */
-    .hero-atalho {
-      display: inline-flex; align-items: center; gap: 7px;
-      margin-top: 14px; text-decoration: none;
-      font-size: 14.5px; font-weight: 700; color: var(--orange-tx);
-      border-bottom: 2px solid rgba(179,71,0,.28); padding-bottom: 2px;
-    }
-    .hero-atalho svg { width: 16px; height: 16px; flex: none; }
-    .hero-atalho:hover { border-bottom-color: var(--orange-tx); }
-
-    /* No celular a primeira tela e de ENTENDIMENTO, nao de ferramenta:
-       o prazo, o que a empresa faz e os diferenciais vem antes; o simulador
-       vem logo depois. Quem chega de anuncio sem conhecer a Tetrix nao usa
-       uma calculadora antes de saber o que esta sendo vendido.
-       Para o simulador nao se perder, um atalho leva ate ele. */
-    @media (max-width: 900px) {
-      .hero { padding-top: 20px; padding-bottom: clamp(32px, 5vw, 48px); }
-      .hero-in { grid-template-columns: 1fr; gap: 18px; }
-      .hero-txt { display: contents; }
-      .hero-selo   { order: 1; justify-self: start; margin-bottom: 12px; padding: 7px 15px; }
-      .hero h1     { order: 2; margin-bottom: 0; font-size: 27px; }
-      .hero .lead  { order: 3; margin: 10px 0 0; font-size: 15.5px; }
-      .hero-provas { order: 4; }
-      .hero-atalho { order: 5; }
-      .hero-sim    { order: 6; }
-      .hero-provas .checks { gap: 9px; }
-      .hero-provas .checks li { font-size: 14.5px; line-height: 1.45; }
-      .hero-sim .sim-top { padding: 16px 20px; }
-      .hero-sim .sim-top p { display: none; }
-      .hero-sim .sim-top .eyebrow { margin-bottom: 5px; }
-    }
-    @media (min-width: 901px) {
-      .hero-provas { margin-top: 28px; }
-      .hero-atalho { display: none; }   /* no desktop o simulador ja esta ao lado */
-    }
-
-    @media (max-width: 400px) {
-      .hero { padding-top: 16px; }
-      .hero h1 { font-size: 25px; }
-      .hero-selo { font-size: 11.5px; padding: 6px 12px; margin-bottom: 10px; }
-    }
-
-    /* ---- VITRINE ------------------------------------------------------
-       ATENCAO: rack-corredor.jpg tem o fundo #F6F7F8 gravado no arquivo, e
-       nao canal alfa. Foi assim que o recorte pesado virou 95 KB, sem
-       ferramenta de WebP nesta maquina. Como o fundo esta chapado na
-       imagem, esta secao PRECISA continuar com a classe .soft — em
-       qualquer outra cor apareceria um retangulo claro em volta do rack.
-       Se a secao mudar de cor, regerar o JPG sobre a cor nova (ou voltar
-       ao PNG transparente, em Banco de Imagens/Recortes/).
-       A imagem e horizontal, entao a coluna dela e a mais larga das duas. */
-    .vitrine-in { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
-    .vitrine-img img { width: 100%; height: auto; }
-    .vitrine-txt .lead { margin-bottom: 32px; max-width: 34em; }
-    .vitrine .stats { grid-template-columns: repeat(3, 1fr); text-align: left; }
-
-    @media (max-width: 900px) {
-      .vitrine-in { grid-template-columns: 1fr; gap: 22px; }
-      .vitrine-img { order: 2; text-align: center; }
-      .vitrine-img img { max-width: 100%; margin: 0 auto; }
-      .vitrine-txt { order: 1; display: contents; }
-      .vitrine-txt .eyebrow { order: 0; }
-      .vitrine-txt h2      { order: 1; }
-      .vitrine-txt .lead   { order: 1; margin: 12px 0 0; }
-      /* Tres colunas estreitas em vez de tres blocos empilhados: os numeros
-         sao curtos e, empilhados, custavam 227px de rolagem so aqui. */
-      .vitrine .stats { order: 3; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; }
-      .vitrine .stat { display: block; }
-      .vitrine .stat b { font-size: 22px; }
-      .vitrine .stat span { font-size: 12px; margin-top: 6px; text-align: center; }
-    }
-
-    .quem { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .quem div {
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--r-md); padding: 20px; font-size: 15px; font-weight: 600; color: #fff;
-    }
-    .quem p { font-size: 13.5px; font-weight: 400; color: rgba(255,255,255,.68); margin: 6px 0 0; }
-    @media (max-width: 860px) { .quem { grid-template-columns: 1fr; } }
-
-        .cta-final-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 56px); align-items: start; }
-        @media (max-width: 900px) { .cta-final-in { grid-template-columns: 1fr; gap: 28px; } }
-
-    /* Por ultimo de proposito: precisa vencer as media queries de largura
-       acima, que tambem definem o tamanho do H1. */
-    /* Telas baixas: comprime, mas NAO esconde o selo — ele carrega o prazo
-       de 24 horas, que e o diferencial que abre a pagina. */
-    @media (max-height: 720px) and (max-width: 900px) {
-      .hero { padding-top: 12px; }
-      .hero-in { gap: 12px; }
-      .hero-selo { font-size: 11.5px; padding: 5px 12px; margin-bottom: 8px; }
-      .hero h1 { font-size: 23px; }
-      .hero .lead { font-size: 14.5px; margin-top: 8px; }
-      .hero-provas .checks { gap: 7px; }
-      .hero-provas .checks li { font-size: 13.5px; }
-      .hero-atalho { margin-top: 12px; padding: 11px 14px; }
-    }
-
-    @media (min-width: 901px) and (max-height: 700px) {
-      .hero { padding-top: 26px; padding-bottom: 40px; }
-    }
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Tetrix Soluções Intralogísticas",
-    "url": "https://www.tetrixlog.com.br/",
-    "logo": "https://www.tetrixlog.com.br/img/marca/logo-horizontal.svg",
-    "image": "https://www.tetrixlog.com.br/og-image.jpg",
-    "telephone": "+55-11-99235-3669",
-    "email": "comercial@tetrixlog.com.br",
-    "sameAs": [
-      "https://www.instagram.com/tetrixlog",
-      "https://www.facebook.com/profile.php?id=61590895761463",
-      "https://www.linkedin.com/company/143071462/"
-    ],
-    "areaServed": { "@type": "State", "name": "São Paulo" },
-    "address": { "@type": "PostalAddress", "addressRegion": "SP", "addressCountry": "BR" },
-    "description": "Venda e locação de porta-paletes e empilhadeiras, consultoria e projetos de verticalização de estoque no estado de São Paulo."
-  }
-  </script>
+  <link rel="stylesheet" href="assets/home-v3.css">
 </head>
+<!-- data-legado alimenta os nomes antigos de evento (home_form_submit,
+     home_scroll, lead_form_submit) que a agencia usa nos relatorios. O
+     porte tinha perdido este atributo: sem ele, os relatorios zerariam na
+     virada para a v3. -->
 <body data-legado="home">
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7HG4VJ4"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<header class="nav">
-  <div class="wrap nav-in">
-    <a href="index.html" class="nav-logo" aria-label="Tetrix — página inicial">
-      <img src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix Soluções Intralogísticas">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ====================================================== UTILIDADES ==== -->
+<div class="util">
+  <div class="wrap">
+    <div class="u-left">
+      <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="topbar" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span>(11) 99235-3669</span>
+      </a>
+      <a href="mailto:comercial@tetrixlog.com.br">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        <span>comercial@tetrixlog.com.br</span>
+      </a>
+      <span style="display:inline-flex;align-items:center;gap:7px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Atendemos todo o estado de SP
+      </span>
+    </div>
+    <div class="u-right">
+      <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram da Tetrix">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61590895761463" target="_blank" rel="noopener" aria-label="Facebook da Tetrix">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/143071462/" target="_blank" rel="noopener" aria-label="LinkedIn da Tetrix">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.5c0-1.31-.02-3-1.9-3-1.9 0-2.2 1.43-2.2 2.9V21H9z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================= CABECALHO ==== -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" aria-label="Tetrix — página inicial">
+      <img class="logo-img" src="img/marca/logo-horizontal.svg" alt="Tetrix Soluções Intralogísticas" width="200" height="46">
     </a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html" aria-current="page">Início</a></li>
-        <li><a href="venda.html">Comprar</a></li>
-        <li><a href="locacao.html">Locar</a></li>
-        <li><a href="porta-paletes.html">Porta-paletes</a></li>
-        <li><a href="consultoria.html">Consultoria</a></li>
-        <li><a href="simulador.html">Simulador</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="blog/">Blog</a></li>
-      </ul>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="venda.html">Comprar</a>
+      <a href="locacao.html">Locar</a>
+      <a href="porta-paletes.html">Porta-paletes</a>
+      <a href="empilhadeiras.html">Empilhadeiras</a>
+      <a href="consultoria.html">Consultoria</a>
+      <a href="simulador.html">Simulador</a>
+      <a href="sobre.html">Sobre</a>
     </nav>
-    <a href="#diagnostico" class="btn btn-primary" data-cta="nav">Solicitar orçamento</a>
-    <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="contato.html" data-cta="header">Solicitar orçamento</a>
+    </div>
+    <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<div class="menu" id="menu">
+<nav class="menu" id="menu-mobile" aria-label="Menu">
   <a href="index.html">Início</a>
   <a href="venda.html">Comprar</a>
   <a href="locacao.html">Locar</a>
-  <a href="consultoria.html">Consultoria</a>
-  <a href="simulador.html">Simulador</a>
   <a href="porta-paletes.html">Porta-paletes</a>
   <a href="empilhadeiras.html">Empilhadeiras</a>
+  <a href="consultoria.html">Consultoria</a>
+  <a href="simulador.html">Simulador</a>
   <a href="sobre.html">Sobre</a>
   <a href="blog/">Blog</a>
   <a href="contato.html">Contato</a>
-  <a href="#diagnostico" class="btn btn-primary btn-block">Solicitar orçamento</a>
-</div>
+  <a class="btn btn-primary" href="contato.html" data-cta="menu_mobile">Solicitar orçamento</a>
+</nav>
 
-<!-- ====================================================== HERO ========== -->
-<section class="hero">
-  <div class="wrap hero-in">
+<main id="conteudo">
 
-    <div class="hero-txt">
-      <!-- O prazo e o principal diferencial competitivo e por isso ocupa a
-           primeira linha da dobra, nao um numero perdido no meio da pagina. -->
-      <span class="hero-selo reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
-        Projeto e orçamento em <b>até 24 horas úteis</b>
-      </span>
-
-      <h1 class="reveal">Até <span class="or">80% mais capacidade</span> no galpão que você já tem.</h1>
-
-      <p class="lead reveal">
-        Porta-paletes e empilhadeiras com engenharia própria. Em vez de alugar mais
-        área, a gente sobe o seu estoque — e coloca cada palete num endereço que
-        a sua equipe encontra de primeira.
+<!-- ============================================================ HERO ==== -->
+<!-- Sem foto de galpao de banco de imagem: o hero usa o recorte do proprio
+     rack da Tetrix num painel navy. Foto de estoque generica e o que faz
+     esta pagina parecer clone da landing page. -->
+<section class="hero" id="top">
+  <div class="hero-scrim"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-inner">
+      <!-- Selo e eyebrow precisam de um bloco cada: os dois sao inline-flex e,
+           soltos, se acomodam na mesma linha. -->
+      <div class="reveal">
+        <span class="hero-badge">
+          <span class="hb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <!-- Texto num unico span: solto, ele e o <b> viram dois itens do
+               flex e no celular quebram em duas colunas. -->
+          <span class="hb-tx">Projeto e orçamento em até <b>24 horas úteis</b></span>
+        </span>
+      </div>
+      <div class="reveal">
+        <!-- Mesmo eyebrow da LP: quem vem do anuncio precisa reconhecer de
+             imediato que chegou na mesma empresa, e a home institucional nao
+             pode esconder o que a Tetrix vende. -->
+        <span class="eyebrow">Sistemas de armazenagem · Porta-paletes</span>
+      </div>
+      <h1 class="reveal">Porta-paletes projetados por quem passou 25 anos <span class="hl">fornecendo galpões</span>.</h1>
+      <!-- Duas versoes do mesmo paragrafo. A completa tem 317px de altura no
+           celular e sozinha empurrava o botao para 792px — fora da dobra de
+           qualquer aparelho. A curta guarda a frase que importa. -->
+      <p class="sub reveal">
+        <span class="so-desktop">A Tetrix vem de 25 anos no mercado imobiliário, investindo em galpões
+        logísticos e industriais. Duas décadas e meia entregando área para indústria,
+        armazém e transportadora ensinaram uma coisa que não está em tabela de preço: </span>
+        <span class="so-celular">25 anos fornecendo galpão ensinaram uma coisa: </span>
+        <b>o mercado negocia metro quadrado, mas a capacidade está no metro cúbico</b>.<span class="so-desktop">
+        Hoje projetamos, fornecemos e montamos <b>sistemas de armazenagem e estruturas
+        porta-paletes</b> em todo o estado de São Paulo.</span>
       </p>
-
-      <div class="hero-provas reveal">
-        <ul class="checks">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Estrutura calculada para a sua carga.</strong> Nada de tabela padrão.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Material a pronta entrega.</strong> Sem espera de fabricação.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Diagnóstico gratuito</strong> — o projeto é seu mesmo que não feche conosco.</span>
-          </li>
-        </ul>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary btn-lg" href="#historia" data-cta="hero_historia">Conheça a Tetrix</a>
+        <a class="btn btn-ghost-light btn-lg" href="#solucoes" data-cta="hero_solucoes">O que fazemos</a>
       </div>
-
-      <!-- Atalho para o simulador. So aparece no celular, onde o simulador
-           deixou de abrir a pagina. -->
-      <a href="#simulador-home" class="hero-atalho reveal" data-cta="atalho_simulador">
-        Simular meu galpão, grátis
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </a>
-    </div>
-
-    <!-- ---- SIMULADOR: a isca. Fica na primeira tela em qualquer largura -->
-    <div class="hero-sim reveal" id="simulador-home">
-      <div class="sim" data-sim="home_simulador">
-        <div class="sim-top">
-          <span class="eyebrow">Simulador gratuito · sem cadastro</span>
-          <h2 class="sim-h">Quantas posições-palete cabem no seu galpão?</h2>
-          <p>Quatro campos. O resultado aparece na hora.</p>
-        </div>
-
-        <div class="sim-body">
-          <div class="sim-row keep2">
-            <div class="fgroup">
-              <label for="s-area">Área do galpão <span class="hint">(m²)</span></label>
-              <input class="field" type="number" id="s-area" data-sim-area value="800" min="100" max="50000" step="50" inputmode="numeric">
-            </div>
-            <div class="fgroup">
-              <label for="s-emp">Empilhadeira</label>
-              <select class="field" id="s-emp" data-sim-emp>
-                <option value="CB">Contrabalançada</option>
-                <option value="PT">Patolada / Reach</option>
-                <option value="TR">Trilateral</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="fgroup">
-            <label for="s-pd">Pé-direito útil <span class="hint" data-sim-pdniveis></span></label>
-            <div class="sim-range">
-              <input type="range" id="s-pd" data-sim-pd min="4" max="14" step="0.5" value="10">
-              <span class="sim-val" data-sim-pdval>10,0 m</span>
-            </div>
-          </div>
-
-          <div class="fgroup">
-            <label for="s-cam">Como você armazena hoje</label>
-            <select class="field" id="s-cam" data-sim-cam>
-              <option value="1">Paletes no piso, sem empilhar</option>
-              <option value="2">Empilho 2 camadas em bloco</option>
-              <option value="3">Empilho 3 camadas em bloco</option>
-            </select>
-          </div>
-
-          <button type="button" class="btn btn-primary btn-block btn-lg" data-sim-go>
-            Calcular minha capacidade
-          </button>
-
-          <!-- ---- Resultado ------------------------------------------- -->
-          <div class="sim-out" data-sim-out>
-            <div class="sim-nums">
-              <div class="sim-num">
-                <b data-sim-hoje>0</b>
-                <span>posições hoje</span>
-              </div>
-              <div class="sim-num destaque">
-                <b data-sim-novo>0</b>
-                <span>com porta-paletes</span>
-              </div>
-              <div class="sim-num">
-                <b data-sim-ganho>0</b>
-                <span>a mais</span>
-              </div>
-            </div>
-
-            <p class="sim-msg" data-sim-msg></p>
-
-            <button type="button" class="btn btn-dark btn-block" style="margin-top:18px" data-sim-quero>
-              Quero esse cálculo feito no meu galpão
-            </button>
-
-            <!-- ---- Captura: aparece colada no resultado --------------- -->
-            <div class="sim-lead" data-sim-lead>
-              <h3>Receba o projeto com os números do seu galpão</h3>
-              <p class="lead">Engenharia confere pilares, sprinklers e giro da empilhadeira. Retorno em até 24 horas úteis.</p>
-
-              <form data-lead="home_v2_simulador" novalidate>
-                <div class="banner" data-role="banner"></div>
-
-                <div data-role="campos">
-                  <div class="fgroup" data-field="nome">
-                    <label for="f1-nome">Nome</label>
-                    <input class="field" id="f1-nome" name="nome" type="text" autocomplete="name" placeholder="Como devemos te chamar">
-                    <span class="msg">Informe seu nome.</span>
-                  </div>
-
-                  <div class="sim-row">
-                    <div class="fgroup" data-field="telefone">
-                      <label for="f1-tel">WhatsApp</label>
-                      <input class="field" id="f1-tel" name="telefone" type="tel" data-mask="tel" autocomplete="tel" placeholder="(11) 9 9999-9999">
-                      <span class="msg">Informe um WhatsApp válido.</span>
-                    </div>
-                    <div class="fgroup" data-field="empresa">
-                      <label for="f1-emp">Empresa</label>
-                      <input class="field" id="f1-emp" name="empresa" type="text" autocomplete="organization" placeholder="Razão social ou nome fantasia">
-                      <span class="msg">Informe a empresa.</span>
-                    </div>
-                  </div>
-
-                  <div class="fgroup" data-field="email">
-                    <label for="f1-email">E-mail <span class="hint">(opcional)</span></label>
-                    <input class="field" id="f1-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br">
-                    <span class="msg">E-mail inválido.</span>
-                  </div>
-
-                  <input type="hidden" name="objetivo" value="Projeto de verticalização (simulador)">
-                  <input type="hidden" name="simulacao" data-lead-simulacao value="">
-                  <input type="hidden" name="pe_direito" data-lead-pe value="">
-                  <input type="hidden" name="area" data-lead-area value="">
-                  <input class="hp" type="text" name="campo_b" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-                  <button type="submit" class="btn btn-primary btn-block btn-lg" data-role="btn">
-                    Quero o projeto do meu galpão
-                  </button>
-
-                  <p class="privacy">
-                    Seus dados são usados só para este atendimento.
-                    Veja a <a href="politica-de-privacidade.html">política de privacidade</a>.
-                  </p>
-                </div>
-
-                <div class="form-ok" data-role="ok">
-                  <div class="tick">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                  </div>
-                  <h3>Recebemos seu pedido</h3>
-                  <p class="lead">Nossa engenharia retorna em até 24 horas úteis. Se preferir adiantar, fale agora:</p>
-                  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e"
-                     class="btn btn-wpp btn-block" target="_blank" rel="noopener" data-wpp="sucesso_simulador">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-                    Falar no WhatsApp
-                  </a>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+      <div class="hero-trust reveal">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 13 4 4L19 7"/></svg> Projeto conforme ABNT NBR 17150</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 13 4 4L19 7"/></svg> Responsável técnico CREA</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 13 4 4L19 7"/></svg> Equipe própria de montagem</span>
       </div>
     </div>
 
+    <div class="hero-visual reveal">
+      <img src="img/hero-rack.jpg"
+           srcset="img/hero-rack.jpg 760w, img/hero-rack@2x.jpg 1140w"
+           sizes="(max-width: 960px) 90vw, 480px"
+           alt="Estrutura porta-paletes de quatro níveis com todas as posições ocupadas"
+           width="760" height="620" fetchpriority="high" decoding="async">
+    </div>
   </div>
 </section>
 
-<!-- ================================================== VITRINE =========== -->
-<section class="sec soft vitrine">
-  <div class="wrap vitrine-in">
-
-    <div class="vitrine-img reveal">
-      <img src="img/rack-corredor.jpg"
-           srcset="img/rack-corredor.jpg 620w, img/rack-corredor@2x.jpg 1240w"
-           sizes="(max-width: 900px) 92vw, 540px"
-           alt="Corredor de porta-paletes de quatro níveis carregado com paletes"
-           width="620" height="506" loading="lazy" decoding="async">
-    </div>
-
-    <div class="vitrine-txt">
-      <span class="eyebrow reveal">O mesmo galpão, quatro níveis</span>
-      <h2 class="reveal">A capacidade que falta está no ar, acima dos seus paletes</h2>
-      <p class="lead reveal">
-        Quase toda operação usa menos da metade do pé-direito que paga.
-        Verticalizar é ocupar essa altura com estrutura calculada — sem obra,
-        sem mudança de endereço.
-      </p>
-
-      <div class="stats reveal">
-        <div class="stat">
-          <b>até 80%</b>
-          <span>mais capacidade de armazenagem no mesmo galpão</span>
-        </div>
-        <div class="stat">
-          <b>24h</b>
-          <span>úteis para o projeto e o orçamento chegarem</span>
-        </div>
-        <div class="stat">
-          <b>SP</b>
-          <span>atendimento em todo o estado de São Paulo</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================ ORGANIZACAO ========= -->
-<!-- Espaco e a dor que o cliente verbaliza; organizacao e a que ele sente
-     todo dia e nao nomeia. A pagina falava so da primeira. -->
-<section class="sec" id="organizacao">
+<!-- =========================================================== NUMEROS == -->
+<section class="stats">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">A outra metade do problema</span>
-      <h2>Ganhar espaço resolve pouco se ninguém acha o palete</h2>
-      <p class="lead">
-        Estoque empilhado em bloco esconde mercadoria. O porta-paletes não devolve
-        só metros cúbicos — devolve o controle sobre o que está lá dentro.
-      </p>
+    <div class="stat reveal">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span>
+      <b><span class="pre">+</span>25</b>
+      <span>anos investindo em galpões logísticos e industriais</span>
     </div>
-
-    <div class="grid g4 tiles">
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3>Acesso direto</h3>
-        <p>No seletivo, qualquer palete sai sem mover nenhum outro. Em bloco, o de trás só aparece depois de tirar os quatro da frente.</p>
-      </article>
-
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
-        <h3>FIFO de verdade</h3>
-        <p>O lote antigo deixa de ficar preso atrás do novo. Menos mercadoria vencendo no fundo do galpão sem ninguém ver.</p>
-      </article>
-
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3>Cada palete tem endereço</h3>
-        <p>Rua, nível e vão viram a localização do item. Conferência e inventário deixam de ser caça ao tesouro.</p>
-      </article>
-
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h3>Menos avaria</h3>
-        <p>Palete empilhado esmaga a carga de baixo. Na estrutura, cada um apoia em viga e sustenta só o próprio peso.</p>
-      </article>
+    <div class="stat reveal">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+      <b>24h</b>
+      <span>úteis para projeto e orçamento, sem custo</span>
+    </div>
+    <div class="stat reveal">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+      <b>SP</b>
+      <span>atendimento em todo o estado de São Paulo</span>
+    </div>
+    <div class="stat reveal">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3l8 4v6c0 5-3.4 7.7-8 9-4.6-1.3-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <b>ART</b>
+      <span>estrutura entregue com responsabilidade técnica</span>
     </div>
   </div>
 </section>
 
-<!-- =================================================== SOLUCOES ========= -->
+<!-- ========================================================== HISTORIA == -->
+<section class="sec" id="historia">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <div class="ph">
+        <img src="img/historia-galpao.jpg" srcset="img/historia-galpao.jpg 660w, img/historia-galpao@2x.jpg 1180w" sizes="(max-width: 960px) 90vw, 540px" alt="Galpão logístico com fileiras de porta-paletes de vários níveis e empilhadeiras em operação" width="660" height="594" loading="lazy" decoding="async">
+      </div>
+      <div class="badge" aria-hidden="true">
+        <b>25+</b>
+        <span>no mercado imobiliário</span>
+      </div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow reveal">Quem somos</span>
+      <!-- A frase do metro quadrado x metro cubico e do proprio Pedro e e a
+           tese fundadora da empresa. Nao diluir em "otimizacao de espaco". -->
+      <h2 class="reveal">O mercado negocia metro quadrado. <span class="hl">O problema está no metro cúbico.</span></h2>
+      <p class="reveal">
+        Antes da Tetrix existir, o negócio era outro: <b>25 anos no mercado
+        imobiliário</b>, investindo em galpões logísticos e industriais e fornecendo
+        área para indústria, armazém e transportadora. Ou seja, passamos duas décadas
+        e meia do <b>outro lado da mesa</b> — entregando o imóvel e vendo, de dentro,
+        o que acontecia depois.
+      </p>
+      <p class="reveal">
+        E o que se repetia era sempre a mesma cena. A empresa procurava mais metro
+        quadrado porque o estoque não cabia mais — com <b>metade do pé-direito
+        vazio</b>. O contrato crescia, o aluguel crescia, e o ar acima das cargas
+        continuava lá, pago e sem uso. Ninguém estava olhando para cima.
+      </p>
+      <p class="reveal">
+        A Tetrix nasceu para resolver isso <b>dentro do galpão que o cliente já tem</b>.
+        Projetamos a intralogística inteira — estrutura, layout, endereçamento e o
+        equipamento que opera ali — para que a operação ganhe capacidade sem ganhar
+        área.
+      </p>
+      <!-- A lista fecha com o RESULTADO, nao com credencial: engenharia
+           propria e ART ja aparecem no hero e na secao de credenciais. -->
+      <ul class="about-list">
+        <li class="reveal"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span> Mais capacidade no mesmo galpão</li>
+        <li class="reveal"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span> Menos custo por posição-palete</li>
+        <li class="reveal"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span> Menos movimentação desnecessária</li>
+        <li class="reveal"><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg></span> Operação mais eficiente ponta a ponta</li>
+      </ul>
+      <a class="btn btn-outline reveal" href="#compromissos" data-cta="historia_compromissos">Como trabalhamos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== SOLUCOES == -->
 <section class="sec soft" id="solucoes">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">O que fazemos</span>
-      <h2>Soluções completas para a sua operação</h2>
-      <p class="lead">Da consultoria à implantação. Comprar, locar ou só otimizar o que você já tem.</p>
-    </div>
-
-    <div class="grid g4 tiles">
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div>
-        <h3>Consultoria e projeto</h3>
-        <p>Diagnóstico da operação, estudo de layout e dimensionamento do porta-paletes e da empilhadeira certos para o seu giro.</p>
-        <a href="consultoria.html" class="card-link">Ver consultoria
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
-      </article>
-
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
-        <h3>Venda de estruturas</h3>
-        <p>Porta-paletes e empilhadeiras novos e seminovos, com projeto completo de armazenagem e material a pronta entrega.</p>
-        <a href="venda.html" class="card-link">Ver venda
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
-      </article>
-
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-        <h3>Locação</h3>
-        <p>Porta-paletes e empilhadeiras em locação, para picos de demanda ou para crescer sem imobilizar capital.</p>
-        <a href="locacao.html" class="card-link">Ver locação
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
-      </article>
-
-      <article class="card raised reveal">
-        <div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></div>
-        <h3>Verticalização</h3>
-        <p>Aproveitamento total do pé-direito com estruturas sob medida — mais capacidade sem mudar de endereço.</p>
-        <a href="porta-paletes.html" class="card-link">Ver porta-paletes
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================== COMO FUNCIONA ========= -->
-<section class="sec" id="como-funciona">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow">Como funciona</span>
-      <h2>Do primeiro contato ao galpão montado</h2>
-    </div>
-
-    <div class="grid g3 steps">
-      <div class="step reveal">
-        <h3>Você conta o cenário</h3>
-        <p>Área, pé-direito, tipo de carga e giro. Pelo simulador acima ou direto no WhatsApp — leva dois minutos.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Engenharia desenha</h3>
-        <p>Layout com pilares, sprinklers e raio de giro medidos. Projeto e orçamento em até 24 horas úteis, sem custo.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Montagem e entrega</h3>
-        <p>Material a pronta entrega, montagem com equipe própria e estrutura calculada conforme as normas ABNT NBR.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =================================================== PARA QUEM ======== -->
-<section class="sec dark" id="para-quem">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow on-dark">Para quem</span>
-      <h2>Se o seu galpão está cheio, o problema costuma ser altura</h2>
-      <p class="lead">A maior parte das operações usa menos da metade do pé-direito disponível.</p>
-    </div>
-
-    <div class="quem reveal">
-      <div>Distribuidoras e atacadistas
-        <p>Alto giro, muitos SKUs e necessidade de acesso direto a cada palete.</p>
-      </div>
-      <div>Indústrias
-        <p>Matéria-prima e produto acabado disputando a mesma área de piso.</p>
-      </div>
-      <div>Operadores logísticos
-        <p>Contratos novos que exigem mais posições sem tempo de trocar de galpão.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================= CTA FINAL ========== -->
-<section class="sec dark cta-final" id="diagnostico">
-  <div class="wrap cta-final-in">
-
-    <div class="reveal">
-      <span class="eyebrow on-dark">Diagnóstico gratuito</span>
-      <h2>Vamos medir o potencial do seu galpão</h2>
-      <p class="lead">
-        Nossa engenharia analisa a sua operação e devolve um projeto com o número real de
-        posições-palete que cabem aí dentro. Sem custo e sem compromisso — o estudo é seu,
-        mesmo que você não feche conosco.
+    <div class="sec-head">
+      <span class="eyebrow reveal">O que fazemos</span>
+      <h2 class="reveal">Porta-paletes é o começo, <span class="hl">não o catálogo inteiro</span></h2>
+      <p class="reveal">
+        A Tetrix projeta a intralogística inteira. A estrutura é uma parte: o que resolve
+        o galpão é o conjunto — o estudo que vem antes, o equipamento que opera dentro
+        dela e a montagem que sustenta tudo.
       </p>
+    </div>
+    <div class="sol-grid">
 
-      <ul class="checks" style="margin-top:24px">
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Retorno em até <strong>24 horas úteis</strong></span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Projeto conforme <strong>ABNT NBR</strong>, com responsável técnico CREA</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Atendimento em <strong>todo o estado de São Paulo</strong></span>
-        </li>
+      <article class="sol-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 15h18M8 4v16M16 4v16"/></svg></span>
+        <h3>Venda de porta-paletes</h3>
+        <p>Estruturas seletivas novas e seminovas, dimensionadas para a sua carga e para a empilhadeira que você já usa — não para um catálogo padrão.</p>
+        <a class="more" href="porta-paletes.html">Ver porta-paletes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="sol-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7a1 1 0 0 0-1-1h-4"/><path d="M3 12v5a1 1 0 0 0 1 1h4"/><path d="m16 3 3 3-3 3M8 21l-3-3 3-3"/><rect x="7" y="9" width="10" height="6" rx="1"/></svg></span>
+        <h3>Locação de estruturas</h3>
+        <p>Capacidade extra para pico de safra, contrato novo ou mudança de galpão, sem imobilizar capital. Contrato com prazo mínimo de 12 meses.</p>
+        <a class="more" href="locacao.html">Ver locação <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="sol-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h5v-6h6"/><path d="M14 5h3l3 6v6h-6z"/><circle cx="6.5" cy="19.5" r="1.8"/><circle cx="17" cy="19.5" r="1.8"/></svg></span>
+        <h3>Empilhadeiras</h3>
+        <p>Venda e locação do equipamento que opera dentro da estrutura. Escolher a empilhadeira depois do rack pronto é o erro mais caro do galpão.</p>
+        <a class="more" href="empilhadeiras.html">Ver empilhadeiras <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="sol-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg></span>
+        <h3>Consultoria e layout</h3>
+        <p>Diagnóstico de intralogística antes de qualquer compra: pé-direito útil, pilares, piso, endereçamento e giro. Às vezes o problema não é prateleira.</p>
+        <a class="more" href="consultoria.html">Ver consultoria <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="sol-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4l-2.5 2.5-1.4-1.4z"/></svg></span>
+        <h3>Projeto e montagem</h3>
+        <p>Cálculo conforme ABNT NBR 17150, ART emitida por responsável técnico CREA e montagem com equipe própria. Material a pronta entrega.</p>
+        <a class="more" href="#credenciais">Ver credenciais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="sol-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg></span>
+        <h3>Simulador de capacidade</h3>
+        <p>Quatro campos e você vê, na hora, quantas posições-palete o seu galpão comporta hoje e quantas comportaria verticalizado. Grátis e sem cadastro.</p>
+        <a class="more" href="simulador.html">Abrir simulador <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== COMPROMISSOS == -->
+<section class="sec" id="compromissos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Como trabalhamos</span>
+      <h2 class="reveal">Três compromissos que assumimos <span class="hl">por escrito</span></h2>
+      <p class="reveal">O mesmo método vale para um galpão de 400 m² e para um centro de distribuição.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-line" aria-hidden="true"></div>
+      <div class="proc-step reveal">
+        <div class="num">1</div>
+        <h4>Medir antes</h4>
+        <p>Pé-direito útil, pilares, piso e giro da empilhadeira entram na conta antes de qualquer proposta. Orçamento por telefone é chute, e chute em estrutura de armazenagem sai caro.</p>
+      </div>
+      <div class="proc-step reveal">
+        <div class="num">2</div>
+        <h4>Dizer não quando não vale</h4>
+        <p>Há galpões em que verticalizar rende pouco. Nesses casos o diagnóstico diz isso, com a conta aberta, e você fica com o estudo sem comprar nada.</p>
+      </div>
+      <div class="proc-step reveal">
+        <div class="num">3</div>
+        <h4>Responder em 24 horas úteis</h4>
+        <p>Com os dados do galpão em mãos, projeto e orçamento saem em até um dia útil. Quem está com a operação travada não pode esperar duas semanas por um número.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= CREDENCIAIS == -->
+<section class="sec soft" id="credenciais">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Credenciais</span>
+      <h2 class="reveal">Por que confiar a estrutura <span class="hl">a nós</span></h2>
+      <p class="reveal">Estrutura de armazenagem carrega tonelada acima da cabeça de pessoas. A responsabilidade técnica não é detalhe burocrático.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span>
+        <h4>ABNT NBR 17150</h4>
+        <p>Projeto conforme as normas 17150-1:2024 e 17150-2:2024, que substituíram a NBR 15524 em março de 2024.</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-1a6 6 0 0 1 12 0v1"/></svg></span>
+        <h4>ART e responsável técnico</h4>
+        <p>Estrutura entregue com Anotação de Responsabilidade Técnica assinada por engenheiro registrado no CREA.</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.4 7.7-8 9-4.6-1.3-8-4-8-9V7z"/></svg></span>
+        <h4>NR-11 e NR-12</h4>
+        <p>Movimentação e armazenagem de materiais e segurança de máquinas consideradas no projeto de layout e de operação.</p>
+      </div>
+      <div class="feat-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h4>Equipe própria de montagem</h4>
+        <p>A montagem é feita por equipe da Tetrix, não terceirizada. Quem calcula responde por quem instala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ======================================================= DEPOIMENTOS == -->
+<!-- Depoimentos aprovados pelo Pedro em 21/09/2026. Os avatares sao as
+     INICIAIS de cada pessoa, por decisao dele — nada de rosto de banco de
+     imagem ao lado de nome de cliente. Se um dia vier foto real, com
+     autorizacao, e so trocar o <span class="av iniciais"> por <img>.    -->
+<section class="sec test" id="depoimentos">
+  <!-- Fundo navy chapado, sem foto: a LP usa foto aqui e era imagem repetida. -->
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow claro reveal">Depoimentos</span>
+      <h2 class="reveal">Quem verticalizou, recomenda</h2>
+      <p class="reveal">Avaliações de clientes da Tetrix.</p>
+    </div>
+    <div class="test-grid">
+
+      <article class="test-card reveal">
+        <div class="stars" aria-label="Cinco de cinco estrelas">★★★★★</div>
+        <p>&ldquo;Ganhamos capacidade sem alugar outro galpão. O projeto veio rápido e a instalação foi impecável.&rdquo;</p>
+        <div class="test-who">
+          <span class="av iniciais" aria-hidden="true">RC</span>
+          <span><b>Ricardo Campos</b><small>Gerente de Operações · Distribuidora</small></span>
+        </div>
+      </article>
+
+      <article class="test-card reveal">
+        <div class="stars" aria-label="Cinco de cinco estrelas">★★★★★</div>
+        <p>&ldquo;Muito atenciosos. O pessoal da instalação nota 10 também!&rdquo;</p>
+        <div class="test-who">
+          <span class="av iniciais" aria-hidden="true">AS</span>
+          <span><b>Aline Schutz</b><small>Sócia · Indústria</small></span>
+        </div>
+      </article>
+
+      <article class="test-card reveal">
+        <div class="stars" aria-label="Cinco de cinco estrelas">★★★★★</div>
+        <p>&ldquo;Qualidade excelente e o melhor custo disparado que encontramos.&rdquo;</p>
+        <div class="test-who">
+          <span class="av iniciais" aria-hidden="true">EC</span>
+          <span><b>Everton Cardoso</b><small>Encarregado · Transportadora</small></span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+</section>
+
+<!-- ========================================================= SEGMENTOS == -->
+<section class="sec" id="segmentos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Quem atendemos</span>
+      <!-- Nao escrever "operacoes que ja verticalizamos": isso afirma que a
+           Tetrix ja atendeu cada um destes segmentos, e nao temos os cases
+           para sustentar. O titulo abaixo descreve o alcance, nao o passado. -->
+      <h2 class="reveal">Do estoque de uma loja ao <span class="hl">centro de distribuição</span></h2>
+      <p class="reveal">A conta é a mesma em qualquer escala: quanto de pé-direito está sobrando e quanto a operação aguenta verticalizar. O que muda é o tamanho.</p>
+    </div>
+    <!-- Grade de segmentos, nao mosaico de fotos. A LP usa mosaico, e a Tetrix
+         nao tem foto propria de cada setor — o que sobrava era banco de imagem
+         generico. Icone + descricao diz a mesma coisa sem fingir portfolio. -->
+    <div class="seg-grid">
+      <article class="seg-card reveal">
+        <span class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-7h6v7M9 11h6"/></svg></span>
+        <h3>Centros de distribuição</h3>
+        <p>Alta densidade e giro intenso. Cada posição endereçada, com acesso direto ao palete.</p>
+      </article>
+      <article class="seg-card reveal">
+        <span class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V9l6 3V9l6 3V3l6 3v15z"/><path d="M8 17h2M14 17h2"/></svg></span>
+        <h3>Indústrias</h3>
+        <p>Matéria-prima, processo e produto acabado no mesmo galpão, sem disputa por espaço.</p>
+      </article>
+      <article class="seg-card reveal">
+        <span class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="6" width="14" height="11" rx="1"/><path d="M15 9h4l4 4v4h-8z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span>
+        <h3>Distribuidoras e transportadoras</h3>
+        <p>Recebimento e expedição no mesmo dia, sem palete bloqueando corredor.</p>
+      </article>
+      <article class="seg-card reveal">
+        <span class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9h18l-1.5 11a2 2 0 0 1-2 1.7H6.5a2 2 0 0 1-2-1.7z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></svg></span>
+        <h3>Atacadistas, mercados e lojas</h3>
+        <p>Estoque de retaguarda verticalizado para liberar área de venda.</p>
+      </article>
+      <article class="seg-card reveal">
+        <span class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg></span>
+        <h3>Operadores logísticos</h3>
+        <p>Layout que aceita mudança de cliente sem refazer a estrutura inteira.</p>
+      </article>
+      <article class="seg-card reveal">
+        <span class="seg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+        <h3>E-commerce e fulfillment</h3>
+        <p>Muito SKU, pouco volume por item: endereçamento é o que segura a operação.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== CONTATO == -->
+<section class="cb" id="contato">
+  <!-- Idem: navy com trama de CSS, sem foto de banco. -->
+  <div class="wrap">
+    <div class="cb-copy">
+      <span class="eyebrow claro reveal">Fale com a engenharia</span>
+      <h2 class="reveal">Conte o cenário. A conta vem depois.</h2>
+      <p class="reveal">
+        Não vendemos por telefone. Com os dados do seu galpão, a engenharia confere
+        o pé-direito, os pilares e o giro da empilhadeira, e devolve projeto e orçamento em
+        até 24 horas úteis — sem custo e sem compromisso.
+      </p>
+      <ul class="cb-points">
+        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 13 4 4L19 7"/></svg> Diagnóstico gratuito, mesmo que a resposta seja não</li>
+        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 13 4 4L19 7"/></svg> Projeto conforme ABNT NBR 17150, com ART</li>
+        <li class="reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 13 4 4L19 7"/></svg> Atendimento em todo o estado de São Paulo</li>
       </ul>
-
-      <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e"
-         class="btn btn-wpp" style="margin-top:26px" target="_blank" rel="noopener" data-wpp="cta_final">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-        Prefiro falar no WhatsApp
-      </a>
     </div>
 
-    <div class="card raised reveal" style="background:#fff">
-      <div class="chip" data-sim-chip></div>
+    <div class="cb-form reveal">
+      <span class="cb-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Resposta em até 24h úteis
+      </span>
+      <h3>Falar com a engenharia</h3>
+      <p class="fs">Quatro campos. O retorno vem de gente que vai olhar o seu galpão.</p>
 
-      <form data-lead="home_v2_rodape" novalidate>
+      <form data-lead="v3_home_contato" novalidate>
         <div class="banner" data-role="banner"></div>
 
         <div data-role="campos">
           <div class="fgroup" data-field="nome">
-            <label for="f2-nome">Nome</label>
-            <input class="field" id="f2-nome" name="nome" type="text" autocomplete="name" placeholder="Como devemos te chamar">
+            <label for="v3-nome">Nome</label>
+            <input class="field" id="v3-nome" name="nome" type="text" autocomplete="name" placeholder="Como devemos te chamar">
             <span class="msg">Informe seu nome.</span>
           </div>
 
-          <div class="sim-row">
+          <div class="f-row">
             <div class="fgroup" data-field="telefone">
-              <label for="f2-tel">WhatsApp</label>
-              <input class="field" id="f2-tel" name="telefone" type="tel" data-mask="tel" autocomplete="tel" placeholder="(11) 9 9999-9999">
+              <label for="v3-tel">WhatsApp</label>
+              <input class="field" id="v3-tel" name="telefone" type="tel" data-mask="tel" autocomplete="tel" placeholder="(11) 9 9999-9999">
               <span class="msg">Informe um WhatsApp válido.</span>
             </div>
             <div class="fgroup" data-field="empresa">
-              <label for="f2-emp">Empresa</label>
-              <input class="field" id="f2-emp" name="empresa" type="text" autocomplete="organization" placeholder="Razão social">
+              <label for="v3-emp">Empresa</label>
+              <input class="field" id="v3-emp" name="empresa" type="text" autocomplete="organization" placeholder="Razão social">
               <span class="msg">Informe a empresa.</span>
             </div>
           </div>
 
-          <div class="sim-row">
+          <div class="f-row">
             <div class="fgroup" data-field="email">
-              <label for="f2-email">E-mail <span class="hint">(opcional)</span></label>
-              <input class="field" id="f2-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br">
+              <label for="v3-email">E-mail <span class="hint">(opcional)</span></label>
+              <input class="field" id="v3-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br">
               <span class="msg">E-mail inválido.</span>
             </div>
             <div class="fgroup">
-              <label for="f2-cidade">Cidade <span class="hint">(opcional)</span></label>
-              <input class="field" id="f2-cidade" name="cidade" type="text" autocomplete="address-level2" placeholder="Onde fica o galpão">
+              <label for="v3-obj">Do que você precisa</label>
+              <select class="field" id="v3-obj" name="objetivo">
+                <option value="">Selecione</option>
+                <option>Comprar porta-paletes</option>
+                <option>Locar porta-paletes</option>
+                <option>Comprar ou locar empilhadeira</option>
+                <option>Consultoria e projeto de layout</option>
+                <option>Ainda não sei, quero orientação</option>
+              </select>
             </div>
           </div>
 
-          <div class="fgroup">
-            <label for="f2-obj">Do que você precisa</label>
-            <select class="field" id="f2-obj" name="objetivo">
-              <option value="">Selecione</option>
-              <option>Comprar porta-paletes</option>
-              <option>Locar porta-paletes</option>
-              <option>Comprar ou locar empilhadeira</option>
-              <option>Consultoria e projeto de layout</option>
-              <option>Ainda não sei, quero orientação</option>
-            </select>
-          </div>
-
-          <input type="hidden" name="area" data-lead-area value="">
-          <input type="hidden" name="simulacao" data-lead-simulacao value="">
-          <input type="hidden" name="pe_direito" data-lead-pe value="">
+          <!-- Armadilha anti-robo. O nome do campo NAO pode ser "site": e o
+               nome que gerenciador de senha reconhece e preenche sozinho. -->
           <input class="hp" type="text" name="campo_b" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-          <button type="submit" class="btn btn-primary btn-block btn-lg" data-role="btn">
-            Quero o diagnóstico gratuito
-          </button>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" data-role="btn">Falar com a engenharia</button>
 
-          <p class="privacy">
+          <p class="cb-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
             Seus dados são usados só para este atendimento.
-            Veja a <a href="politica-de-privacidade.html">política de privacidade</a>.
           </p>
         </div>
 
-        <div class="form-ok" data-role="ok">
-          <div class="tick">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3>Recebemos seu pedido</h3>
-          <p class="lead">Nossa engenharia retorna em até 24 horas úteis. Se preferir adiantar, fale agora:</p>
-          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e"
-             class="btn btn-wpp btn-block" target="_blank" rel="noopener" data-wpp="sucesso_rodape">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-            Falar no WhatsApp
-          </a>
+        <div class="cb-ok" data-role="ok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
+          <h3>Recebemos o seu contato</h3>
+          <p>A engenharia retorna em até 24 horas úteis. Se preferir adiantar, fale no WhatsApp.</p>
+          <a class="btn btn-wpp btn-block" style="margin-top:16px" href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="sucesso_contato" target="_blank" rel="noopener">Falar no WhatsApp</a>
         </div>
       </form>
     </div>
-
   </div>
 </section>
 
-<!-- ===================================================== RODAPE ========= -->
-<footer class="foot">
+<!-- ==================================================== AREA DE ATUACAO == -->
+<section class="sec soft" id="atuacao">
+  <div class="wrap">
+    <div class="map-card reveal">
+      <div class="map-info">
+        <span class="eyebrow">Área de atuação</span>
+        <h2>Todo o estado de São Paulo</h2>
+        <p>Projeto, entrega e instalação com equipe própria — capital, interior e litoral.</p>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><b>Cobertura</b><span>Todo o estado de São Paulo</span></span>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span><b>WhatsApp</b><span>(11) 99235-3669</span></span>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <span><b>E-mail</b><span>comercial@tetrixlog.com.br</span></span>
+        </div>
+        <a class="btn btn-wpp" style="margin-top:8px" href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="atuacao" target="_blank" rel="noopener">
+          Falar no WhatsApp
+        </a>
+      </div>
+      <!-- Painel tipografico em vez do mapa da LP. O mapa era mais uma imagem
+           emprestada, e "SP" diz a mesma coisa sem pedir download nenhum. -->
+      <div class="map-visual">
+        <div class="map-sp" aria-hidden="true">
+          <span class="map-sp-uf">SP</span>
+          <span class="map-sp-tx">Capital · Interior · Litoral</span>
+        </div>
+        <span class="map-badge">Projeto, entrega e montagem com equipe própria</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== CHAMADA FINAL == -->
+<section class="sec final">
+  <div class="wrap">
+    <h2 class="reveal">Comece pelo número do seu galpão</h2>
+    <p class="reveal">Veja em quatro campos quantas posições-palete você tem hoje e quantas teria verticalizado. Depois a engenharia confere na prática.</p>
+    <div class="final-cta reveal">
+      <a class="btn btn-white btn-lg" href="simulador.html" data-cta="final_simulador">Abrir o simulador</a>
+      <a class="btn btn-ghost-light btn-lg" href="#contato" data-cta="final_contato">Falar com a engenharia</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================ RODAPE == -->
+<footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div>
-        <img class="logo" src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix Soluções Intralogísticas">
-        <p style="font-size:14.5px;max-width:34em">
-          Verticalização de estoques com porta-paletes e empilhadeiras.
-          Compra, locação e consultoria intralogística em todo o estado de São Paulo.
+      <div class="foot-brand">
+        <img class="logo-img" src="img/marca/logo-horizontal-negativa.svg" alt="Tetrix Soluções Intralogísticas" width="230" height="54" loading="lazy">
+        <p>
+          Engenharia de armazenagem em todo o estado de São Paulo. Projeto,
+          fornecimento e montagem de estruturas e equipamentos para aproveitar
+          a capacidade que o seu galpão já tem.
         </p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram da Tetrix">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61590895761463" target="_blank" rel="noopener" aria-label="Facebook da Tetrix">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/143071462/" target="_blank" rel="noopener" aria-label="LinkedIn da Tetrix">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.5c0-1.31-.02-3-1.9-3-1.9 0-2.2 1.43-2.2 2.9V21H9z"/></svg>
+          </a>
+          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="rodape" target="_blank" rel="noopener" aria-label="WhatsApp da Tetrix">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.2 1.3-2 1.4-.5.1-1.2.1-3.4-.8-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.4-.3.4c-.1.1-.2.3 0 .5.1.3.7 1.1 1.4 1.8 1 .8 1.8 1.1 2 1.2.2.1.4.1.5-.1l.7-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3z"/></svg>
+          </a>
+        </div>
       </div>
 
-      <div>
-        <h4>Soluções</h4>
-        <ul>
-          <li><a href="venda.html">Comprar</a></li>
-          <li><a href="locacao.html">Locar</a></li>
-          <li><a href="consultoria.html">Consultoria</a></li>
-          <li><a href="porta-paletes.html">Porta-paletes</a></li>
-          <li><a href="empilhadeiras.html">Empilhadeiras</a></li>
-          <li><a href="simulador.html">Simulador</a></li>
-        </ul>
+      <div class="foot-col">
+        <h5>Soluções</h5>
+        <a href="porta-paletes.html">Porta-paletes</a>
+        <a href="venda.html">Comprar</a>
+        <a href="locacao.html">Locar</a>
+        <a href="empilhadeiras.html">Empilhadeiras</a>
+        <a href="consultoria.html">Consultoria</a>
       </div>
 
-      <div>
-        <h4>Contato</h4>
-        <ul class="foot-contact">
-          <li>
-            <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener" data-wpp="rodape">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-              (11) 99235-3669
-            </a>
-          </li>
-          <li>
-            <a href="mailto:comercial@tetrixlog.com.br">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              comercial@tetrixlog.com.br
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              @tetrixlog
-            </a>
-          </li>
-          <li>
-            <span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Estado de São Paulo
-            </span>
-          </li>
-        </ul>
+      <div class="foot-col">
+        <h5>A empresa</h5>
+        <a href="#historia">Quem somos</a>
+        <a href="#compromissos">Como trabalhamos</a>
+        <a href="#credenciais">Credenciais</a>
+        <a href="blog/">Blog</a>
+        <a href="simulador.html">Simulador</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>Contato</h5>
+        <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="rodape_tel" target="_blank" rel="noopener">(11) 99235-3669</a>
+        <a href="mailto:comercial@tetrixlog.com.br">comercial@tetrixlog.com.br</a>
+        <p>Todo o estado de São Paulo</p>
+        <a href="politica-de-privacidade.html">Política de privacidade</a>
       </div>
     </div>
 
-    <div class="foot-bot">
-      <span>© <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · <a href="politica-de-privacidade.html">Política de privacidade</a></span>
-      <div class="foot-social">
-        <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-          <a href="https://www.facebook.com/profile.php?id=61590895761463" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/143071462/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-          </a>
-      </div>
+    <div class="foot-bottom">
+      <span>© <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89</span>
+      <span>Projeto conforme ABNT NBR 17150 · Responsável técnico CREA</span>
     </div>
   </div>
 </footer>
 
-<!-- Barra fixa: so no celular -->
-<div class="dock">
-  <a href="#diagnostico" class="d-form" data-cta="dock">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    Orçamento
-  </a>
-  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e"
-     class="d-wpp" target="_blank" rel="noopener" data-wpp="dock">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-    WhatsApp
-  </a>
-</div>
+<a class="wa" href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="flutuante" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.2 1.3-2 1.4-.5.1-1.2.1-3.4-.8-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.4-.3.4c-.1.1-.2.3 0 .5.1.3.7 1.1 1.4 1.8 1 .8 1.8 1.1 2 1.2.2.1.4.1.5-.1l.7-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3z"/></svg>
+</a>
 
-<script src="assets/tetrix.js"></script>
-<script>window.TetrixTrack && window.TetrixTrack('home_view', { home_versao: 'v2_clean' });</script>
+<a class="mobile-cta" href="#contato" data-cta="dock_mobile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+  Falar com a engenharia
+</a>
+
+<script src="assets/tetrix.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tetrix Soluções Intralogísticas",
+  "url": "https://www.tetrixlog.com.br/",
+  "telephone": "+55-11-99235-3669",
+  "email": "comercial@tetrixlog.com.br",
+  "image": "https://www.tetrixlog.com.br/og-image.jpg",
+  "description": "Engenharia de armazenagem em todo o estado de São Paulo: projeto, fornecimento e montagem de porta-paletes e empilhadeiras, com responsável técnico CREA e projeto conforme ABNT NBR 17150.",
+  "areaServed": { "@type": "State", "name": "São Paulo" },
+  "address": { "@type": "PostalAddress", "addressRegion": "SP", "addressCountry": "BR" },
+  "sameAs": [
+    "https://www.instagram.com/tetrixlog",
+    "https://www.facebook.com/profile.php?id=61590895761463",
+    "https://www.linkedin.com/company/143071462/"
+  ]
+}
+</script>
+
 </body>
 </html>

@@ -1,734 +1,182 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.className=document.documentElement.className.replace('no-js','');</script>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P7HG4VJ4');</script>
+  <!-- Fim Google Tag Manager -->
+
   <title>Quantos pallets cabem no meu galpão? Como calcular | Tetrix</title>
+  <meta name="description" content="Como calcular quantas posições-palete cabem no galpão: folgas da NBR 17150-2, largura de corredor por empilhadeira e um exemplo passo a passo. Com calculadora.">
+
+  <!-- Versao de avaliacao: fica fora do indice ate o Pedro aprovar e promover. -->
   <link rel="canonical" href="https://www.tetrixlog.com.br/blog/quantos-paletes-cabem-no-galpao.html">
-  <meta name="description" content="Como calcular quantas posições-palete cabem no galpão: folgas da NBR 17150-2, largura de corredor por empilhadeira e um exemplo passo a passo.">
-  <!-- Open Graph -->
+
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Tetrix Soluções Intralogísticas">
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:url" content="https://www.tetrixlog.com.br/blog/quantos-paletes-cabem-no-galpao.html">
   <meta property="og:title" content="Quantos pallets cabem no meu galpão? O método de cálculo completo">
-  <meta property="og:description" content="A conta que quase todo mundo faz na primeira vez erra por quase quatro vezes. Veja o método correto, com as folgas reais da NBR 17150-2 e um exemplo completo.">
+  <meta property="og:description" content="O método das 5 etapas com as folgas reais da NBR 17150-2, larguras de corredor por empilhadeira e um exemplo trabalhado.">
   <meta property="og:image" content="https://www.tetrixlog.com.br/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="article:published_time" content="2026-07-24">
-  <meta property="article:author" content="Engenharia Tetrix">
-  <meta property="article:section" content="Guia técnico">
+  <meta property="og:url" content="https://www.tetrixlog.com.br/blog/quantos-paletes-cabem-no-galpao.html">
+  <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Quantos pallets cabem no meu galpão? O método de cálculo completo">
-  <meta name="twitter:description" content="A conta que quase todo mundo faz na primeira vez erra por quase quatro vezes. Veja o método correto com as folgas reais da NBR 17150-2.">
-  <meta name="twitter:image" content="https://www.tetrixlog.com.br/og-image.jpg">
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#0F2030">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-P7HG4VJ4');</script>
-  <!-- End Google Tag Manager -->
-  <!-- Schema Article -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Quantos pallets cabem no meu galpão? O método de cálculo completo",
-    "description": "Como calcular quantas posições-palete cabem no galpão: folgas da NBR 17150-2, largura de corredor por empilhadeira e um exemplo passo a passo.",
-    "image": "https://www.tetrixlog.com.br/og-image.jpg",
-    "datePublished": "2026-07-24",
-    "dateModified": "2026-07-24",
-    "author": {
-      "@type": "Organization",
-      "name": "Tetrix Soluções Intralogísticas",
-      "url": "https://www.tetrixlog.com.br"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Tetrix Soluções Intralogísticas",
-      "sameAs": [
-        "https://www.instagram.com/tetrixlog",
-        "https://www.facebook.com/profile.php?id=61590895761463",
-        "https://www.linkedin.com/company/143071462/"
-      ],
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.tetrixlog.com.br/icon-512.png"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://www.tetrixlog.com.br/blog/quantos-paletes-cabem-no-galpao.html"
-    }
-  }
-  </script>
-  <!-- Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.tetrixlog.com.br/" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.tetrixlog.com.br/blog/" },
-      { "@type": "ListItem", "position": 3, "name": "Quantos pallets cabem no meu galpão?" }
-    ]
-  }
-  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy:     #0F2030;
-      --navy-mid: #16293B;
-      --navy-lt:  #1E3548;
-      --orange:   #F96400;
-      --orange-dk:#D45600;
-      --orange-lt:#FF9B57;
-      --white:    #FFFFFF;
-      --gray-100: #F4F6FA;
-      --gray-200: #DCDCDC;
-      --gray-500: #7A8BA8;
-      --gray-700: #3D4F6A;
-      --text:     #1A2A40;
-      --font-head: 'Montserrat', sans-serif;
-      --font-body: 'Montserrat', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --radius:   10px;
-      --trans:    0.3s ease;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.7; }
-    a { text-decoration: none; color: var(--orange-dk); }
-    a:hover { text-decoration: underline; }
-    img { max-width: 100%; display: block; }
-    ul, ol { list-style: none; }
-    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-
-    /* ===== BARRA DE PROGRESSO DE LEITURA ===== */
-    #reading-progress {
-      position: fixed; top: 0; left: 0; right: 0; height: 3px;
-      background: transparent; z-index: 1001; pointer-events: none;
-    }
-    #reading-progress-bar {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, var(--orange), var(--orange-dk));
-      transition: width 0.15s ease-out;
-      box-shadow: 0 1px 6px rgba(255,110,26,0.4);
-    }
-
-    /* ===== NAVBAR ===== */
-    #navbar { position: fixed; top: 3px; left: 0; right: 0; z-index: 1000; padding: 0 24px; background: rgba(13,30,61,0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-    #navbar .container { display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0; }
-    .logo-mark img { height: 32px; width: auto; }
-    .nav-links { display: flex; align-items: center; gap: 4px; }
-    .nav-links a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: color var(--trans), background var(--trans); }
-    .nav-links a:hover, .nav-links a.active { color: white; background: rgba(255,255,255,0.08); text-decoration: none; }
-    .nav-cta { margin-left: 12px; padding: 10px 22px !important; font-size: 14px !important; background: var(--orange); color: white; border-radius: var(--radius); font-weight: 600; }
-    .nav-cta:hover { background: var(--orange-dk); text-decoration: none; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: transparent; }
-    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: var(--trans); }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 79px; left: 0; right: 0; background: rgba(13,30,61,0.98); backdrop-filter: blur(12px); padding: 20px 24px 28px; z-index: 999; flex-direction: column; gap: 4px; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: rgba(255,255,255,0.9); font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: 8px; text-decoration: none; }
-    .mobile-menu a:hover { background: rgba(255,255,255,0.08); }
-
-    /* ===== HERO ===== */
-    .article-hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
-      color: white;
-      padding: 128px 0 72px;
-      position: relative;
-      overflow: hidden;
-    }
-    .article-hero-photo {
-      position: absolute; inset: 0;
-      background-image: url('/blog/quantos-paletes-hero.jpg');
-      background-size: cover;
-      background-position: center 30%;
-      opacity: 0.32;
-    }
-    .article-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        linear-gradient(180deg, rgba(13,30,61,0.55) 0%, rgba(13,30,61,0.88) 65%, var(--navy) 100%),
-        radial-gradient(circle at 15% 20%, rgba(255,110,26,0.15), transparent 45%),
-        radial-gradient(circle at 85% 80%, rgba(91,155,213,0.12), transparent 40%);
-      pointer-events: none;
-    }
-    .breadcrumb {
-      position: relative; z-index: 2;
-      font-size: 13px; color: rgba(255,255,255,0.6);
-      margin-bottom: 24px;
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    }
-    .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--orange-lt); text-decoration: underline; }
-    .breadcrumb-sep { color: rgba(255,255,255,0.3); }
-    .breadcrumb-current { color: rgba(255,255,255,0.9); }
-
-    .hero-tag {
-      display: inline-block; background: rgba(255,110,26,0.15);
-      color: var(--orange); font-size: 12px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 6px 14px; border-radius: 999px;
-      margin-bottom: 20px; position: relative; z-index: 2;
-    }
-    .article-hero h1 {
-      position: relative; z-index: 2;
-      font-family: var(--font-head); font-weight: 800;
-      font-size: clamp(23px, 3.24vw, 37px); line-height: 1.1;
-      margin-bottom: 24px; letter-spacing: -0.5px;
-      max-width: 900px;
-    }
-    .article-hero .lede-hero {
-      position: relative; z-index: 2;
-      font-size: 19px; line-height: 1.6;
-      color: rgba(255,255,255,0.85);
-      max-width: 780px;
-      margin-bottom: 32px;
-    }
-    .article-meta {
-      position: relative; z-index: 2;
-      display: flex; align-items: center; gap: 24px;
-      font-size: 13px; color: rgba(255,255,255,0.6);
-      flex-wrap: wrap;
-    }
-    .article-meta-item { display: flex; align-items: center; gap: 8px; }
-    .article-meta svg { width: 16px; height: 16px; opacity: 0.6; }
-
-    /* ===== CORPO DO ARTIGO ===== */
-    .article-body-section { background: var(--gray-100); padding: 64px 0 96px; }
-    .article-layout {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    /* ===== TOC (índice sticky) ===== */
-    .toc-wrapper { position: sticky; top: 100px; }
-    .toc {
-      background: white; border-radius: 12px; padding: 24px;
-      box-shadow: 0 4px 20px rgba(13,30,61,0.06);
-    }
-    .toc-title {
-      font-family: var(--font-head); font-weight: 700; font-size: 12px;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--gray-500); margin-bottom: 16px;
-    }
-    .toc-list { display: flex; flex-direction: column; gap: 2px; }
-    .toc-item {
-      display: block; padding: 8px 12px;
-      color: var(--gray-700); font-size: 13px; line-height: 1.4;
-      border-left: 2px solid transparent;
-      transition: color var(--trans), border-color var(--trans), background var(--trans);
-      text-decoration: none;
-    }
-    .toc-item:hover { color: var(--navy); background: var(--gray-100); text-decoration: none; }
-    .toc-item.active {
-      color: var(--orange-dk); border-left-color: var(--orange);
-      background: rgba(255,110,26,0.06);
-      font-weight: 600;
-    }
-    .toc-item.sub { padding-left: 24px; font-size: 12.5px; }
-
-    /* ── Versão mobile do CTA do simulador (aparece só quando o TOC/sidebar some) ── */
-    .sim-banner-mobile { display: none; }
-    @media (max-width: 1024px) {
-      .sim-banner-mobile {
-        display: flex; align-items: center; gap: 14px;
-        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
-        border-radius: 12px; padding: 16px 18px;
-        text-decoration: none; margin-bottom: 28px;
-        box-shadow: 0 4px 16px rgba(13,30,61,0.15);
-      }
-      .sim-banner-mobile:hover { text-decoration: none; }
-      .sim-banner-mobile .icon {
-        flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
-        background: rgba(255,110,26,0.18); color: var(--orange-lt);
-        display: flex; align-items: center; justify-content: center;
-      }
-      .sim-banner-mobile .icon svg { width: 21px; height: 21px; }
-      .sim-banner-mobile .text-title { font-family: var(--font-head); font-weight: 700; font-size: 14.5px; color: white; }
-      .sim-banner-mobile .text-sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 2px; }
-      .sim-banner-mobile .arrow { margin-left: auto; color: rgba(255,255,255,0.5); flex-shrink: 0; }
-    }
-
-    /* ── Card sticky do simulador (sempre visível junto ao índice) ── */
-    .toc-sim-card {
-      display: block; margin-top: 16px;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
-      border-radius: 12px; padding: 20px 20px 22px;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(13,30,61,0.15);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      position: relative; overflow: hidden;
-    }
-    .toc-sim-card::before {
-      content: ''; position: absolute; top: -20px; right: -20px;
-      width: 100px; height: 100px;
-      background: radial-gradient(circle, rgba(255,110,26,0.25), transparent 70%);
-    }
-    .toc-sim-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(13,30,61,0.25);
-      text-decoration: none;
-    }
-    .toc-sim-icon {
-      width: 36px; height: 36px; border-radius: 9px;
-      background: rgba(255,110,26,0.18);
-      color: var(--orange-lt);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 12px; position: relative; z-index: 2;
-    }
-    .toc-sim-icon svg { width: 19px; height: 19px; }
-    .toc-sim-title {
-      font-family: var(--font-head); font-weight: 700; font-size: 15px;
-      color: white; margin-bottom: 4px; position: relative; z-index: 2;
-    }
-    .toc-sim-sub {
-      font-size: 12px; color: rgba(255,255,255,0.65);
-      line-height: 1.4; position: relative; z-index: 2;
-    }
-
-    /* ===== ARTIGO — CONTEÚDO ===== */
-    .article-content {
-      background: white;
-      padding: 56px 60px 72px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(13,30,61,0.06);
-      max-width: 780px;
-    }
-    .article-content .lead {
-      font-size: 20px; line-height: 1.6;
-      color: var(--navy); font-weight: 500;
-      margin-bottom: 32px;
-    }
-    .article-content h2 {
-      font-family: var(--font-head); font-weight: 700;
-      font-size: 32px; line-height: 1.2;
-      color: var(--navy); margin: 56px 0 20px;
-      letter-spacing: -0.3px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--gray-200);
-      scroll-margin-top: 100px;
-    }
-    .article-content h3 {
-      font-family: var(--font-head); font-weight: 700;
-      font-size: 22px; line-height: 1.3;
-      color: var(--navy); margin: 36px 0 16px;
-      scroll-margin-top: 100px;
-    }
-    .article-content p {
-      font-size: 16px; line-height: 1.75;
-      color: var(--gray-700); margin-bottom: 20px;
-    }
-    .article-content p strong { color: var(--navy); }
-    .article-content ul, .article-content ol { margin: 8px 0 24px 0; padding-left: 0; }
-    .article-content ul li, .article-content ol li {
-      font-size: 16px; line-height: 1.7; color: var(--gray-700);
-      margin-bottom: 10px; padding-left: 28px; position: relative;
-    }
-    .article-content ul li::before {
-      content: ''; position: absolute; left: 8px; top: 12px;
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--orange);
-    }
-    .article-content ol { counter-reset: ol-count; }
-    .article-content ol li { counter-increment: ol-count; }
-    .article-content ol li::before {
-      content: counter(ol-count); position: absolute; left: 0; top: 0;
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--orange); color: white;
-      font-size: 11px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      margin-top: 4px;
-    }
-
-    /* ===== CALLOUT ===== */
-    .callout {
-      background: var(--gray-100);
-      border-left: 4px solid var(--orange);
-      padding: 20px 24px;
-      margin: 32px 0;
-      border-radius: 0 8px 8px 0;
-    }
-    .callout-title {
-      font-family: var(--font-head); font-weight: 700; font-size: 17px;
-      color: var(--navy); margin-bottom: 8px;
-    }
-    .callout p { font-size: 15px; margin-bottom: 0; color: var(--gray-700); }
-
-    /* ===== BOX-ESCURO ===== */
-    .box-dark {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
-      color: white; padding: 32px 36px;
-      border-radius: 12px; margin: 36px 0;
-      position: relative; overflow: hidden;
-    }
-    .box-dark::before {
-      content: ''; position: absolute; top: 0; right: 0;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(255,110,26,0.15), transparent 70%);
-      pointer-events: none;
-    }
-    .box-dark-title {
-      font-family: var(--font-head); font-weight: 700; font-size: 20px;
-      color: white; margin-bottom: 16px;
-      position: relative; z-index: 2;
-    }
-    .box-dark p { color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 12px; position: relative; z-index: 2; }
-    .box-dark p:last-child { margin-bottom: 0; }
-    .box-dark em { font-style: normal; color: var(--orange-lt); font-weight: 600; display: block; margin-top: 20px; margin-bottom: 8px; font-size: 14px; }
-    .box-dark code, .box-dark pre {
-      display: block; background: rgba(0,0,0,0.3);
-      color: var(--orange-lt);
-      font-family: var(--font-mono); font-size: 14px;
-      padding: 14px 18px; border-radius: 8px;
-      margin: 8px 0 16px;
-      border-left: 3px solid var(--orange);
-      position: relative; z-index: 2;
-      white-space: pre-wrap;
-      line-height: 1.6;
-    }
-
-    /* ===== TABELA ===== */
-    .table-wrap {
-      overflow-x: auto; margin: 28px 0 32px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(13,30,61,0.06);
-    }
-    .article-content table {
-      width: 100%; border-collapse: collapse;
-      font-size: 14.5px; background: white;
-    }
-    .article-content thead {
-      background: var(--navy); color: white;
-    }
-    .article-content th {
-      padding: 14px 18px; text-align: left;
-      font-family: var(--font-head); font-weight: 600;
-      font-size: 13px; letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .article-content td {
-      padding: 12px 18px;
-      border-bottom: 1px solid var(--gray-200);
-      color: var(--gray-700); line-height: 1.5;
-    }
-    .article-content tbody tr:nth-child(even) { background: var(--gray-100); }
-    .article-content tbody tr:last-child td { border-bottom: none; }
-    .article-content td strong { color: var(--orange-dk); }
-
-    /* ===== FAIXA-STATS ===== */
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px; margin: 36px 0;
-      background: var(--gray-200);
-      border-radius: 12px; overflow: hidden;
-      box-shadow: 0 2px 10px rgba(13,30,61,0.06);
-    }
-    .stat-cell {
-      background: white;
-      padding: 24px 20px; text-align: center;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .stat-cell.highlight {
-      background: #FFF4EC;
-      position: relative;
-    }
-    .stat-cell.highlight::before {
-      content: 'MELHOR CENÁRIO'; position: absolute; top: 6px; left: 50%;
-      transform: translateX(-50%);
-      font-size: 9px; font-weight: 700; letter-spacing: 1px;
-      color: var(--orange-dk);
-    }
-    .stat-label {
-      font-family: var(--font-head); font-weight: 700; font-size: 13px;
-      color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.8px;
-      margin-bottom: 8px;
-    }
-    .stat-value {
-      font-family: var(--font-head); font-weight: 800;
-      font-size: 36px; color: var(--navy);
-      line-height: 1;
-    }
-    .stat-cell.highlight .stat-value { color: var(--orange-dk); }
-    .stat-desc {
-      font-size: 11.5px; color: var(--gray-500);
-      margin-top: 6px; line-height: 1.4;
-    }
-
-    /* ===== CTA ===== */
-    .cta-block {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
-      color: white; padding: 40px 40px;
-      border-radius: 14px; margin: 48px 0;
-      position: relative; overflow: hidden;
-    }
-    .cta-block::before {
-      content: ''; position: absolute; top: -30px; right: -30px;
-      width: 240px; height: 240px;
-      background: radial-gradient(circle, rgba(255,110,26,0.18), transparent 70%);
-    }
-    .cta-final {
-      border: 1px solid rgba(255,110,26,0.35);
-      padding: 44px 44px 40px;
-      margin-top: 56px;
-    }
-    .cta-final-eyebrow {
-      display: inline-block; position: relative; z-index: 2;
-      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; color: var(--orange-lt);
-      background: rgba(255,110,26,0.15);
-      padding: 5px 12px; border-radius: 999px;
-      margin-bottom: 16px;
-    }
-    .cta-block h3 {
-      font-family: var(--font-head); font-weight: 700; font-size: 26px;
-      color: white; margin-bottom: 12px;
-      position: relative; z-index: 2;
-    }
-    .cta-block p {
-      color: rgba(255,255,255,0.85); font-size: 15.5px; line-height: 1.6;
-      margin-bottom: 20px;
-      position: relative; z-index: 2;
-    }
-    .cta-btns {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      position: relative; z-index: 2;
-    }
-    .cta-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 22px; border-radius: var(--radius);
-      font-size: 14px; font-weight: 600;
-      transition: transform var(--trans), box-shadow var(--trans);
-      text-decoration: none;
-    }
-    .cta-btn:hover { transform: translateY(-2px); text-decoration: none; }
-    .cta-btn.primary { background: var(--orange); color: white; box-shadow: 0 4px 20px rgba(255,110,26,0.3); }
-    .cta-btn.primary:hover { box-shadow: 0 8px 30px rgba(255,110,26,0.5); }
-    .cta-btn.secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.25); }
-    .cta-btn.secondary:hover { background: rgba(255,255,255,0.15); }
-    .cta-btn svg { width: 16px; height: 16px; }
-
-    /* ===== AUTOR ===== */
-    .author-box {
-      background: var(--gray-100);
-      padding: 28px 32px; border-radius: 12px;
-      margin: 48px 0 0;
-      display: grid; grid-template-columns: 60px 1fr; gap: 20px;
-      align-items: start;
-    }
-    .author-mark {
-      width: 60px; height: 60px; border-radius: 12px;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .author-mark svg { width: 40px; height: 40px; }
-    .author-content h4 {
-      font-family: var(--font-head); font-weight: 700;
-      font-size: 18px; color: var(--navy); margin-bottom: 6px;
-    }
-    .author-content p { font-size: 14px; line-height: 1.6; color: var(--gray-700); margin-bottom: 0; }
-
-    /* ===== FOOTER ===== */
-    footer { background: var(--navy); color: white; padding: 60px 0 30px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-    .footer-brand h3 { font-family: var(--font-head); font-size: 24px; font-weight: 700; margin-bottom: 12px; }
-    .footer-brand p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; max-width: 300px; }
-    .footer-col h4 { font-family: var(--font-head); font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--orange); text-transform: uppercase; letter-spacing: 1px; }
-    .footer-col a { display: block; padding: 6px 0; color: rgba(255,255,255,0.7); font-size: 14px; transition: color var(--trans); text-decoration: none; }
-    .footer-col a:hover { color: var(--orange); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.5); }
-
-    /* WhatsApp float */
-    .whatsapp-float {
-      position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px;
-      background: #25D366; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      z-index: 998; transition: transform var(--trans);
-    }
-    .whatsapp-float:hover { transform: scale(1.08); }
-    .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .article-layout { grid-template-columns: 1fr; }
-      .toc-wrapper { display: none; }
-      .article-content { padding: 40px 32px 56px; }
-    }
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .stats-strip { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .article-hero { padding: 108px 0 56px; }
-      .article-hero h1 { font-size: 28px; }
-      .article-hero .lede-hero { font-size: 16px; }
-      .article-content { padding: 32px 24px 48px; }
-      .article-content h2 { font-size: 26px; margin-top: 40px; }
-      .article-content h3 { font-size: 20px; }
-      .stats-strip { grid-template-columns: 1fr 1fr; }
-      .stat-value { font-size: 30px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .cta-block { padding: 28px 24px; }
-      .box-dark { padding: 24px 22px; }
-      .callout { padding: 18px 20px; }
-    }
-    /* ===================================================================
-       MARCA NOVA — CONTRASTE WCAG AA
-       O laranja da marca #F96400 com texto BRANCO da 3,07:1 e reprova.
-       Com texto NAVY #0F2030 da 5,40:1 e passa — entao o botao mantem o
-       laranja exato do manual e so troca a cor do texto. Nada de escurecer
-       a cor da marca, como era preciso na identidade anterior.
-       Hover #FA7420 (5,97:1). Links laranja sobre fundo claro usam
-       #C24E00 (4,79:1), ja que #F96400 sobre branco da so 3,07:1.
-       =================================================================== */
-    :root { --orange-btn: #F96400; --orange-btn-dk: #FA7420; --orange-link: #C24E00; }
-    .btn-primary, .nav-cta, .btn-mobile, .primary, .active, .col-reach,
-    .mobile-menu .btn-primary, .mobile-menu .btn-mobile, .mobile-menu a.btn,
-    .tipo-num-badge, .fbtn, .sim-go, .mbar a.or, .form-btn, .btn-calcular {
-      background: var(--orange-btn); color: #0F2030;
-    }
-    .btn-primary:hover, .nav-cta:hover, .btn-mobile:hover, .primary:hover,
-    .fbtn:hover, .sim-go:hover, .form-btn:hover, .btn-calcular:hover {
-      background: var(--orange-btn-dk); color: #0F2030;
-    }
-    .btn-primary svg, .nav-cta svg, .fbtn svg, .sim-go svg,
-    .mbar a.or svg, .form-btn svg { color: #0F2030; stroke: currentColor; }
-
-
-  </style>
+  <link rel="stylesheet" href="../assets/home-v3.css">
+  <link rel="stylesheet" href="../assets/paginas.css">
+  <link rel="stylesheet" href="../assets/artigo.css">
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7HG4VJ4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <!-- BARRA DE PROGRESSO DE LEITURA -->
-  <div id="reading-progress"><div id="reading-progress-bar"></div></div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7HG4VJ4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <!-- NAVBAR -->
-  <nav id="navbar">
-    <div class="container">
-      <a href="../index.html" class="logo-mark" aria-label="Tetrix Soluções Intralogísticas">
-        <img src="../img/marca/logo-horizontal-negativa.svg" alt="Tetrix" width="521" height="161" decoding="async">
+<a class="pular" href="#calculadora">Pular para o conteúdo</a>
+<!-- ====================================================== UTILIDADES ==== -->
+<div class="util">
+  <div class="wrap">
+    <div class="u-left">
+      <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="topbar" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span>(11) 99235-3669</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="../index.html">Início</a></li>
-        <li><a href="../venda.html">Comprar</a></li>
-        <li><a href="../locacao.html">Locar</a></li>
-        <li><a href="../consultoria.html">Consultoria</a></li>
-        <li><a href="../porta-paletes.html">Porta-paletes</a></li>
-        <li><a href="../empilhadeiras.html">Empilhadeiras</a></li>
-        <li><a href="../sobre.html">Sobre</a></li>
-        <li><a href="index.html" class="active">Blog</a></li>
-      </ul>
-      <a href="../contato.html" class="nav-cta">Solicitar Diagnóstico</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="mailto:comercial@tetrixlog.com.br">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        <span>comercial@tetrixlog.com.br</span>
+      </a>
+      <span style="display:inline-flex;align-items:center;gap:7px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Atendemos todo o estado de SP
+      </span>
     </div>
-  </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="../index.html">Início</a>
-    <a href="../venda.html">Comprar</a>
-    <a href="../locacao.html">Locar</a>
-    <a href="../consultoria.html">Consultoria</a>
-    <a href="../porta-paletes.html">Porta-paletes</a>
-    <a href="../empilhadeiras.html">Empilhadeiras</a>
-    <a href="../sobre.html">Sobre</a>
-    <a href="index.html">Blog</a>
-    <a href="../contato.html">Contato</a>
-    <a href="../contato.html" class="nav-cta" style="text-align:center;">Solicitar Diagnóstico</a>
+    <div class="u-right">
+      <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram da Tetrix">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61590895761463" target="_blank" rel="noopener" aria-label="Facebook da Tetrix">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/143071462/" target="_blank" rel="noopener" aria-label="LinkedIn da Tetrix">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.5c0-1.31-.02-3-1.9-3-1.9 0-2.2 1.43-2.2 2.9V21H9z"/></svg>
+      </a>
+    </div>
   </div>
+</div>
 
-  <!-- ARTICLE HERO -->
-  <header class="article-hero">
-    <div class="article-hero-photo" role="img" aria-label="Corredores de porta-paletes em galpão com empilhadeiras em operação"></div>
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="../index.html">Início</a>
-        <span class="breadcrumb-sep">/</span>
-        <a href="index.html">Blog</a>
-        <span class="breadcrumb-sep">/</span>
-        <span class="breadcrumb-current">Quantos pallets cabem no meu galpão?</span>
-      </div>
-      <span class="hero-tag">Guia técnico</span>
-      <h1>Quantos pallets cabem no meu galpão? O método de cálculo completo</h1>
-      <p class="lede-hero">A conta que quase todo mundo faz na primeira vez erra por quase quatro vezes. Veja o método correto, com as folgas reais da NBR 17150-2, larguras de corredor por tipo de empilhadeira e um exemplo trabalhado do começo ao fim.</p>
-      <div class="article-meta">
-        <div class="article-meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <span>11 min de leitura</span>
-        </div>
-        <div class="article-meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          <span>Julho de 2026</span>
-        </div>
-        <div class="article-meta-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span>ABNT NBR 17150-2:2024</span>
-        </div>
-      </div>
+<!-- ======================================================= CABECALHO ==== -->
+<header>
+  <div class="wrap nav">
+    <a href="../index.html" aria-label="Tetrix — página inicial">
+      <img class="logo-img" src="../img/marca/logo-horizontal.svg" alt="Tetrix Soluções Intralogísticas" width="200" height="46">
+    </a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="../index.html">Início</a>
+      <a href="../venda.html">Comprar</a>
+      <a href="../locacao.html">Locar</a>
+      <a href="../porta-paletes.html">Porta-paletes</a>
+      <a href="../empilhadeiras.html">Empilhadeiras</a>
+      <a href="../consultoria.html">Consultoria</a>
+      <a href="../simulador.html">Simulador</a>
+      <a href="../sobre.html">Sobre</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="../contato.html" data-cta="header">Solicitar orçamento</a>
     </div>
-  </header>
+    <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <!-- CORPO DO ARTIGO -->
-  <section class="article-body-section">
-    <div class="container">
-      <div class="article-layout">
+<nav class="menu" id="menu-mobile" aria-label="Menu">
+  <a href="../index.html">Início</a>
+  <a href="../venda.html">Comprar</a>
+  <a href="../locacao.html">Locar</a>
+  <a href="../porta-paletes.html">Porta-paletes</a>
+  <a href="../empilhadeiras.html">Empilhadeiras</a>
+  <a href="../consultoria.html">Consultoria</a>
+  <a href="../simulador.html">Simulador</a>
+  <a href="../sobre.html">Sobre</a>
+  <a href="index.html">Blog</a>
+  <a href="../contato.html">Contato</a>
+  <a class="btn btn-primary" href="../contato.html" data-cta="menu_mobile">Solicitar orçamento</a>
+</nav>
 
-        <!-- TOC LATERAL -->
-        <aside class="toc-wrapper">
-          <nav class="toc">
-            <div class="toc-title">Índice</div>
-            <div class="toc-list">
-              <a href="#etapa1" class="toc-item">1 · Meça a carga, não o palete</a>
-              <a href="#etapa2" class="toc-item">2 · A altura útil real</a>
-              <a href="#etapa3" class="toc-item">3 · Conte os níveis</a>
-              <a href="#tabela4" class="toc-item sub">Tabela 4 da NBR 17150-2</a>
-              <a href="#etapa4" class="toc-item">4 · O módulo em planta</a>
-              <a href="#corredores" class="toc-item sub">Larguras de corredor</a>
-              <a href="#etapa5" class="toc-item">5 · Descontos de layout</a>
-              <a href="#exemplo" class="toc-item">Exemplo completo</a>
-              <a href="#erros" class="toc-item">Os 3 erros mais comuns</a>
-            </div>
-          </nav>
 
-          <a href="../simulador.html" class="toc-sim-card">
-            <div class="toc-sim-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2"/></svg>
-            </div>
-            <div class="toc-sim-title">Calcule o seu galpão</div>
-            <div class="toc-sim-sub">Simulador gratuito de posições-palete</div>
-          </a>
-        </aside>
+<!-- ====================================================== HERO DO ARTIGO == -->
+<header class="artigo-hero">
+  <div class="wrap">
+    <nav class="migalha" aria-label="Você está aqui">
+      <a href="../index.html">Início</a>
+      <span class="sep">/</span>
+      <a href="index.html">Blog</a>
+      <span class="sep">/</span>
+      <span class="atual">Quantos pallets cabem no meu galpão?</span>
+    </nav>
+    <span class="eyebrow claro">Guia técnico</span>
+    <h1 style="margin-top:16px">Quantos pallets cabem no meu galpão? O método de cálculo completo</h1>
+    <p class="lede">
+      A conta que quase todo mundo faz na primeira vez erra por quase quatro vezes.
+      Veja o método correto, com as folgas reais da NBR 17150-2, larguras de corredor
+      por tipo de empilhadeira e um exemplo trabalhado do começo ao fim.
+    </p>
+    <div class="artigo-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 11 min de leitura</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Julho de 2026</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> ABNT NBR 17150-2:2024</span>
+    </div>
+  </div>
+</header>
 
-        <!-- CONTEÚDO -->
-        <article class="article-content">
+<div class="artigo-grid">
+
+  <!-- ---- Indice + atalho para a calculadora ------------------------------ -->
+  <aside class="toc-wrapper">
+    <details class="toc-sanfona" open>
+      <summary>Índice do guia</summary>
+      <nav class="toc">
+        <div class="toc-title">Índice</div>
+        <div class="toc-list">
+          <a class="toc-item" href="#etapa1">1 · Meça a carga, não o palete</a>
+          <a class="toc-item" href="#etapa2">2 · A altura útil real</a>
+          <a class="toc-item" href="#etapa3">3 · Conte os níveis</a>
+          <a class="toc-item sub" href="#tabela4">Tabela 4 da NBR 17150-2</a>
+          <a class="toc-item" href="#etapa4">4 · O módulo em planta</a>
+          <a class="toc-item sub" href="#corredores">Larguras de corredor</a>
+          <a class="toc-item" href="#etapa5">5 · Descontos de layout</a>
+          <a class="toc-item" href="#calculadora">Calculadora</a>
+          <a class="toc-item" href="#exemplo">Exemplo completo</a>
+          <a class="toc-item" href="#erros">Os 3 erros mais comuns</a>
+        </div>
+      </nav>
+    </details>
+
+    <a class="toc-sim-card" href="#calculadora" data-cta="artigo_toc_calculadora">
+      <span class="toc-sim-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M7 8h4M7 11h2"/></svg>
+      </span>
+      <span class="toc-sim-title">Calcule o seu galpão</span>
+      <span class="toc-sim-sub">Aplica este mesmo método nos seus números</span>
+    </a>
+  </aside>
+
+  <article class="article-content">
 
           <p class="lead">Se você já tentou estimar quantos paletes cabem no seu galpão, provavelmente fez esta conta — e ela está errada.</p>
 
@@ -962,14 +410,110 @@
 
           <p>Traduzindo: <strong>em galpão operado por contrabalançada, sete de cada dez metros quadrados são corredor.</strong></p>
 
-          <div class="cta-block">
-            <h3>Não quer fazer a conta na mão?</h3>
-            <p>O simulador da Tetrix aplica exatamente este método. Informe área, pé-direito, altura da carga e o tipo de empilhadeira, e veja a estimativa de posições e o custo por posição-palete comparado ao que você paga hoje.</p>
-            <div class="cta-btns">
-              <a href="../simulador.html" class="cta-btn primary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                Calcular a capacidade do meu galpão
-              </a>
+          <!-- ================================================================
+               CALCULADORA — o destino dos anuncios que apontam para este
+               artigo. O resultado so aparece depois do contato; o calculo
+               em si roda na hora. Motor: ../assets/tetrix.js
+               ================================================================ -->
+          <div class="sim" data-sim="simulador_artigo" id="calculadora">
+            <div class="sim-top">
+              <span class="eyebrow claro">Calculadora</span>
+              <p class="sim-h">Faça a conta com os seus números</p>
+              <p>O método das cinco etapas acima, aplicado automaticamente.</p>
+            </div>
+
+            <div class="sim-body">
+              <div class="sim-row keep2">
+                <div class="fgroup">
+                  <label for="a-area">Área do galpão <span class="hint">(m²)</span></label>
+                  <input class="field" type="number" id="a-area" data-sim-area value="1000" min="100" max="50000" step="50" inputmode="numeric">
+                </div>
+                <div class="fgroup">
+                  <label for="a-emp">Empilhadeira</label>
+                  <select class="field" id="a-emp" data-sim-emp>
+                    <option value="CB">Contrabalançada</option>
+                    <option value="PT">Patolada / Retrátil</option>
+                    <option value="TR">Trilateral</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="fgroup">
+                <label for="a-pd">Pé-direito útil <span class="hint" data-sim-pdniveis></span></label>
+                <div class="sim-range">
+                  <input type="range" id="a-pd" data-sim-pd min="4" max="14" step="0.5" value="8">
+                  <span class="sim-val" data-sim-pdval>8,0 m</span>
+                </div>
+              </div>
+
+              <div class="fgroup">
+                <label for="a-cam">Como você armazena hoje</label>
+                <select class="field" id="a-cam" data-sim-cam>
+                  <option value="1">Paletes no piso, sem empilhar</option>
+                  <option value="2">Empilho 2 camadas em bloco</option>
+                  <option value="3">Empilho 3 camadas em bloco</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn btn-primary btn-block btn-lg" data-sim-go>
+                Calcular minha capacidade
+              </button>
+
+              <!-- Portao: retem a exibicao, nunca o calculo. -->
+              <div class="sim-portao" data-sim-portao>
+                <span class="sp-selo">Cálculo pronto</span>
+                <p class="sp-tit">Seu número está calculado.</p>
+                <p class="sp-sub">
+                  Diga para quem devolvemos o resultado. A engenharia manda junto o
+                  projeto com a medição real do seu galpão, em até 24 horas úteis.
+                </p>
+
+                <form data-lead="simulador_artigo" data-sim-portao novalidate>
+                  <div class="banner" data-role="banner"></div>
+                  <div data-role="campos">
+                    <div class="fgroup" data-field="nome">
+                      <label for="pa-nome">Nome</label>
+                      <input class="field" id="pa-nome" name="nome" type="text" autocomplete="name" placeholder="Como devemos te chamar">
+                      <span class="msg">Informe seu nome.</span>
+                    </div>
+                    <div class="sim-row">
+                      <div class="fgroup" data-field="telefone">
+                        <label for="pa-tel">WhatsApp</label>
+                        <input class="field" id="pa-tel" name="telefone" type="tel" data-mask="tel" autocomplete="tel" placeholder="(11) 9 9999-9999">
+                        <span class="msg">Informe um WhatsApp válido.</span>
+                      </div>
+                      <div class="fgroup" data-field="email">
+                        <label for="pa-email">E-mail</label>
+                        <input class="field" id="pa-email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br">
+                        <span class="msg">Informe um e-mail válido.</span>
+                      </div>
+                    </div>
+
+                    <input type="hidden" name="objetivo" value="Simulador — liberar resultado">
+                    <input type="hidden" name="simulacao" data-lead-simulacao value="">
+                    <input type="hidden" name="pe_direito" data-lead-pe value="">
+                    <input type="hidden" name="area" data-lead-area value="">
+                    <input class="hp" type="text" name="campo_b" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" data-role="btn">
+                      Ver meu resultado
+                    </button>
+                    <p class="sp-nota">Seus dados são usados só para este atendimento.</p>
+                  </div>
+                </form>
+              </div>
+
+              <div class="sim-out" data-sim-out>
+                <div class="sim-nums">
+                  <div class="sim-num"><b data-sim-hoje>0</b><span>posições hoje</span></div>
+                  <div class="sim-num destaque"><b data-sim-novo>0</b><span>com porta-paletes</span></div>
+                  <div class="sim-num"><b data-sim-ganho>0</b><span>a mais</span></div>
+                </div>
+                <p class="sim-msg" data-sim-msg></p>
+                <a class="btn btn-dark btn-block" style="margin-top:18px" href="../contato.html" data-cta="artigo_pos_resultado">
+                  Quero esse cálculo conferido no meu galpão
+                </a>
+              </div>
             </div>
           </div>
 
@@ -1099,122 +643,99 @@
           </div>
 
         </article>
+</div>
+
+<!-- ============================================================ RODAPE == -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img class="logo-img" src="../img/marca/logo-horizontal-negativa.svg" alt="Tetrix Soluções Intralogísticas" width="230" height="54" loading="lazy">
+        <p>
+          Engenharia de armazenagem em todo o estado de São Paulo. Projeto,
+          fornecimento e montagem de estruturas e equipamentos para aproveitar
+          a capacidade que o seu galpão já tem.
+        </p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/tetrixlog" target="_blank" rel="noopener" aria-label="Instagram da Tetrix">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61590895761463" target="_blank" rel="noopener" aria-label="Facebook da Tetrix">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/143071462/" target="_blank" rel="noopener" aria-label="LinkedIn da Tetrix">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.5c0-1.31-.02-3-1.9-3-1.9 0-2.2 1.43-2.2 2.9V21H9z"/></svg>
+          </a>
+          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="rodape" target="_blank" rel="noopener" aria-label="WhatsApp da Tetrix">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.2 1.3-2 1.4-.5.1-1.2.1-3.4-.8-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.4-.3.4c-.1.1-.2.3 0 .5.1.3.7 1.1 1.4 1.8 1 .8 1.8 1.1 2 1.2.2.1.4.1.5-.1l.7-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Soluções</h5>
+        <a href="../porta-paletes.html">Porta-paletes</a>
+        <a href="../venda.html">Comprar</a>
+        <a href="../locacao.html">Locar</a>
+        <a href="../empilhadeiras.html">Empilhadeiras</a>
+        <a href="../consultoria.html">Consultoria</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>A empresa</h5>
+        <a href="../sobre.html">Quem somos</a>
+        <a href="../index.html#compromissos">Como trabalhamos</a>
+        <a href="../index.html#credenciais">Credenciais</a>
+        <a href="index.html">Blog</a>
+        <a href="../simulador.html">Simulador</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>Contato</h5>
+        <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="rodape_tel" target="_blank" rel="noopener">(11) 99235-3669</a>
+        <a href="mailto:comercial@tetrixlog.com.br">comercial@tetrixlog.com.br</a>
+        <p>Todo o estado de São Paulo</p>
+        <a href="../politica-de-privacidade.html">Política de privacidade</a>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>TETRIX</h3>
-          <p>Soluções intralogísticas: verticalização, porta-paletes, empilhadeiras e consultoria em todo o estado de São Paulo.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Soluções</h4>
-          <a href="../venda.html">Comprar</a>
-          <a href="../locacao.html">Locar</a>
-          <a href="../consultoria.html">Consultoria</a>
-          <a href="../simulador.html">Simulador</a>
-        </div>
-        <div class="footer-col">
-          <h4>Produtos</h4>
-          <a href="../porta-paletes.html">Porta-paletes</a>
-          <a href="../empilhadeiras.html">Empilhadeiras</a>
-        </div>
-        <div class="footer-col">
-          <h4>Empresa</h4>
-          <a href="../sobre.html">Sobre</a>
-          <a href="index.html">Blog</a>
-          <a href="../contato.html">Contato</a>
-          <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" target="_blank" rel="noopener">WhatsApp</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        © <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89 · São Paulo/SP · <a href="../politica-de-privacidade.html" style="color:inherit;text-decoration:underline">Política de Privacidade</a>
-      </div>
+    <div class="foot-bottom">
+      <span>© <span class="js-ano">2026</span> Tetrix Soluções Intralogísticas · CNPJ 67.829.778/0001-89</span>
+      <span>Projeto conforme ABNT NBR 17150 · Responsável técnico CREA</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- WhatsApp Float -->
-  <a href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e!%20Vim%20do%20blog%20da%20Tetrix%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zM12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.524 5.855L.058 23.5l5.78-1.515A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-  </a>
+<a class="wa" href="https://tintim.link/whatsapp/58aa35b5-c373-4904-9150-a3d95acaf4bc/8a1e3b6d-6926-41d9-bd1c-0140ff5c4a1e" data-wpp="flutuante" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.2 1.3-2 1.4-.5.1-1.2.1-3.4-.8-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.4-.3.4c-.1.1-.2.3 0 .5.1.3.7 1.1 1.4 1.8 1 .8 1.8 1.1 2 1.2.2.1.4.1.5-.1l.7-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6-.1 1.3z"/></svg>
+</a>
 
-  <script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        mobileMenu.classList.toggle('open');
-      });
-      mobileMenu.querySelectorAll('a').forEach(a =>
-        a.addEventListener('click', () => {
-          hamburger.classList.remove('open');
-          mobileMenu.classList.remove('open');
-        })
-      );
-    }
+<a class="mobile-cta" href="../contato.html" data-cta="dock_mobile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+  Falar com a engenharia
+</a>
 
-    // ── BARRA DE PROGRESSO DE LEITURA
-    const progressBar = document.getElementById('reading-progress-bar');
-    const article = document.querySelector('.article-content');
-    function updateProgress() {
-      if (!article || !progressBar) return;
-      const rect = article.getBoundingClientRect();
-      const start = window.scrollY + rect.top - window.innerHeight * 0.3;
-      const end = start + rect.height;
-      const current = window.scrollY;
-      const pct = Math.max(0, Math.min(100, ((current - start) / (end - start)) * 100));
-      progressBar.style.width = pct + '%';
-    }
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('resize', updateProgress);
-    updateProgress();
+<script src="../assets/tetrix.js" defer></script>
 
-    // ── TOC ATIVO (destaca seção que está sendo lida)
-    const tocItems = document.querySelectorAll('.toc-item');
-    const sections = Array.from(tocItems).map(item => {
-      const id = item.getAttribute('href').replace('#', '');
-      return { item, id, el: document.getElementById(id) };
-    }).filter(s => s.el);
-
-    function updateActiveTOC() {
-      const scrollY = window.scrollY + 150;
-      let active = sections[0];
-      for (const s of sections) {
-        if (s.el.offsetTop <= scrollY) active = s;
-      }
-      tocItems.forEach(i => i.classList.remove('active'));
-      if (active) active.item.classList.add('active');
-    }
-    window.addEventListener('scroll', updateActiveTOC, { passive: true });
-    updateActiveTOC();
-  </script>
-  <script>document.querySelectorAll(".js-ano").forEach(function(e){e.textContent=new Date().getFullYear();});</script>
-<script>
-  /* V2 — rastreio de clique nos CTAs (faltava no simulador e no blog) */
-  (function () {
-    window.dataLayer = window.dataLayer || [];
-    document.querySelectorAll('a[href*="wa.me"], a[href*="tintim.link"]').forEach(function (a) {
-      a.addEventListener('click', function () {
-        window.dataLayer.push({ event: 'whatsapp_click', origem_pagina: location.pathname });
-      });
-    });
-    document.querySelectorAll('a[href*="contato.html"], a[href*="simulador.html"]').forEach(function (a) {
-      a.addEventListener('click', function () {
-        window.dataLayer.push({
-          event: 'cta_click',
-          cta_destino: a.getAttribute('href'),
-          cta_texto: (a.textContent || '').trim().slice(0, 40),
-          origem_pagina: location.pathname
-        });
-      });
-    });
-  })();
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tetrix Soluções Intralogísticas",
+  "url": "https://www.tetrixlog.com.br/",
+  "telephone": "+55-11-99235-3669",
+  "email": "comercial@tetrixlog.com.br",
+  "image": "https://www.tetrixlog.com.br/og-image.jpg",
+  "description": "Engenharia de armazenagem em todo o estado de São Paulo: projeto, fornecimento e montagem de porta-paletes e empilhadeiras, com responsável técnico CREA e projeto conforme ABNT NBR 17150.",
+  "areaServed": { "@type": "State", "name": "São Paulo" },
+  "address": { "@type": "PostalAddress", "addressRegion": "SP", "addressCountry": "BR" },
+  "sameAs": [
+    "https://www.instagram.com/tetrixlog",
+    "https://www.facebook.com/profile.php?id=61590895761463",
+    "https://www.linkedin.com/company/143071462/"
+  ]
+}
 </script>
+
 </body>
 </html>

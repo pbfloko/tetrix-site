@@ -1,0 +1,292 @@
+/* ===========================================================================
+   PAGINAS INTERNAS — v3
+   ---------------------------------------------------------------------------
+   Carrega DEPOIS de home-v3.css. Traz os componentes que as paginas de
+   venda, locacao, porta-paletes, empilhadeiras, consultoria, sobre,
+   simulador, contato e politica usam, vestidos com os tokens da LP.
+
+   O conteudo das paginas veio inteiro da versao anterior e mantem os nomes
+   de classe originais. Para nao ter que reescrever cada `<style>` de pagina,
+   os tokens antigos viram APELIDOS dos novos logo abaixo. E por isso que um
+   `var(--bg-soft)` escrito em 2026 continua funcionando e agora devolve o
+   cinza da LP, nao o do site antigo.
+   =========================================================================== */
+
+:root {
+  /* Apelidos: nome antigo -> valor v3 */
+  --bg:          var(--paper);
+  --bg-soft:     var(--paper-2);
+  --ink-2:       var(--muted);
+  --gray:        var(--line);
+  --gray-ctl:    var(--line-ctl);
+  --orange-btn:  #C24E00;
+  --orange-btn-h:#A84300;
+
+  /* Raios: o site antigo usava 28/18/12. A LP usa 10/8. Reapontar aqui
+     converte todas as paginas de uma vez. */
+  --r-md: var(--r-lg);
+  --r-sm: var(--r);
+}
+
+/* ---- Secoes -------------------------------------------------------------- */
+.sec { padding: clamp(56px, 7vw, 96px) 0; }
+.sec.tight { padding: clamp(40px, 5vw, 64px) 0; }
+.sec.soft { background: var(--paper-2); }
+.sec.dark { background: var(--navy); color: #fff; }
+.sec.dark h1, .sec.dark h2, .sec.dark h3 { color: #fff; }
+.sec.dark .lead { color: #C6D2DC; }
+.sec.dark .eyebrow { color: var(--orange-2); }
+
+/* Cartao claro dentro de secao escura: sem isto o texto herda o branco da
+   secao e some no fundo do cartao. Ja custou um bloco inteiro invisivel. */
+.sec.dark .card:not(.navy) { color: var(--ink); }
+.sec.dark .card:not(.navy) h2,
+.sec.dark .card:not(.navy) h3 { color: var(--ink); }
+.sec.dark .card:not(.navy) .lead { color: var(--muted); }
+.sec.dark .card:not(.navy) .checks li { color: var(--muted); }
+.sec.dark .card:not(.navy) .checks strong { color: var(--ink); }
+.sec.dark .card:not(.navy) p { color: var(--muted); }
+
+h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 900; letter-spacing: -.03em; }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); }
+h3 { font-size: 1.12rem; font-weight: 700; }
+.lead { color: var(--muted); font-size: 1.04rem; line-height: 1.7; }
+.or { color: var(--orange-tx); }
+.sec.dark .or, .on-dark .or { color: var(--orange-2); }
+
+.sec-head { max-width: 660px; margin-bottom: clamp(28px, 4vw, 44px); }
+.sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.sec-head h2 { margin-bottom: 14px; }
+.sec-head .eyebrow { margin-bottom: 14px; }
+
+.btn-ghost { background: transparent; color: var(--navy); border-color: var(--line-ctl); }
+.btn-ghost:hover { border-color: var(--orange); color: var(--orange-tx); }
+.sec.dark .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, .5); }
+.sec.dark .btn-ghost:hover { border-color: #fff; }
+
+/* ---- Cartoes e grades ---------------------------------------------------- */
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: clamp(22px, 2.6vw, 30px);
+}
+.card.flat { box-shadow: none; }
+.card.raised { box-shadow: var(--shadow); border-color: transparent; }
+.card.navy { background: var(--navy); color: #fff; border-color: transparent; }
+.card.navy h3 { color: #fff; }
+.card.navy p { color: #C6D2DC; }
+.card h3 + p { margin-top: 10px; }
+.card p { color: var(--muted); font-size: .95rem; }
+.card-ico {
+  width: 46px; height: 46px; border-radius: var(--r); background: var(--navy);
+  color: #fff; display: grid; place-items: center; margin-bottom: 16px;
+}
+.card-ico svg { width: 23px; height: 23px; }
+.card.navy .card-ico { background: #C24E00; }
+.card-link {
+  display: inline-flex; align-items: center; gap: 7px; margin-top: 14px;
+  font-weight: 700; font-size: .88rem; color: var(--orange-tx);
+}
+.card-link:hover { text-decoration: underline; }
+.card-link svg { width: 14px; height: 14px; }
+
+.grid { display: grid; gap: clamp(16px, 2vw, 24px); }
+.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* ---- Hero das paginas internas ------------------------------------------- */
+.phero { background: var(--paper-2); padding: clamp(36px, 5vw, 68px) 0 clamp(44px, 5vw, 72px); }
+.phero-in { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+.phero h1 { margin-bottom: 16px; }
+.phero h1 .or { color: var(--orange-tx); }
+.phero .lead { margin-bottom: 26px; max-width: 32em; }
+.phero-acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+/* Os JPG de rack tem o fundo do site gravado no arquivo; esta secao precisa
+   manter o cinza, senao aparece um retangulo claro em volta. */
+.phero-img img { width: 100%; max-width: 420px; margin-left: auto; height: auto; }
+.phero-img.foto img { border-radius: var(--r-lg); box-shadow: var(--shadow); }
+
+/* ---- Listas de verificacao ----------------------------------------------- */
+.checks { display: grid; gap: 12px; }
+.checks li { display: flex; gap: 11px; font-size: .95rem; line-height: 1.5; color: var(--muted); }
+.checks strong { color: var(--ink); }
+.checks svg { width: 20px; height: 20px; flex: none; color: var(--ok); margin-top: 1px; }
+.sec.dark .checks li { color: #C6D2DC; }
+.sec.dark .checks strong { color: #fff; }
+.sec.dark .checks svg { color: var(--orange-2); }
+
+/* ---- Passos numerados ----------------------------------------------------- */
+.steps { counter-reset: s; display: grid; gap: clamp(16px, 2vw, 24px); }
+.step { position: relative; padding-left: 62px; }
+.step::before {
+  counter-increment: s; content: counter(s);
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%;
+  background: #C24E00; color: #fff; font-weight: 900; font-size: 1.05rem;
+  display: grid; place-items: center;
+}
+.step h3 { margin-bottom: 6px; }
+.step p { color: var(--muted); font-size: .95rem; }
+.sec.dark .step p { color: #C6D2DC; }
+
+/* ---- Numeros -------------------------------------------------------------- */
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 32px); }
+.stat b { display: block; font-size: clamp(30px, 4.4vw, 46px); font-weight: 900; line-height: 1; color: var(--orange-2); letter-spacing: -.03em; }
+.sec:not(.dark) .stat b { color: var(--orange-tx); }
+.stat span { display: block; font-size: .9rem; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+.sec.dark .stat span { color: #C6D2DC; }
+
+/* ---- Cartoes de tipo / configuracao --------------------------------------- */
+.tipos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 22px); }
+.tipo-num {
+  display: inline-block; font-size: .74rem; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--orange-tx); margin-bottom: 10px;
+}
+.tipo ul { display: grid; gap: 8px; margin-top: 14px; }
+.tipo li { font-size: .88rem; color: var(--muted); display: flex; gap: 8px; }
+.tipo li::before { content: '—'; color: var(--orange-tx); flex: none; }
+
+/* ---- FAQ em sanfona ------------------------------------------------------- */
+.faq { display: grid; gap: 10px; max-width: 780px; margin: 0 auto; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 18px 22px; font-weight: 700; font-size: .98rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ''; width: 10px; height: 10px; flex: none;
+  border-right: 2.5px solid var(--orange-tx); border-bottom: 2.5px solid var(--orange-tx);
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .2s;
+}
+.faq details[open] summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+.faq p { padding: 0 22px 20px; margin: 0; font-size: .95rem; color: var(--muted); line-height: 1.6; }
+
+/* ---- Formulario ----------------------------------------------------------- */
+.form-ok { display: none; text-align: center; padding: 8px 0; }
+.form-ok .tick {
+  width: 56px; height: 56px; border-radius: 50%; background: rgba(11, 122, 84, .12);
+  color: var(--ok); display: grid; place-items: center; margin: 0 auto 14px;
+}
+.form-ok .tick svg { width: 30px; height: 30px; }
+.privacy { font-size: .75rem; color: var(--muted); line-height: 1.5; margin: 12px 0 0; }
+.privacy a { color: var(--muted); text-decoration: underline; }
+.chip {
+  display: none; background: var(--orange-soft); border: 1px solid rgba(249, 100, 0, .3);
+  border-radius: var(--r); padding: 11px 14px; font-size: .84rem; color: var(--ink); margin-bottom: 14px;
+}
+.chip.show { display: block; }
+.chip b { color: var(--navy); }
+
+/* ---- Simulador solto no meio da pagina ------------------------------------ */
+.sim-solo { max-width: 620px; margin: 0 auto; }
+.sim-lead { display: none; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+.sim-lead.show { display: block; }
+.sim-lead h3 { margin-bottom: 4px; }
+.sim-lead .lead { font-size: .9rem; margin-bottom: 18px; }
+
+/* ---- Bloco final: texto a esquerda, formulario a direita ------------------ */
+.cta-final-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 56px); align-items: start; }
+
+/* ---- Mosaico de ladrilhos (home antiga) ----------------------------------- */
+.grid.tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* ===================================================== RESPONSIVO ========== */
+@media (max-width: 960px) {
+  .g4, .grid.tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .phero-in { grid-template-columns: 1fr; gap: 18px; }
+  /* No celular a imagem vem DEPOIS dos botoes: decoracao nao passa na frente
+     da acao. Vale para todas as paginas internas. */
+  .phero-txt { display: contents; }
+  .phero .eyebrow   { order: 1; margin-bottom: 8px; }
+  .phero h1         { order: 2; margin-bottom: 0; font-size: 1.7rem; }
+  .phero .lead      { order: 3; margin: 10px 0 0; font-size: .97rem; }
+  .phero-acoes      { order: 4; margin-bottom: 0; }
+  .phero-acoes .btn { flex: 1 1 auto; }
+  .phero-img        { order: 5; }
+  .phero-img img    { max-width: 100%; margin: 0 auto; }
+  .phero .checks    { order: 6; }
+  .cta-final-in { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 860px) {
+  .g2, .g3, .tipos, .stats { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  /* Duas colunas a 375px davam 142px de cartao e o texto saia uma palavra
+     por linha. Uma coluna so. */
+  .g4, .grid.tiles { grid-template-columns: 1fr; }
+  .card { padding: 20px 18px; }
+  .step { padding-left: 52px; }
+  .step::before { width: 38px; height: 38px; font-size: .95rem; }
+}
+
+/* O JPG do rack tem o #F6F7F8 gravado no arquivo. A secao precisa desta cor
+   exata, senao aparece um retangulo mais claro em volta do recorte. */
+.phero { background: #F6F7F8; }
+
+/* ---- Alvo de toque no celular -------------------------------------------
+   WCAG 2.5.8 (AA) pede 24x24 CSS px. Os links "Ver X →" dos cartoes e os
+   icones sociais mediam 23px e 38px — passavam raspando ou reprovavam.
+   O ganho e so area clicavel; nada muda visualmente.                     */
+@media (max-width: 900px) {
+  /* NAO incluir .toc-item aqui: inline-flex impede a quebra de linha e um
+     item longo do indice ("1 · Meça a carga, não o palete") empurrava a
+     pagina inteira para 723px de largura num celular de 375px. Ele ja tem
+     33px de altura pelo proprio padding. */
+  .card-link, .sol-card .more, .foot-col a, .migalha a {
+    min-height: 26px; display: inline-flex; align-items: center; max-width: 100%;
+  }
+  .toc-item { min-height: 26px; }
+  .foot-col a { min-height: 32px; }
+  .foot-social a, .util .u-right a { width: 42px; height: 42px; }
+}
+
+/* ---- Grades de uma coluna que nao encolhem ------------------------------
+   Estas tres grades sao declaradas no <style> da propria pagina, que carrega
+   DEPOIS deste arquivo — por isso o seletor aqui precisa ser mais especifico.
+   O problema e sempre o mesmo: `1fr` vale minmax(auto, 1fr) e a coluna se
+   recusa a ficar menor que a palavra mais longa. Num iPhone SE (320px) a
+   pagina de contato ia para 331px e rolava de lado.                       */
+.chero .chero-in,
+.sim-hero .sim-hero-in,
+.phero .phero-in,
+.sec .cta-final-in,
+.comp {
+  min-width: 0;
+}
+.chero .chero-in > *,
+.sim-hero .sim-hero-in > *,
+.phero .phero-in > *,
+.sec .cta-final-in > * { min-width: 0; }
+
+@media (max-width: 900px) {
+  .chero .chero-in { grid-template-columns: minmax(0, 1fr); }
+  .sim-hero .sim-hero-in { grid-template-columns: minmax(0, 1fr); }
+  .phero .phero-in { grid-template-columns: minmax(0, 1fr); }
+  .sec .cta-final-in { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .sec .comp { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Cartoes de canal da pagina de contato: item de grid/flex tem
+   min-width:auto e nao encolhe abaixo do proprio texto. Num iPhone SE o
+   cartao ficava 29px mais largo que a coluna e a pagina rolava de lado. */
+.canais { min-width: 0; }
+.canal { min-width: 0; }
+.canal > span, .canal b, .canal i { min-width: 0; overflow-wrap: break-word; }
+/* Em tela de 320px o e-mail a 15px nao cabe numa linha e quebrava em
+   "tetrixlog.co / m.br". Meio ponto menor resolve sem quebrar. */
+@media (max-width: 360px) {
+  /* `.canais .canal` e nao `.canal`: o <style> da propria pagina carrega
+     depois deste arquivo e venceria no empate de especificidade. */
+  .canais .canal b { font-size: 13.5px; }
+  .canais .canal i { font-size: 12.5px; }
+}
+
+/* Linhas de contato da politica: flex com min-width:auto nos filhos. O
+   e-mail nao encolhia e vazava 17px da caixa num aparelho de 320px. */
+.contato-linhas, .contato-linha { min-width: 0; }
+.contato-linha > * { min-width: 0; overflow-wrap: break-word; }
+.contato-linha > svg { min-width: 18px; }

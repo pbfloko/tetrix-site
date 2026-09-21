@@ -1,0 +1,214 @@
+/* ===========================================================================
+   ARTIGO DO BLOG — layout v3
+   ---------------------------------------------------------------------------
+   Carrega DEPOIS de home-v3.css e herda os tokens de la. Aqui ficam so os
+   componentes de texto longo: prosa, callout, caixa escura, tabela, faixa de
+   numeros e o rodape do artigo.
+
+   `--orange-lt` precisa existir: o corpo do artigo veio da versao anterior e
+   traz `style="color:var(--orange-lt)"` embutido em alguns trechos sobre
+   fundo escuro. Sem o token, esses trechos herdam a cor do pai e somem.
+   =========================================================================== */
+
+:root { --orange-lt: #FF8F4D; }
+
+/* ---- Cabecalho do artigo ------------------------------------------------ */
+.artigo-hero { position: relative; background: var(--navy); color: #fff; overflow: hidden; }
+.artigo-hero .wrap { position: relative; z-index: 2; padding: 54px 24px 60px; max-width: 900px; }
+.artigo-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(900px 340px at 18% 0%, rgba(249, 100, 0, .17), transparent 70%);
+}
+.migalha { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .82rem; color: #9FB0BD; margin-bottom: 20px; }
+.migalha a { color: #C3CFD9; }
+.migalha a:hover { color: var(--orange-2); }
+.migalha .sep { color: #5A6C7B; }
+.migalha .atual { color: #fff; font-weight: 600; }
+.artigo-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -.03em; }
+.artigo-hero .lede { font-size: 1.1rem; color: #CBD6DF; margin-top: 18px; max-width: 62ch; }
+.artigo-meta { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 24px; font-size: .84rem; color: #9FB0BD; }
+.artigo-meta span { display: inline-flex; align-items: center; gap: 8px; }
+.artigo-meta svg { width: 15px; height: 15px; color: var(--orange-2); flex: none; }
+
+/* ---- Corpo -------------------------------------------------------------- */
+.artigo-layout { max-width: 780px; margin: 0 auto; padding: 56px 24px 24px; }
+.article-content > * + * { margin-top: 20px; }
+.article-content p { font-size: 1.02rem; line-height: 1.75; color: #33424F; }
+.article-content p.lead { font-size: 1.14rem; color: var(--ink); font-weight: 500; }
+.article-content strong { color: var(--navy); font-weight: 700; }
+.article-content em { color: var(--muted); }
+.article-content a { color: var(--orange-tx); font-weight: 600; border-bottom: 1px solid rgba(179, 71, 0, .3); }
+.article-content a:hover { border-bottom-color: var(--orange-tx); }
+.article-content h2 {
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem); margin-top: 52px; padding-top: 26px;
+  border-top: 2px solid var(--line); scroll-margin-top: 90px;
+}
+.article-content h3 { font-size: 1.16rem; margin-top: 34px; scroll-margin-top: 90px; }
+.article-content ul { display: grid; gap: 10px; }
+.article-content li { position: relative; padding-left: 22px; font-size: 1.01rem; line-height: 1.7; color: #33424F; }
+.article-content li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 6px; height: 6px; background: var(--orange); border-radius: 2px; }
+.article-content li strong { color: var(--navy); }
+
+/* ---- Callout ------------------------------------------------------------ */
+.callout { background: var(--orange-soft); border-left: 4px solid var(--orange); border-radius: 0 var(--r) var(--r) 0; padding: 22px 24px; }
+.callout-title { font-weight: 800; color: var(--navy); font-size: 1.02rem; margin-bottom: 8px; }
+.callout p { font-size: .97rem; color: #33424F; }
+
+/* ---- Caixa escura (formulas) -------------------------------------------- */
+.box-dark { background: var(--navy); color: #fff; border-radius: var(--r-lg); padding: 24px 26px; }
+.box-dark-title { font-size: .74rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--orange-2); margin-bottom: 14px; }
+.box-dark pre {
+  margin: 0 0 14px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .92rem; line-height: 1.6; color: #fff; background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .13); border-radius: var(--r); padding: 14px 16px;
+  white-space: pre-wrap; word-break: break-word;
+}
+.box-dark p { color: #C6D2DC; font-size: .93rem; }
+.box-dark strong { color: #fff; }
+
+/* ---- Tabelas ------------------------------------------------------------ */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-lg); }
+.table-wrap table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 460px; }
+.table-wrap th {
+  background: var(--paper-2); text-align: left; font-weight: 800; color: var(--navy);
+  padding: 13px 16px; border-bottom: 2px solid var(--line); font-size: .82rem;
+  letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
+}
+.table-wrap td { padding: 12px 16px; border-bottom: 1px solid var(--line); color: #33424F; }
+.table-wrap tr:last-child td { border-bottom: 0; }
+.table-wrap tbody tr:hover { background: #FBFCFD; }
+.table-wrap strong { color: var(--navy); }
+
+/* ---- Faixa de numeros --------------------------------------------------- */
+.stats-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.stat-cell { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 14px; text-align: center; }
+.stat-cell.highlight { background: var(--navy); border-color: transparent; }
+.stat-label { font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.stat-cell.highlight .stat-label { color: var(--orange-2); }
+.stat-value { font-size: 1.9rem; font-weight: 900; color: var(--navy); line-height: 1.1; margin: 6px 0 4px; font-variant-numeric: tabular-nums; }
+.stat-cell.highlight .stat-value { color: #fff; }
+.stat-desc { font-size: .78rem; color: var(--muted); line-height: 1.35; }
+.stat-cell.highlight .stat-desc { color: #AEBCC8; }
+
+/* ---- Blocos de chamada -------------------------------------------------- */
+.cta-block { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px 26px; }
+.cta-block h3 { margin-top: 0; font-size: 1.2rem; color: var(--navy); }
+.cta-block p { font-size: .97rem; color: var(--muted); margin-top: 8px; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.cta-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-weight: 700; font-size: .93rem; padding: 14px 24px; border-radius: var(--r-pill);
+  border: 1.5px solid transparent; transition: transform .18s, background .2s, border-color .2s;
+}
+.cta-btn svg { width: 17px; height: 17px; flex: none; }
+.cta-btn.primary { background: #C24E00; color: #fff; }
+.cta-btn.primary:hover { background: #A84300; transform: translateY(-2px); }
+.cta-btn.secondary { background: transparent; color: var(--navy); border-color: var(--line-ctl); }
+.cta-btn.secondary:hover { border-color: var(--orange); color: var(--orange-tx); }
+.cta-btn .arrow { transition: transform .2s; }
+.cta-btn:hover .arrow { transform: translateX(3px); }
+
+.cta-final { background: var(--navy); color: #fff; border-radius: var(--r-lg); padding: 34px 30px; margin-top: 44px; }
+.cta-final-eyebrow { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--orange-2); margin-bottom: 12px; }
+.cta-final h3 { margin-top: 0; font-size: 1.45rem; }
+.cta-final p { color: #C6D2DC; font-size: .98rem; margin-top: 12px; }
+.cta-final .cta-btn.secondary { color: #fff; border-color: rgba(255, 255, 255, .45); }
+.cta-final .cta-btn.secondary:hover { border-color: #fff; color: #fff; }
+
+/* ---- Assinatura --------------------------------------------------------- */
+.author-box { display: flex; gap: 18px; align-items: flex-start; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px 26px; margin-top: 44px; }
+.author-mark { width: 56px; height: 56px; flex: none; }
+.author-mark svg { width: 100%; height: 100%; border-radius: var(--r); }
+.author-content h3 { margin-top: 0; font-size: 1.02rem; }
+.author-content p { font-size: .92rem; color: var(--muted); margin-top: 6px; }
+
+/* ---- Banner do simulador no celular ------------------------------------- */
+.sim-banner-mobile { display: none; }
+
+@media (max-width: 700px) {
+  .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .artigo-hero .wrap { padding: 36px 18px 42px; }
+  .artigo-layout { padding: 38px 18px 16px; }
+  .article-content h2 { margin-top: 40px; }
+  .cta-block, .cta-final { padding: 22px 20px; }
+  .cta-btns .cta-btn { width: 100%; }
+  .author-box { flex-direction: column; gap: 14px; }
+  .stats-strip { grid-template-columns: 1fr; }
+}
+
+/* ---- Indice lateral ------------------------------------------------------
+   Vira uma sanfona no celular: como coluna fixa ele empurrava o texto para
+   baixo da dobra, e num artigo de 11 minutos isso e o suficiente para a
+   pessoa sair antes de comecar.                                            */
+.artigo-grid { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 48px; align-items: start; max-width: 1080px; margin: 0 auto; padding: 56px 24px 24px; }
+.toc-wrapper { position: sticky; top: 92px; display: grid; gap: 14px; }
+.toc { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px 20px 16px; }
+.toc-title { font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--orange-tx); margin-bottom: 14px; }
+.toc-list { display: grid; gap: 2px; }
+.toc-item { display: block; font-size: .86rem; line-height: 1.4; color: var(--muted); padding: 7px 0 7px 12px; border-left: 2px solid var(--line); transition: color .2s, border-color .2s; }
+.toc-item:hover { color: var(--orange-tx); border-left-color: var(--orange); }
+.toc-item.sub { padding-left: 24px; font-size: .8rem; }
+.toc-sim-card { display: block; background: var(--navy); border-radius: var(--r-lg); padding: 20px; color: #fff; transition: transform .2s, box-shadow .2s; }
+.toc-sim-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.toc-sim-icon { width: 42px; height: 42px; border-radius: var(--r); background: #C24E00; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.toc-sim-icon svg { width: 22px; height: 22px; color: #fff; }
+/* Sao <span> na marcacao: sem display:block o titulo e o subtitulo
+   ficam na mesma linha. */
+.toc-sim-title { display: block; font-weight: 800; font-size: .98rem; }
+.toc-sim-sub { display: block; font-size: .8rem; color: #AEBCC8; margin-top: 4px; line-height: 1.35; }
+
+@media (max-width: 900px) {
+  /* minmax(0,1fr) e nao 1fr: `1fr` vale minmax(auto,1fr) e o item se
+     recusa a encolher abaixo do proprio conteudo. Num celular de 375px a
+     coluna ia para 705px e a pagina inteira rolava na horizontal. */
+  .artigo-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 36px 18px 16px; }
+  .artigo-grid > * { min-width: 0; }
+  .toc-wrapper { position: static; }
+  .toc { padding: 0; background: transparent; border: 0; }
+  .toc > .toc-title { display: none; }
+  .toc-sanfona { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+  .toc-sanfona summary {
+    cursor: pointer; list-style: none; padding: 15px 20px; font-weight: 800; font-size: .92rem;
+    color: var(--navy); display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .toc-sanfona summary::-webkit-details-marker { display: none; }
+  .toc-sanfona summary::after {
+    content: ''; width: 9px; height: 9px; flex: none;
+    border-right: 2.5px solid var(--orange-tx); border-bottom: 2.5px solid var(--orange-tx);
+    transform: rotate(45deg) translate(-2px, -2px); transition: transform .2s;
+  }
+  .toc-sanfona[open] summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+  .toc-sanfona .toc-list { padding: 0 20px 16px; }
+}
+@media (min-width: 901px) {
+  .toc-sanfona summary { display: none; }
+}
+
+/* ---- Cores herdadas que precisam ser reafirmadas -------------------------
+   Regra que cita o elemento direto (.article-content p / em / h3) vence a
+   cor HERDADA de um pai escuro, por mais especifico que o pai seja. Onde o
+   fundo e escuro, a cor tem que ser dita de novo — foram tres textos quase
+   invisiveis (1:1, 1,6:1 e 3,2:1) antes destas linhas.                    */
+.migalha .sep { color: #8FA0AE; }
+.box-dark em { color: #C6D2DC; }
+.box-dark p, .box-dark li { color: #C6D2DC; }
+.cta-final h3 { color: #fff; }
+.cta-final p { color: #C6D2DC; }
+.cta-final a { color: var(--orange-lt); border-bottom-color: rgba(255, 143, 77, .4); }
+.sim .sim-msg strong { color: var(--navy); }
+
+/* ---- Indice do blog ------------------------------------------------------ */
+.blog-card { display: flex; flex-direction: column; }
+.blog-tag {
+  display: inline-block; align-self: flex-start; background: var(--orange-soft);
+  color: var(--orange-tx); font-size: .7rem; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; padding: 5px 11px; border-radius: 999px; margin-bottom: 14px;
+}
+.blog-card h2 { font-size: 1.22rem; line-height: 1.3; margin-bottom: 12px; }
+.blog-card h2 a { color: var(--navy); }
+.blog-card h2 a:hover { color: var(--orange-tx); }
+.blog-card p { color: var(--muted); font-size: .94rem; flex: 1; }
+.blog-meta { font-size: .78rem; font-weight: 600; color: var(--muted); margin-top: 16px; letter-spacing: .02em; }
+.blog-card .card-link { margin-top: 10px; }

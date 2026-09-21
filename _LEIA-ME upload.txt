@@ -1,0 +1,57 @@
+UPLOAD — SITE V3
+================
+Gerado em 21/09/2026.
+
+Backup do que está no ar hoje:
+  Site/_backup-site-v2-2026-09-21/   (não vai para o GitHub)
+
+--------------------------------------------------------------------
+1) ARQUIVOS NOVOS  (8)
+--------------------------------------------------------------------
+  assets/artigo.css
+  assets/home-v3.css
+  assets/paginas.css
+  img/consultoria-vistoria.webp
+  img/hero-rack.jpg
+  img/hero-rack@2x.jpg
+  img/historia-galpao.jpg
+  img/historia-galpao@2x.jpg
+
+--------------------------------------------------------------------
+2) SUBSTITUIR  (16)
+--------------------------------------------------------------------
+  assets/tetrix.js            <- traz o portão do simulador
+  index.html
+  venda.html
+  locacao.html
+  porta-paletes.html
+  empilhadeiras.html
+  consultoria.html
+  sobre.html
+  simulador.html
+  contato.html
+  politica-de-privacidade.html
+  blog/index.html
+  blog/quantos-paletes-cabem-no-galpao.html
+  blog/locacao-ou-compra-porta-paletes.html
+  blog/vacancia-galpoes-sao-paulo-metro-cubico.html
+  sitemap.xml
+
+--------------------------------------------------------------------
+3) APAGAR  (1)
+--------------------------------------------------------------------
+  assets/tetrix.css           <- nenhuma página usa mais
+
+--------------------------------------------------------------------
+NÃO MUDOU (não precisa mexer)
+--------------------------------------------------------------------
+  robots.txt · vercel.json · lp/ · favicons · og-image.jpg
+  as imagens antigas de img/ e blog/
+
+--------------------------------------------------------------------
+CONFERIR DEPOIS DE SUBIR
+--------------------------------------------------------------------
+  - abrir https://www.tetrixlog.com.br/ e ver a home nova
+  - abrir https://www.tetrixlog.com.br/blog/ (URL não mudou)
+  - enviar UM formulário de teste e confirmar que chega
+    (nome "TESTE" para achar e apagar no Supabase depois)
