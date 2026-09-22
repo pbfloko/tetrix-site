@@ -1,15 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
 
+  "cleanUrls": true,
+
   "redirects": [
     {
       "source": "/porta-pallets.html",
-      "destination": "/porta-paletes.html",
+      "destination": "/porta-paletes",
       "permanent": true
     },
     {
       "source": "/porta-pallets",
-      "destination": "/porta-paletes.html",
+      "destination": "/porta-paletes",
       "permanent": true
     }
   ],
